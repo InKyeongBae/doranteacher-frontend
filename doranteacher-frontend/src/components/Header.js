@@ -8,7 +8,7 @@ const HeaderBlock = styled.div`
 	position: sticky;
 	top: 0;
 
-	background : deeppink;
+	background : #F9DE4B;
 	color: black;
 	padding: 20px 50px 15px 50px;
 	display: flex;
