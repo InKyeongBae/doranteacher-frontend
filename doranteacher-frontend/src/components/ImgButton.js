@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { MdSettings } from "react-icons/md";
+import { MdSettings, MdUndo } from "react-icons/md";
 
 const ColorStyles = css`
 	${({theme, inputColor, outputColor}) => {
@@ -16,11 +16,16 @@ const ColorStyles = css`
 		}}
 `;
 
-const HeaderButtons = styled.div`
+const ImgButtons = styled.div`
+
+	svg {
+		width: 30px;
+		height: 30px;
+		margin : 0px;
+	}
 	
 	button {
-		width : 160px;
-		font-size: 25px;
+		top : 5px;
 		height: 42.5px;
 		${ColorStyles};
 		outline: 0;
@@ -28,10 +33,7 @@ const HeaderButtons = styled.div`
 		letter-spacing: 1px;
 		cursor: pointer;
 		position: relative;
-		padding: 3px 35px;
-		font-family: '상상토끼 꽃집막내딸 OTF';
-		font-style: normal;
-		font-weight: 400;
+		padding: 3px 5px;
 		border-radius: 25px;
 		border: 2px solid black;
 		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
@@ -39,7 +41,7 @@ const HeaderButtons = styled.div`
 		&:before {
 			z-index: -1;
 			position: absolute;
-			top: 0;
+			top: 1px;
 			right: 0;
 			bottom: 0;
 			left: 0;
@@ -59,10 +61,10 @@ const HeaderButtons = styled.div`
 
 		&:hover {
 			transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-			top: 4px;
+			top: 9px;
 			left: 3.5px;
 			&:before {
-				top: -5.5px;
+				top: -2.5px;
 				left: -4.7px;
 			}
 		}
@@ -71,17 +73,17 @@ const HeaderButtons = styled.div`
 `;
 
 
-function Button({ buttonText, ...rest }) {
+function ImgButton({ setting, undo, ...rest }) {
 	return (
-		<HeaderButtons {...rest}>
-			<button class="button">{buttonText}</button>
-		</HeaderButtons>
+		<ImgButtons {...rest}>
+			<button class="button" setting={setting} undo={undo}>{setting && <MdSettings />}{undo && <MdUndo />}</button>
+		</ImgButtons>
 	)
 }
 
-Button.defaultProps = {
+ImgButton.defaultProps = {
 	inputColor : 'yellow',
 	outputColor : 'red',
 }
 
-export default Button;
+export default ImgButton;

@@ -15,6 +15,8 @@ const palette = {
 	purple : '#8491E0',
 	yellow : '#F9DE4B',
 	green : '#5DCB83',
+	white : '#ffffff',
+	black : '#000000'
 }
 
 function App() {
