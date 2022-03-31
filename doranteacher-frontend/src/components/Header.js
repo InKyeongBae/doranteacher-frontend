@@ -1,6 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeConsumer, ThemeProvider } from "styled-components";
 import Button from "./Button";
+import ImgButton from "./ImgButton";
+import { MdSettings, MdUndo } from "react-icons/md";
 
 const HeaderBlock = styled.div`
 	position: sticky;
@@ -36,7 +38,6 @@ const HeaderButtons = styled.div`
 		padding-left:20px;
 		padding-bottom : 5px;
 	}
-
 `;
 
 
@@ -48,10 +49,10 @@ function Header() {
 				<span className="doranIconName">도란쌤</span>
 			</HeaderIcon>
 
-			<HeaderButtons>
-				<Button buttonText="회원가입"></Button>
+			<HeaderButtons className="mainHeader">
+				<Button buttonText="회원가입" outputColor="red"></Button>
 				<Button buttonText="로그인" outputColor="purple"></Button>
-				<Button buttonText="설정"></Button>
+				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
 			</HeaderButtons>
 
 		</HeaderBlock>
