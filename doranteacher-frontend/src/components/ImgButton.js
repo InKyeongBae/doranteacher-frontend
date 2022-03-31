@@ -76,7 +76,7 @@ const ImgButtons = styled.div`
 function ImgButton({ setting, undo, ...rest }) {
 	return (
 		<ImgButtons {...rest}>
-			<button class="button" setting={setting} undo={undo}>{setting && <MdSettings />}{undo && <MdUndo />}</button>
+			<button className="button" setting={setting} undo={undo}>{setting && <MdSettings />}{undo && <MdUndo />}</button>
 		</ImgButtons>
 	)
 }

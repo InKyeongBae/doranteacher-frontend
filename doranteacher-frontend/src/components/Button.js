@@ -74,7 +74,7 @@ const HeaderButtons = styled.div`
 function Button({ buttonText, ...rest }) {
 	return (
 		<HeaderButtons {...rest}>
-			<button class="button">{buttonText}</button>
+			<button className="button">{buttonText}</button>
 		</HeaderButtons>
 	)
 }
