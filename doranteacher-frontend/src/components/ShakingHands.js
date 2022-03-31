@@ -7,14 +7,14 @@ const ShakeAni = styled.div`
 	
 	@keyframes spaceship-ani {
 		to {
-			background-position: -3850px 0;
+			background-position: -4400px 0;
 		}
 	}
 	.spaceship {
 		z-index: 2;
-		width: 350px;
-		height: 350px;
-		background: url('/img/legomove.png') no-repeat 0 0 / auto 350px;
+		width: 400px;
+		height: 400px;
+		background: url('/img/legomove.png') no-repeat 0 0 / auto 400px;
 		animation: spaceship-ani 0.7s infinite steps(11);
 	}
 `;
