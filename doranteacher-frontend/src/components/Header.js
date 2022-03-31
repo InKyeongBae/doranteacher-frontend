@@ -34,6 +34,7 @@ const HeaderButtons = styled.div`
 	div {
 		display: inline-block;
 		padding-left:20px;
+		padding-bottom : 5px;
 	}
 
 `;
@@ -49,7 +50,7 @@ function Header() {
 
 			<HeaderButtons>
 				<Button buttonText="회원가입"></Button>
-				<Button buttonText="로그인"></Button>
+				<Button buttonText="로그인" outputColor="purple"></Button>
 				<Button buttonText="설정"></Button>
 			</HeaderButtons>
 

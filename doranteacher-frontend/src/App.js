@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Mainpage from './pages/Mainpage';
 
 const GlobalStyle = createGlobalStyle`
@@ -9,13 +9,22 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
+const palette = {
+	red : '#E75244',
+	blue : '#367BBE',
+	purple : '#8491E0',
+	yellow : '#F9DE4B',
+	green : '#5DCB83',
+}
 
 function App() {
   return (
+	<ThemeProvider theme={{palette}}>
 	<>
-	  <GlobalStyle />
-	  <Mainpage />
+		<GlobalStyle />
+		<Mainpage />
 	</>
+	</ThemeProvider>
   );
 }
 
