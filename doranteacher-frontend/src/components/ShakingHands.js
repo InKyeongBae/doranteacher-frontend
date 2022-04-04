@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
 const ShakeAni = styled.div`
 	position: fixed;
 	bottom: 0;
-	
+
 	@keyframes spaceship-ani {
 		to {
 			background-position: -4400px 0;

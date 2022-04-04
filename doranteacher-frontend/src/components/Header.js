@@ -1,14 +1,14 @@
-import React from "react";
-import styled, { ThemeConsumer, ThemeProvider } from "styled-components";
-import Button from "./Button";
-import ImgButton from "./ImgButton";
-import { MdSettings, MdUndo } from "react-icons/md";
+import React from 'react';
+import styled, { ThemeConsumer, ThemeProvider } from 'styled-components';
+import Button from './Button';
+import ImgButton from './ImgButton';
+import { MdSettings, MdUndo } from 'react-icons/md';
 
 const HeaderBlock = styled.div`
 	position: sticky;
 	top: 0;
 
-	background : #F9DE4B;
+	background: #f9de4b;
 	color: black;
 	padding: 20px 50px 15px 50px;
 	display: flex;
@@ -18,28 +18,27 @@ const HeaderBlock = styled.div`
 
 const HeaderIcon = styled.div`
 	.doranIcon {
-		height : 45px;
-		vertical-align:middle;
-		padding-bottom : 5px;
+		height: 45px;
+		vertical-align: middle;
+		padding-bottom: 5px;
 	}
 	.doranIconName {
 		font-family: 'Cafe24 Ssurround';
 		font-style: normal;
 		font-weight: 700;
 		font-size: 33px;
-		padding-left : 5px;
-		vertical-align:middle;
+		padding-left: 5px;
+		vertical-align: middle;
 	}
 `;
 
 const HeaderButtons = styled.div`
 	div {
 		display: inline-block;
-		padding-left:20px;
-		padding-bottom : 5px;
+		padding-left: 20px;
+		padding-bottom: 5px;
 	}
 `;
-
 
 function Header() {
 	return (
@@ -52,9 +51,12 @@ function Header() {
 			<HeaderButtons className="mainHeader">
 				<Button buttonText="회원가입" outputColor="red"></Button>
 				<Button buttonText="로그인" outputColor="purple"></Button>
-				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
+				<ImgButton
+					setting={true}
+					undo={false}
+					outputColor="white"
+				></ImgButton>
 			</HeaderButtons>
-
 		</HeaderBlock>
 	);
 }

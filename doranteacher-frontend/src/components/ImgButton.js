@@ -1,31 +1,30 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { MdSettings, MdUndo } from "react-icons/md";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { MdSettings, MdUndo } from 'react-icons/md';
 
 const ColorStyles = css`
-	${({theme, inputColor, outputColor}) => {
-			const incolor = theme.palette[inputColor];
-			const outcolor = theme.palette[outputColor];
-			return css`
-				color : black;
-				background: ${incolor};
-				&:hover {
-					background : ${outcolor};
-				}
-			`;
-		}}
+	${({ theme, inputColor, outputColor }) => {
+		const incolor = theme.palette[inputColor];
+		const outcolor = theme.palette[outputColor];
+		return css`
+			color: black;
+			background: ${incolor};
+			&:hover {
+				background: ${outcolor};
+			}
+		`;
+	}}
 `;
 
 const ImgButtons = styled.div`
-
 	svg {
 		width: 30px;
 		height: 30px;
-		margin : 0px;
+		margin: 0px;
 	}
-	
+
 	button {
-		top : 5px;
+		top: 5px;
 		height: 42.5px;
 		${ColorStyles};
 		outline: 0;
@@ -45,7 +44,7 @@ const ImgButtons = styled.div`
 			right: 0;
 			bottom: 0;
 			left: 0;
-			content: "";
+			content: '';
 			width: 98%;
 			height: 98%;
 			position: absolute;
@@ -69,21 +68,22 @@ const ImgButtons = styled.div`
 			}
 		}
 	}
-
 `;
-
 
 function ImgButton({ setting, undo, ...rest }) {
 	return (
 		<ImgButtons {...rest}>
-			<button className="button" setting={setting} undo={undo}>{setting && <MdSettings />}{undo && <MdUndo />}</button>
+			<button className="button" setting={setting} undo={undo}>
+				{setting && <MdSettings />}
+				{undo && <MdUndo />}
+			</button>
 		</ImgButtons>
-	)
+	);
 }
 
 ImgButton.defaultProps = {
-	inputColor : 'yellow',
-	outputColor : 'red',
-}
+	inputColor: 'yellow',
+	outputColor: 'red',
+};
 
 export default ImgButton;
