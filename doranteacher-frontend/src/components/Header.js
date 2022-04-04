@@ -40,12 +40,18 @@ const HeaderButtons = styled.div`
 	}
 `;
 
-function Header() {
+function Header({ isIcon }) {
 	return (
 		<HeaderBlock>
 			<HeaderIcon className="mainIcon">
-				<img className="doranIcon" src="/img/header-doran-face.png" />
-				<span className="doranIconName">도란쌤</span>
+				{isIcon ? (
+					<>
+						<img className="doranIcon" src="/img/header-doran-face.png"/>
+						<span className="doranIconName">도란쌤</span>
+					</>
+				) : (
+					<img className="doranIcon" src="/img/doranlogo.png" />
+				)}
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">

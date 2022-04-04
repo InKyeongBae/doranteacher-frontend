@@ -1,6 +1,11 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Mainpage from './pages/Mainpage';
+import LoginPage from './pages/Loginpage'
+
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
+
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -20,14 +25,19 @@ const palette = {
 };
 
 function App() {
-	return (
-		<ThemeProvider theme={{ palette }}>
-			<>
-				<GlobalStyle />
-				<Mainpage />
-			</>
+  return (
+	<BrowserRouter>
+		<ThemeProvider theme={{palette}}>
+		<GlobalStyle />
+		<Routes>
+			<Route path='/' element={<Mainpage /> } />
+			<Route path='/login' element={<LoginPage /> } />
+		</Routes>
+
 		</ThemeProvider>
-	);
+
+	</BrowserRouter>
+  );
 }
 
 export default App;

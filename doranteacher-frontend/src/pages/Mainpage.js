@@ -129,7 +129,7 @@ const BottomBlock = styled.div`
 function Mainpage() {
 	return (
 		<>
-			<Header />
+			<Header isIcon />
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo">
