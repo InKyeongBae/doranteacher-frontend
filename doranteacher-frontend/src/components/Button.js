@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { MdSettings } from "react-icons/md";
 
 const ColorStyles = css`
 	${({theme, inputColor, outputColor}) => {
