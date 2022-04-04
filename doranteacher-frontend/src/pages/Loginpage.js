@@ -5,7 +5,7 @@ import { loginUser } from '../_actions/user_action';
 
 
 
-const Login = (props) => {
+const Loginpage = (props) => {
 
     // redux의 dispatch
     const dispatch = useDispatch();
@@ -64,4 +64,4 @@ const Login = (props) => {
         );
 }
 
-export default Login;
+export default Loginpage;

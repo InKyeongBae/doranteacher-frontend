@@ -1,10 +1,11 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Mainpage from './pages/Mainpage';
+import LoginPage from './pages/Loginpage'
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import Login from './pages/Login'
+
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -30,7 +31,7 @@ function App() {
 		<GlobalStyle />
 		<Routes>
 			<Route path='/' element={<Mainpage /> } />
-			<Route path='/login' element={<Login /> } />
+			<Route path='/login' element={<LoginPage /> } />
 		</Routes>
 
 		</ThemeProvider>
