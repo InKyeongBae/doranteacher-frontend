@@ -11,12 +11,12 @@ const Login = (props) => {
     const dispatch = useDispatch();
 
     // react hook에서 state 사용. 컴포넌트 안에 작성
-    const [Email, setEmail] = useState('');
+    const [Username, setUsername] = useState('');
     const [Password, setPassword] = useState('');
 
     // handler 함수들
-    const onEmailHandler = (event) => {
-        setEmail(event.currentTarget.value);
+    const onUsernameHandler = (event) => {
+        setUsername(event.currentTarget.value);
     };
 
     const onPasswordHandler = (event) => {
@@ -28,7 +28,7 @@ const Login = (props) => {
         event.preventDefault();
 
         let body = {
-        email: Email,
+        username: Username,
         password: Password,
         };
 
@@ -53,8 +53,8 @@ const Login = (props) => {
             }}
             >
             <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
-                <label>Email</label>
-                <input type="email" value={Email} onChange={onEmailHandler} />
+                <label>Username</label>
+                <input type="username" value={Username} onChange={onUsernameHandler} />
                 <label>Password</label>
                 <input type="password" value={Password} onChange={onPasswordHandler} />
                 <br />
