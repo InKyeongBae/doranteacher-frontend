@@ -1,7 +1,7 @@
 // client/src/_actions/user_action
 
 import axios from 'axios';
-import { LOGIN_USER } from './type';
+import { LOGIN_USER } from './types';
 
 export function loginUser(dataToSubmit) {
   // axios를 이용해 login 요청을 보내고 response.data를 반환하여 request에 넣어준다.
