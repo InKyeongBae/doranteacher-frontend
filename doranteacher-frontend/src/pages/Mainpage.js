@@ -104,7 +104,7 @@ const BottomBlock = styled.div`
 function Mainpage() {
 	return (
 		<>
-			<Header />
+			<Header isIcon />
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo"><img className="doranLogo" src="/img/doranlogo.png" /></div>
@@ -126,7 +126,5 @@ function Mainpage() {
 		</>
 	);
 }
-
-{/* <img className="block1" src="/img/block1.png" /> */}
 
 export default Mainpage;
