@@ -26,13 +26,13 @@ const palette = {
 function App() {
   return (
 	<BrowserRouter>
+		<ThemeProvider theme={{palette}}>
+		<GlobalStyle />
 		<Routes>
+			<Route path='/' element={<Mainpage /> } />
 			<Route path='/login' element={<Login /> } />
-			<Route path='/signup' element={<Login /> } />
 		</Routes>
-			<ThemeProvider theme={{palette}}>
-			<><GlobalStyle />
-				<Mainpage /></>
+
 		</ThemeProvider>
 
 	</BrowserRouter>
