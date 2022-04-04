@@ -23,7 +23,7 @@ ReactDOM.render(
       <Provider
         store={createStoreWithMiddleware(
           Reducer,
-          // 크롬 브라우저에서 디버깅 도구를 이용할 수 있도록 하는 도
+          // 크롬 브라우저에서 디버깅 도구를 이용할 수 있도록 하는 도구
           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
         )}
       >
