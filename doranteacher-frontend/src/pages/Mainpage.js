@@ -147,29 +147,17 @@ function Mainpage() {
 							<img className="imgblock" src="/img/block1.png" />
 						</div>
 						<div>
-							<img
-								className="imgblock2"
-								id="blockani1"
-								src="/img/block2.png"
-							/>
+							<img className="imgblock2" id="blockani1" src="/img/block2.png" />
 						</div>
 						<div>
 							<img className="imgblock" src="/img/block3.png" />
 						</div>
 						<div>
 							<div>
-								<img
-									className="imgblock2"
-									id="blockani2"
-									src="/img/block4-1.png"
-								/>
+								<img className="imgblock2" id="blockani2" src="/img/block4-1.png" />
 							</div>
 							<div>
-								<img
-									className="imgblock2"
-									id="blockani3"
-									src="/img/block4-2.png"
-								/>
+								<img className="imgblock2" id="blockani3" src="/img/block4-2.png" />
 							</div>
 						</div>
 					</div>

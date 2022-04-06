@@ -46,7 +46,7 @@ function Header({ isIcon }) {
 			<HeaderIcon className="mainIcon">
 				{isIcon ? (
 					<>
-						<img className="doranIcon" src="/img/header-doran-face.png"/>
+						<img className="doranIcon" src="/img/header-doran-face.png" />
 						<span className="doranIconName">도란쌤</span>
 					</>
 				) : (
@@ -57,11 +57,7 @@ function Header({ isIcon }) {
 			<HeaderButtons className="mainHeader">
 				<Button buttonText="회원가입" outputColor="red"></Button>
 				<Button buttonText="로그인" outputColor="purple"></Button>
-				<ImgButton
-					setting={true}
-					undo={false}
-					outputColor="white"
-				></ImgButton>
+				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
 			</HeaderButtons>
 		</HeaderBlock>
 	);
