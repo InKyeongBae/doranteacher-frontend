@@ -2,8 +2,9 @@ import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Mainpage from './pages/Mainpage';
 import LoginPage from './pages/Loginpage';
-
+import Paint from './components/Paint';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -30,7 +31,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Mainpage />} />
 					<Route path="/login" element={<LoginPage />} />
-					<Route path="/paint" element= />
+					<Route path="/paint" element={<Paint />} />
 				</Routes>
 			</ThemeProvider>
 		</BrowserRouter>
