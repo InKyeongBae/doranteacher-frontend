@@ -35,6 +35,9 @@ function Paint() {
 				tools = {[
 					LC.tools.Pencil,
 					LC.tools.Eraser]}
+				strokeWidths = {[
+					3, 5, 7, 10, 15, 25
+				]}
 				imageURLPrefix="/img" />
 			</div>
 			<div style={{ marginTop: 10 }}>

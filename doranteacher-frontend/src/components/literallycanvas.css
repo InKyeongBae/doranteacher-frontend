@@ -1,47 +1,12 @@
-.literally .button-style-1 {
-	border: 2px solid transparent;
-	border-radius: 3px;
-}
-.literally .button-style-1 {
-	text-decoration: none;
-	cursor: pointer;
-}
-.literally .button-style-1.selected:not(.disabled) {
-	background-color: #a1d9fe;
-}
-.literally .button-style-1:hover:not(.disabled) {
-	border-color: #a1d9fe;
-}
-.literally .button-style-1.disabled {
-	cursor: default;
-	opacity: 0.3;
-}
+/* 굵기 선택 */
 .literally.toolbar-at-top .lc-drawing {
 	bottom: 0;
 	top: 31px;
 }
 .literally.toolbar-at-top .lc-options {
 	top: 0;
-	border-bottom: 1px solid #555;
 }
-.literally.toolbar-at-bottom .lc-drawing {
-	bottom: 31px;
-	top: 0;
-}
-.literally.toolbar-at-bottom .lc-options {
-	bottom: 0;
-	border-top: 1px solid #555;
-}
-.literally.toolbar-hidden .lc-drawing {
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-}
-.literally.toolbar-hidden .lc-options,
-.literally.toolbar-hidden .lc-picker {
-	display: none;
-}
+
 .literally {
 	position: relative;
 	background-color: #F9DE4B;
@@ -54,6 +19,7 @@
 	-ms-touch-action: none;
 	user-select: none;
 }
+
 .literally,
 .literally * {
 	-moz-box-sizing: border-box;
@@ -68,7 +34,7 @@
 	left: 0;
 	bottom: 0;
 	width: 61px;
-	background-color: #e6e6e6;
+	background-color: #F9DE4B;
 }
 .literally .lc-drawing {
 	right: 0;
