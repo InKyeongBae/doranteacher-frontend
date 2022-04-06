@@ -9,7 +9,7 @@
 
 .literally {
 	position: relative;
-	background-color: #F9DE4B;
+	background-color: #E75244;
 	min-height: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -29,13 +29,17 @@
 .literally > * {
 	position: absolute;
 }
+
+/* 왼쪽 사이드바 */
 .literally .lc-picker {
 	top: 0;
 	left: 0;
 	bottom: 0;
 	width: 61px;
-	background-color: #F9DE4B;
+	background-color: #E75244;
 }
+
+
 .literally .lc-drawing {
 	right: 0;
 	left: 0;
@@ -49,25 +53,21 @@
 	bottom: 0;
 	left: 0;
 }
+
+/* 그림판 */
 .literally .lc-drawing.with-gui {
 	right: 0;
 	left: 61px;
 	cursor: default;
 }
-.literally .lc-drawing.with-gui .polygon-toolbar {
-	top: auto;
-	height: 31px;
-}
-.literally .lc-drawing.with-gui .polygon-toolbar .polygon-toolbar-button {
-	float: left;
-}
-.literally .lc-drawing.with-gui .text-tool-input:focus {
-	outline: none;
-}
+
+/* 왼쪽 툴바와 그림판 사이 선 */
 .literally .lc-picker {
 	z-index: 1001;
-	border-right: 1px solid #555;
+	border-right: 1px solid #F9DE4B;
 }
+
+/* 왼쪽 툴바 펜/지우개 선택 버튼 */
 .literally .lc-picker .toolbar-button {
 	width: 26px;
 	height: 26px;
@@ -84,10 +84,10 @@
 	cursor: pointer;
 }
 .literally .lc-picker .toolbar-button.selected:not(.disabled) {
-	background-color: #a1d9fe;
+	border-color: #F9DE4B;
 }
 .literally .lc-picker .toolbar-button:hover:not(.disabled) {
-	border-color: #a1d9fe;
+	border-color: #F9DE4B;
 }
 .literally .lc-picker .toolbar-button.disabled {
 	cursor: default;
@@ -129,15 +129,20 @@
 	margin: 1px auto;
 	overflow: visible;
 }
+
+.color-well:nth-child(2), .color-well:nth-child(3) {
+	display: none;
+}
+
 .literally .color-well-color-container {
 	text-decoration: none;
 	cursor: pointer;
 }
 .literally .color-well-color-container.selected:not(.disabled) {
-	background-color: #a1d9fe;
+	background-color: #F9DE4B;
 }
 .literally .color-well-color-container:hover:not(.disabled) {
-	border-color: #a1d9fe;
+	border-color: #F9DE4B;
 }
 .literally .color-well-color-container.disabled {
 	cursor: default;

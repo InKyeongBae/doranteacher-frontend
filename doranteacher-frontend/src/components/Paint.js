@@ -30,7 +30,6 @@ function Paint() {
 		<div>
 			<div>
 				<LC.LiterallyCanvasReactComponent onInit={onInit} backgroundColor="#ffffff" 
-				// 
 				imageSize={{width: null, height: 250}}
 				tools = {[
 					LC.tools.Pencil,
