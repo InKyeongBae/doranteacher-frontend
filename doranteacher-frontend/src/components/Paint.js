@@ -40,7 +40,8 @@ function Paint() {
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
-					imageSize={{ width: null, height: 250 }}
+					// 글씨판 가로세로 사이즈 설정(픽셀)
+					imageSize={{ width: 500, height: 210 }}
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"
