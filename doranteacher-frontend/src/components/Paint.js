@@ -12,9 +12,14 @@ function Paint() {
 	const onInit = (lc) => {
 		_lc = lc;
 		console.log(lc);
-		// const labeltext = document.getElementsByClassName('color-well')[0];
-		// labeltext.innerHTML =
-		// 	'<label float="left">색상</label><br><div class="color-well-color-container" style="background-color: white;"><div class="color-well-checker color-well-checker-top-left"></div><div class="color-well-checker color-well-checker-bottom-right" style="left: 50%; top: 50%;"></div><div class="color-well-color" style="background-color: rgb(0, 0, 0);"> </div></div>';
+
+		// 라벨 텍스트 stroke -> 색상
+		const colorpicker = document.getElementsByClassName('color-well')[0];
+		const change = colorpicker.querySelector('label');
+		change.innerText = "펜 색상";
+
+		const reset = document.getElementsByClassName('lc-clear toolbar-button fat-button disabled')[0];
+		reset.innerText = "새로 쓰기";
 	};
 
 	const onSave = (event) => {

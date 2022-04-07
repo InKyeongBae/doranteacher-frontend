@@ -9,7 +9,7 @@
 
 .literally {
 	position: relative;
-	background-color: #E75244;
+	background-color: #e75244;
 	min-height: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -36,9 +36,8 @@
 	left: 0;
 	bottom: 0;
 	width: 61px;
-	background-color: #E75244;
+	background-color: #e75244;
 }
-
 
 .literally .lc-drawing {
 	right: 0;
@@ -64,7 +63,7 @@
 /* 왼쪽 툴바와 그림판 사이 선 */
 .literally .lc-picker {
 	z-index: 1001;
-	border-right: 1px solid #F9DE4B;
+	border-right: 1px solid #f9de4b;
 }
 
 /* 왼쪽 툴바 펜/지우개 선택 버튼 */
@@ -84,10 +83,10 @@
 	cursor: pointer;
 }
 .literally .lc-picker .toolbar-button.selected:not(.disabled) {
-	border-color: #F9DE4B;
+	background-color: #f9de4b;
 }
 .literally .lc-picker .toolbar-button:hover:not(.disabled) {
-	border-color: #F9DE4B;
+	border-color: #f9de4b;
 }
 .literally .lc-picker .toolbar-button.disabled {
 	cursor: default;
@@ -114,20 +113,20 @@
 	background-position: center center;
 }
 .literally .color-well {
-	font-size: 10px;
+	font-size: 15px;
+	font-family: '상상토끼 꽃집막내딸 OTF';
+	margin: 40px 0px;
 	float: left;
 	width: 60px;
 }
-.literally .color-well label {
-	content: "색상";
-}
+
 .literally .color-well.open {
-	background-color: #F9DE4B;
+	background-color: #f9de4b;
 }
 .literally .color-well-color-container {
 	border: 2px solid transparent;
 	border-radius: 3px;
-	border: 1px solid #aaa;
+	border: 1px solid white;
 	position: relative;
 	width: 28px;
 	height: 28px;
@@ -135,19 +134,21 @@
 	overflow: visible;
 }
 
-.color-well:nth-child(2), .color-well:nth-child(3) {
+/* 필요없는 요소 없애기 */
+.color-well:nth-child(2),
+.color-well:nth-child(3) {
 	display: none;
 }
-
+/* Colorpicker 기본 설정 */
 .literally .color-well-color-container {
 	text-decoration: none;
 	cursor: pointer;
 }
 .literally .color-well-color-container.selected:not(.disabled) {
-	background-color: #F9DE4B;
+	background-color: #f9de4b;
 }
 .literally .color-well-color-container:hover:not(.disabled) {
-	border-color: #F9DE4B;
+	border-color: #f9de4b;
 }
 .literally .color-well-color-container.disabled {
 	cursor: default;
@@ -199,9 +200,16 @@
 .literally .color-picker-popup .color-row .color-cell.transparent-cell {
 	width: 100%;
 }
+
+.literally .lc-clear {
+	font-size: 15px;
+	font-family: '상상토끼 꽃집막내딸 OTF';
+}
+
+/* 위쪽 툴바 */
 .literally .horz-toolbar {
 	height: 31px;
-	background-color: #e6e6e6;
+	background-color: #e75244;
 }
 .literally .horz-toolbar .label {
 	line-height: 30px;
@@ -214,11 +222,11 @@
 	font-size: 12px;
 	float: left;
 }
+
 .literally .horz-toolbar .square-toolbar-button {
 	border: 2px solid transparent;
 	border-radius: 3px;
 	margin: 1px;
-	border: 1px solid #aaa;
 	width: 28px;
 	height: 28px;
 	float: left;
@@ -229,10 +237,10 @@
 	cursor: pointer;
 }
 .literally .horz-toolbar .square-toolbar-button.selected:not(.disabled) {
-	background-color: #a1d9fe;
+	background-color: #f9de4b;
 }
 .literally .horz-toolbar .square-toolbar-button:hover:not(.disabled) {
-	border-color: #a1d9fe;
+	border-color: #f9de4b;
 }
 .literally .horz-toolbar .square-toolbar-button.disabled {
 	cursor: default;
