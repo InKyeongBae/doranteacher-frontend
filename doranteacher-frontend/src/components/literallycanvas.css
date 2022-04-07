@@ -37,7 +37,6 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 61px;
 	background-color: #e75244;
 }
 
@@ -65,7 +64,7 @@
 /* 왼쪽 툴바와 그림판 사이 선 */
 .literally .lc-picker {
 	z-index: 1001;
-	border-right: 1px solid #f9de4b;
+	border: 2px solid #f9de4b;
 }
 
 /* 왼쪽 툴바 펜/지우개 선택 버튼 */
@@ -210,8 +209,8 @@
 
 /* 위쪽 툴바 */
 .literally .horz-toolbar {
-	height: 31px;
 	background-color: #e75244;
+	border : 2px solid #f9de4b;
 }
 .literally .horz-toolbar .label {
 	line-height: 30px;
