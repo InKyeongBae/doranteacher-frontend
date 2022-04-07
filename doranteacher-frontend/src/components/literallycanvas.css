@@ -93,6 +93,7 @@
 	cursor: default;
 	opacity: 0.3;
 }
+
 .literally .lc-picker .thin-button {
 	cursor: pointer;
 	float: left;
@@ -102,6 +103,7 @@
 	clear: both;
 	width: 56px;
 }
+
 .literally .lc-picker .lc-pick-tool,
 .literally .lc-picker .lc-undo,
 .literally .lc-picker .lc-redo,
@@ -116,8 +118,11 @@
 	float: left;
 	width: 60px;
 }
+.literally .color-well label {
+	content: "색상";
+}
 .literally .color-well.open {
-	background-color: #a1d9fe;
+	background-color: #F9DE4B;
 }
 .literally .color-well-color-container {
 	border: 2px solid transparent;
