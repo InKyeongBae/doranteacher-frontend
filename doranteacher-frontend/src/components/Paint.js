@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withTheme } from 'styled-components';
+import Button from './Button';
 import './literallycanvas.css';
 
 // Documentation: http://literallycanvas.com/
@@ -28,7 +29,8 @@ function Paint() {
 		if (!img) return;
 		try {
 			const imgData = img.toDataURL();
-			setImages([...images, imgData]);
+			// ...images, 없앰으로써 최종본만 저장되도록
+			setImages([imgData]);
 		} catch (err) {
 			console.log(err);
 		}
@@ -48,12 +50,8 @@ function Paint() {
 				/>
 			</div>
 			<div style={{ marginTop: 10 }}>
-				<button style={{ width: 150, margin: 10, fontSize: 14 }} onClick={onSave}>
-					Save As Image
-				</button>
-				<button style={{ width: 150, margin: 10, fontSize: 14 }} onClick={() => setImages([])}>
-					Clear Images
-				</button>
+				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave}></Button>
+				
 			</div>
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
 				{images.map((img, index) => (

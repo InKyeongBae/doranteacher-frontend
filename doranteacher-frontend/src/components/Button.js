@@ -17,7 +17,7 @@ const ColorStyles = css`
 
 const HeaderButtons = styled.div`
 	button {
-		width: 160px;
+		min-width: 160px;
 		font-size: 25px;
 		height: 42.5px;
 		${ColorStyles};
