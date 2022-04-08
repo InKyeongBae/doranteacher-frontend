@@ -36,7 +36,7 @@ function Paint() {
 
 	return (
 		<>
-			<div>
+			<div className='canvas'>
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"

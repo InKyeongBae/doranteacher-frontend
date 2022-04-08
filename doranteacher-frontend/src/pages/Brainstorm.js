@@ -26,6 +26,17 @@ const MainBlock = styled.div`
 			margin: 10px 20px;
 		}
 	}
+
+	.paint {
+		text-align: center;
+		width: 562px;
+		margin: 0 auto;
+		.canvas {
+			.literally toolbar-at-top {
+				text-align: center;
+			}
+		}
+	}
 `;
 
 function Brainstorm() {
@@ -35,15 +46,17 @@ function Brainstorm() {
 			<Header isProgress isLogout isImgBtn />
 			<MainBlock>
 				<div className="centercontent">
-					<ImgButton prev/>
+					<ImgButton prev />
 					<div>
 						오늘 가장 재밌었던 일이 뭐였나요?
 						<br />
 						단어로 한 번 적어볼까요?
 					</div>
-					<ImgButton next/>
+					<ImgButton next />
 				</div>
-				<Paint />
+				<div className="paint">
+					<Paint />
+				</div>
 			</MainBlock>
 		</>
 	);
