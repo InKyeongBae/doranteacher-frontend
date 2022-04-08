@@ -50,7 +50,6 @@ const HeaderProgress = styled.div`
 			background: white;
 			transform: translate3d(0.2em, 0.15em, 1em);
 			border-radius: 25px;
-			
 		} */
 	}
 `;

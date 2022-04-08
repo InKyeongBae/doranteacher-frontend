@@ -38,10 +38,10 @@ const HeaderButtons = styled.div`
 	}
 `;
 
-function Header({ isIcon }) {
+function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isImgBtn }) {
 	return (
 		<HeaderBlock>
-			<HeaderIcon className="mainIcon">
+			<HeaderIcon className="mainIcon" >
 				{isIcon ? (
 					<>
 						<img className="doranIcon" src="/img/header-doran-face.png" />
@@ -53,10 +53,11 @@ function Header({ isIcon }) {
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
-				<Progressbar buttonText="6. 사진 선택하기"></Progressbar>
-				<Button buttonText="회원가입" outputColor="red"></Button>
-				{/* <Button buttonText="로그인" outputColor="purple"></Button> */}
-				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
+				{isProgress ? <Progressbar buttonText="6. 사진 선택하기"></Progressbar> : null}
+				{isSignup ? <Button buttonText="회원가입" outputColor="red"></Button> : null}
+				{isLogin ? <Button buttonText="로그인" outputColor="purple"></Button> : null}
+				{isLogout ? <Button buttonText="로그아웃" outputColor="purple"></Button> : null}
+				{isImgBtn ? <ImgButton setting={true} undo={false} outputColor="white"></ImgButton> : null}
 			</HeaderButtons>
 		</HeaderBlock>
 	);

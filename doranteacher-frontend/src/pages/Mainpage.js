@@ -132,7 +132,7 @@ function Mainpage() {
 	return (
 		<>
 		<GlobalStyle backColor="yellow"/>
-			<Header isIcon />
+			<Header isIcon isLogin isSignup isImgBtn/>
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo">

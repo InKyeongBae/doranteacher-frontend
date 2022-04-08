@@ -11,7 +11,7 @@ function Brainstorm() {
 			<GlobalStyle backColor="red" />
 			<>
 				<>
-					<Header />
+					<Header isProgress isLogout isImgBtn/>
 				</>
 				<br />
 				<br />
