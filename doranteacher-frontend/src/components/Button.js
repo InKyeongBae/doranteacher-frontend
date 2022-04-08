@@ -1,24 +1,23 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
 const ColorStyles = css`
-	${({theme, inputColor, outputColor}) => {
-			const incolor = theme.palette[inputColor];
-			const outcolor = theme.palette[outputColor];
-			return css`
-				color : black;
-				background: ${incolor};
-				&:hover {
-					background : ${outcolor};
-				}
-			`;
-		}}
+	${({ theme, inputColor, outputColor }) => {
+		const incolor = theme.palette[inputColor];
+		const outcolor = theme.palette[outputColor];
+		return css`
+			color: black;
+			background: ${incolor};
+			&:hover {
+				background: ${outcolor};
+			}
+		`;
+	}}
 `;
 
 const HeaderButtons = styled.div`
-	
 	button {
-		width : 160px;
+		min-width: 160px;
 		font-size: 25px;
 		height: 42.5px;
 		${ColorStyles};
@@ -42,7 +41,7 @@ const HeaderButtons = styled.div`
 			right: 0;
 			bottom: 0;
 			left: 0;
-			content: "";
+			content: '';
 			width: 98%;
 			height: 98%;
 			position: absolute;
@@ -66,21 +65,19 @@ const HeaderButtons = styled.div`
 			}
 		}
 	}
-
 `;
-
 
 function Button({ buttonText, ...rest }) {
 	return (
 		<HeaderButtons {...rest}>
 			<button className="button">{buttonText}</button>
 		</HeaderButtons>
-	)
+	);
 }
 
 Button.defaultProps = {
-	inputColor : 'yellow',
-	outputColor : 'red',
-}
+	inputColor: 'yellow',
+	outputColor: 'red',
+};
 
 export default Button;

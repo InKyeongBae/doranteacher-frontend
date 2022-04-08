@@ -1,10 +1,10 @@
-import React from "react";
-import styled, {css} from 'styled-components';
-import Header from "../components/Header";
-import ShakingHands from "../components/ShakingHands";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import Header from '../components/Header';
+import ShakingHands from '../components/ShakingHands';
 
 const MainBlock = styled.div`
-	background : #F9DE4B;
+	background: #f9de4b;
 `;
 
 const CenterLogo = styled.div`
@@ -33,25 +33,51 @@ const BottomBlock = styled.div`
 		display: flex;
 
 		@keyframes block-ani1 {
-			11% {transform: scale(1);}
-			22% {transform: scale(1.1);}
-			33% {transform: scale(1);}
+			11% {
+				transform: scale(1);
+			}
+			22% {
+				transform: scale(1.1);
+			}
+			33% {
+				transform: scale(1);
+			}
 		}
 
 		@keyframes block-ani2 {
-			0% {transform: scale(1.05);}
-			44% {transform: scale(1.05);}
-			55% {transform: scale(1.15);}
-			66% {transform: scale(1.05);}
-			100% {transform: scale(1.05);}
+			0% {
+				transform: scale(1.05);
+			}
+			44% {
+				transform: scale(1.05);
+			}
+			55% {
+				transform: scale(1.15);
+			}
+			66% {
+				transform: scale(1.05);
+			}
+			100% {
+				transform: scale(1.05);
+			}
 		}
 
 		@keyframes block-ani3 {
-			0% {transform: scale(1.05);}
-			77% {transform: scale(1.05);}
-			88% {transform: scale(1.15);}
-			99% {transform: scale(1.05);}
-			100% {transform: scale(1.05);}
+			0% {
+				transform: scale(1.05);
+			}
+			77% {
+				transform: scale(1.05);
+			}
+			88% {
+				transform: scale(1.15);
+			}
+			99% {
+				transform: scale(1.05);
+			}
+			100% {
+				transform: scale(1.05);
+			}
 		}
 
 		.imgblock {
@@ -81,7 +107,6 @@ const BottomBlock = styled.div`
 		#blockani3 {
 			animation: block-ani3 2.5s infinite;
 		}
-
 	}
 
 	.block div:first-child {
@@ -96,7 +121,7 @@ const BottomBlock = styled.div`
 		flex: 4;
 	}
 
-	.block div:nth-child(4){
+	.block div:nth-child(4) {
 		flex: 5;
 	}
 `;
@@ -107,19 +132,35 @@ function Mainpage() {
 			<Header isIcon />
 			<MainBlock>
 				<CenterLogo>
-					<div className="centerlogo"><img className="doranLogo" src="/img/doranlogo.png" /></div>
-					<div className="centercontent">AI 도란쌤과 함께<br />일기 마스터하기</div>
+					<div className="centerlogo">
+						<img className="doranLogo" src="/img/doranlogo.png" />
+					</div>
+					<div className="centercontent">
+						AI 도란쌤과 함께
+						<br />
+						일기 마스터하기
+					</div>
 				</CenterLogo>
 				<BottomBlock>
-				<div className="block">
-					<div><img className="imgblock" src="/img/block1.png" /></div>
-					<div><img className="imgblock2" id="blockani1" src="/img/block2.png" /></div>
-					<div><img className="imgblock" src="/img/block3.png" /></div>
-					<div>
-						<div><img className="imgblock2" id="blockani2" src="/img/block4-1.png" /></div>
-						<div><img className="imgblock2" id="blockani3" src="/img/block4-2.png" /></div>
+					<div className="block">
+						<div>
+							<img className="imgblock" src="/img/block1.png" />
+						</div>
+						<div>
+							<img className="imgblock2" id="blockani1" src="/img/block2.png" />
+						</div>
+						<div>
+							<img className="imgblock" src="/img/block3.png" />
+						</div>
+						<div>
+							<div>
+								<img className="imgblock2" id="blockani2" src="/img/block4-1.png" />
+							</div>
+							<div>
+								<img className="imgblock2" id="blockani3" src="/img/block4-2.png" />
+							</div>
+						</div>
 					</div>
-				</div>
 				</BottomBlock>
 				<ShakingHands />
 			</MainBlock>
