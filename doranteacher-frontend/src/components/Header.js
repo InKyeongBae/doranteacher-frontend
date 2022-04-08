@@ -53,7 +53,7 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isImgBtn }) {
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
-				{isProgress ? <Progressbar buttonText="6. 사진 선택"></Progressbar> : null}
+				{isProgress ? <Progressbar buttonText="2. 글감 찾기"></Progressbar> : null}
 				{isSignup ? <Button buttonText="회원가입" outputColor="red"></Button> : null}
 				{isLogin ? <Button buttonText="로그인" outputColor="purple"></Button> : null}
 				{isLogout ? <Button buttonText="로그아웃" outputColor="purple"></Button> : null}

@@ -48,7 +48,7 @@ const HeaderProgress = styled.div`
 			width: 450px;
 			height: 11px;
 			/* 빨간색 부분 %가 더 많을 때는 (90deg, #E75244 70%, white 30%) 이런 식으로 작성 */
-			background: linear-gradient( to left, white 70%, #E75244 30%);
+			background: linear-gradient( to left, white 70%, #E92F2E 30%);
 			transform: translate3d(15px, 100%, 30em);
 			border-radius: 25px;
 		}
