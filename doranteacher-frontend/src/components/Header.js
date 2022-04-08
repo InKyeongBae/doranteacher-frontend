@@ -2,13 +2,11 @@ import React from 'react';
 import styled, { ThemeConsumer, ThemeProvider } from 'styled-components';
 import Button from './Button';
 import ImgButton from './ImgButton';
-import { MdSettings, MdUndo } from 'react-icons/md';
+import Progressbar from './Progressbar';
 
 const HeaderBlock = styled.div`
 	position: sticky;
 	top: 0;
-
-	background: #f9de4b;
 	color: black;
 	padding: 20px 50px 15px 50px;
 	display: flex;
@@ -40,10 +38,10 @@ const HeaderButtons = styled.div`
 	}
 `;
 
-function Header({ isIcon }) {
+function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isImgBtn }) {
 	return (
 		<HeaderBlock>
-			<HeaderIcon className="mainIcon">
+			<HeaderIcon className="mainIcon" >
 				{isIcon ? (
 					<>
 						<img className="doranIcon" src="/img/header-doran-face.png" />
@@ -55,9 +53,11 @@ function Header({ isIcon }) {
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
-				<Button buttonText="회원가입" outputColor="red"></Button>
-				<Button buttonText="로그인" outputColor="purple"></Button>
-				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
+				{isProgress ? <Progressbar buttonText="2. 글감 찾기"></Progressbar> : null}
+				{isSignup ? <Button buttonText="회원가입" outputColor="red"></Button> : null}
+				{isLogin ? <Button buttonText="로그인" outputColor="purple"></Button> : null}
+				{isLogout ? <Button buttonText="로그아웃" outputColor="purple"></Button> : null}
+				{isImgBtn ? <ImgButton setting={true} undo={false} outputColor="white"></ImgButton> : null}
 			</HeaderButtons>
 		</HeaderBlock>
 	);
