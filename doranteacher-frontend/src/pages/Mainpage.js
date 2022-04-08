@@ -1,7 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
 import Header from '../components/Header';
 import ShakingHands from '../components/ShakingHands';
+import GlobalStyle from '../components/GlobalStyle';
+
 
 const MainBlock = styled.div`
 	background: #f9de4b;
@@ -129,6 +131,7 @@ const BottomBlock = styled.div`
 function Mainpage() {
 	return (
 		<>
+		<GlobalStyle backColor="yellow"/>
 			<Header isIcon />
 			<MainBlock>
 				<CenterLogo>

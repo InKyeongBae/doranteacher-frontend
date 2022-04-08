@@ -2,13 +2,10 @@ import React from 'react';
 import styled, { ThemeConsumer, ThemeProvider } from 'styled-components';
 import Button from './Button';
 import ImgButton from './ImgButton';
-import { MdSettings, MdUndo } from 'react-icons/md';
 
 const HeaderBlock = styled.div`
 	position: sticky;
 	top: 0;
-
-	background: #f9de4b;
 	color: black;
 	padding: 20px 50px 15px 50px;
 	display: flex;
