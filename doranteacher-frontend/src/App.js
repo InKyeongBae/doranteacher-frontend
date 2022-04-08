@@ -4,6 +4,7 @@ import Mainpage from './pages/Mainpage';
 import LoginPage from './pages/Loginpage';
 import Paint from './components/Paint';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Brainstorm from './pages/Brainstorm';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -32,6 +33,7 @@ function App() {
 					<Route path="/" element={<Mainpage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/paint" element={<Paint />} />
+					<Route path="/first-step" element={<Brainstorm />} />
 				</Routes>
 			</ThemeProvider>
 		</BrowserRouter>
