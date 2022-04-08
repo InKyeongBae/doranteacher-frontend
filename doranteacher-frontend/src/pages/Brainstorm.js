@@ -37,6 +37,12 @@ const MainBlock = styled.div`
 			}
 		}
 	}
+
+	.buttonline {
+		text-align: center;
+		width: 195px;
+		margin: 20px auto;
+	}
 `;
 
 function Brainstorm() {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
-import GlobalStyle from './GlobalStyle';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -36,7 +35,7 @@ function Paint() {
 
 	return (
 		<>
-			<div className='canvas'>
+			<div className="canvas">
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
@@ -47,7 +46,9 @@ function Paint() {
 					imageURLPrefix="/img"
 				/>
 			</div>
-			<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave}></Button>
+			<div className='buttonline'>
+				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
+			</div>
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
 				{images.map((img, index) => (
 					<li key={index}>
