@@ -1,17 +1,10 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider, css } from 'styled-components';
 import Mainpage from './pages/Mainpage';
 import LoginPage from './pages/Loginpage';
 import Paint from './components/Paint';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-
-const GlobalStyle = createGlobalStyle`
-	body {
-		margin : 0;
-		background : #F9DE4B;
-	}
-`;
+import Brainstorm from './pages/Brainstorm';
 
 const palette = {
 	red: '#E75244',
@@ -27,11 +20,11 @@ function App() {
 	return (
 		<BrowserRouter>
 			<ThemeProvider theme={{ palette }}>
-				<GlobalStyle />
 				<Routes>
 					<Route path="/" element={<Mainpage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/paint" element={<Paint />} />
+					<Route path="/first-step" element={<Brainstorm />} />
 				</Routes>
 			</ThemeProvider>
 		</BrowserRouter>
