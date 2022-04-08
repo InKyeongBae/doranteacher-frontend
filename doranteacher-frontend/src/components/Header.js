@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeConsumer, ThemeProvider } from 'styled-components';
 import Button from './Button';
 import ImgButton from './ImgButton';
+import Progressbar from './Progressbar';
 
 const HeaderBlock = styled.div`
 	position: sticky;
@@ -52,8 +53,9 @@ function Header({ isIcon }) {
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
+				<Progressbar buttonText="6. 사진 선택하기"></Progressbar>
 				<Button buttonText="회원가입" outputColor="red"></Button>
-				<Button buttonText="로그인" outputColor="purple"></Button>
+				{/* <Button buttonText="로그인" outputColor="purple"></Button> */}
 				<ImgButton setting={true} undo={false} outputColor="white"></ImgButton>
 			</HeaderButtons>
 		</HeaderBlock>

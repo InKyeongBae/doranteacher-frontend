@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
+import GlobalStyle from './GlobalStyle';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -14,10 +15,10 @@ function Paint() {
 		// 라벨 텍스트 stroke -> 색상
 		const colorpicker = document.getElementsByClassName('color-well')[0];
 		const change = colorpicker.querySelector('label');
-		change.innerText = "펜 색상";
+		change.innerText = '펜 색상';
 
 		const reset = document.getElementsByClassName('lc-clear toolbar-button fat-button disabled')[0];
-		reset.innerText = "새로 쓰기";
+		reset.innerText = '새로 쓰기';
 	};
 
 	const onSave = (event) => {
@@ -34,7 +35,7 @@ function Paint() {
 	};
 
 	return (
-		<div> 
+		<>
 			<div>
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
@@ -46,9 +47,7 @@ function Paint() {
 					imageURLPrefix="/img"
 				/>
 			</div>
-			<div style={{ marginTop: 10 }}>
-				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave}></Button>
-			</div>
+			<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave}></Button>
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
 				{images.map((img, index) => (
 					<li key={index}>
@@ -56,7 +55,7 @@ function Paint() {
 					</li>
 				))}
 			</ul>
-		</div>
+		</>
 	);
 }
 

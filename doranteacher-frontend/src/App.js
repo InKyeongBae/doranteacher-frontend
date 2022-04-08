@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider, css } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import Mainpage from './pages/Mainpage';
 import LoginPage from './pages/Loginpage';
 import Paint from './components/Paint';
