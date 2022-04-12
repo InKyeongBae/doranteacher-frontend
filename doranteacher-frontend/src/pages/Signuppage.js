@@ -1,6 +1,79 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signupUser } from "../_actions/user_action";
+import Button from "../components/Button";
+import styled, { css, createGlobalStyle } from "styled-components";
+import Header from "../components/Header";
+import GlobalStyle from "../components/GlobalStyle";
+
+const MainBlock = styled.div`
+    background: #f9de4b;
+`;
+
+const CenterLogo = styled.div`
+    text-align: center;
+
+    img {
+        width: 300px;
+        padding: 40px 0px;
+    }
+
+    .centercontent {
+        font-family: "NeoDunggeunmo";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 30px;
+    }
+`;
+
+const LoginUI = styled.div`
+    .wrap {
+        display: "flex";
+        flex-direction: "column";
+        justifycontent: "center";
+        align-items: "center";
+        height: "100%";
+    }
+    .id {
+        flex-direction: "column";
+        justifycontent: "center";
+        // align-items: "center";
+    }
+
+    .password {
+        test-align: "center";
+    }
+
+    .loginform {
+        // display: "flex";
+        // justifycontent: "center";
+        // alignitems: "center";
+        // width: "100%";
+        // height: "100vh";
+    }
+
+    .content {
+        font-family: "상상토끼 꽃집막내딸 OTF";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 30px;
+        background: #f9de4b;
+    }
+`;
+
+const Input = styled.input`
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background: #f9de4b;
+    border-radius: 10px;
+    border: 2px solid black;
+    &:focus {
+        background: white;
+    }
+`;
 
 function Signuppage(props) {
     const [Name, setName] = useState("");
@@ -52,41 +125,76 @@ function Signuppage(props) {
     };
 
     return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                height: "100vh",
-            }}
-        >
-            <form
-                style={{ display: "flex", flexDirection: "column" }}
-                onSubmit={onSubmitHandler}
-            >
-                <label>이름</label>
-                <input type="name" value={Name} onChange={onNameHandler} />
+        <>
+            <GlobalStyle backColor="yellow" />
+            <Header isIcon />
+            <MainBlock>
+                <CenterLogo>
+                    <div className="centerlogo">
+                        <img className="doranLogo" src="/img/doranlogo.png" />
+                    </div>
+                    <div className="centercontent">
+                        AI 도란쌤과 함께
+                        <br />
+                        일기 마스터하기
+                    </div>
+                </CenterLogo>
 
-                <label>아이디</label>
-                <input type="id" value={Id} onChange={onIdHandler} />
-                <label>비밀번호</label>
-                <input
-                    type="password"
-                    value={Password}
-                    onChange={onPasswordHandler}
-                />
-                <label>비밀번호 확인</label>
-                <input
-                    type="password"
-                    value={ConfirmPassword}
-                    onChange={onConfirmPasswordHandler}
-                />
-
-                <br />
-                <button type="submit">회원가입</button>
-            </form>
-        </div>
+                <LoginUI>
+                    <form onSubmit={onSubmitHandler}>
+                        <div className="loginform">
+                            <div className="wrap">
+                                <div className="name">
+                                    <label className="content">이름</label>
+                                    <Input
+                                        className="input"
+                                        type="name"
+                                        value={Name}
+                                        onChange={onNameHandler}
+                                    />
+                                </div>
+                                <div className="id">
+                                    <label className="content">아이디</label>
+                                    <Input
+                                        className="input"
+                                        type="id"
+                                        value={Id}
+                                        onChange={onIdHandler}
+                                    />
+                                </div>
+                                <div className="password">
+                                    <label className="content">비밀번호</label>
+                                    <Input
+                                        className="input"
+                                        type="password"
+                                        value={Password}
+                                        onChange={onPasswordHandler}
+                                    />
+                                </div>
+                                <div className="confirm_password">
+                                    <label className="content">
+                                        비밀번호 확인
+                                    </label>
+                                    <Input
+                                        className="input"
+                                        type="password"
+                                        value={ConfirmPassword}
+                                        onChange={onConfirmPasswordHandler}
+                                    />
+                                </div>
+                            </div>
+                            <br />
+                            <Button
+                                buttonText="회원가입"
+                                type="submit"
+                                outputColor="red"
+                                className="content"
+                            ></Button>
+                        </div>
+                    </form>
+                </LoginUI>
+            </MainBlock>
+        </>
     );
 }
 
