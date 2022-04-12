@@ -78,7 +78,7 @@ function Header({ isIcon }) {
                     <Button buttonText="회원가입" outputColor="red"></Button>
                 </Link>
 
-                <Link to="login">
+                <Link to="/login">
                     <Button buttonText="로그인" outputColor="purple"></Button>
                 </Link>
                 <ImgButton
