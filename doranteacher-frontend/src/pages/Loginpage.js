@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Button from "../components/Button";
 import { loginUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
-import ShakingHands from "../components/ShakingHands";
 import GlobalStyle from "../components/GlobalStyle";
 
 const MainBlock = styled.div`
@@ -28,10 +28,27 @@ const CenterLogo = styled.div`
 `;
 
 const LoginUI = styled.div`
-    .loginform {
+    .wrap {
         display: "flex";
+        flex-direction: "column";
         justifycontent: "center";
-        alignitems: "center";
+        align-items: "center";
+        height: "100%";
+    }
+    .id {
+        flex-direction: "column";
+        justifycontent: "center";
+        // align-items: "center";
+    }
+
+    .password {
+        test-align: "center";
+    }
+
+    .loginform {
+        // display: "flex";
+        // justifycontent: "center";
+        // alignitems: "center";
         // width: "100%";
         // height: "100vh";
     }
@@ -43,11 +60,18 @@ const LoginUI = styled.div`
         font-size: 30px;
         line-height: 30px;
         background: #f9de4b;
-        // vertical-align: middle;
     }
+`;
 
-    .input {
-        background: #f9de4b;
+const Input = styled.input`
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background: #f9de4b;
+    border-radius: 10px;
+    border: 2px solid black;
+    &:focus {
+        background: white;
     }
 `;
 
@@ -105,29 +129,35 @@ const Loginpage = (props) => {
 
                 <LoginUI onSubmit={onSubmitHandler}>
                     <div className="loginform">
-                        <form
-                            style={{ display: "flex", flexDirection: "column" }}
-                            onSubmit={onSubmitHandler}
-                        >
-                            <label className="content">아이디</label>
-                            <input
-                                className="input"
-                                type="username"
-                                value={Username}
-                                onChange={onUsernameHandler}
-                            />
-                            <label className="content">비밀번호</label>
-                            <input
-                                className="input"
-                                type="password"
-                                value={Password}
-                                onChange={onPasswordHandler}
-                            />
-                            <br />
-                            <button type="submit" className="content">
-                                로그인
-                            </button>
+                        <form onSubmit={onSubmitHandler}>
+                            <div className="wrap">
+                                <div className="id">
+                                    <label className="content">아이디</label>
+                                    <Input
+                                        className="input"
+                                        type="username"
+                                        value={Username}
+                                        onChange={onUsernameHandler}
+                                    />
+                                </div>
+                                <div className="password">
+                                    <label className="content">비밀번호</label>
+                                    <Input
+                                        className="input"
+                                        type="password"
+                                        value={Password}
+                                        onChange={onPasswordHandler}
+                                    />
+                                </div>
+                            </div>
                         </form>
+                        <br />
+                        <Button
+                            buttonText="로그인"
+                            type="submit"
+                            outputColor="red"
+                            className="content"
+                        ></Button>
                     </div>
                 </LoginUI>
             </MainBlock>
