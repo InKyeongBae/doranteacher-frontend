@@ -3,14 +3,19 @@ import { useDispatch } from "react-redux";
 import { signupUser } from "../_actions/user_action";
 
 function Signuppage(props) {
-    const [Username, setId] = useState("");
+    const [Name, setName] = useState("");
+    const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
 
     const dispatch = useDispatch();
 
     // handler 함수들
-    const onUsernameHandler = (event) => {
+    const onNameHandler = (event) => {
+        setName(event.currentTarget.value);
+    };
+
+    const onIdHandler = (event) => {
         setId(event.currentTarget.value);
     };
 
@@ -31,7 +36,8 @@ function Signuppage(props) {
         }
 
         let body = {
-            username: Username,
+            name: Name,
+            id: Id,
             password: Password,
         };
 
@@ -59,12 +65,11 @@ function Signuppage(props) {
                 style={{ display: "flex", flexDirection: "column" }}
                 onSubmit={onSubmitHandler}
             >
+                <label>이름</label>
+                <input type="name" value={Name} onChange={onNameHandler} />
+
                 <label>아이디</label>
-                <input
-                    type="username"
-                    value={Username}
-                    onChange={onUsernameHandler}
-                />
+                <input type="id" value={Id} onChange={onIdHandler} />
                 <label>비밀번호</label>
                 <input
                     type="password"
