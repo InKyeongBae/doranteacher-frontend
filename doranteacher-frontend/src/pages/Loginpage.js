@@ -127,38 +127,44 @@ const Loginpage = (props) => {
                     </div>
                 </CenterLogo>
 
-                <LoginUI onSubmit={onSubmitHandler}>
-                    <div className="loginform">
-                        <form onSubmit={onSubmitHandler}>
-                            <div className="wrap">
-                                <div className="id">
-                                    <label className="content">아이디</label>
-                                    <Input
-                                        className="input"
-                                        type="username"
-                                        value={Username}
-                                        onChange={onUsernameHandler}
-                                    />
+                <LoginUI>
+                    <form onSubmit={onSubmitHandler}>
+                        <div className="loginform">
+                            <form onSubmit={onSubmitHandler}>
+                                <div className="wrap">
+                                    <div className="id">
+                                        <label className="content">
+                                            아이디
+                                        </label>
+                                        <Input
+                                            className="input"
+                                            type="username"
+                                            value={Username}
+                                            onChange={onUsernameHandler}
+                                        />
+                                    </div>
+                                    <div className="password">
+                                        <label className="content">
+                                            비밀번호
+                                        </label>
+                                        <Input
+                                            className="input"
+                                            type="password"
+                                            value={Password}
+                                            onChange={onPasswordHandler}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="password">
-                                    <label className="content">비밀번호</label>
-                                    <Input
-                                        className="input"
-                                        type="password"
-                                        value={Password}
-                                        onChange={onPasswordHandler}
-                                    />
-                                </div>
-                            </div>
-                        </form>
-                        <br />
-                        <Button
-                            buttonText="로그인"
-                            type="submit"
-                            outputColor="red"
-                            className="content"
-                        ></Button>
-                    </div>
+                            </form>
+                            <br />
+                            <Button
+                                buttonText="로그인"
+                                type="submit"
+                                outputColor="red"
+                                className="content"
+                            ></Button>
+                        </div>
+                    </form>
                 </LoginUI>
             </MainBlock>
         </>
