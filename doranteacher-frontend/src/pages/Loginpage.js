@@ -39,10 +39,11 @@ const CenterLogo = styled.div`
 `;
 
 const LoginUI = styled.div`
-    .id {
+    .column {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
+        padding: 0px 80px 0px 0px;
     }
 
     .content {
@@ -68,9 +69,9 @@ const BigDoran = styled.div`
 `;
 
 const Input = styled.input`
-    width: 200px;
+    width: 250px;
     padding: 10px;
-    margin: 10px 0px 10px 10px;
+    margin: 5px 10px 5px 10px;
     background: #f9de4b;
     border-radius: 10px;
     border: 2px solid black;
@@ -139,30 +140,24 @@ const Loginpage = (props) => {
                     <LoginUI>
                         <form onSubmit={onSubmitHandler}>
                             <div className="loginform">
-                                <form onSubmit={onSubmitHandler}>
-                                    <div className="id">
-                                        <label className="content">
-                                            아이디
-                                        </label>
-                                        <Input
-                                            className="input"
-                                            type="username"
-                                            value={Username}
-                                            onChange={onUsernameHandler}
-                                        />
-                                    </div>
-                                    <div className="password">
-                                        <label className="content">
-                                            비밀번호
-                                        </label>
-                                        <Input
-                                            className="input"
-                                            type="password"
-                                            value={Password}
-                                            onChange={onPasswordHandler}
-                                        />
-                                    </div>
-                                </form>
+                                <div className="column">
+                                    <label className="content">아이디</label>
+                                    <Input
+                                        className="input"
+                                        type="username"
+                                        value={Username}
+                                        onChange={onUsernameHandler}
+                                    />
+                                </div>
+                                <div className="column">
+                                    <label className="content">비밀번호</label>
+                                    <Input
+                                        className="input"
+                                        type="password"
+                                        value={Password}
+                                        onChange={onPasswordHandler}
+                                    />
+                                </div>
                                 <br />
                                 <Button
                                     buttonText="로그인"

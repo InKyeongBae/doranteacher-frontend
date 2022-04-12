@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signupUser } from "../_actions/user_action";
 import Button from "../components/Button";
+import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 
 const MainBlock = styled.div`
     background: #f9de4b;
+    display: flex;
+    justify-content: space-between;
+    .leftSide {
+        width: 22vw;
+    }
+
+    .middleSide {
+    }
+    .rightSide {
+    }
 `;
 
 const CenterLogo = styled.div`
@@ -15,7 +25,7 @@ const CenterLogo = styled.div`
 
     img {
         width: 300px;
-        padding: 40px 0px;
+        padding: 50px 0px 20px 0px;
     }
 
     .centercontent {
@@ -24,49 +34,44 @@ const CenterLogo = styled.div`
         font-weight: 400;
         font-size: 30px;
         line-height: 30px;
+        padding: 0px 0px 70px 0px;
     }
 `;
 
-const LoginUI = styled.div`
-    .wrap {
-        display: "flex";
-        flex-direction: "column";
-        justifycontent: "center";
-        align-items: "center";
-        height: "100%";
-    }
-    .id {
-        flex-direction: "column";
-        justifycontent: "center";
-        // align-items: "center";
-    }
-
-    .password {
-        test-align: "center";
-    }
-
-    .loginform {
-        // display: "flex";
-        // justifycontent: "center";
-        // alignitems: "center";
-        // width: "100%";
-        // height: "100vh";
+const SignupUI = styled.div`
+    .column {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0px 130px 0px 0px;
     }
 
     .content {
         font-family: "상상토끼 꽃집막내딸 OTF";
         font-style: normal;
-        font-weight: 400;
+        font-weight: 450;
         font-size: 30px;
-        line-height: 30px;
+        line-height: 25px;
         background: #f9de4b;
+        text-align: center;
+    }
+
+    .content_button {
+        padding: 20px;
+        text-align: center;
+    }
+`;
+
+const BigDoran = styled.div`
+    .bigDoran {
+        height: 700px;
     }
 `;
 
 const Input = styled.input`
-    width: 200px;
+    width: 250px;
     padding: 10px;
-    margin: 10px;
+    margin: 5px 10px 5px 10px;
     background: #f9de4b;
     border-radius: 10px;
     border: 2px solid black;
@@ -129,22 +134,26 @@ function Signuppage(props) {
             <GlobalStyle backColor="yellow" />
             <Header isIcon />
             <MainBlock>
-                <CenterLogo>
-                    <div className="centerlogo">
-                        <img className="doranLogo" src="/img/doranlogo.png" />
-                    </div>
-                    <div className="centercontent">
-                        AI 도란쌤과 함께
-                        <br />
-                        일기 마스터하기
-                    </div>
-                </CenterLogo>
+                <div className="leftSide"></div>
+                <div className="middleSide">
+                    <CenterLogo>
+                        <div className="centerlogo">
+                            <img
+                                className="doranLogo"
+                                src="/img/doranlogo.png"
+                            />
+                        </div>
+                        <div className="centercontent">
+                            AI 도란쌤과 함께
+                            <br />
+                            일기 마스터하기
+                        </div>
+                    </CenterLogo>
 
-                <LoginUI>
-                    <form onSubmit={onSubmitHandler}>
-                        <div className="loginform">
-                            <div className="wrap">
-                                <div className="name">
+                    <SignupUI>
+                        <form onSubmit={onSubmitHandler}>
+                            <div className="signupform">
+                                <div className="column">
                                     <label className="content">이름</label>
                                     <Input
                                         className="input"
@@ -153,7 +162,7 @@ function Signuppage(props) {
                                         onChange={onNameHandler}
                                     />
                                 </div>
-                                <div className="id">
+                                <div className="column">
                                     <label className="content">아이디</label>
                                     <Input
                                         className="input"
@@ -162,7 +171,7 @@ function Signuppage(props) {
                                         onChange={onIdHandler}
                                     />
                                 </div>
-                                <div className="password">
+                                <div className="column">
                                     <label className="content">비밀번호</label>
                                     <Input
                                         className="input"
@@ -171,7 +180,7 @@ function Signuppage(props) {
                                         onChange={onPasswordHandler}
                                     />
                                 </div>
-                                <div className="confirm_password">
+                                <div className="column">
                                     <label className="content">
                                         비밀번호 확인
                                     </label>
@@ -182,17 +191,26 @@ function Signuppage(props) {
                                         onChange={onConfirmPasswordHandler}
                                     />
                                 </div>
+
+                                <br />
+                                <Button
+                                    buttonText="회원가입"
+                                    type="submit"
+                                    outputColor="red"
+                                    className="content_button"
+                                ></Button>
                             </div>
-                            <br />
-                            <Button
-                                buttonText="회원가입"
-                                type="submit"
-                                outputColor="red"
-                                className="content"
-                            ></Button>
-                        </div>
-                    </form>
-                </LoginUI>
+                        </form>
+                    </SignupUI>
+                </div>
+                <div className="rightSide">
+                    <BigDoran>
+                        <img
+                            className="bigDoran"
+                            src="/img/big-doran-smile.png"
+                        />
+                    </BigDoran>
+                </div>
             </MainBlock>
         </>
     );
