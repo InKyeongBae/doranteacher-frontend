@@ -15,6 +15,7 @@ const HeaderBlock = styled.div`
 `;
 
 const HeaderIcon = styled.div`
+    
     .doranIcon {
         height: 45px;
         vertical-align: middle;
@@ -22,6 +23,7 @@ const HeaderIcon = styled.div`
     }
     .doranIconName {
         font-family: "Cafe24 Ssurround";
+		font-color:black
         font-style: normal;
         font-weight: 700;
         font-size: 33px;
@@ -38,21 +40,37 @@ const HeaderButtons = styled.div`
     }
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        text-decoration: none;
+        color: black;
+    }
+`;
+
 function Header({ isIcon }) {
     return (
         <HeaderBlock>
             <HeaderIcon className="mainIcon">
-                {isIcon ? (
-                    <>
-                        <img
-                            className="doranIcon"
-                            src="/img/header-doran-face.png"
-                        />
-                        <span className="doranIconName">도란쌤</span>
-                    </>
-                ) : (
-                    <img className="doranIcon" src="/img/doranlogo.png" />
-                )}
+                <StyledLink to="/">
+                    {isIcon ? (
+                        <>
+                            <img
+                                className="doranIcon"
+                                src="/img/header-doran-face.png"
+                            />
+                            <span className="doranIconName">도란쌤</span>
+                        </>
+                    ) : (
+                        <img className="doranIcon" src="/img/doranlogo.png" />
+                    )}
+                </StyledLink>
             </HeaderIcon>
 
             <HeaderButtons className="mainHeader">
