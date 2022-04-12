@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { signupUser } from "../_actions/user_action";
 
 function Signuppage(props) {
-    const [Username, setUsername] = useState("");
+    const [Username, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
 
@@ -11,7 +11,7 @@ function Signuppage(props) {
 
     // handler 함수들
     const onUsernameHandler = (event) => {
-        setUsername(event.currentTarget.value);
+        setId(event.currentTarget.value);
     };
 
     const onPasswordHandler = (event) => {
@@ -59,19 +59,19 @@ function Signuppage(props) {
                 style={{ display: "flex", flexDirection: "column" }}
                 onSubmit={onSubmitHandler}
             >
-                <label>Username</label>
+                <label>아이디</label>
                 <input
                     type="username"
                     value={Username}
                     onChange={onUsernameHandler}
                 />
-                <label>Password</label>
+                <label>비밀번호</label>
                 <input
                     type="password"
                     value={Password}
                     onChange={onPasswordHandler}
                 />
-                <label>Confirm Password</label>
+                <label>비밀번호 확인</label>
                 <input
                     type="password"
                     value={ConfirmPassword}
@@ -79,7 +79,7 @@ function Signuppage(props) {
                 />
 
                 <br />
-                <button type="submit">Login</button>
+                <button type="submit">회원가입</button>
             </form>
         </div>
     );
