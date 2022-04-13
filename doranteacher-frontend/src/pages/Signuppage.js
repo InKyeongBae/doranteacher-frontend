@@ -50,7 +50,7 @@ const SignupUI = styled.div`
         font-family: "상상토끼 꽃집막내딸 OTF";
         font-style: normal;
         font-weight: 450;
-        font-size: 30px;
+        font-size: 25px;
         line-height: 25px;
         background: #f9de4b;
         text-align: center;
