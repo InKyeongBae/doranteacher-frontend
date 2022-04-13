@@ -32,7 +32,7 @@ const CenterLogo = styled.div`
         font-family: "NeoDunggeunmo";
         font-style: normal;
         font-weight: 400;
-        font-size: 30px;
+        font-size: 25px;
         line-height: 30px;
         padding: 0px 0px 70px 0px;
     }
