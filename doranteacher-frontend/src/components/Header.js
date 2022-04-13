@@ -81,7 +81,7 @@ function Header({ isIcon }) {
                 <Link to="/login">
                     <Button buttonText="로그인" outputColor="purple"></Button>
                 </Link>
-                <Link to="/writing-step-1">
+                <Link to="/setting">
                     <ImgButton
                         setting={true}
                         undo={false}

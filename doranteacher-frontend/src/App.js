@@ -3,7 +3,7 @@ import { createGlobalStyle, ThemeProvider, css } from "styled-components";
 import Mainpage from "./pages/Mainpage";
 import LoginPage from "./pages/Loginpage";
 import Signuppage from "./pages/Signuppage";
-import WritingStep_1 from "./pages/WritingStep_1";
+import Setting from "./pages/Setting";
 import Paint from "./components/Paint";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Brainstorm from "./pages/Brainstorm";
@@ -27,7 +27,7 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<Signuppage />} />
                     <Route path="/paint" element={<Paint />} />
-                    <Route path="/writing-step-1" element={<WritingStep_1 />} />
+                    <Route path="/setting" element={<Setting />} />
                     <Route path="/first-step" element={<Brainstorm />} />
                 </Routes>
             </ThemeProvider>

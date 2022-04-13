@@ -3,13 +3,18 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import ShakingHands from "../components/ShakingHands";
 import GlobalStyle from "../components/GlobalStyle";
+const LeftDoran = styled.div``;
 
-function WritingStep_1() {
+function Setting() {
     return (
         <>
-            <GlobalStyle backColor="red" />
+            <GlobalStyle backColor="yellow" />
+            <Header />
+            <LeftDoran>
+                <div className="spaceship" />
+            </LeftDoran>
         </>
     );
 }
 
-export default WritingStep_1;
+export default Setting;
