@@ -50,25 +50,48 @@ const SettingUI = styled.div`
         justify-content: center;
     }
 
-    .step_contents {
-        display: flex;
-        justify-content: center;
-        font-family: "NeoDunggeunmo";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 25px;
-        text-align: center;
+    .step_button {
+        padding: 0px 80px;
     }
 
-    .step_button {
-        padding: 25px 25px;
+    .step_contents {
+        width: 100vw;
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+
+        align-items: center;
     }
 
     .step_content {
-        padding: 25px 25px;
+        padding: 30px 30px;
+        margin: 50px;
+        min-width: 140px;
+
+        height: 80px;
+        outline: 1px;
+        letter-spacing: 1px;
+        position: relative;
+        border-radius: 35px;
+        border: 2px solid black;
+
+        font-size: 20px;
+        font-family: "NeoDunggeunmo";
+        line-height: 120%;
+        text-align: center;
+        font-style: normal;
+        font-weight: 200px;
     }
 `;
 
+const SaveUI = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    .saveButton {
+        margin: 10px 110px 10px 10px;
+        text-align: center;
+    }
+`;
 function Setting() {
     return (
         <>
@@ -89,13 +112,13 @@ function Setting() {
                 <div className="step_buttons">
                     <Button
                         buttonText="1단계"
-                        outputColor="red"
+                        outputColor="green"
                         className="step_button"
                     ></Button>
 
                     <Button
                         buttonText="2단계"
-                        outputColor="red"
+                        outputColor="green"
                         className="step_button"
                     ></Button>
                 </div>
@@ -115,6 +138,16 @@ function Setting() {
                     </div>
                 </div>
             </SettingUI>
+            <SaveUI>
+                <div className="saveButton">
+                    <Button
+                        buttonText="저장하기"
+                        type="submit"
+                        outputColor="red"
+                        className="button"
+                    ></Button>
+                </div>
+            </SaveUI>
         </>
     );
 }
