@@ -81,11 +81,13 @@ function Header({ isIcon }) {
                 <Link to="/login">
                     <Button buttonText="로그인" outputColor="purple"></Button>
                 </Link>
-                <ImgButton
-                    setting={true}
-                    undo={false}
-                    outputColor="white"
-                ></ImgButton>
+                <Link to="/writing-step-1">
+                    <ImgButton
+                        setting={true}
+                        undo={false}
+                        outputColor="white"
+                    ></ImgButton>
+                </Link>
             </HeaderButtons>
         </HeaderBlock>
     );
