@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../components/Button";
+import Progressbar from "../components/Progressbar";
 import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
@@ -14,7 +15,14 @@ function WritingStart() {
     return (
         <>
             <GlobalStyle backColor="red" />
-            <Header isProgress isLogout isImgBtn text="1.일기시작" />
+            <Header
+                isProgress
+                isLogout
+                isImgBtn
+                progress={
+                    <Progressbar progressText={"1.일기쓰기"}></Progressbar>
+                }
+            />
         </>
     );
 }

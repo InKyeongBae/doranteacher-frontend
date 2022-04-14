@@ -61,7 +61,7 @@ function Header({
     isLogin,
     isLogout,
     isSetting,
-    text,
+    progress,
 }) {
     return (
         <HeaderBlock>
@@ -82,9 +82,12 @@ function Header({
             </HeaderIcon>
 
             <HeaderButtons className="mainHeader">
-                {isProgress ? (
-                    <Progressbar buttonText={text}></Progressbar>
-                ) : null}
+                <div>
+                    {isProgress ? (
+                        <div>{progress}</div>
+                    ) : // <Progressbar progressText={rest}></Progressbar>
+                    null}
+                </div>
                 <Link to="/signup">
                     {isSignup ? (
                         <Button

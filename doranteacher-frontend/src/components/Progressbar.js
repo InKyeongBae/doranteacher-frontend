@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const HeaderProgress = styled.div`
     button {
@@ -55,12 +56,26 @@ const HeaderProgress = styled.div`
     }
 `;
 
-function Progressbar({ buttonText, ...rest }) {
+Progressbar.propTypes = {
+    progessText: PropTypes.string,
+    // desc: PropTypes.string,
+};
+
+function Progressbar({ progressText, progressRate, progressColor }) {
+    // progressRate : 흰색비율
+    // 조건도 명시해줘야할듯? ( 그외 부분 색깔이 50% 이상이면 반대로 작성해야하므로 css내에서 조건문으로 분기하여 처리하여야 함)
     return (
-        <HeaderProgress {...rest}>
-            <button className="button" text={buttonText}>
-                {buttonText}
-            </button>
+        <HeaderProgress>
+            <div>
+                <button
+                    className="button"
+                    progressText={progressText}
+                    // progressRate={progressRate}
+                    // progressColor={progressColor}
+                >
+                    {progressText}
+                </button>
+            </div>
         </HeaderProgress>
     );
 }
