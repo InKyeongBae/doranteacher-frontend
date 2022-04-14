@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import ShakingHands from '../components/ShakingHands';
 import GlobalStyle from '../components/GlobalStyle';
 
-
 const MainBlock = styled.div`
 	background: #f9de4b;
 `;
@@ -131,8 +130,8 @@ const BottomBlock = styled.div`
 function Mainpage() {
 	return (
 		<>
-		<GlobalStyle backColor="yellow"/>
-			<Header isIcon isLogin isSignup isImgBtn/>
+			<GlobalStyle backColor="yellow" />
+			<Header isIcon isLogin isSignup isSetting/>
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo">
