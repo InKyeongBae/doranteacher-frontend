@@ -5,37 +5,39 @@ import ImgButton from './ImgButton';
 import Progressbar from './Progressbar';
 
 const HeaderBlock = styled.div`
-	position: sticky;
-	top: 0;
-	color: black;
-	padding: 20px 50px 15px 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    position: sticky;
+    top: 0;
+    color: black;
+    padding: 20px 50px 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const HeaderIcon = styled.div`
-	.doranIcon {
-		height: 45px;
-		vertical-align: middle;
-		padding-bottom: 5px;
-	}
-	.doranIconName {
-		font-family: 'Cafe24 Ssurround';
-		font-style: normal;
-		font-weight: 700;
-		font-size: 33px;
-		padding-left: 5px;
-		vertical-align: middle;
-	}
+    
+    .doranIcon {
+        height: 45px;
+        vertical-align: middle;
+        padding-bottom: 5px;
+    }
+    .doranIconName {
+        font-family: "Cafe24 Ssurround";
+		font-color:black
+        font-style: normal;
+        font-weight: 700;
+        font-size: 33px;
+        padding-left: 5px;
+        vertical-align: middle;
+    }
 `;
 
 const HeaderButtons = styled.div`
-	div {
-		display: inline-block;
-		padding-left: 20px;
-		padding-bottom: 5px;
-	}
+    div {
+        display: inline-block;
+        padding-left: 20px;
+        padding-bottom: 5px;
+    }
 `;
 
 function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isImgBtn }) {

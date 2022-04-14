@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../components/Button";
-import { loginUser } from "../_actions/user_action";
+import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
@@ -25,32 +25,32 @@ const CenterLogo = styled.div`
 
     img {
         width: 300px;
-        padding: 100px 0px 20px 0px;
+        padding: 50px 0px 20px 0px;
     }
 
     .centercontent {
         font-family: "NeoDunggeunmo";
         font-style: normal;
         font-weight: 400;
-        font-size: 25px;
+        font-size: 30px;
         line-height: 30px;
         padding: 0px 0px 70px 0px;
     }
 `;
 
-const LoginUI = styled.div`
+const SignupUI = styled.div`
     .column {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: 0px 80px 0px 0px;
+        padding: 0px 130px 0px 0px;
     }
 
     .content {
         font-family: "상상토끼 꽃집막내딸 OTF";
         font-style: normal;
         font-weight: 450;
-        font-size: 30px;
+        font-size: 25px;
         line-height: 25px;
         background: #f9de4b;
         text-align: center;
@@ -80,16 +80,20 @@ const Input = styled.input`
     }
 `;
 
-const Loginpage = (props) => {
-    // redux의 dispatch
+function Signuppage(props) {
+    const [Name, setName] = useState("");
+    const [Id, setId] = useState("");
+    const [Password, setPassword] = useState("");
+    const [ConfirmPassword, setConfirmPassword] = useState("");
+
     const dispatch = useDispatch();
 
-    // react hook에서 state 사용. 컴포넌트 안에 작성
-    const [Username, setId] = useState("");
-    const [Password, setPassword] = useState("");
-
     // handler 함수들
-    const onUsernameHandler = (event) => {
+    const onNameHandler = (event) => {
+        setName(event.currentTarget.value);
+    };
+
+    const onIdHandler = (event) => {
         setId(event.currentTarget.value);
     };
 
@@ -97,21 +101,30 @@ const Loginpage = (props) => {
         setPassword(event.currentTarget.value);
     };
 
+    const onConfirmPasswordHandler = (event) => {
+        setConfirmPassword(event.currentTarget.value);
+    };
+
     const onSubmitHandler = (event) => {
         // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
         event.preventDefault();
 
+        if (Password !== ConfirmPassword) {
+            return alert("비밀번호와 비밀번호 확인은 같아야 해요!");
+        }
+
         let body = {
-            username: Username,
+            name: Name,
+            id: Id,
             password: Password,
         };
 
         // action의 반환값을 dispatch해준다.
-        dispatch(loginUser(body)).then((response) => {
+        dispatch(signupUser(body)).then((response) => {
             if (response.payload.loginSuccess) {
-                props.history.push("/");
+                props.history.push("/login");
             } else {
-                alert("Error");
+                alert("회원가입에 실패했어요.");
             }
         });
     };
@@ -137,16 +150,25 @@ const Loginpage = (props) => {
                         </div>
                     </CenterLogo>
 
-                    <LoginUI>
+                    <SignupUI>
                         <form onSubmit={onSubmitHandler}>
-                            <div className="loginform">
+                            <div className="signupform">
+                                <div className="column">
+                                    <label className="content">이름</label>
+                                    <Input
+                                        className="input"
+                                        type="name"
+                                        value={Name}
+                                        onChange={onNameHandler}
+                                    />
+                                </div>
                                 <div className="column">
                                     <label className="content">아이디</label>
                                     <Input
                                         className="input"
-                                        type="username"
-                                        value={Username}
-                                        onChange={onUsernameHandler}
+                                        type="id"
+                                        value={Id}
+                                        onChange={onIdHandler}
                                     />
                                 </div>
                                 <div className="column">
@@ -158,28 +180,40 @@ const Loginpage = (props) => {
                                         onChange={onPasswordHandler}
                                     />
                                 </div>
+                                <div className="column">
+                                    <label className="content">
+                                        비밀번호 확인
+                                    </label>
+                                    <Input
+                                        className="input"
+                                        type="password"
+                                        value={ConfirmPassword}
+                                        onChange={onConfirmPasswordHandler}
+                                    />
+                                </div>
+
                                 <br />
                                 <Button
-                                    buttonText="로그인"
+                                    buttonText="회원가입"
                                     type="submit"
                                     outputColor="red"
                                     className="content_button"
                                 ></Button>
                             </div>
                         </form>
-                    </LoginUI>
+                    </SignupUI>
                 </div>
                 <div className="rightSide">
                     <BigDoran>
                         <img
                             className="bigDoran"
-                            src="/img/big-doran-heart.png"
+                            src="/img/big-doran-smile.png"
                         />
                     </BigDoran>
                 </div>
             </MainBlock>
         </>
     );
-};
+}
 
-export default Loginpage;
+export default Signuppage;
