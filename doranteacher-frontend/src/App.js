@@ -4,6 +4,7 @@ import Mainpage from "./pages/Mainpage";
 import LoginPage from "./pages/Loginpage";
 import Signuppage from "./pages/Signuppage";
 import Setting from "./pages/Setting";
+import WritingStart from "./pages/WritingStart";
 import Paint from "./components/Paint";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Brainstorm from "./pages/Brainstorm";
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/signup" element={<Signuppage />} />
                     <Route path="/paint" element={<Paint />} />
                     <Route path="/setting" element={<Setting />} />
+                    <Route path="/writing-start" element={<WritingStart />} />
                     <Route path="/first-step" element={<Brainstorm />} />
                 </Routes>
             </ThemeProvider>
