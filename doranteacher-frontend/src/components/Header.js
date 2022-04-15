@@ -34,6 +34,7 @@ const HeaderIcon = styled.div`
 `;
 
 const HeaderButtons = styled.div`
+    display: flex;
     div {
         display: inline-block;
         padding-left: 20px;

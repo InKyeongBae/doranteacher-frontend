@@ -49,7 +49,14 @@ function Brainstorm() {
     return (
         <>
             <GlobalStyle backColor="red" />
-            <Header isProgress isLogout isImgBtn />
+            <Header
+                isProgress
+                isLogout
+                isImgBtn
+                progress={
+                    <Progressbar progressText={"2.글감 찾기"}></Progressbar>
+                }
+            />
             <MainBlock>
                 <div className="centercontent">
                     <ImgButton prev />
