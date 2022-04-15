@@ -8,6 +8,7 @@ let _lc = null;
 
 function Paint() {
 	const [images, setImages] = useState([]);
+	const [words, setWords] = useState([]);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -30,7 +31,7 @@ function Paint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 
-			const response = fetch('http://localhost:8080/ocrtext', {
+			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -39,8 +40,10 @@ function Paint() {
 					filepath: imgData,
 				}),
 			}).then((response) => response.json())
-			.then(result => console.log(result.filepath));
-			
+			.then(result => {
+				const word = result.filepath;
+				setWords([...words, word]);
+			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -63,12 +66,13 @@ function Paint() {
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
-				{images.map((img, index) => (
+				{words.map((word, index) => (
 					<li key={index}>
-						<img src={img} />
+						{word}
 					</li>
 				))}
 			</ul>
+			
 		</>
 	);
 }
