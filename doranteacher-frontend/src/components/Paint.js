@@ -68,7 +68,8 @@ function Paint() {
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
 				{words.map((word, index) => (
 					<li key={index}>
-						{word}
+						<div className="wordlist">{word}</div>
+						<div className="xbtn">X</div>
 					</li>
 				))}
 			</ul>
