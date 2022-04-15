@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import Header from '../components/Header';
 import Paint from '../components/Paint';
 import GlobalStyle from '../components/GlobalStyle';
-import Progressbar from '../components/Progressbar';
 import ImgButton from '../components/ImgButton';
 
 const MainBlock = styled.div`
@@ -44,6 +43,8 @@ const MainBlock = styled.div`
 		margin: 20px auto;
 	}
 `;
+
+
 
 function Brainstorm() {
 	return (
