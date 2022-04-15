@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
+import axios from 'axios';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
 function Paint() {
 	const [images, setImages] = useState([]);
+	const [words, setWords] = useState([]);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -28,6 +30,20 @@ function Paint() {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
+
+			fetch('http://localhost:8080/ocrtext', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify({
+					filepath: imgData,
+				}),
+			}).then((response) => response.json())
+			.then(result => {
+				const word = result.filepath;
+				setWords([...words, word]);
+			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -46,16 +62,18 @@ function Paint() {
 					imageURLPrefix="/img"
 				/>
 			</div>
-			<div className='buttonline'>
+			<div className="buttonline">
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
 			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
-				{images.map((img, index) => (
+				{words.map((word, index) => (
 					<li key={index}>
-						<img src={img} />
+						<div className="wordlist">{word}</div>
+						<div className="xbtn">X</div>
 					</li>
 				))}
 			</ul>
+			
 		</>
 	);
 }

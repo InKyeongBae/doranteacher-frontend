@@ -1,10 +1,9 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import Header from "../components/Header";
-import Paint from "../components/Paint";
-import GlobalStyle from "../components/GlobalStyle";
-import Progressbar from "../components/Progressbar";
-import ImgButton from "../components/ImgButton";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import Header from '../components/Header';
+import Paint from '../components/Paint';
+import GlobalStyle from '../components/GlobalStyle';
+import ImgButton from '../components/ImgButton';
 
 const MainBlock = styled.div`
     .centercontent {
@@ -38,11 +37,51 @@ const MainBlock = styled.div`
         }
     }
 
-    .buttonline {
-        text-align: center;
-        width: 195px;
-        margin: 20px auto;
-    }
+	.buttonline {
+		text-align: center;
+		width: 195px;
+		margin: 20px auto;
+	}
+
+	.wordlist {
+		display: inline-block;
+		padding: 25px 20px;
+
+		background: #f9de4b;
+		border: 3px solid #000000;
+		box-sizing: border-box;
+		border-radius: 32px;
+
+		font-family: 'NeoDunggeunmo';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 25px;
+		text-align: center;
+		color: #000000;
+
+		&:after {
+			z-index: 5;
+			font-family: 'ImcreSoojin OTF';
+			font-size : 30px;
+			background : #E75244;
+			/* width: 50px;
+			height: 50px; */
+			border-radius: 100%;
+			width: 100%;
+			padding: 0 11px;
+			padding-bottom: 5px;
+			content: 'x';
+			color : white;
+			transform: translate3d(0.2em, 0.15em, 1em);
+			
+			margin-left: 10px;
+			margin-bottom: 10px;
+			transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+		}
+	}
+
+
 `;
 
 function Brainstorm() {
