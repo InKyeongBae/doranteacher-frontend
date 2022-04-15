@@ -40,7 +40,7 @@ const MainBlock = styled.div`
     text-align: center;
 
     .today {
-        padding-top: 60px;
+        padding-top: 50px;
         padding-bottom: 20px;
         line-height: 48px;
         font-size: 50px;
@@ -62,7 +62,7 @@ const MainBlock = styled.div`
         padding-left: 10px;
     }
     .weathercontent {
-        padding-top: 100px;
+        padding-top: 60px;
         line-height: 51px;
         font-size: 50px;
         color: white;
