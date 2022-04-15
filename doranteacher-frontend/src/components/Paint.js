@@ -69,7 +69,6 @@ function Paint() {
 				{words.map((word, index) => (
 					<li key={index}>
 						<div className="wordlist">{word}</div>
-						<div className="xbtn">X</div>
 					</li>
 				))}
 			</ul>
