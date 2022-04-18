@@ -13,6 +13,19 @@ const HeaderBlock = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .link {
+        text-decoration: none;
+        color: black;
+        &:focus,
+        &:hover,
+        &:visited,
+        &:link,
+        &:active {
+            text-decoration: none;
+            color: black;
+        }
+        cursor: pointer;
+    }
 `;
 
 const HeaderIcon = styled.div`
@@ -42,18 +55,7 @@ const HeaderButtons = styled.div`
     }
 `;
 
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: black;
-    &:focus,
-    &:hover,
-    &:visited,
-    &:link,
-    &:active {
-        text-decoration: none;
-        color: black;
-    }
-`;
+// const Link = styled(div)``;
 
 function Header({
     isIcon,
@@ -69,19 +71,24 @@ function Header({
     return (
         <HeaderBlock>
             <HeaderIcon className="mainIcon">
-                <StyledLink to="/">
-                    {isIcon ? (
-                        <>
+                <>
+                    <div className="link" onClick={() => navigate("/")}>
+                        {isIcon ? (
+                            <>
+                                <img
+                                    className="doranIcon"
+                                    src="/img/header-doran-face.png"
+                                />
+                                <span className="doranIconName">도란쌤</span>
+                            </>
+                        ) : (
                             <img
                                 className="doranIcon"
-                                src="/img/header-doran-face.png"
+                                src="/img/doranlogo.png"
                             />
-                            <span className="doranIconName">도란쌤</span>
-                        </>
-                    ) : (
-                        <img className="doranIcon" src="/img/doranlogo.png" />
-                    )}
-                </StyledLink>
+                        )}
+                    </div>
+                </>
             </HeaderIcon>
 
             <HeaderButtons className="mainHeader">
@@ -91,34 +98,31 @@ function Header({
                     ) : // <Progressbar progressText={rest}></Progressbar>
                     null}
                 </div>
-                <Link to="/signup">
-                    {isSignup ? (
-                        <Button
-                            buttonText="회원가입"
-                            outputColor="red"
-                        ></Button>
-                    ) : null}
-                </Link>
-                <Link to="/login">
-                    {isLogin ? (
-                        <Button
-                            buttonText="로그인"
-                            outputColor="purple"
-                        ></Button>
-                    ) : null}
-                </Link>
+                {isSignup ? (
+                    <Button
+                        buttonText="회원가입"
+                        outputColor="red"
+                        onClick={() => navigate("/signup")}
+                    ></Button>
+                ) : null}
+                {isLogin ? (
+                    <Button
+                        buttonText="로그인"
+                        outputColor="purple"
+                        onClick={() => navigate("/login")}
+                    ></Button>
+                ) : null}
                 {isLogout ? (
                     <Button buttonText="로그아웃" outputColor="purple"></Button>
                 ) : null}
-                <Link to="/setting">
-                    {isSetting ? (
-                        <ImgButton
-                            setting={true}
-                            undo={false}
-                            outputColor="white"
-                        ></ImgButton>
-                    ) : null}
-                </Link>
+                {isSetting ? (
+                    <ImgButton
+                        setting={true}
+                        undo={false}
+                        outputColor="white"
+                        onClick={() => navigate("/setting")}
+                    ></ImgButton>
+                ) : null}
 
                 {isUndo ? (
                     <ImgButton

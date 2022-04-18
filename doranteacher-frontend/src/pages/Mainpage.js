@@ -183,13 +183,16 @@ function Mainpage() {
                                 />
                             </div>
                             <div>
-                                <button onClick={() => navigate("/new")}>
+                                <div>
                                     <img
                                         className="imgblock2"
                                         id="blockani3"
                                         src="/img/block4-2.png"
+                                        onClick={() =>
+                                            navigate("/writing/start")
+                                        }
                                     />
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>

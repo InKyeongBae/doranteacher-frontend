@@ -42,7 +42,6 @@ function App() {
                         <Route path="start" element={<WritingStart />} />
                         <Route path="first-step" element={<Brainstorm />} />
                     </Route>
-
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </ThemeProvider>
