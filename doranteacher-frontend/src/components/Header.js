@@ -3,7 +3,7 @@ import styled, { ThemeConsumer, ThemeProvider } from "styled-components";
 import Button from "./Button";
 import ImgButton from "./ImgButton";
 import Progressbar from "./Progressbar";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const HeaderBlock = styled.div`
     position: sticky;
@@ -62,8 +62,10 @@ function Header({
     isLogin,
     isLogout,
     isSetting,
+    isUndo,
     progress,
 }) {
+    const navigate = useNavigate();
     return (
         <HeaderBlock>
             <HeaderIcon className="mainIcon">
@@ -117,6 +119,15 @@ function Header({
                         ></ImgButton>
                     ) : null}
                 </Link>
+
+                {isUndo ? (
+                    <ImgButton
+                        setting={false}
+                        undo={true}
+                        outputColor="white"
+                        onClick={() => navigate(-1)}
+                    ></ImgButton>
+                ) : null}
             </HeaderButtons>
         </HeaderBlock>
     );
