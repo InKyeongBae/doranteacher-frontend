@@ -7,7 +7,7 @@ import NotFound from "./pages/NotFound";
 import Setting from "./pages/Setting";
 import WritingStart from "./pages/WritingStart";
 import Paint from "./components/Paint";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Brainstorm from "./pages/Brainstorm";
 
 const palette = {
@@ -20,6 +20,14 @@ const palette = {
     black: "#000000",
 };
 
+function Writing() {
+    return (
+        <>
+            <Outlet />
+        </>
+    );
+}
+
 function App() {
     return (
         <BrowserRouter>
@@ -30,22 +38,17 @@ function App() {
                     <Route path="/signup" element={<Signuppage />} />
                     <Route path="/paint" element={<Paint />} />
                     <Route path="/setting" element={<Setting />} />
-                    <Route path="/writing-start" element={<WritingStart />} />
-                    <Route path="/first-step" element={<Brainstorm />} />
+                    <Route path="/writing" element={<Writing />}>
+                        <Route path="start" element={<WritingStart />} />
+                        <Route path="first-step" element={<Brainstorm />} />
+                    </Route>
+
                     <Route path="*" element={<NotFound />} />
-                    <Route
-                        // path 를 따로 정의하지 않으면 모든 상황에 렌더링됨
-                        render={({ location }) => (
-                            <div>
-                                <h2>이 페이지는 존재하지 않습니다:</h2>
-                                <p>{location.pathname}</p>
-                            </div>
-                        )}
-                    />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>
     );
 }
 
+// element={<WritingStart />}
 export default App;
