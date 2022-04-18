@@ -4,11 +4,59 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
 
+const MainBlock = styled.div`
+    padding: 20px 50px 15px 50px;
+    .doran {
+        height: 45px;
+        vertical-align: middle;
+        padding-bottom: 5px;
+    }
+
+    .main {
+        margin-top: 200px;
+        display: flex;
+        justify-content: center;
+    }
+    .error {
+        padding-top: 20px;
+        font-family: "NeoDunggeunmo";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 120px;
+        align-self: center;
+        text-align: center;
+        align-items: center;
+    }
+    .sadDoran {
+        height: 150px;
+        vertical-align: middle;
+        padding-bottom: 5px;
+        margin-right: 20px;
+    }
+    .comment {
+        margin-top: 40px;
+        font-family: "상상토끼 꽃집막내딸 OTF";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 35px;
+        text-align: center;
+    }
+`;
 function NotFound() {
     return (
-        <>
-            <div>not found</div>
-        </>
+        <MainBlock>
+            <GlobalStyle backColor="yellow" />
+            <div className="header">
+                <img className="doran" src="/img/doranlogo.png" />
+            </div>
+            <div className="main">
+                <img className="sadDoran" src="/img/sad_doran.png" />
+                <div className="error">404</div>
+            </div>
+            <div className="comment">
+                요청한 페이지를 <br /> 찾을 수 없습니다.
+            </div>
+        </MainBlock>
     );
 }
 export default NotFound;

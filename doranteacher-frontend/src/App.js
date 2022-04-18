@@ -49,5 +49,4 @@ function App() {
     );
 }
 
-// element={<WritingStart />}
 export default App;
