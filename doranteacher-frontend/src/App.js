@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import Setting from "./pages/Setting";
 import WritingStart from "./pages/WritingStart";
 import Paint from "./components/Paint";
+import ProgressBar from "./components/ProgressBar";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Brainstorm from "./pages/Brainstorm";
 
@@ -33,7 +34,8 @@ function App() {
         <BrowserRouter>
             <ThemeProvider theme={{ palette }}>
                 <Routes>
-                    <Route path="/" element={<Mainpage />} />
+                    <Route path="/" element={<ProgressBar />} />
+                    {/* <Route path="/" element={<Mainpage />} /> */}
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<Signuppage />} />
                     <Route path="/paint" element={<Paint />} />
