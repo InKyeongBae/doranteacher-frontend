@@ -3,6 +3,7 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
+import { useNavigate, Link } from "react-router-dom";
 
 const MainBlock = styled.div`
     padding: 20px 50px 15px 50px;
@@ -10,6 +11,7 @@ const MainBlock = styled.div`
         height: 45px;
         vertical-align: middle;
         padding-bottom: 5px;
+        cursor: pointer;
     }
 
     .main {
@@ -43,11 +45,16 @@ const MainBlock = styled.div`
     }
 `;
 function NotFound() {
+    const navigate = useNavigate();
     return (
         <MainBlock>
             <GlobalStyle backColor="yellow" />
             <div className="header">
-                <img className="doran" src="/img/doranlogo.png" />
+                <img
+                    className="doran"
+                    src="/img/doranlogo.png"
+                    onClick={() => navigate("/")}
+                />
             </div>
             <div className="main">
                 <img className="sadDoran" src="/img/sad_doran.png" />

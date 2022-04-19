@@ -150,7 +150,11 @@ function Mainpage() {
             <MainBlock>
                 <CenterLogo>
                     <div className="centerlogo">
-                        <img className="doranLogo" src="/img/doranlogo.png" />
+                        <img
+                            className="doranLogo"
+                            src="/img/doranlogo.png"
+                            onClick={() => navigate("/")}
+                        />
                     </div>
                     <div className="centercontent">
                         AI 도란쌤과 함께

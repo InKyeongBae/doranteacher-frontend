@@ -2,7 +2,6 @@ import React from "react";
 import styled, { ThemeConsumer, ThemeProvider } from "styled-components";
 import Button from "./Button";
 import ImgButton from "./ImgButton";
-import Progressbar from "./Progressbar";
 import { useNavigate, Link } from "react-router-dom";
 
 const HeaderBlock = styled.div`

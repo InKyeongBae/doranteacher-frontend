@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../components/Button";
-import Progressbar from "../components/Progressbar";
 import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -210,24 +209,14 @@ const DateButton = styled.div`
 `;
 
 function WritingStart() {
+    const navigate = useNavigate("");
     return (
         <>
             <GlobalStyle backColor="red" />
             <LeftDoran>
                 <div className="leftDoran" />
             </LeftDoran>
-            <Header
-                isProgress
-                isLogout
-                isImgBtn
-                progress={
-                    <Progressbar
-                        progressText={"1.일기 시작"}
-                        progressRate={15}
-                        progressColor={"#E75244"}
-                    ></Progressbar>
-                }
-            />
+            <Header isProgress isLogout isImgBtn />
             <MainBlock>
                 <div className="today">오늘은,</div>
                 <div className="dateContent">
@@ -270,16 +259,15 @@ function WritingStart() {
                         </WeatherButton>
                     </div>
                 </div>
-                <StyledLink to="/first-step">
-                    <div className="nextButton">
-                        <Button
-                            buttonText="다음"
-                            type="submit"
-                            outputColor="red"
-                            className="button"
-                        ></Button>
-                    </div>
-                </StyledLink>
+                <div className="nextButton">
+                    <Button
+                        buttonText="다음"
+                        type="submit"
+                        outputColor="red"
+                        className="button"
+                        onClick={() => navigate("/writing/first-step")}
+                    ></Button>
+                </div>
             </MainBlock>
         </>
     );

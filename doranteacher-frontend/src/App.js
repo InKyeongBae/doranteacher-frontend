@@ -41,6 +41,7 @@ function App() {
                     <Route path="/writing" element={<Writing />}>
                         <Route path="start" element={<WritingStart />} />
                         <Route path="first-step" element={<Brainstorm />} />
+                        {/* <Route path="*" element={<NotFound />} /> */}
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Routes>
