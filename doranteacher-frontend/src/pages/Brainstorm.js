@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Paint from "../components/Paint";
 import GlobalStyle from "../components/GlobalStyle";
 import ImgButton from "../components/ImgButton";
+import ProgressBar from "../components/ProgressBar";
 
 const MainBlock = styled.div`
     .centercontent {
@@ -86,7 +87,18 @@ function Brainstorm() {
     return (
         <>
             <GlobalStyle backColor="red" />
-            <Header isProgress isLogout isImgBtn />
+            <Header
+                isProgress
+                isLogout
+                isImgBtn
+                progress={
+                    <ProgressBar
+                        progressText={"2.글감찾기"}
+                        progressWidth={"25"}
+                        progressColor={"#E75244"}
+                    ></ProgressBar>
+                }
+            />
             <MainBlock>
                 <div className="centercontent">
                     <ImgButton prev />
