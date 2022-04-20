@@ -34,8 +34,7 @@ function App() {
         <BrowserRouter>
             <ThemeProvider theme={{ palette }}>
                 <Routes>
-                    <Route path="/" element={<ProgressBar />} />
-                    {/* <Route path="/" element={<Mainpage />} /> */}
+                    <Route path="/" element={<Mainpage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<Signuppage />} />
                     <Route path="/paint" element={<Paint />} />

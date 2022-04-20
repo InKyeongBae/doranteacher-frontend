@@ -3,12 +3,13 @@ import styled, { ThemeConsumer, ThemeProvider } from "styled-components";
 import Button from "./Button";
 import ImgButton from "./ImgButton";
 import { useNavigate, Link } from "react-router-dom";
+import ProgressBar from "./ProgressBar";
 
 const HeaderBlock = styled.div`
     position: sticky;
     top: 0;
     color: black;
-    padding: 20px 50px 15px 50px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +29,6 @@ const HeaderBlock = styled.div`
 `;
 
 const HeaderIcon = styled.div`
-    
     .doranIcon {
         height: 45px;
         vertical-align: middle;
@@ -47,14 +47,10 @@ const HeaderIcon = styled.div`
 
 const HeaderButtons = styled.div`
     display: flex;
-    div {
-        display: inline-block;
-        padding-left: 20px;
-        padding-bottom: 5px;
+    .button {
+        margin: auto 5px;
     }
 `;
-
-// const Link = styled(div)``;
 
 function Header({
     isIcon,
@@ -91,12 +87,7 @@ function Header({
             </HeaderIcon>
 
             <HeaderButtons className="mainHeader">
-                <div>
-                    {isProgress ? (
-                        <div>{progress}</div>
-                    ) : // <Progressbar progressText={rest}></Progressbar>
-                    null}
-                </div>
+                {isProgress ? progress : null}
                 {isSignup ? (
                     <Button
                         buttonText="회원가입"
@@ -112,7 +103,11 @@ function Header({
                     ></Button>
                 ) : null}
                 {isLogout ? (
-                    <Button buttonText="로그아웃" outputColor="purple"></Button>
+                    <Button
+                        buttonText="로그아웃"
+                        outputColor="purple"
+                        onClick={() => navigate("/")}
+                    ></Button>
                 ) : null}
                 {isSetting ? (
                     <ImgButton
