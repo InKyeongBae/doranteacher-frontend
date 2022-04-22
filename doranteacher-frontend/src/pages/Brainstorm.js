@@ -28,6 +28,10 @@ const MainBlock = styled.div`
 		}
 	}
 
+	.questioncontent {
+		width: 900px;
+	}
+
 	.paint {
 		text-align: center;
 		width: 562px;

@@ -12,7 +12,7 @@ function BrainstormQs({ brainstormQs, onChange }) {
 		>
 			<div className="centercontent">
 				<ImgButton prev onClick={() => onChange(brainstormQs.id, brainstormQs.id - 1)} />
-				<div>
+				<div className="questioncontent">
 					{brainstormQs.question}
 					<br />
 					단어로 한 번 적어볼까요?
