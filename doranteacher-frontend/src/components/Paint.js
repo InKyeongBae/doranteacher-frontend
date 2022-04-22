@@ -30,6 +30,7 @@ function Paint() {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
+			console.log(imgData);
 
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
@@ -39,16 +40,16 @@ function Paint() {
 				body: JSON.stringify({
 					filepath: imgData,
 				}),
-			}).then((response) => response.json())
-			.then(result => {
-				const word = result.filepath;
-				setWords([...words, word]);
-			});
+			})
+				.then((response) => response.json())
+				.then((result) => {
+					const word = result.filepath;
+					setWords([...words, word]);
+				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
 	return (
 		<>
 			<div className="canvas">
@@ -72,7 +73,6 @@ function Paint() {
 					</li>
 				))}
 			</ul>
-			
 		</>
 	);
 }

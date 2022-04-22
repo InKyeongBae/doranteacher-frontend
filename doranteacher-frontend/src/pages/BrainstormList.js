@@ -19,9 +19,6 @@ function BrainstormQs({ brainstormQs, onChange }) {
 				</div>
 				<ImgButton next onClick={() => onChange(brainstormQs.id, brainstormQs.id + 1)} style={{visibility : brainstormQs.id === 10 ? 'hidden' : 'show'}}/>
 			</div>
-			<div className="paint">
-				<Paint />
-			</div>
 		</div>
 	);
 }

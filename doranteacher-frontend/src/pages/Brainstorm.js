@@ -171,6 +171,9 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
+				<div className="paint">
+					<Paint />
+				</div>
 			</MainBlock>
 		</>
 	);
