@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
-import axios from 'axios';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -66,13 +65,19 @@ function Paint() {
 			<div className="buttonline">
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
-			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
-				{words.map((word, index) => (
-					<li key={index}>
-						<div className="wordlist">{word}</div>
-					</li>
-				))}
-			</ul>
+
+			<div className="words">
+				<ul style={{ marginTop: 10, listStyleType: 'none' }}>
+					{words.map((word, index) => (
+						<li key={index} style={{ display: 'inline-block' }}>
+							<div className="wordlist">
+								{word}
+								<div className="xbutton">X</div>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
 		</>
 	);
 }
