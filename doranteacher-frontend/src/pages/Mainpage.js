@@ -3,9 +3,23 @@ import styled, { css, createGlobalStyle } from 'styled-components';
 import Header from '../components/Header';
 import ShakingHands from '../components/ShakingHands';
 import GlobalStyle from '../components/GlobalStyle';
+import { useNavigate, Link } from 'react-router-dom';
 
 const MainBlock = styled.div`
 	background: #f9de4b;
+`;
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: black;
+	&:focus,
+	&:hover,
+	&:visited,
+	&:link,
+	&:active {
+		text-decoration: none;
+		color: black;
+	}
 `;
 
 const CenterLogo = styled.div`
@@ -128,14 +142,15 @@ const BottomBlock = styled.div`
 `;
 
 function Mainpage() {
+	const navigate = useNavigate();
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isIcon isLogin isSignup isSetting/>
+			<Header isIcon isLogin isSignup isSetting />
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo">
-						<img className="doranLogo" src="/img/doranlogo.png" />
+						<img className="doranLogo" src="/img/doranlogo.png" onClick={() => navigate('/')} />
 					</div>
 					<div className="centercontent">
 						AI 도란쌤과 함께
@@ -151,6 +166,7 @@ function Mainpage() {
 						<div>
 							<img className="imgblock2" id="blockani1" src="/img/block2.png" />
 						</div>
+
 						<div>
 							<img className="imgblock" src="/img/block3.png" />
 						</div>
@@ -159,7 +175,14 @@ function Mainpage() {
 								<img className="imgblock2" id="blockani2" src="/img/block4-1.png" />
 							</div>
 							<div>
-								<img className="imgblock2" id="blockani3" src="/img/block4-2.png" />
+								<div>
+									<img
+										className="imgblock2"
+										id="blockani3"
+										src="/img/block4-2.png"
+										onClick={() => navigate('/writing/start')}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>

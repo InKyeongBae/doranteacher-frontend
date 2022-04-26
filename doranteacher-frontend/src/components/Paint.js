@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
 
@@ -7,7 +7,7 @@ let _lc = null;
 
 function Paint() {
 	const [images, setImages] = useState([]);
-	let tempsnap;
+	const [words, setWords] = useState([]);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -45,13 +45,26 @@ function Paint() {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
+			console.log(imgData);
+
+			fetch('http://localhost:8080/ocrtext', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify({
+					filepath: imgData,
+				}),
+			})
+				.then((response) => response.json())
+				.then((result) => {
+					const word = result.filepath;
+					setWords([...words, word]);
+				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
-	
-
 	return (
 		<>
 			<div className="canvas">
@@ -65,16 +78,22 @@ function Paint() {
 					imageURLPrefix="/img"
 				/>
 			</div>
-			<div className='buttonline'>
+			<div className="buttonline">
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
-			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
-				{images.map((img, index) => (
-					<li key={index}>
-						<img src={img} />
-					</li>
-				))}
-			</ul>
+
+			<div className="words">
+				<ul style={{ marginTop: 10, listStyleType: 'none' }}>
+					{words.map((word, index) => (
+						<li key={index} style={{ display: 'inline-block' }}>
+							<div className="wordlist">
+								{word}
+								<div className="xbutton">X</div>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
 		</>
 	);
 }

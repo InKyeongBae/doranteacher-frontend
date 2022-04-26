@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdSettings, MdUndo } from 'react-icons/md';
-import { GoChevronRight, GoChevronLeft } from "react-icons/go";
-
+import { GoChevronRight, GoChevronLeft } from 'react-icons/go';
 
 const ColorStyles = css`
 	${({ theme, inputColor, outputColor }) => {
@@ -26,7 +25,6 @@ const ImgButtons = styled.div`
 	}
 
 	button {
-		top: 5px;
 		height: 42.5px;
 		${ColorStyles};
 		outline: 0;
@@ -75,7 +73,7 @@ const ImgButtons = styled.div`
 function ImgButton({ setting, undo, next, prev, ...rest }) {
 	return (
 		<ImgButtons {...rest}>
-			<button className="button" setting={setting} undo={undo}>
+			<button className="button">
 				{setting && <MdSettings />}
 				{undo && <MdUndo />}
 				{next && <GoChevronRight />}

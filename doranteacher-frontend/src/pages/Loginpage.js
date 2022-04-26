@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '../components/Button';
 import { loginUser } from '../_actions/user_action';
-import styled, { css, createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Header from '../components/Header';
 import GlobalStyle from '../components/GlobalStyle';
 
@@ -119,7 +119,7 @@ const Loginpage = (props) => {
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isIcon isSignup/>
+			<Header isIcon isSignup />
 			<MainBlock>
 				<div className="leftSide"></div>
 				<div className="middleSide">
@@ -139,14 +139,29 @@ const Loginpage = (props) => {
 							<div className="loginform">
 								<div className="column">
 									<label className="content">아이디</label>
-									<Input className="input" type="username" value={Username} onChange={onUsernameHandler} />
+									<Input
+										className="input"
+										type="username"
+										value={Username}
+										onChange={onUsernameHandler}
+									/>
 								</div>
 								<div className="column">
 									<label className="content">비밀번호</label>
-									<Input className="input" type="password" value={Password} onChange={onPasswordHandler} />
+									<Input
+										className="input"
+										type="password"
+										value={Password}
+										onChange={onPasswordHandler}
+									/>
 								</div>
 								<br />
-								<Button buttonText="로그인" type="submit" outputColor="red" className="content_button"></Button>
+								<Button
+									buttonText="로그인"
+									type="submit"
+									outputColor="red"
+									className="content_button"
+								></Button>
 							</div>
 						</form>
 					</LoginUI>
