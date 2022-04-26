@@ -21,22 +21,6 @@ function Paint() {
 		reset.innerText = '새로 쓰기';
 	};
 
-	const onLoadSnapshopt = (event) => {
-		console.log("!! tempsnap : ", tempsnap);
-		if (!_lc) return;
-		if (!tempsnap) return;
-		// loadSnapshopt(tempsnap);
-	}
-
-	const onSnapshot = (event) => {
-		if (!_lc) return;
-		const snap = _lc.getSnapshot(['shapes', 'imageSize', 'colors', 'position', 'scale', 'backgroundShapes']);
-		console.log("~~ s", snap);
-		tempsnap = snap;
-		console.log("~~~~~~ t", tempsnap);
-		return snap;
-	}
-
 	const onSave = (event) => {
 		if (!_lc) return;
 		const img = _lc.getImage();

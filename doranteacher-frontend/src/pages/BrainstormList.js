@@ -11,23 +11,31 @@ function BrainstormQs({ brainstormQs, onChange }) {
 			}}
 		>
 			<div className="centercontent">
-				<ImgButton prev onClick={() => onChange(brainstormQs.id, brainstormQs.id - 1)} style={{visibility : brainstormQs.id === 1 ? 'hidden' : 'show'}} />
+				<ImgButton
+					prev
+					onClick={() => onChange(brainstormQs.id, brainstormQs.id - 1)}
+					style={{ visibility: brainstormQs.id === 1 ? 'hidden' : 'show' }}
+				/>
 				<div className="questioncontent">
 					{brainstormQs.question}
 					<br />
 					단어로 한 번 적어볼까요?
 				</div>
-				<ImgButton next onClick={() => onChange(brainstormQs.id, brainstormQs.id + 1)} style={{visibility : brainstormQs.id === 10 ? 'hidden' : 'show'}}/>
+				<ImgButton
+					next
+					onClick={() => onChange(brainstormQs.id, brainstormQs.id + 1)}
+					style={{ visibility: brainstormQs.id === 10 ? 'hidden' : 'show' }}
+				/>
 			</div>
 		</div>
 	);
 }
 
-function BrainstormList({ brainstormQs, onChange  }) {
+function BrainstormList({ brainstormQs, onChange }) {
 	return (
 		<>
 			{brainstormQs.map((brainstormQs) => (
-				<BrainstormQs brainstormQs={brainstormQs} key={brainstormQs.id} onChange={onChange}/>
+				<BrainstormQs brainstormQs={brainstormQs} key={brainstormQs.id} onChange={onChange} />
 			))}
 		</>
 	);
