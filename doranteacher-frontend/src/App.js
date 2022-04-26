@@ -10,6 +10,7 @@ import Paint from './components/Paint';
 import ProgressBar from './components/ProgressBar';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Brainstorm from './pages/Brainstorm';
+import Step1 from './pages/Step1';
 
 const palette = {
 	red: '#E75244',
@@ -42,6 +43,7 @@ function App() {
 					<Route path="/writing" element={<Writing />}>
 						<Route path="start" element={<WritingStart />} />
 						<Route path="first-step" element={<Brainstorm />} />
+						<Route path="step1" element={<Step1 />} />
 						{/* <Route path="*" element={<NotFound />} /> */}
 					</Route>
 					<Route path="*" element={<NotFound />} />
