@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
-import axios from 'axios';
+import TextInput from './TextInput';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -30,6 +30,7 @@ function Paint() {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
+			console.log(imgData);
 
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
@@ -39,24 +40,24 @@ function Paint() {
 				body: JSON.stringify({
 					filepath: imgData,
 				}),
-			}).then((response) => response.json())
-			.then(result => {
-				const word = result.filepath;
-				setWords([...words, word]);
-			});
+			})
+				.then((response) => response.json())
+				.then((result) => {
+					const word = result.filepath;
+					setWords([...words, word]);
+				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
-
 	return (
 		<>
 			<div className="canvas">
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
-					// 글씨판 가로세로 사이즈 설정(픽셀)
-					imageSize={{ width: 500, height: 210 }}
+					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
+					imageSize={{ width: 800, height: 420 }}
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"
@@ -65,14 +66,19 @@ function Paint() {
 			<div className="buttonline">
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
-			<ul style={{ marginTop: 10, listStyleType: 'none' }}>
-				{words.map((word, index) => (
-					<li key={index}>
-						<div className="wordlist">{word}</div>
-					</li>
-				))}
-			</ul>
-			
+
+			<div className="words">
+				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart : "0px" }}>
+					{words.map((word, index) => (
+						<li key={index} style={{ display: 'inline-block' }}>
+							<div className="wordlist">
+								<TextInput initText={word} />
+								<div className="xbutton">X</div>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
 		</>
 	);
 }
