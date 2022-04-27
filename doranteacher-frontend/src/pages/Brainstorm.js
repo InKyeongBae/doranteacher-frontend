@@ -72,6 +72,21 @@ const MainBlock = styled.div`
 		margin: 5px 5px;
 	}
 
+	.onedit {
+		background: #f9de4b;
+		border: 3px solid #000000;
+		box-sizing: border-box;
+		border-radius: 32px;
+		font-family: 'NeoDunggeunmo';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 40px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		color: #000000;
+	}
+
 	.xbutton {
 		z-index: 5;
 		display: inline-block;

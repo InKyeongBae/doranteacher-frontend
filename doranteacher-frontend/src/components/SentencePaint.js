@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
+import TextInput from './TextInput';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -71,7 +72,7 @@ function Paint() {
 					{words.map((word, index) => (
 						<li key={index} style={{ display: 'inline-block' }}>
 							<div className="wordlist">
-								{word}
+								<TextInput initText={word} />
 								<div className="xbutton">X</div>
 							</div>
 						</li>

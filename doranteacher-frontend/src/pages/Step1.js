@@ -65,6 +65,20 @@ const MainBlock = styled.div`
 		color: #000000;
 	}
 
+	.onedit {
+		background: white;
+		box-sizing: border-box;
+		border-radius: 32px;
+		font-family: 'NeoDunggeunmo';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 40px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		color: #000000;
+	}
+
 	.xbutton {
 		z-index: 5;
 		display: inline-block;
