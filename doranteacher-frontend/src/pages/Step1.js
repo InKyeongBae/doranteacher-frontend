@@ -6,7 +6,6 @@ import ProgressBar from '../components/ProgressBar';
 import SentencePaint from '../components/SentencePaint';
 
 const MainBlock = styled.div`
-
 	.literally {
 		width: 862px;
 		min-height: 453px;
@@ -34,7 +33,7 @@ const MainBlock = styled.div`
 
 	.paint {
 		text-align: center;
-		width: 1062px;
+		width: 862px;
 		margin: 0 auto;
 		.canvas {
 			.literally toolbar-at-top {
@@ -100,6 +99,9 @@ function Step1() {
 				}
 			/>
 			<MainBlock>
+				<div className="centercontent">
+					<div className="questioncontent">Q1. 누구에게 어떤 효도를 하였나요?</div>
+				</div>
 				<div className="paint">
 					<SentencePaint />
 				</div>
