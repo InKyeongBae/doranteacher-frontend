@@ -71,13 +71,28 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
-				{isProgress ? progress : null}
-				{isSignup ? <Button buttonText="회원가입" outputColor="red" onClick={() => navigate('/signup')}></Button> : null}
-				{isLogin ? <Button buttonText="로그인" outputColor="purple" onClick={() => navigate('/login')}></Button> : null}
-				{isLogout ? <Button buttonText="로그아웃" outputColor="purple" onClick={() => navigate('/')}></Button> : null}
-				{isSetting ? <ImgButton setting={true} undo={false} outputColor="white" onClick={() => navigate('/setting')}></ImgButton> : null}
+				<div className="progressdiv" style={{ paddingRight : "35px" }}>{isProgress ? progress : null}</div>
+				{isSignup ? (
+					<Button buttonText="회원가입" outputColor="red" onClick={() => navigate('/signup')}></Button>
+				) : null}
+				{isLogin ? (
+					<Button buttonText="로그인" outputColor="purple" onClick={() => navigate('/login')}></Button>
+				) : null}
+				{isLogout ? (
+					<Button buttonText="로그아웃" outputColor="purple" onClick={() => navigate('/')}></Button>
+				) : null}
+				{isSetting ? (
+					<ImgButton
+						setting={true}
+						undo={false}
+						outputColor="white"
+						onClick={() => navigate('/setting')}
+					></ImgButton>
+				) : null}
 
-				{isUndo ? <ImgButton setting={false} undo={true} outputColor="white" onClick={() => navigate(-1)}></ImgButton> : null}
+				{isUndo ? (
+					<ImgButton setting={false} undo={true} outputColor="white" onClick={() => navigate(-1)}></ImgButton>
+				) : null}
 			</HeaderButtons>
 		</HeaderBlock>
 	);

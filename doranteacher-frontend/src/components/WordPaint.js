@@ -67,7 +67,7 @@ function Paint() {
 			</div>
 
 			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none', "-webkit-padding-start" : "0px" }}>
+				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart : "0px" }}>
 					{words.map((word, index) => (
 						<li key={index} style={{ display: 'inline-block' }}>
 							<div className="wordlist">

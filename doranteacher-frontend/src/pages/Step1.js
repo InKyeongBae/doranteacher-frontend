@@ -101,10 +101,10 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<div className="centercontent">
+				<div className="centercontent" style={{ marginLeft : "250px"}}>
 					<div className="questioncontent">Q1. 누구에게 어떤 효도를 하였나요?</div>
 				</div>
-				<div className="paint">
+				<div className="paint" style={{ paddingLeft : "250px"}}>
 					<SentencePaint />
 				</div>
 			</MainBlock>
