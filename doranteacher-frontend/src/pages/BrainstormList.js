@@ -1,6 +1,5 @@
 import React from 'react';
 import ImgButton from '../components/ImgButton';
-import Paint from '../components/Paint';
 
 function BrainstormQs({ brainstormQs, onChange }) {
 	return (

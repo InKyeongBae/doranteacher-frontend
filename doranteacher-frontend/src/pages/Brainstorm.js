@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Paint from '../components/Paint';
+import WordPaint from '../components/WordPaint';
 import GlobalStyle from '../components/GlobalStyle';
-import ImgButton from '../components/ImgButton';
 import ProgressBar from '../components/ProgressBar';
 import BrainstormList from './BrainstormList';
 
 const MainBlock = styled.div`
+
+	.literally {
+		width: 562px;
+		min-height: 243px;
+	}
+
 	.centercontent {
 		font-family: 'NeoDunggeunmo';
 		font-style: normal;
@@ -74,7 +79,7 @@ const MainBlock = styled.div`
 		width: 50px;
 		height: 50px;
 		border-radius: 100%;
-		display : flex;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
@@ -167,7 +172,7 @@ function Brainstorm() {
 			<MainBlock>
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
-					<Paint />
+					<WordPaint />
 				</div>
 			</MainBlock>
 		</>

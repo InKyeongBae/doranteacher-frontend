@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
 
@@ -55,8 +55,8 @@ function Paint() {
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
-					// 글씨판 가로세로 사이즈 설정(픽셀)
-					imageSize={{ width: 500, height: 210 }}
+					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
+					imageSize={{ width: 800, height: 420 }}
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"

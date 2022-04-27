@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Paint from '../components/Paint';
 import GlobalStyle from '../components/GlobalStyle';
 import ProgressBar from '../components/ProgressBar';
-import BrainstormList from './BrainstormList';
+import SentencePaint from '../components/SentencePaint';
 
 const MainBlock = styled.div`
+
+	.literally {
+		width: 862px;
+		min-height: 453px;
+	}
+
 	.centercontent {
 		font-family: 'NeoDunggeunmo';
 		font-style: normal;
@@ -27,13 +32,9 @@ const MainBlock = styled.div`
 		}
 	}
 
-	.questioncontent {
-		width: 900px;
-	}
-
 	.paint {
 		text-align: center;
-		width: 562px;
+		width: 1062px;
 		margin: 0 auto;
 		.canvas {
 			.literally toolbar-at-top {
@@ -73,7 +74,7 @@ const MainBlock = styled.div`
 		width: 50px;
 		height: 50px;
 		border-radius: 100%;
-		display : flex;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
@@ -82,30 +83,29 @@ const MainBlock = styled.div`
 	}
 `;
 
-
 function Step1() {
-  return (
-	<>
-		<GlobalStyle backColor="purple" />
-		<Header
-			isProgress
-			isLogout
-			isImgBtn
-			progress={
-				<ProgressBar
-					progressText={'4.일기쓰기'}
-					progressWidth={'50'}
-					progressColor={'#E75244'}
-				></ProgressBar>
-			}
-		/>
-		<MainBlock>
-			<div className="paint">
-				<Paint />
-			</div>
-		</MainBlock>
-	</>
-);
+	return (
+		<>
+			<GlobalStyle backColor="purple" />
+			<Header
+				isProgress
+				isLogout
+				isImgBtn
+				progress={
+					<ProgressBar
+						progressText={'4.일기쓰기'}
+						progressWidth={'50'}
+						progressColor={'#E75244'}
+					></ProgressBar>
+				}
+			/>
+			<MainBlock>
+				<div className="paint">
+					<SentencePaint />
+				</div>
+			</MainBlock>
+		</>
+	);
 }
 
 export default Step1;
