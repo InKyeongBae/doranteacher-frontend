@@ -5,6 +5,7 @@ import WordPaint from '../components/WordPaint';
 import GlobalStyle from '../components/GlobalStyle';
 import ProgressBar from '../components/ProgressBar';
 import BrainstormList from './BrainstormList';
+import LeftDoran from '../components/LeftDoran';
 
 const MainBlock = styled.div`
 
@@ -170,6 +171,7 @@ function Brainstorm() {
 				}
 			/>
 			<MainBlock>
+				<LeftDoran />
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
 					<WordPaint />

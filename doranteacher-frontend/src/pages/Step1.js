@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import GlobalStyle from '../components/GlobalStyle';
 import ProgressBar from '../components/ProgressBar';
 import SentencePaint from '../components/SentencePaint';
+import LeftDoran from '../components/LeftDoran';
 
 const MainBlock = styled.div`
 	.literally {
@@ -99,6 +100,7 @@ function Step1() {
 				}
 			/>
 			<MainBlock>
+				<LeftDoran />
 				<div className="centercontent">
 					<div className="questioncontent">Q1. 누구에게 어떤 효도를 하였나요?</div>
 				</div>
