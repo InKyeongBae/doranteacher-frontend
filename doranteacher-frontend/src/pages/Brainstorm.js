@@ -69,6 +69,7 @@ const MainBlock = styled.div`
 		display: flex;
 		align-items: center;
 		color: #000000;
+		margin: 5px 5px;
 	}
 
 	.xbutton {
