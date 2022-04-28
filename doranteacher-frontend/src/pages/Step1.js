@@ -74,7 +74,8 @@ const MainBlock = styled.div`
 		font-weight: 400;
 		font-size: 40px;
 		text-align: center;
-		display: flex;
+		display: inline-block;
+		max-width: calc(100% - 32px);
 		align-items: center;
 		color: #000000;
 	}
@@ -112,13 +113,14 @@ function Step1() {
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
+				backColor="purple"
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<div className="centercontent" style={{ marginLeft : "250px"}}>
+				<div className="centercontent" style={{ marginLeft: '250px' }}>
 					<div className="questioncontent">Q1. 누구에게 어떤 효도를 하였나요?</div>
 				</div>
-				<div className="paint" style={{ paddingLeft : "250px"}}>
+				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
 			</MainBlock>

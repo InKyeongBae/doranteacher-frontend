@@ -73,8 +73,7 @@ const MainBlock = styled.div`
 	}
 
 	.onedit {
-		background: #f9de4b;
-		border: 3px solid #000000;
+		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
 		font-family: 'NeoDunggeunmo';
@@ -82,7 +81,8 @@ const MainBlock = styled.div`
 		font-weight: 400;
 		font-size: 40px;
 		text-align: center;
-		display: flex;
+		display: inline-block;
+		max-width: calc(100% - 32px);
 		align-items: center;
 		color: #000000;
 	}
@@ -185,6 +185,7 @@ function Brainstorm() {
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
+				backColor = "red"
 			/>
 			<MainBlock>
 				<LeftDoran />

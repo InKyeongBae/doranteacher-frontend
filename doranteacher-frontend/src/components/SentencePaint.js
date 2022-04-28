@@ -50,6 +50,7 @@ function Paint() {
 			console.log(err);
 		}
 	};
+
 	return (
 		<>
 			<div className="canvas">
