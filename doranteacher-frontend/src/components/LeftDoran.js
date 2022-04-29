@@ -31,6 +31,7 @@ async function speaking(text) {
 			source.buffer = buffer;
 			source.connect(context.destination);
 			source.start(0);
+			return source;
 		});
 	} catch (e) {
 		console.error(e.message);
@@ -40,7 +41,7 @@ async function speaking(text) {
 function LeftDoran({text}) {
 	return (
 		<LeftDoranStyle>
-			<div className="leftDoran" onClick={speaking(text)}/>
+			<div className="leftDoran" onClick={() => speaking(text)}/>
 		</LeftDoranStyle>
 	);
 }
