@@ -31,7 +31,6 @@ function Paint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
-
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
 				headers: {
@@ -49,6 +48,12 @@ function Paint() {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	const onDelete = (index) => {
+		// const deleteWord = words.filter((word) => word.id !== index);
+		// setWords(deleteWord);
+		console.log(words[index]);
 	};
 
 	return (
@@ -74,7 +79,9 @@ function Paint() {
 						<li key={index} style={{ display: 'inline-block' }}>
 							<div className="wordlist">
 								<TextInput initText={word} />
-								<div className="xbutton">X</div>
+								<div className="xbutton" onClick={onDelete(index)}>
+									X
+								</div>
 							</div>
 						</li>
 					))}

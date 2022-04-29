@@ -7,8 +7,8 @@ import ProgressBar from '../components/ProgressBar';
 import BrainstormList from './BrainstormList';
 import LeftDoran from '../components/LeftDoran';
 
-const MainBlock = styled.div`
 
+const MainBlock = styled.div`
 	.literally {
 		width: 562px;
 		min-height: 243px;
@@ -159,7 +159,7 @@ function Brainstorm() {
 		},
 	]);
 
-	const onChange = (originId, nextId) => {
+	function onChange(originId, nextId) {
 		setBrainstormQs(
 			brainstormQs.map((brainstormQs) =>
 				brainstormQs.id === originId
@@ -171,6 +171,8 @@ function Brainstorm() {
 		);
 	};
 
+	const nowText = brainstormQs.filter(brainstormQs => brainstormQs.active);
+	
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -185,10 +187,10 @@ function Brainstorm() {
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
-				backColor = "red"
+				backColor="red"
 			/>
 			<MainBlock>
-				<LeftDoran />
+				<LeftDoran text={nowText}/>
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
 					<WordPaint />
