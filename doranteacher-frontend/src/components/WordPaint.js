@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
 import TextInput from './TextInput';
+import WordList from './WordList';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -9,6 +10,7 @@ let _lc = null;
 function Paint() {
 	const [images, setImages] = useState([]);
 	const [words, setWords] = useState([]);
+	const nextId = useRef(1);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -43,17 +45,20 @@ function Paint() {
 				.then((response) => response.json())
 				.then((result) => {
 					const word = result.filepath;
-					setWords([...words, word]);
+					const newWord = {
+						id: nextId.current,
+						content: word,
+					};
+					setWords(words.concat(newWord));
+					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
-	const onDelete = (index) => {
-		// const deleteWord = words.filter((word) => word.id !== index);
-		// setWords(deleteWord);
-		console.log(words[index]);
+	const onRemove = (id) => {
+		setWords(words.filter((word) => word.id !== id));
 	};
 
 	return (
@@ -73,16 +78,7 @@ function Paint() {
 				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<div className="words">
-				{words.map((word, index) => (
-					<div className="wordlist" style={{ display:"inline-flex" }}>
-						<TextInput initText={word} />
-						<div className="xbutton" onClick={onDelete(index)}>
-							X
-						</div>
-					</div>
-				))}
-			</div>
+			<WordList words={words} onRemove={onRemove} />
 		</>
 	);
 }
