@@ -74,18 +74,14 @@ function Paint() {
 			</div>
 
 			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart: '0px' }}>
-					{words.map((word, index) => (
-						<li key={index} style={{ display: 'inline-block' }}>
-							<div className="wordlist">
-								<TextInput initText={word} />
-								<div className="xbutton" onClick={onDelete(index)}>
-									X
-								</div>
-							</div>
-						</li>
-					))}
-				</ul>
+				{words.map((word, index) => (
+					<div className="wordlist" style={{ display:"inline-flex" }}>
+						<TextInput initText={word} />
+						<div className="xbutton" onClick={onDelete(index)}>
+							X
+						</div>
+					</div>
+				))}
 			</div>
 		</>
 	);
