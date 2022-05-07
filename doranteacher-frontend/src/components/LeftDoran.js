@@ -15,7 +15,6 @@ const LeftDoranStyle = styled.div`
 	}
 `;
 
-const context = new AudioContext();
 const question = [
 	'오늘 일기로 쓰고 싶은 일이 있었나요?',
 	'오늘 아침을 생각하면 무엇이 가장 떠오르나요?',
@@ -49,17 +48,32 @@ async function speaking(text) {
 	}
 }
 
+const context = [];
+var step;
+for(step = 0; step < 3; step++) {
+	context.push(new AudioContext());
+}
+
 function test(text) {
 	const nowId = text[0].id - 1;
 	const data = audio[nowId];
-	console.log(audio);
-	context.decodeAudioData(data, (buffer) => {
-		const source = context.createBufferSource();
+	
+	var step;
+	for(step = 0; step < 3; step++) {
+		if (context[step].state === 'running') context[step].close();
+	}
+
+	context[nowId].decodeAudioData(data, (buffer) => {
+		const source = context[nowId].createBufferSource();
 		source.buffer = buffer;
-		source.connect(context.destination);
+		source.connect(context[nowId].destination);
 		source.start(0);
 	});
-
+	console.log(nowId);
+	// console.log(context);
+	// console.log(context[nowId]);
+	// console.log(context[nowId].state);
+	// console.log(context[nowId - 1].state)
 }
 
 function LeftDoran({ text }) {
