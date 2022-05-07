@@ -45,9 +45,22 @@ function WritingStart() {
 				isProgress
 				isLogout
 				isImgBtn
-				progress={<ProgressBar progressText={'1. 일기쓰기'} progressWidth={'12.5'} progressColor={'#E75244'}></ProgressBar>}
+				progress={
+					<ProgressBar
+						progressText={'1. 일기쓰기'}
+						progressWidth={'12.5'}
+						progressColor={'#E75244'}
+						backColor="red"
+					></ProgressBar>
+				}
 			/>
-			<Button buttonText="다음" type="submit" outputColor="red" className="button" onClick={() => navigate('/writing/first-step')}></Button>
+			<Button
+				buttonText="다음"
+				type="submit"
+				outputColor="red"
+				className="button"
+				onClick={() => navigate('/writing/first-step')}
+			></Button>
 			{/* <MainBlock> */}
 			{/* <div className="today">오늘은,</div>
                 <div className="dateContent">

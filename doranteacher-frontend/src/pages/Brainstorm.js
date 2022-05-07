@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Paint from '../components/Paint';
+import WordPaint from '../components/WordPaint';
 import GlobalStyle from '../components/GlobalStyle';
-import ImgButton from '../components/ImgButton';
 import ProgressBar from '../components/ProgressBar';
 import BrainstormList from './BrainstormList';
+import LeftDoran from '../components/LeftDoran';
+
 
 const MainBlock = styled.div`
+	.literally {
+		width: 562px;
+		min-height: 243px;
+	}
+
 	.centercontent {
 		font-family: 'NeoDunggeunmo';
 		font-style: normal;
@@ -63,6 +69,22 @@ const MainBlock = styled.div`
 		display: flex;
 		align-items: center;
 		color: #000000;
+		margin: 5px 5px;
+	}
+
+	.onedit {
+		background: white;
+		box-sizing: border-box;
+		border-radius: 32px;
+		font-family: 'NeoDunggeunmo';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 40px;
+		text-align: center;
+		display: inline-block;
+		max-width: calc(100% - 32px);
+		align-items: center;
+		color: #000000;
 	}
 
 	.xbutton {
@@ -74,7 +96,7 @@ const MainBlock = styled.div`
 		width: 50px;
 		height: 50px;
 		border-radius: 100%;
-		display : flex;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
@@ -137,7 +159,7 @@ function Brainstorm() {
 		},
 	]);
 
-	const onChange = (originId, nextId) => {
+	function onChange(originId, nextId) {
 		setBrainstormQs(
 			brainstormQs.map((brainstormQs) =>
 				brainstormQs.id === originId
@@ -149,6 +171,8 @@ function Brainstorm() {
 		);
 	};
 
+	const nowText = brainstormQs.filter(brainstormQs => brainstormQs.active);
+	
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -163,11 +187,13 @@ function Brainstorm() {
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
+				backColor="red"
 			/>
 			<MainBlock>
+				<LeftDoran text={nowText} />
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
-					<Paint />
+					<WordPaint />
 				</div>
 			</MainBlock>
 		</>

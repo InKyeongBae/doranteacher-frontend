@@ -119,7 +119,7 @@ const Loginpage = (props) => {
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isIcon isSignup />
+			<Header isIcon isSignup backColor="yellow" />
 			<MainBlock>
 				<div className="leftSide"></div>
 				<div className="middleSide">

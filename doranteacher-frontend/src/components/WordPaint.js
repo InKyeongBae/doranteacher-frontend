@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import './literallycanvas.css';
+import TextInput from './TextInput';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -30,7 +31,6 @@ function Paint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
-
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
 				headers: {
@@ -49,6 +49,13 @@ function Paint() {
 			console.log(err);
 		}
 	};
+
+	const onDelete = (index) => {
+		// const deleteWord = words.filter((word) => word.id !== index);
+		// setWords(deleteWord);
+		console.log(words[index]);
+	};
+
 	return (
 		<>
 			<div className="canvas">
@@ -67,12 +74,14 @@ function Paint() {
 			</div>
 
 			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none' }}>
+				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart: '0px' }}>
 					{words.map((word, index) => (
 						<li key={index} style={{ display: 'inline-block' }}>
 							<div className="wordlist">
-								{word}
-								<div className="xbutton">X</div>
+								<TextInput initText={word} />
+								<div className="xbutton" onClick={onDelete(index)}>
+									X
+								</div>
 							</div>
 						</li>
 					))}
