@@ -12,7 +12,6 @@ function Paint() {
 
 	const onInit = (lc) => {
 		_lc = lc;
-		console.log(lc);
 		// 라벨 텍스트 stroke -> 색상
 		const colorpicker = document.getElementsByClassName('color-well')[0];
 		const change = colorpicker.querySelector('label');
@@ -21,7 +20,6 @@ function Paint() {
 		const reset = document.getElementsByClassName('lc-clear toolbar-button fat-button disabled')[0];
 		reset.innerText = '새로 쓰기';
 	};
-
 	const onSave = (event) => {
 		if (!_lc) return;
 		const img = _lc.getImage();
@@ -50,6 +48,9 @@ function Paint() {
 			console.log(err);
 		}
 	};
+	const img = new Image();
+	img.src = '/img/watermark.png';
+
 	return (
 		<>
 			<div className="canvas">
@@ -61,6 +62,8 @@ function Paint() {
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"
+					watermarkImage={img}
+					watermarkScale="0.53"
 				/>
 			</div>
 			<div className="buttonline">
@@ -68,7 +71,7 @@ function Paint() {
 			</div>
 
 			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart : "0px" }}>
+				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart: '0px' }}>
 					{words.map((word, index) => (
 						<li key={index} style={{ display: 'inline-block' }}>
 							<div className="wordlist">

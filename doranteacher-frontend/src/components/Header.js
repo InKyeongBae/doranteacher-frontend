@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from './Button';
 import ImgButton from './ImgButton';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,12 @@ const HeaderBlock = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	${({ theme, backColor }) => {
+		const colorstyle = theme.palette[backColor];
+		return css`
+			background: ${colorstyle};
+		`;
+	}}
 	.link {
 		text-decoration: none;
 		color: black;
@@ -51,10 +57,10 @@ const HeaderButtons = styled.div`
 	}
 `;
 
-function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, isUndo, progress }) {
+function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, isUndo, progress, backColor }) {
 	const navigate = useNavigate();
 	return (
-		<HeaderBlock>
+		<HeaderBlock backColor={backColor}>
 			<HeaderIcon className="mainIcon">
 				<>
 					<div className="link" onClick={() => navigate('/')}>
@@ -71,7 +77,9 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 			</HeaderIcon>
 
 			<HeaderButtons className="mainHeader">
-				<div className="progressdiv" style={{ paddingRight : "35px" }}>{isProgress ? progress : null}</div>
+				<div className="progressdiv" style={{ paddingRight: '35px' }}>
+					{isProgress ? progress : null}
+				</div>
 				{isSignup ? (
 					<Button buttonText="회원가입" outputColor="red" onClick={() => navigate('/signup')}></Button>
 				) : null}

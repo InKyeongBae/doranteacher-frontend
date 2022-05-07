@@ -25,11 +25,19 @@ function TextInput({ initText }) {
 	useEffect(() => {
 		window.addEventListener('click', handleClickOutside, true);
 	});
+
 	return (
 		<>
 			<div className="editbox" ref={ref}>
 				{editable ? (
-					<input className="onedit" type="text" value={text} onChange={(e) => handleChange(e)} onKeyDown={handleKeyDown} />
+					<input
+						className="onedit"
+						id="resizable"
+						type="text"
+						value={text}
+						onChange={(e) => handleChange(e)}
+						onKeyDown={handleKeyDown}
+					/>
 				) : (
 					<div onClick={() => editOn()}>{text}</div>
 				)}
@@ -39,3 +47,4 @@ function TextInput({ initText }) {
 }
 
 export default TextInput;
+
