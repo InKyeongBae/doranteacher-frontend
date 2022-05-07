@@ -26,6 +26,11 @@ function BrainstormQs({ brainstormQs, onChange }) {
 					style={{ visibility: brainstormQs.id === 10 ? 'hidden' : 'show' }}
 				/>
 			</div>
+			<div className="explain-text" style={{ textAlign : "center"}}>
+				<div className="description" style={{display : "inline-block"}}>단어는 총 5개 이상 10개 이하가 필요해요</div>
+				<div className="word-count" style={{display : "inline-block"}}>   현재 @개</div>
+			</div>
+			<br />
 		</div>
 	);
 }

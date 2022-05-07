@@ -6,7 +6,8 @@ import GlobalStyle from '../components/GlobalStyle';
 import ProgressBar from '../components/ProgressBar';
 import BrainstormList from './BrainstormList';
 import LeftDoran from '../components/LeftDoran';
-
+import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const MainBlock = styled.div`
 	.literally {
@@ -51,7 +52,6 @@ const MainBlock = styled.div`
 
 	.buttonline {
 		text-align: center;
-		width: 195px;
 		margin: 20px auto;
 	}
 
@@ -103,6 +103,31 @@ const MainBlock = styled.div`
 		color: white;
 		margin-left: 5px;
 	}
+
+	.description,
+	.word-count {
+		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-style: normal;
+		font-weight: 350;
+		font-size: 25px;
+		color: white;
+		line-height: 35px;
+	}
+
+	.word-count {
+		margin-left: 10px;
+		background-color: white;
+		padding: 2px 13px;
+		box-sizing: border-box;
+		border-radius: 30px;
+		color : #e75244;
+	}
+`;
+
+const NextButtonStyle = styled.div`
+	position: fixed;
+	bottom: 0;
+	padding: 0px 0px 50px 970px;
 `;
 
 function Brainstorm() {
@@ -169,10 +194,12 @@ function Brainstorm() {
 					: brainstormQs,
 			),
 		);
-	};
+	}
 
-	const nowText = brainstormQs.filter(brainstormQs => brainstormQs.active);
-	
+	const nowText = brainstormQs.filter((brainstormQs) => brainstormQs.active);
+
+	const navigate = useNavigate('');
+
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -196,6 +223,15 @@ function Brainstorm() {
 					<WordPaint />
 				</div>
 			</MainBlock>
+			<NextButtonStyle>
+				<Button
+					buttonText="다음"
+					type="submit"
+					outputColor="red"
+					className="button"
+					onClick={() => navigate('/writing/start')}
+				></Button>
+			</NextButtonStyle>
 		</>
 	);
 }

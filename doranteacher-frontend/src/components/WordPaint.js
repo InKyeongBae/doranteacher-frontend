@@ -75,7 +75,7 @@ function Paint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
+				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
 			<WordList words={words} onRemove={onRemove} />
