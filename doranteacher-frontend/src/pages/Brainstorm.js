@@ -190,7 +190,7 @@ function Brainstorm() {
 				backColor="red"
 			/>
 			<MainBlock>
-				<LeftDoran text={nowText} brainList = {brainstormQs}/>
+				<LeftDoran text={nowText} />
 				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
 					<WordPaint />

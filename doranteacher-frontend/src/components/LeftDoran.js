@@ -38,19 +38,20 @@ async function speaking(text) {
 		const { data } = await axios.post('https://kakaoi-newtone-openapi.kakao.com/v1/synthesize', xmlData, {
 			headers: {
 				'Content-Type': 'application/xml',
-				Authorization: `KakaoAK 385ba3ec71547eb9ff85151e5d2834fc`,
+				Authorization: `KakaoAK 50c30d38065fda8152de2d9db041939a`,
 			},
 			responseType: 'arraybuffer',
 		});
-		console.log(context);
+		console.log("!!!");
 		return data;
 	} catch (e) {
 		console.error(e.message);
 	}
 }
 
-function test() {
-	const data = audio[0];
+function test(text) {
+	const nowId = text[0].id - 1;
+	const data = audio[nowId];
 	console.log(audio);
 	context.decodeAudioData(data, (buffer) => {
 		const source = context.createBufferSource();
@@ -61,10 +62,10 @@ function test() {
 
 }
 
-function LeftDoran({ text, brainList }) {
+function LeftDoran({ text }) {
 	return (
 		<LeftDoranStyle>
-			<div className="leftDoran" onClick={() => test()} />
+			<div className="leftDoran" onClick={() => test(text)} />
 		</LeftDoranStyle>
 	);
 }
