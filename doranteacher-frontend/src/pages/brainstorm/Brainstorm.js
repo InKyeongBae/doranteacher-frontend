@@ -9,6 +9,9 @@ import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import WordPaint from './WordPaint';
 import { WordProvider } from './WordContext';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainBlock = styled.div`
 	.literally {
@@ -54,7 +57,7 @@ const MainBlock = styled.div`
 	.buttonline {
 		text-align: center;
 		margin: 20px auto;
-		width : 212px;
+		width: 212px;
 	}
 
 	.wordlist {
@@ -113,7 +116,6 @@ const MainBlock = styled.div`
 		color: white;
 		line-height: 35px;
 	}
-
 `;
 
 const NextButtonStyle = styled.div`
@@ -191,6 +193,31 @@ function Brainstorm() {
 	const nowText = brainstormQs.filter((brainstormQs) => brainstormQs.active);
 
 	const navigate = useNavigate('');
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom : 80px;
+			right : 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			//font-family: '상상토끼 꽃집막내딸 OTF';
+			//font-family: 'ImcreSoojin OTF';
+			font-family: 'NeoDunggeunmo';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
+	const notify = () => {
+		toast.error('단어가 부족합니다!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 2000,
+		});
+	};
 
 	return (
 		<WordProvider>
@@ -216,14 +243,11 @@ function Brainstorm() {
 				</div>
 			</MainBlock>
 			<NextButtonStyle>
-				<Button
-					buttonText="다음"
-					type="submit"
-					outputColor="red"
-					className="button"
-					onClick={() => navigate('/writing/start')}
-				></Button>
+				<Button buttonText="다음" type="submit" outputColor="red" className="button" onClick={notify}></Button>
 			</NextButtonStyle>
+			<StyledContainer>
+				<ToastContainer />
+			</StyledContainer>
 		</WordProvider>
 	);
 }
