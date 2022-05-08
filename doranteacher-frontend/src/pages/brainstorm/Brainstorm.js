@@ -119,9 +119,8 @@ const MainBlock = styled.div`
 `;
 
 const NextButtonStyle = styled.div`
-	position: fixed;
-	bottom: 0;
-	padding: 0px 0px 50px 970px;
+	text-align: center;
+	padding: 20px 0;
 `;
 
 function Brainstorm() {
@@ -253,16 +252,24 @@ function Brainstorm() {
 				<div className="paint">
 					<WordPaint />
 				</div>
+				<div className="nextBtn" style={lenWords === 0 ? {display : "none"} : {display : "block"}}>
+					<NextButtonStyle>
+						<Button
+							buttonText="다음"
+							type="submit"
+							outputColor="red"
+							className="button"
+							onClick={
+								lenWords < 5
+									? lessNotify
+									: lenWords > 10
+									? moreNotify
+									: () => navigate('/writing/step1')
+							}
+						></Button>
+					</NextButtonStyle>
+				</div>
 			</MainBlock>
-			<NextButtonStyle>
-				<Button
-					buttonText="다음"
-					type="submit"
-					outputColor="red"
-					className="button"
-					onClick={lenWords < 5 ? lessNotify : lenWords > 10 ? moreNotify : () => navigate('/writing/step1')}
-				></Button>
-			</NextButtonStyle>
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
