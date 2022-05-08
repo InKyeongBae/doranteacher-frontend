@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import GlobalStyle from '../components/GlobalStyle';
-import ProgressBar from '../components/ProgressBar';
-import SentencePaint from '../components/SentencePaint';
-import LeftDoran from '../components/LeftDoran';
+import Header from '../../components/Header';
+import GlobalStyle from '../../components/GlobalStyle';
+import ProgressBar from '../../components/ProgressBar';
+import SentencePaint from '../../components/SentencePaint';
+import LeftDoran from '../../components/LeftDoran';
 
 const MainBlock = styled.div`
 	.literally {
