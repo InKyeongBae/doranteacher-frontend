@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
-import Button from './Button';
-import './literallycanvas.css';
-import TextInput from './TextInput';
+import React, { useRef, useState, useMemo } from 'react';
+import Button from '../../components/Button';
+import '../../components/literallycanvas.css';
 import WordList from './WordList';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
-function Paint() {
+function WordPaint() {
 	const [images, setImages] = useState([]);
 	const [words, setWords] = useState([]);
 	const nextId = useRef(1);
@@ -61,6 +60,14 @@ function Paint() {
 		setWords(words.filter((word) => word.id !== id));
 	};
 
+	function countWords(words) {
+		console.log('단어 수 세는 중');
+		console.log(words.length);
+		return words.length;
+	}
+
+	const lenWords = useMemo(() => countWords(words), [words]);
+
 	return (
 		<>
 			<div className="canvas">
@@ -83,4 +90,4 @@ function Paint() {
 	);
 }
 
-export default Paint;
+export default WordPaint;

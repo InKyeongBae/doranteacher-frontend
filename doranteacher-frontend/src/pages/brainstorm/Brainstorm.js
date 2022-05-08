@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import WordPaint from '../components/WordPaint';
-import GlobalStyle from '../components/GlobalStyle';
-import ProgressBar from '../components/ProgressBar';
+import Header from '../../components/Header';
+import GlobalStyle from '../../components/GlobalStyle';
+import ProgressBar from '../../components/ProgressBar';
 import BrainstormList from './BrainstormList';
-import LeftDoran from '../components/LeftDoran';
-import Button from '../components/Button';
+import LeftDoran from '../../components/LeftDoran';
+import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
+import WordPaint from './WordPaint';
 
 const MainBlock = styled.div`
 	.literally {
@@ -108,7 +108,7 @@ const MainBlock = styled.div`
 	.word-count {
 		font-family: '상상토끼 꽃집막내딸 OTF';
 		font-style: normal;
-		font-weight: 350;
+		/* font-weight: 350; */
 		font-size: 25px;
 		color: white;
 		line-height: 35px;
@@ -116,11 +116,13 @@ const MainBlock = styled.div`
 
 	.word-count {
 		margin-left: 10px;
+		font-size: 28px;
 		background-color: white;
-		padding: 2px 13px;
+		padding: 3px 13px;
+		font-weight: 500;
 		box-sizing: border-box;
 		border-radius: 30px;
-		color : #e75244;
+		color: #e75244;
 	}
 `;
 
@@ -200,6 +202,8 @@ function Brainstorm() {
 
 	const navigate = useNavigate('');
 
+	
+
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -218,7 +222,7 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<LeftDoran text={nowText} />
-				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
+				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} lenWords={WordPaint.lenWords}/>
 				<div className="paint">
 					<WordPaint />
 				</div>
