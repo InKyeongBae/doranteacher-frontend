@@ -6,7 +6,7 @@ import TextInput from './TextInput';
 const LC = require('literallycanvas');
 let _lc = null;
 
-function Paint() {
+function SentencePaint() {
 	const [images, setImages] = useState([]);
 	const [words, setWords] = useState([]);
 
@@ -86,4 +86,4 @@ function Paint() {
 	);
 }
 
-export default Paint;
+export default SentencePaint;

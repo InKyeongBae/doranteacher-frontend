@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import WordPaint from '../components/WordPaint';
-import GlobalStyle from '../components/GlobalStyle';
-import ProgressBar from '../components/ProgressBar';
+import Header from '../../components/Header';
+import GlobalStyle from '../../components/GlobalStyle';
+import ProgressBar from '../../components/ProgressBar';
 import BrainstormList from './BrainstormList';
-import LeftDoran from '../components/LeftDoran';
+import LeftDoran from '../../components/LeftDoran';
+import Button from '../../components/Button';
+import { useNavigate } from 'react-router-dom';
+import WordPaint from './WordPaint';
+import { WordProvider } from './WordContext';
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainBlock = styled.div`
 	.literally {
@@ -51,8 +56,8 @@ const MainBlock = styled.div`
 
 	.buttonline {
 		text-align: center;
-		width: 195px;
 		margin: 20px auto;
+		width: 212px;
 	}
 
 	.wordlist {
@@ -103,6 +108,19 @@ const MainBlock = styled.div`
 		color: white;
 		margin-left: 5px;
 	}
+
+	.description {
+		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-style: normal;
+		font-size: 25px;
+		color: white;
+		line-height: 35px;
+	}
+`;
+
+const NextButtonStyle = styled.div`
+	text-align: center;
+	padding: 20px 0;
 `;
 
 function Brainstorm() {
@@ -169,12 +187,51 @@ function Brainstorm() {
 					: brainstormQs,
 			),
 		);
+	}
+
+	const nowText = brainstormQs.filter((brainstormQs) => brainstormQs.active);
+
+	const [lenWords, setLenWords] = useState(0);
+	const countWords = (x) => {
+		console.log(x);
+		setLenWords(x);
 	};
 
-	const nowText = brainstormQs.filter(brainstormQs => brainstormQs.active);
-	
+	const navigate = useNavigate('');
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom: 80px;
+			right: 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			font-family: 'NeoDunggeunmo';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
+
+	const lessNotify = () => {
+		toast.error('단어가 부족해요!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
+		});
+	};
+
+	const moreNotify = () => {
+		toast.error('단어가 너무 많아요!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
+		});
+	};
+
 	return (
-		<>
+		<WordProvider>
 			<GlobalStyle backColor="red" />
 			<Header
 				isProgress
@@ -191,12 +248,32 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<LeftDoran text={nowText} />
-				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
+				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} countWords={countWords} />
 				<div className="paint">
 					<WordPaint />
 				</div>
+				<div className="nextBtn" style={lenWords === 0 ? {display : "none"} : {display : "block"}}>
+					<NextButtonStyle>
+						<Button
+							buttonText="다음"
+							type="submit"
+							outputColor="red"
+							className="button"
+							onClick={
+								lenWords < 5
+									? lessNotify
+									: lenWords > 10
+									? moreNotify
+									: () => navigate('/writing/step1')
+							}
+						></Button>
+					</NextButtonStyle>
+				</div>
 			</MainBlock>
-		</>
+			<StyledContainer>
+				<ToastContainer />
+			</StyledContainer>
+		</WordProvider>
 	);
 }
 

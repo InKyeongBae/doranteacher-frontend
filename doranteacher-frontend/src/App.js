@@ -7,8 +7,8 @@ import NotFound from './pages/NotFound';
 import Setting from './pages/Setting';
 import WritingStart from './pages/WritingStart';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import Brainstorm from './pages/Brainstorm';
 import Step1 from './pages/Step1';
+import Brainstorm from './pages/brainstorm/Brainstorm';
 
 const palette = {
 	red: '#E75244',

@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import Button from './Button';
-import './literallycanvas.css';
-import TextInput from './TextInput';
+import Button from '../../components/Button';
+import '../../components/literallycanvas.css';
+import { useWordDispatch, useWordNextId } from './WordContext';
+import WordList from './WordList';
+import { ToastContainer, toast } from 'react-toastify';
+import styled from 'styled-components';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
-function Paint() {
+function WordPaint() {
 	const [images, setImages] = useState([]);
-	const [words, setWords] = useState([]);
+
+	const dispatch = useWordDispatch();
+	const nextId = useWordNextId();
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -22,6 +29,13 @@ function Paint() {
 		reset.innerText = '새로 쓰기';
 	};
 
+	const pending = () => {
+		toast.loading(`단어를 추가하는 중`, {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: false,
+		});
+	};
+
 	const onSave = (event) => {
 		if (!_lc) return;
 		const img = _lc.getImage();
@@ -31,6 +45,8 @@ function Paint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
+			pending();
+
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
 				headers: {
@@ -42,19 +58,42 @@ function Paint() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
-					const word = result.filepath;
-					setWords([...words, word]);
+					const newWord = result.filepath;
+					dispatch({
+						type: 'CREATE',
+						word: {
+							id: nextId.current,
+							content: newWord,
+						},
+					});
+					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
-	const onDelete = (index) => {
-		// const deleteWord = words.filter((word) => word.id !== index);
-		// setWords(deleteWord);
-		console.log(words[index]);
-	};
+	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
+
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom: 80px;
+			right: 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			//font-family: '상상토끼 꽃집막내딸 OTF';
+			//font-family: 'ImcreSoojin OTF';
+			font-family: 'NeoDunggeunmo';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
 
 	return (
 		<>
@@ -70,25 +109,15 @@ function Paint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
+				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart: '0px' }}>
-					{words.map((word, index) => (
-						<li key={index} style={{ display: 'inline-block' }}>
-							<div className="wordlist">
-								<TextInput initText={word} />
-								<div className="xbutton" onClick={onDelete(index)}>
-									X
-								</div>
-							</div>
-						</li>
-					))}
-				</ul>
-			</div>
+			<WordList onRemove={onRemove} />
+			<StyledContainer>
+				<ToastContainer />
+			</StyledContainer>
 		</>
 	);
 }
 
-export default Paint;
+export default WordPaint;
