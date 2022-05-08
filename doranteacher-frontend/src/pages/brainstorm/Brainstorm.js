@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import GlobalStyle from '../../components/GlobalStyle';
@@ -221,7 +221,7 @@ function Brainstorm() {
 	const notify = () => {
 		toast.error('단어가 부족합니다!', {
 			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 2000,
+			autoClose: 3000,
 		});
 	};
 

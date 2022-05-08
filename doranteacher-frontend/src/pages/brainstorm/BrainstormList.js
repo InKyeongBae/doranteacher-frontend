@@ -20,12 +20,10 @@ const WordCountStyle = styled.div`
 `;
 
 function BrainstormList({ brainstormQs, onChange, countWords }) {
-	function BrainstormQs({ brainstormQs, onChange }) {
-		const words = useWordState();
-		const lenWords = words.length;
+	const words = useWordState();
+	const lenWords = words.length;
 
-		//countWords(lenWords);
-		useMemo(() => countWords(lenWords), [lenWords]);
+	function BrainstormQs({ brainstormQs, onChange }) {
 
 		return (
 			<div
@@ -56,7 +54,10 @@ function BrainstormList({ brainstormQs, onChange, countWords }) {
 						단어는 총 5개 이상 10개 이하가 필요해요
 					</div>
 					<WordCountStyle style={{ display: 'inline-block' }}>
-						<div className="word-count" style={lenWords >= 5 && lenWords <= 10 ? {color : "green" } :  {color : "#e75244" }}>
+						<div
+							className="word-count"
+							style={lenWords >= 5 && lenWords <= 10 ? { color: 'green' } : { color: '#e75244' }}
+						>
 							현재 {lenWords}개
 						</div>
 					</WordCountStyle>
@@ -65,6 +66,8 @@ function BrainstormList({ brainstormQs, onChange, countWords }) {
 			</div>
 		);
 	}
+
+	useMemo(() => countWords(lenWords), [lenWords]);
 
 	return (
 		<>
