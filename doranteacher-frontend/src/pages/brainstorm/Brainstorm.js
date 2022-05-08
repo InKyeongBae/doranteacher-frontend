@@ -237,7 +237,7 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<LeftDoran text={nowText} />
-				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} lenWords={WordPaint.lenWords} />
+				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
 				<div className="paint">
 					<WordPaint />
 				</div>
