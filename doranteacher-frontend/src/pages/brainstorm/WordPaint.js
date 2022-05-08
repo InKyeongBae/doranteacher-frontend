@@ -1,6 +1,7 @@
 import React, { useRef, useState, useMemo } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
+import { useWordDispatch, useWordNextId } from './WordContext';
 import WordList from './WordList';
 
 const LC = require('literallycanvas');
@@ -8,8 +9,9 @@ let _lc = null;
 
 function WordPaint() {
 	const [images, setImages] = useState([]);
-	const [words, setWords] = useState([]);
-	const nextId = useRef(1);
+
+	const dispatch = useWordDispatch();
+	const nextId = useWordNextId();
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -43,12 +45,14 @@ function WordPaint() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
-					const word = result.filepath;
-					const newWord = {
-						id: nextId.current,
-						content: word,
-					};
-					setWords(words.concat(newWord));
+					const newWord = result.filepath;
+					dispatch({
+						type: 'CREATE',
+						word: {
+							id: nextId.current,
+							content: newWord,
+						},
+					});
 					nextId.current += 1;
 				});
 		} catch (err) {
@@ -56,17 +60,7 @@ function WordPaint() {
 		}
 	};
 
-	const onRemove = (id) => {
-		setWords(words.filter((word) => word.id !== id));
-	};
-
-	function countWords(words) {
-		console.log('단어 수 세는 중');
-		console.log(words.length);
-		return words.length;
-	}
-
-	const lenWords = useMemo(() => countWords(words), [words]);
+	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
 	return (
 		<>
@@ -85,7 +79,7 @@ function WordPaint() {
 				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<WordList words={words} onRemove={onRemove} />
+			<WordList onRemove={onRemove} />
 		</>
 	);
 }

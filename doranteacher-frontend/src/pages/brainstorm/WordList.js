@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from '../../components/TextInput';
+import { useWordState } from './WordContext';
 
 function Word({ word, onRemove }) {
 	return (
@@ -12,7 +13,8 @@ function Word({ word, onRemove }) {
 	);
 }
 
-function WordList({ words, onRemove }) {
+function WordList({ onRemove }) {
+	const words = useWordState();
 	return (
 		<div className="words">
 			{words.map((word) => (

@@ -1,8 +1,13 @@
 import React from 'react';
 import ImgButton from '../../components/ImgButton';
+import { useWordState } from './WordContext';
 
-function BrainstormList({ brainstormQs, onChange, lenWords }) {
+function BrainstormList({ brainstormQs, onChange }) {
 	function BrainstormQs({ brainstormQs, onChange }) {
+
+		const words = useWordState();
+		const lenWords = words.length;
+
 		return (
 			<div
 				className="question"

@@ -8,6 +8,7 @@ import LeftDoran from '../../components/LeftDoran';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import WordPaint from './WordPaint';
+import { WordProvider } from './WordContext';
 
 const MainBlock = styled.div`
 	.literally {
@@ -202,10 +203,8 @@ function Brainstorm() {
 
 	const navigate = useNavigate('');
 
-	
-
 	return (
-		<>
+		<WordProvider>
 			<GlobalStyle backColor="red" />
 			<Header
 				isProgress
@@ -222,7 +221,7 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<LeftDoran text={nowText} />
-				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} lenWords={WordPaint.lenWords}/>
+				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} lenWords={WordPaint.lenWords} />
 				<div className="paint">
 					<WordPaint />
 				</div>
@@ -236,7 +235,7 @@ function Brainstorm() {
 					onClick={() => navigate('/writing/start')}
 				></Button>
 			</NextButtonStyle>
-		</>
+		</WordProvider>
 	);
 }
 
