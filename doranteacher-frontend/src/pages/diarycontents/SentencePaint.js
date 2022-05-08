@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import Button from './Button';
-import './literallycanvas.css';
-import TextInput from './TextInput';
+import Button from '../../components/Button';
+import '../../components/literallycanvas.css';
+import SentenceList from './SentenceList';
+import { ToastContainer, toast } from 'react-toastify';
+import styled from 'styled-components';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { SentenceProvider, useSentenceDispatch, useSentenceNextId } from './SentenceContext';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
 function SentencePaint() {
 	const [images, setImages] = useState([]);
-	const [words, setWords] = useState([]);
+
+	const dispatch = useSentenceDispatch();
+	const nextId = useSentenceNextId();
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -20,6 +27,14 @@ function SentencePaint() {
 		const reset = document.getElementsByClassName('lc-clear toolbar-button fat-button disabled')[0];
 		reset.innerText = '새로 쓰기';
 	};
+
+	const pending = () => {
+		toast.loading(`단어를 추가하는 중`, {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: false,
+		});
+	};
+
 	const onSave = (event) => {
 		if (!_lc) return;
 		const img = _lc.getImage();
@@ -29,6 +44,7 @@ function SentencePaint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
+			pending();
 
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
@@ -41,8 +57,15 @@ function SentencePaint() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
-					const word = result.filepath;
-					setWords([...words, word]);
+					const newSentence = result.filepath;
+					dispatch({
+						type: 'CREATE',
+						sentence: {
+							id: nextId.current,
+							content: newSentence,
+						},
+					});
+					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);
@@ -50,6 +73,28 @@ function SentencePaint() {
 	};
 	const img = new Image();
 	img.src = '/img/watermark.png';
+
+	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
+
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom: 80px;
+			right: 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			//font-family: '상상토끼 꽃집막내딸 OTF';
+			//font-family: 'ImcreSoojin OTF';
+			font-family: 'NeoDunggeunmo';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
 
 	return (
 		<>
@@ -67,21 +112,13 @@ function SentencePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="주머니에 담기" outputColor="red" onClick={onSave} />
+				<Button buttonText="문장 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<div className="words">
-				<ul style={{ marginTop: 10, listStyleType: 'none', WebkitPaddingStart: '0px' }}>
-					{words.map((word, index) => (
-						<li key={index} style={{ display: 'inline-block' }}>
-							<div className="wordlist">
-								<TextInput initText={word} />
-								<div className="xbutton">X</div>
-							</div>
-						</li>
-					))}
-				</ul>
-			</div>
+			<SentenceList onRemove={onRemove} />
+			<StyledContainer>
+				<ToastContainer />
+			</StyledContainer>
 		</>
 	);
 }
