@@ -192,11 +192,17 @@ function Brainstorm() {
 
 	const nowText = brainstormQs.filter((brainstormQs) => brainstormQs.active);
 
+	const [lenWords, setLenWords] = useState(0);
+	const countWords = (x) => {
+		console.log(x);
+		setLenWords(x);
+	};
+
 	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
-			bottom : 80px;
-			right : 20px;
+			bottom: 80px;
+			right: 20px;
 		}
 		.Toastify__toast {
 			font-size: 30px;
@@ -237,13 +243,19 @@ function Brainstorm() {
 			/>
 			<MainBlock>
 				<LeftDoran text={nowText} />
-				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} />
+				<BrainstormList brainstormQs={brainstormQs} onChange={onChange} countWords={countWords} />
 				<div className="paint">
 					<WordPaint />
 				</div>
 			</MainBlock>
 			<NextButtonStyle>
-				<Button buttonText="다음" type="submit" outputColor="red" className="button" onClick={notify}></Button>
+				<Button
+					buttonText="다음"
+					type="submit"
+					outputColor="red"
+					className="button"
+					onClick={lenWords < 5 ? notify : lenWords > 10 ? notify : () => navigate('/writing/step1')}
+				></Button>
 			</NextButtonStyle>
 			<StyledContainer>
 				<ToastContainer />

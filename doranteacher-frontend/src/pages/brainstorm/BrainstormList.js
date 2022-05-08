@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import ImgButton from '../../components/ImgButton';
 import { useWordState } from './WordContext';
@@ -19,10 +19,13 @@ const WordCountStyle = styled.div`
 	}
 `;
 
-function BrainstormList({ brainstormQs, onChange }) {
+function BrainstormList({ brainstormQs, onChange, countWords }) {
 	function BrainstormQs({ brainstormQs, onChange }) {
 		const words = useWordState();
 		const lenWords = words.length;
+
+		//countWords(lenWords);
+		useMemo(() => countWords(lenWords), [lenWords]);
 
 		return (
 			<div
