@@ -106,26 +106,14 @@ const MainBlock = styled.div`
 		margin-left: 5px;
 	}
 
-	.description,
-	.word-count {
+	.description {
 		font-family: '상상토끼 꽃집막내딸 OTF';
 		font-style: normal;
-		/* font-weight: 350; */
 		font-size: 25px;
 		color: white;
 		line-height: 35px;
 	}
 
-	.word-count {
-		margin-left: 10px;
-		font-size: 28px;
-		background-color: white;
-		padding: 3px 13px;
-		font-weight: 500;
-		box-sizing: border-box;
-		border-radius: 30px;
-		color: #e75244;
-	}
 `;
 
 const NextButtonStyle = styled.div`
