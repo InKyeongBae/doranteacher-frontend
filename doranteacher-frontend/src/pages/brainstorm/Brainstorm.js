@@ -54,6 +54,7 @@ const MainBlock = styled.div`
 	.buttonline {
 		text-align: center;
 		margin: 20px auto;
+		width : 212px;
 	}
 
 	.wordlist {
