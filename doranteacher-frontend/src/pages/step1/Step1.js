@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import GlobalStyle from '../../components/GlobalStyle';
@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
+import Step1List from './Step1List';
 
 const MainBlock = styled.div`
 	.literally {
@@ -36,6 +37,11 @@ const MainBlock = styled.div`
 			vertical-align: middle;
 			margin: 10px 20px;
 		}
+	}
+
+	// > btn 없앨 때 고려해보기
+	.questioncontent {
+		width: 900px;
 	}
 
 	.paint {
@@ -102,6 +108,15 @@ const MainBlock = styled.div`
 		color: white;
 		margin-left: 5px;
 	}
+
+	.description {
+		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-style: normal;
+		font-size: 25px;
+		color: white;
+		line-height: 35px;
+	}
+
 `;
 
 const NextButtonStyle = styled.div`
@@ -110,6 +125,54 @@ const NextButtonStyle = styled.div`
 `;
 
 function Step1() {
+	const [step1Qs, setStep1Qs] = useState([
+		{
+			id: 1,
+			question: '오늘 일기로 쓰고 싶은 일이 있었나요?',
+			active: true,
+		},
+		{
+			id: 2,
+			question: '오늘 아침을 생각하면 무엇이 가장 떠오르나요?',
+			active: false,
+		},
+		{
+			id: 3,
+			question: '오늘 점심을 생각하면 무엇이 가장 떠오르나요?',
+			active: false,
+		},
+		{
+			id: 4,
+			question: '오늘 저녁을 생각하면 무엇이 가장 떠오르나요?',
+			active: false,
+		},
+		{
+			id: 5,
+			question: '지금 눈 앞에 무엇이 보이나요?',
+			active: false,
+		}
+	]);
+
+	function onChange(originId, nextId) {
+		setStep1Qs(
+			step1Qs.map((step1Qs) =>
+				step1Qs.id === originId
+					? { ...step1Qs, active: false }
+					: step1Qs.id === nextId
+					? { ...step1Qs, active: true }
+					: step1Qs,
+			),
+		);
+	}
+
+	const nowText = step1Qs.filter((step1Qs) => step1Qs.active);
+
+	const [lenSentences, setLenSentences] = useState(0);
+	const countSentences = (x) => {
+		console.log(x);
+		setLenSentences(x);
+	};
+
 	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
@@ -161,9 +224,7 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<div className="centercontent" style={{ marginLeft: '250px' }}>
-					<div className="questioncontent">Q1. 누구에게 어떤 효도를 하였나요?</div>
-				</div>
+				<Step1List step1Qs={step1Qs} onChange={onChange} countSentences={countSentences} />
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
