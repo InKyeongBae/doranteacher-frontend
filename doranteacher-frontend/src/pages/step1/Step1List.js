@@ -49,7 +49,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				</div>
 				<div className="explain-text" style={{ textAlign: 'center' }}>
 					<div className="description" style={{ display: 'inline-block' }}>
-						단어는 총 5개 이상 10개 이하가 필요해요
+						완전한 한 문장으로 입력해 주세요
 					</div>
 					
 				</div>

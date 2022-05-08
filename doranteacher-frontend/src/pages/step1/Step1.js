@@ -18,8 +18,8 @@ const MainBlock = styled.div`
 		width: 862px;
 		min-height: 453px;
 	}
-	
-	.question {
+
+	.question, .btn {
 		margin-left: 250px;
 	}
 
@@ -30,7 +30,7 @@ const MainBlock = styled.div`
 		font-size: 38px;
 		line-height: 48px;
 		text-align: center;
-		
+
 		div {
 			display: inline-block;
 			vertical-align: middle;
@@ -117,6 +117,11 @@ const MainBlock = styled.div`
 		line-height: 35px;
 	}
 
+	.btn {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+	}
 `;
 
 const NextButtonStyle = styled.div`
@@ -150,7 +155,7 @@ function Step1() {
 			id: 5,
 			question: '지금 눈 앞에 무엇이 보이나요?',
 			active: false,
-		}
+		},
 	]);
 
 	function onChange(originId, nextId) {
@@ -228,7 +233,16 @@ function Step1() {
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
-				<div className="nextBtn">
+				<div className="btn">
+					<NextButtonStyle>
+						<Button
+							buttonText="이전"
+							type="submit"
+							outputColor="red"
+							className="button"
+							onClick={lessNotify}
+						></Button>
+					</NextButtonStyle>
 					<NextButtonStyle>
 						<Button
 							buttonText="다음"
