@@ -18,6 +18,10 @@ const MainBlock = styled.div`
 		width: 862px;
 		min-height: 453px;
 	}
+	
+	.question {
+		margin-left: 250px;
+	}
 
 	.centercontent {
 		font-family: 'NeoDunggeunmo';
@@ -26,6 +30,7 @@ const MainBlock = styled.div`
 		font-size: 38px;
 		line-height: 48px;
 		text-align: center;
+		
 		div {
 			display: inline-block;
 			vertical-align: middle;
@@ -37,11 +42,6 @@ const MainBlock = styled.div`
 			vertical-align: middle;
 			margin: 10px 20px;
 		}
-	}
-
-	// > btn 없앨 때 고려해보기
-	.questioncontent {
-		width: 900px;
 	}
 
 	.paint {
