@@ -1,8 +1,12 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
 import { useWordDispatch, useWordNextId } from './WordContext';
 import WordList from './WordList';
+import { ToastContainer, toast } from 'react-toastify';
+import styled from 'styled-components';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -25,6 +29,13 @@ function WordPaint() {
 		reset.innerText = '새로 쓰기';
 	};
 
+	const pending = () => {
+		toast.loading(`단어를 추가하는 중`, {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: false,
+		});
+	};
+
 	const onSave = (event) => {
 		if (!_lc) return;
 		const img = _lc.getImage();
@@ -34,6 +45,8 @@ function WordPaint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
+			pending();
+
 			fetch('http://localhost:8080/ocrtext', {
 				method: 'POST',
 				headers: {
@@ -62,6 +75,26 @@ function WordPaint() {
 
 	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom: 80px;
+			right: 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			//font-family: '상상토끼 꽃집막내딸 OTF';
+			//font-family: 'ImcreSoojin OTF';
+			font-family: 'NeoDunggeunmo';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
+
 	return (
 		<>
 			<div className="canvas">
@@ -80,6 +113,9 @@ function WordPaint() {
 			</div>
 
 			<WordList onRemove={onRemove} />
+			<StyledContainer>
+				<ToastContainer />
+			</StyledContainer>
 		</>
 	);
 }

@@ -208,8 +208,6 @@ function Brainstorm() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			//font-family: '상상토끼 꽃집막내딸 OTF';
-			//font-family: 'ImcreSoojin OTF';
 			font-family: 'NeoDunggeunmo';
 			font-style: normal;
 			font-size: 24px;
@@ -218,6 +216,7 @@ function Brainstorm() {
 		.Toastify__progress-bar {
 		}
 	`;
+
 	const lessNotify = () => {
 		toast.error('단어가 부족해요!', {
 			position: toast.POSITION.BOTTOM_RIGHT,

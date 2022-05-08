@@ -21,32 +21,32 @@ const question = [
 	'오늘 점심을 생각하면 무엇이 가장 떠오르나요?',
 ];
 const audio = [];
-// question.forEach(function (element) {
-// 	speaking(element)
-// 		.then((a) => {
-// 			return a;
-// 		})
-// 		.then((a) => audio.push(a));
-// });
+question.forEach(function (element) {
+	speaking(element)
+		.then((a) => {
+			return a;
+		})
+		.then((a) => audio.push(a));
+});
 
-// async function speaking(text) {
-// 	// const nowText = text[0].question;
-// 	const xmlData = '<speak>' + text + ' 단어로 한 번 적어볼까요?</speak>';
-// 	try {
-// 		// if (context.state === 'running') context.close();
-// 		const { data } = await axios.post('https://kakaoi-newtone-openapi.kakao.com/v1/synthesize', xmlData, {
-// 			headers: {
-// 				'Content-Type': 'application/xml',
-// 				Authorization: `KakaoAK 50c30d38065fda8152de2d9db041939a`,
-// 			},
-// 			responseType: 'arraybuffer',
-// 		});
-// 		console.log("!!!");
-// 		return data;
-// 	} catch (e) {
-// 		console.error(e.message);
-// 	}
-// }
+async function speaking(text) {
+	// const nowText = text[0].question;
+	const xmlData = '<speak>' + text + ' 단어로 한 번 적어볼까요?</speak>';
+	try {
+		// if (context.state === 'running') context.close();
+		const { data } = await axios.post('https://kakaoi-newtone-openapi.kakao.com/v1/synthesize', xmlData, {
+			headers: {
+				'Content-Type': 'application/xml',
+				Authorization: `KakaoAK 50c30d38065fda8152de2d9db041939a`,
+			},
+			responseType: 'arraybuffer',
+		});
+		console.log("!!!");
+		return data;
+	} catch (e) {
+		console.error(e.message);
+	}
+}
 
 const context = [];
 var step;
