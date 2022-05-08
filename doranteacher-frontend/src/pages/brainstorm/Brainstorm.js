@@ -218,8 +218,15 @@ function Brainstorm() {
 		.Toastify__progress-bar {
 		}
 	`;
-	const notify = () => {
-		toast.error('단어가 부족합니다!', {
+	const lessNotify = () => {
+		toast.error('단어가 부족해요!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
+		});
+	};
+
+	const moreNotify = () => {
+		toast.error('단어가 너무 많아요!', {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: 3000,
 		});
@@ -254,7 +261,7 @@ function Brainstorm() {
 					type="submit"
 					outputColor="red"
 					className="button"
-					onClick={lenWords < 5 ? notify : lenWords > 10 ? notify : () => navigate('/writing/step1')}
+					onClick={lenWords < 5 ? lessNotify : lenWords > 10 ? moreNotify : () => navigate('/writing/step1')}
 				></Button>
 			</NextButtonStyle>
 			<StyledContainer>
