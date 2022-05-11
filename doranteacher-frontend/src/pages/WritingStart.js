@@ -58,63 +58,11 @@ function WritingStart() {
                 buttonText="다음"
                 type="submit"
                 outputColor="purple"
-                height="90px"
-                weight="90px"
+                // height="90px"
+                // weight="90px"
                 className="button"
                 onClick={() => navigate("/writing/first-step")}
             ></Button>
-            {/* <MainBlock> */}
-            {/* <div className="today">오늘은,</div>
-                <div className="dateContent">
-                    <DateButton>
-                        <div className="date">4</div>
-                    </DateButton>
-                    <div className="content">월</div>
-                    <DateButton>
-                        <div className="date">15</div>
-                    </DateButton>
-                    <div className="content">일</div>
-                </div>
-                <div className="weathercontent">오늘의 날씨는 어떤가요?</div>
-                <div className="weatherButtons">
-                    <div className="item">
-                        <WeatherButton className="sunnyButton">
-                            <img className="imgblock" src="/img/sun.png" />
-                            <div className="sunnyContent">화창해요</div>
-                        </WeatherButton>
-                    </div>
-                    <div ClassName="item">
-                        <WeatherButton className="sunnyButton">
-                            <img className="imgblock" src="/img/cloud.png" />
-
-                            <div className="cloudyContent">구름이 많아요</div>
-                        </WeatherButton>
-                    </div>
-                    <div className="item">
-                        <WeatherButton className="rainyButton">
-                            <img className="imgblock" src="/img/rain.png" />
-
-                            <div className="rainyContent">비가 내려요</div>
-                        </WeatherButton>
-                    </div>
-                    <div ClassName="item">
-                        <WeatherButton className="rainyButton">
-                            <img className="imgblock" src="/img/snow.png" />
-
-                            <div className="snowyContent">눈이 내려요</div>
-                        </WeatherButton>
-                    </div>
-                </div>
-                <div className="nextButton">
-                    <Button
-                        buttonText="다음"
-                        type="submit"
-                        outputColor="red"
-                        className="button"
-                        onClick={() => navigate("/writing/first-step")}
-                    ></Button>
-                </div> */}
-            {/* </MainBlock> */}
         </>
     );
 }
