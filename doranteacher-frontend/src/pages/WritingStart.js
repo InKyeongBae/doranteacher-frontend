@@ -33,6 +33,19 @@ const LeftDoran = styled.div`
     }
 `;
 
+const Date = styled.div`
+    .content {
+        font-family: "116angduk_honesty1.5";
+        font-style: normal;
+        font-weight: 450;
+        font-size: 50px;
+        // line-height: 25px;
+        text-align: center;
+    }
+`;
+
+const Weather = styled.div``;
+
 function WritingStart() {
     const navigate = useNavigate("");
     return (
@@ -54,6 +67,17 @@ function WritingStart() {
                     ></ProgressBar>
                 }
             />
+            <Date>
+                <section>
+                    <h1 className="content"> 오늘은 </h1>
+                    <div className="input-box">
+                        <input type="date"></input>
+                    </div>
+                </section>
+            </Date>
+            <Weather>
+                <div></div>
+            </Weather>
             <Button
                 buttonText="다음"
                 type="submit"
