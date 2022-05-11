@@ -36,10 +36,10 @@ const LeftDoran = styled.div`
 const Date = styled.div`
     .content {
         font-family: "116angduk_honesty1.5";
+        color: white;
+        font-weight: lighter;
         font-style: normal;
-        font-weight: 450;
         font-size: 50px;
-        // line-height: 25px;
         text-align: center;
     }
 `;
@@ -47,6 +47,7 @@ const Date = styled.div`
 const Weather = styled.div``;
 
 function WritingStart() {
+    const [date, setDate] = useState();
     const navigate = useNavigate("");
     return (
         <>
@@ -71,7 +72,11 @@ function WritingStart() {
                 <section>
                     <h1 className="content"> 오늘은 </h1>
                     <div className="input-box">
-                        <input type="date"></input>
+                        <input
+                            type="date"
+                            value={date}
+                            onClick={(e) => e.target.value}
+                        ></input>
                     </div>
                 </section>
             </Date>
