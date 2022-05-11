@@ -33,7 +33,7 @@ const LeftDoran = styled.div`
     }
 `;
 
-const Date = styled.div`
+const Calendar = styled.div`
     .content {
         font-family: "116angduk_honesty1.5";
         color: white;
@@ -46,8 +46,12 @@ const Date = styled.div`
 
 const Weather = styled.div``;
 
+function getStringDate(date) {
+    return date.toISOString().slice(0, 10);
+}
 function WritingStart() {
-    const [date, setDate] = useState();
+    // console.log(getStringDate(new Date()));
+    const [date, setDate] = useState(getStringDate(new Date()));
     const navigate = useNavigate("");
     return (
         <>
@@ -68,18 +72,18 @@ function WritingStart() {
                     ></ProgressBar>
                 }
             />
-            <Date>
+            <Calendar>
                 <section>
                     <h1 className="content"> 오늘은 </h1>
                     <div className="input-box">
                         <input
                             type="date"
                             value={date}
-                            onClick={(e) => e.target.value}
+                            onClick={(e) => setDate(e.target.value)}
                         ></input>
                     </div>
                 </section>
-            </Date>
+            </Calendar>
             <Weather>
                 <div></div>
             </Weather>
