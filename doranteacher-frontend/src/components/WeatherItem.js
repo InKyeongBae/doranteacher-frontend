@@ -52,6 +52,17 @@ const WeatherItems = styled.div`
                 z-index: -1;
             }
         }
+
+        &:hover {
+            background: #5dcb83;
+            transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+            top: 4px;
+            left: 3.5px;
+            &:before {
+                top: -4px;
+                left: -4.7px;
+            }
+        }
     }
 
     .weatherItem_on {
