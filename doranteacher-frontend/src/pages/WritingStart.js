@@ -8,6 +8,31 @@ import GlobalStyle from "../components/GlobalStyle";
 import ProgressBar from "../components/ProgressBar";
 import { Link, useNavigate } from "react-router-dom";
 
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
+
+const weatherList = [
+    {
+        weather_id: 1,
+        weather_img: process.env.PUBLIC_URL + `/img/sun.png`,
+        weather_description: "화창해요",
+    },
+    {
+        weather_id: 2,
+        weather_img: process.env.PUBLIC_URL + `/img/cloud.png`,
+        weather_description: "구름이 많아요",
+    },
+    {
+        weather_id: 3,
+        weather_img: process.env.PUBLIC_URL + `/img/rain.png`,
+        weather_description: "비가 와요",
+    },
+    {
+        weather_id: 4,
+        weather_img: process.env.PUBLIC_URL + `/img/snow.png`,
+        weather_description: "눈이 내려요",
+    },
+];
 const ColorStyles = css`
     ${({ theme, inputColor, outputColor }) => {
         const incolor = theme.palette[inputColor];
@@ -95,8 +120,6 @@ const Calendar = styled.div`
 		background: #F9DE4B;
 
 		padding-top:5px;
-		// padding-left:20px;
-		// padding-right:20px;
 
 		cursor:pointer;
 		font-family:"116angduk_honesty1.5";
@@ -141,9 +164,9 @@ function WritingStart() {
                         <div className="simpleButton">
                             <input
                                 className="input_date"
-                                type="date"
                                 value={date}
-                                onClick={(e) => setDate(e.target.value)}
+                                onChange={(e) => setDate(e.target.value)}
+                                type="date"
                             ></input>
                         </div>
                     </div>
