@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound';
 import Setting from './pages/Setting';
 import WritingStart from './pages/WritingStart';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import Step1 from './pages/Step1';
+import Step1 from './pages/step1/Step1';
 import Brainstorm from './pages/brainstorm/Brainstorm';
 
 const palette = {

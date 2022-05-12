@@ -61,11 +61,7 @@ const MainBlock = styled.div`
 		margin: 20px auto;
 	}
 
-<<<<<<< HEAD:doranteacher-frontend/src/pages/Step1.js
-	.answercontent {
-=======
 	.sentencelist {
->>>>>>> step1:doranteacher-frontend/src/pages/step1/Step1.js
 		padding: 15px;
 		background: #f9de4b;
 		border: 3px solid #000000;
