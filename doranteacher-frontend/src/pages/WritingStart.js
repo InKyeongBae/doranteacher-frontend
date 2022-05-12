@@ -34,6 +34,11 @@ const LeftDoran = styled.div`
 `;
 
 const Calendar = styled.div`
+
+	margin-bottom:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
     .content {
         font-family: "116angduk_honesty1.5";
         color: white;
@@ -41,7 +46,64 @@ const Calendar = styled.div`
         font-style: normal;
         font-size: 50px;
         text-align: center;
+		margin-top: 80px;
+		margin-bottom:30px;
     }
+
+    .simpleButton {
+		display:flex;
+	flex-direction:column;
+	align-items:center;
+
+        width: 300px;
+        height: 42.5px;
+        background: #F9DE4B;
+        outline: 0;
+        border: 0;
+        letter-spacing: 1px;
+        position: relative;
+        padding: 3px 35px;
+        border-radius: 25px;
+        border: 2px solid black;
+        transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            content: "";
+            width: 98%;
+            height: 98%;
+            position: absolute;
+            background: white;
+            transform: translate3d(0.2em, 0.15em, 1em);
+            border-radius: 25px;
+            border: 2px solid black;
+            transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+            &:active {
+                z-index: -1;
+            }
+        }
+    }
+
+	.input_date{
+		
+		border:none;
+		background: #F9DE4B;
+
+		padding-top:5px;
+		// padding-left:20px;
+		// padding-right:20px;
+
+		cursor:pointer;
+		font-family:"116angduk_honesty1.5";
+		font-size:30px;
+		text-align:center;
+	}
+}
 `;
 
 const Weather = styled.div``;
@@ -75,10 +137,10 @@ function WritingStart() {
             <Calendar>
                 <section>
                     <h1 className="content"> 오늘은 </h1>
-                    <div className="input-box">
-                        <div>
+                    <div className="input_box">
+                        <div className="simpleButton">
                             <input
-                                className="input-date"
+                                className="input_date"
                                 type="date"
                                 value={date}
                                 onClick={(e) => setDate(e.target.value)}
