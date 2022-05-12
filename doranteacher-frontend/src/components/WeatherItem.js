@@ -4,11 +4,12 @@ import styled, { css } from "styled-components";
 const WeatherItems = styled.div`
     margin-right: 20px;
     .text {
+        margin-top: 10px;
         font-family: "Cafe24Syongsyong";
         color: black;
         font-weight: lighter;
         font-style: normal;
-        font-size: 22px;
+        font-size: 21px;
     }
     .weatherItem {
         cursor: pointer;
