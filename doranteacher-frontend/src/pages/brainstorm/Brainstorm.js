@@ -252,7 +252,7 @@ function Brainstorm() {
 				<div className="paint">
 					<WordPaint />
 				</div>
-				<div className="nextBtn" style={lenWords === 0 ? {display : "none"} : {display : "block"}}>
+				<div className="nextBtn" style={lenWords === 0 ? {marginTop : "80px"} : {display : "block"}}>
 					<NextButtonStyle>
 						<Button
 							buttonText="다음"
