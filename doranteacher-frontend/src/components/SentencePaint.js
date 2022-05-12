@@ -30,7 +30,7 @@ function SentencePaint() {
 			setImages([imgData]);
 			console.log(imgData);
 
-			fetch('http://localhost:8080/ocrtext', {
+			fetch('http://api.doranssam.com/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
