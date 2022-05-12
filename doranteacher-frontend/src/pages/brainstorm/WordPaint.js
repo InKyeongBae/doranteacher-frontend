@@ -47,7 +47,7 @@ function WordPaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://localhost:8080/ocrtext', {
+			fetch('http://api.doranssam.com/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
