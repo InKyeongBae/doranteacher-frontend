@@ -112,7 +112,7 @@
 }
 .literally .color-well {
 	font-size: 15px;
-	font-family: '상상토끼 꽃집막내딸 OTF';
+	font-family: 'Cafe24Syongsyong';
 	margin: 40px 0px;
 	float: left;
 	width: 60px;
@@ -201,13 +201,13 @@
 
 .literally .lc-clear {
 	font-size: 15px;
-	font-family: '상상토끼 꽃집막내딸 OTF';
+	font-family: 'Cafe24Syongsyong';
 }
 
 /* 위쪽 툴바 */
 .literally .horz-toolbar {
 	background-color: #e75244;
-	border : 2px solid #f9de4b;
+	border: 2px solid #f9de4b;
 }
 .literally .horz-toolbar .label {
 	line-height: 30px;
