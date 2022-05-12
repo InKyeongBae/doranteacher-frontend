@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
-import { useWordDispatch, useWordNextId } from './WordContext';
-import WordList from './WordList';
+import SentenceList from './SentenceList';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { SentenceProvider, useSentenceDispatch, useSentenceNextId } from './SentenceContext';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
-function WordPaint() {
+function SentencePaint() {
 	const [images, setImages] = useState([]);
+<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
+	const [words, setWords] = useState("");
+=======
 
-	const dispatch = useWordDispatch();
-	const nextId = useWordNextId();
+	const dispatch = useSentenceDispatch();
+	const nextId = useSentenceNextId();
+>>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 
 	const onInit = (lc) => {
 		_lc = lc;
-		console.log(lc);
 		// 라벨 텍스트 stroke -> 색상
 		const colorpicker = document.getElementsByClassName('color-well')[0];
 		const change = colorpicker.querySelector('label');
@@ -58,20 +61,28 @@ function WordPaint() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
-					const newWord = result.filepath;
+<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
+					const word = result.filepath;
+					console.log(word);
+					setWords(word);
+=======
+					const newSentence = result.filepath;
 					dispatch({
 						type: 'CREATE',
-						word: {
+						sentence: {
 							id: nextId.current,
-							content: newWord,
+							content: newSentence,
 						},
 					});
 					nextId.current += 1;
+>>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 				});
 		} catch (err) {
 			console.log(err);
 		}
 	};
+	const img = new Image();
+	img.src = '/img/watermark.png';
 
 	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
@@ -101,23 +112,36 @@ function WordPaint() {
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
-					// 글씨판 가로세로 사이즈 설정(픽셀)
-					imageSize={{ width: 500, height: 210 }}
+					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
+					imageSize={{ width: 800, height: 420 }}
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"
+					watermarkImage={img}
+					watermarkScale="0.53"
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
+<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
+				<Button buttonText="다 썼어요!" outputColor="red" onClick={onSave} />
+			</div>
+			<div className="answer" style={{ display: 'inline-block' }}>
+				나의 대답
+				<div className="answercontent" style={{width : "50px", backgroundColor : "white"}}>
+					<TextInput initText={words}/>
+				</div>
+			</div>
+=======
+				<Button buttonText="문장 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<WordList onRemove={onRemove} />
+			<SentenceList onRemove={onRemove} />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
+>>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 		</>
 	);
 }
 
-export default WordPaint;
+export default SentencePaint;
