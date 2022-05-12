@@ -19,13 +19,18 @@ const MainBlock = styled.div`
 		min-height: 453px;
 	}
 
-	.question, .btn {
+	.question,
+	.btn {
 		margin-left: 250px;
 	}
 
 	.centercontent {
 		font-family: 'NeoDunggeunmo';
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
 		font-style: normal;
+		margin: 0 30px;
 		font-weight: 380;
 		font-size: 38px;
 		line-height: 48px;
@@ -77,19 +82,39 @@ const MainBlock = styled.div`
 		color: #000000;
 	}
 
-	.onedit {
-		background: white;
-		box-sizing: border-box;
-		border-radius: 32px;
+	.answer {
 		font-family: 'NeoDunggeunmo';
 		font-style: normal;
 		font-weight: 400;
-		font-size: 40px;
+		font-size: 25px;
+		line-height: 25px;
+	}
+
+	.answer {
+		display: inline-flex;
 		text-align: center;
-		display: inline-block;
-		max-width: calc(100% - 32px);
+		align-items: center;
+	}
+
+	.onedit,
+	.offedit {
+		background: white;
+		box-sizing: border-box;
+		border-radius: 32px;
+		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-style: normal;
+		font-size: 25px;
+		display: inline-flex;
+		min-width: 700px;
 		align-items: center;
 		color: #000000;
+		padding-left: 10px;
+		margin-left: 10px;
+	}
+
+	.offedit {
+		padding-left: 10px;
+		height: 38px;
 	}
 
 	.xbutton {
@@ -133,27 +158,27 @@ function Step1() {
 	const [step1Qs, setStep1Qs] = useState([
 		{
 			id: 1,
-			question: '오늘 일기로 쓰고 싶은 일이 있었나요?',
+			question: 'Q1. 오늘 칭찬하고 싶은 사람은 누군가요?',
 			active: true,
 		},
 		{
 			id: 2,
-			question: '오늘 아침을 생각하면 무엇이 가장 떠오르나요?',
+			question: 'Q2. 왜 그 사람을 칭찬하고 싶나요?',
 			active: false,
 		},
 		{
 			id: 3,
-			question: '오늘 점심을 생각하면 무엇이 가장 떠오르나요?',
+			question: 'Q3. 그 사람의 행동을 봤을 때 어떤 기분이 들었나요?',
 			active: false,
 		},
 		{
 			id: 4,
-			question: '오늘 저녁을 생각하면 무엇이 가장 떠오르나요?',
+			question: 'Q4. 그 사람에게 칭찬하는 말을 한 번 남겨볼까요?',
 			active: false,
 		},
 		{
 			id: 5,
-			question: '지금 눈 앞에 무엇이 보이나요?',
+			question: 'Q5. 방금 칭찬을 하면서 어떤 기분이 들었나요?',
 			active: false,
 		},
 	]);
@@ -234,15 +259,6 @@ function Step1() {
 					<SentencePaint />
 				</div>
 				<div className="btn">
-					<NextButtonStyle>
-						<Button
-							buttonText="이전"
-							type="submit"
-							outputColor="red"
-							className="button"
-							onClick={lessNotify}
-						></Button>
-					</NextButtonStyle>
 					<NextButtonStyle>
 						<Button
 							buttonText="다음"

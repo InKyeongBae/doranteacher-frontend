@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { SentenceProvider, useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import TextInput from '../../components/TextInput';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -46,7 +47,7 @@ function SentencePaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://localhost:8080/ocrtext', {
+			fetch('http://api.doranssam.com/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -112,9 +113,11 @@ function SentencePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="문장 추가하기" outputColor="red" onClick={onSave} />
+				<Button buttonText="다 썼어요!" outputColor="red" onClick={onSave} />
 			</div>
-
+			<div className="answer">
+				나의 대답 <TextInput initText="이게 맞나요"/>
+			</div>
 			<SentenceList onRemove={onRemove} />
 			<StyledContainer>
 				<ToastContainer />

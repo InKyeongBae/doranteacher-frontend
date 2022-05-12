@@ -39,7 +39,7 @@ function TextInput({ initText }) {
 						onKeyDown={handleKeyDown}
 					/>
 				) : (
-					<div onClick={() => editOn()}>{text}</div>
+					<div className="offedit" onClick={() => editOn()}>{text}</div>
 				)}
 			</div>
 		</>

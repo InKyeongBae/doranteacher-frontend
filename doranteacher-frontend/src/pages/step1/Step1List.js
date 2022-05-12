@@ -33,19 +33,19 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				}}
 			>
 				<div className="centercontent">
-					{/* <ImgButton
+					<ImgButton
 						prev
 						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
-					/> */}
+					/>
 					<div className="questioncontent">
 						{step1Qs.question}
 					</div>
-					{/* <ImgButton
+					<ImgButton
 						next
 						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
-						style={{ visibility: step1Qs.id === 10 ? 'hidden' : 'show' }}
-					/> */}
+						style={{ visibility: step1Qs.id === 5 ? 'hidden' : 'show' }}
+					/>
 				</div>
 				<div className="explain-text" style={{ textAlign: 'center' }}>
 					<div className="description" style={{ display: 'inline-block' }}>
