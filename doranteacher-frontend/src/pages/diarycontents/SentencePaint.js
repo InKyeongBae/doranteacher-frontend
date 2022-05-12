@@ -116,7 +116,7 @@ function SentencePaint() {
 				<Button buttonText="다 썼어요!" outputColor="red" onClick={onSave} />
 			</div>
 			<div className="answer">
-				나의 대답 <TextInput initText="이게 맞나요"/>
+				나의 대답 <TextInput initText="이게 맞나요" trash/>
 			</div>
 			<SentenceList onRemove={onRemove} />
 			<StyledContainer>

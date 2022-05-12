@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 
-function TextInput({ initText }) {
+function TextInput({ initText, trash }) {
 	const [text, setText] = useState(initText);
 	const [editable, setEditable] = useState(false);
 
@@ -39,7 +40,14 @@ function TextInput({ initText }) {
 						onKeyDown={handleKeyDown}
 					/>
 				) : (
-					<div className="offedit" onClick={() => editOn()}>{text}</div>
+					<div className="offedit" onClick={() => editOn()}>
+						<div className="text">{text}</div>
+						{trash && (
+							<div className="trash">
+								<FaTrashAlt />
+							</div>
+						)}
+					</div>
 				)}
 			</div>
 		</>
@@ -47,4 +55,3 @@ function TextInput({ initText }) {
 }
 
 export default TextInput;
-

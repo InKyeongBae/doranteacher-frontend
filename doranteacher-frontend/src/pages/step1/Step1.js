@@ -223,14 +223,7 @@ function Step1() {
 	`;
 
 	const lessNotify = () => {
-		toast.error('단어가 부족해요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const moreNotify = () => {
-		toast.error('단어가 너무 많아요!', {
+		toast.error('대답을 써야 다음 질문을 볼 수 있어요!', {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: 3000,
 		});

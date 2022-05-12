@@ -49,7 +49,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				</div>
 				<div className="explain-text" style={{ textAlign: 'center' }}>
 					<div className="description" style={{ display: 'inline-block' }}>
-						완전한 한 문장으로 입력해 주세요
+						일기를 쓰는 단계이니 완전한 한 문장으로 대답해 보아요!
 					</div>
 					
 				</div>
