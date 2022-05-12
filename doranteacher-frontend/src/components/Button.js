@@ -29,7 +29,7 @@ const HeaderButtons = styled.div`
         cursor: pointer;
         position: relative;
         padding: 3px 35px;
-        font-family: "상상토끼 꽃집막내딸 OTF";
+        font-family: "ssdaughter";
         font-style: normal;
         font-weight: 400;
         border-radius: 25px;

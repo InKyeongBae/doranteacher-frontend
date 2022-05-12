@@ -82,15 +82,15 @@ const MainBlock = styled.div`
 		// flex-direction: center;
 		// align-items:center;
 
-        width: 300px;
+        width: 350px;
         height: 50px;
         background: #F9DE4B;
         outline: 0;
         border: 0;
         letter-spacing: 1px;
         position: relative;
-        padding-left: 35px;
-		padding-right: 35px;
+        // padding-left: 35px;
+		// padding-right: 35px;
         border-radius: 25px;
         border: 2px solid black;
         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
@@ -122,6 +122,8 @@ const MainBlock = styled.div`
 		background: #F9DE4B;
 
 		padding-top:5px;
+        margin-right:20px;
+        margin-left:20px;
 
 		cursor:pointer;
 		font-family:"116angduk_honesty1.5";

@@ -1,8 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const WeatherItems = styled.div`
-    margin-right: 20px;
+const TypeItems = styled.div`
     .text {
         font-family: "angduk_honesty";
         color: black;
@@ -10,7 +9,7 @@ const WeatherItems = styled.div`
         font-style: normal;
         font-size: 22px;
     }
-    .weatherItem {
+    .typeItem {
         cursor: pointer;
 
         border-radius: 25px;
@@ -65,7 +64,7 @@ const WeatherItems = styled.div`
         }
     }
 
-    .weatherItem_on {
+    .typeItem_on {
         background: #5dcb83;
         transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
         top: 4px;
@@ -75,39 +74,21 @@ const WeatherItems = styled.div`
             left: -4.7px;
         }
     }
-
-    .weather_img {
-        padding-top: 20px;
-        padding-bottom: 5px;
-    }
 `;
 
-function WeatherItem({
-    weather_id,
-    weather_img,
-    weather_description,
-    onClick,
-    isSelected,
-}) {
+function TypeItem({ type_id, type_name, onClick, isSelected }) {
     return (
-        <WeatherItems>
+        <TypeItems>
             <div
-                onClick={() => onClick(weather_id)}
-                className={[
-                    "weatherItem",
-                    isSelected ? `weatherItem_on` : "",
-                ].join(" ")}
+                onClick={() => onClick(type_id)}
+                className={["typeItem", isSelected ? `typeItem_on` : ""].join(
+                    " "
+                )}
             >
-                <img
-                    className="weather_img"
-                    src={weather_img}
-                    height="80"
-                    width="90"
-                />
-                <span className="text">{weather_description}</span>
+                <span className="text">{type_name}</span>
             </div>
-        </WeatherItems>
+        </TypeItems>
     );
 }
 
-export default WeatherItem;
+export default TypeItem;
