@@ -78,7 +78,7 @@ const typeList = [
 const MainBlock = styled.div`
     .question {
         margin-top: 40px;
-        font-family: "NeoDunggeunmo";
+        font-family: "neodgm";
         font-style: normal;
         font-weight: 380;
         font-size: 38px;

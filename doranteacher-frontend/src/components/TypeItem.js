@@ -2,9 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const TypeItems = styled.div`
-    // margin-right: 20px;
     .text {
-        font-family: "116angduk_honesty1.5";
+        font-family: "angduk_honesty";
         color: black;
         font-weight: lighter;
         font-style: normal;

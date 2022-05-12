@@ -1,3 +1,4 @@
+import "./App.css";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import Mainpage from "./pages/Mainpage";
