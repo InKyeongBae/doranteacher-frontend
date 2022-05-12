@@ -60,17 +60,12 @@ const LeftDoran = styled.div`
 `;
 
 const MainBlock = styled.div`
-
-	margin-bottom:20px;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
+	margin-top:50px;
 
-	.input_box_weather_list_wrapper{
-		display:grid;
-		grid-template-columns: repeat(4,auto);
-		gap:2%;
-	}
+	
     .content {
         font-family: "116angduk_honesty1.5";
         color: white;
@@ -78,23 +73,24 @@ const MainBlock = styled.div`
         font-style: normal;
         font-size: 50px;
         text-align: center;
-		margin-top: 80px;
+		margin-top: 40px;
 		margin-bottom:30px;
     }
 
     .simpleButton {
-		display:flex;
-		flex-direction:column;
-		align-items:center;
+		// display:flex;
+		// flex-direction: center;
+		// align-items:center;
 
         width: 300px;
-        height: 42.5px;
+        height: 50px;
         background: #F9DE4B;
         outline: 0;
         border: 0;
         letter-spacing: 1px;
         position: relative;
-        padding: 3px 35px;
+        padding-left: 35px;
+		padding-right: 35px;
         border-radius: 25px;
         border: 2px solid black;
         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
@@ -122,7 +118,6 @@ const MainBlock = styled.div`
     }
 
 	.input_date{
-		
 		border:none;
 		background: #F9DE4B;
 
@@ -132,11 +127,28 @@ const MainBlock = styled.div`
 		font-family:"116angduk_honesty1.5";
 		font-size:30px;
 		text-align:center;
+
+	}
+
+	.weatherBlock{
+		margin-right: 100px;
+		align-self:flex-end;
+	}
+
+	.input_box_weather_list_wrapper {
+		margin-right: 50px;
+		align-self:flex-end;
+
+        display: flex;
+    }
+
+	.button{
+		margin-top:30px;
+		margin-right:35px;
+		align-self:flex-end;
 	}
 }
 `;
-
-const Weather = styled.div``;
 
 function getStringDate(date) {
     return date.toISOString().slice(0, 10);
@@ -174,36 +186,39 @@ function WritingStart() {
                     <h1 className="content"> 오늘은 </h1>
                     <div className="input_box">
                         <div className="simpleButton">
-                            <input
-                                className="input_date"
-                                value={date}
-                                onChange={(e) => setDate(e.target.value)}
-                                type="date"
-                            ></input>
+                            <div className="input_date">
+                                <input
+                                    className="input_date"
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                    type="date"
+                                ></input>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <section className="section">
                     <h1 className="content"> 오늘 날씨는 어떤가요? </h1>
-                    <div className="input_box_weather_list_wrapper">
-                        {weatherList.map((it) => (
-                            <WeatherItem
-                                key={it.weather_id}
-                                {...it}
-                                onClick={handleClickWeather}
-                                isSelected={it.weather_id === weather}
-                            />
-                        ))}
-                    </div>
                 </section>
+
+                <div className="input_box_weather_list_wrapper">
+                    {weatherList.map((it) => (
+                        <WeatherItem
+                            key={it.weather_id}
+                            {...it}
+                            onClick={handleClickWeather}
+                            isSelected={it.weather_id === weather}
+                        />
+                    ))}
+                </div>
+                <Button
+                    buttonText="다음"
+                    type="submit"
+                    outputColor="purple"
+                    className="button"
+                    onClick={() => navigate("/writing/first-step")}
+                ></Button>
             </MainBlock>
-            <Button
-                buttonText="다음"
-                type="submit"
-                outputColor="purple"
-                className="button"
-                onClick={() => navigate("/writing/first-step")}
-            ></Button>
         </>
     );
 }

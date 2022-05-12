@@ -2,26 +2,25 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const WeatherItems = styled.div`
+    margin-right: 20px;
     .text {
         font-family: "116angduk_honesty1.5";
         color: black;
         font-weight: lighter;
         font-style: normal;
-        font-size: 25px;
+        font-size: 22px;
     }
     .weatherItem {
         cursor: pointer;
 
         border-radius: 25px;
-        padding-top: 20px;
-        padding-bottom: 20px;
 
         display: flex;
         flex-direction: column;
         justify: center;
         align-items: center;
 
-        width: 120px;
+        width: 110px;
         height: 150px;
         background: #f9de4b;
         outline: 0;
@@ -29,6 +28,7 @@ const WeatherItems = styled.div`
         letter-spacing: 1px;
         position: relative;
         padding: 3px 35px;
+
         border: 2px solid black;
         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
@@ -55,16 +55,19 @@ const WeatherItems = styled.div`
     }
 
     .weatherItem_on {
-        &:hover {
-            background: #5dcb83;
-            transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-            top: 4px;
-            left: 3.5px;
-            &:before {
-                top: -4px;
-                left: -4.7px;
-            }
+        background: #5dcb83;
+        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+        top: 4px;
+        left: 3.5px;
+        &:before {
+            top: -4px;
+            left: -4.7px;
         }
+    }
+
+    .weather_img {
+        padding-top: 20px;
+        padding-bottom: 5px;
     }
 `;
 
@@ -84,7 +87,12 @@ function WeatherItem({
                     isSelected ? `weatherItem_on` : "",
                 ].join(" ")}
             >
-                <img src={weather_img} />
+                <img
+                    className="weather_img"
+                    src={weather_img}
+                    height="80"
+                    width="90"
+                />
                 <span className="text">{weather_description}</span>
             </div>
         </WeatherItems>
