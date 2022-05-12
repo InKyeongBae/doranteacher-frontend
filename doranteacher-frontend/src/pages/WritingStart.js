@@ -5,6 +5,7 @@ import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
+import WeatherItem from "../components/WeatherItem";
 import ProgressBar from "../components/ProgressBar";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -58,12 +59,18 @@ const LeftDoran = styled.div`
     }
 `;
 
-const Calendar = styled.div`
+const MainBlock = styled.div`
 
 	margin-bottom:20px;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
+
+	.input_box_weather_list_wrapper{
+		display:grid;
+		grid-template-columns: repeat(4,auto);
+		gap:2%;
+	}
     .content {
         font-family: "116angduk_honesty1.5";
         color: white;
@@ -77,8 +84,8 @@ const Calendar = styled.div`
 
     .simpleButton {
 		display:flex;
-	flex-direction:column;
-	align-items:center;
+		flex-direction:column;
+		align-items:center;
 
         width: 300px;
         height: 42.5px;
@@ -157,8 +164,8 @@ function WritingStart() {
                     ></ProgressBar>
                 }
             />
-            <Calendar>
-                <section>
+            <MainBlock>
+                <section className="section">
                     <h1 className="content"> 오늘은 </h1>
                     <div className="input_box">
                         <div className="simpleButton">
@@ -171,16 +178,19 @@ function WritingStart() {
                         </div>
                     </div>
                 </section>
-            </Calendar>
-            <Weather>
-                <div></div>
-            </Weather>
+                <section className="section">
+                    <h1 className="content"> 오늘 날씨는 어떤가요? </h1>
+                    <div className="input_box_weather_list_wrapper">
+                        {weatherList.map((it) => (
+                            <WeatherItem key={it.weather_id} {...it} />
+                        ))}
+                    </div>
+                </section>
+            </MainBlock>
             <Button
                 buttonText="다음"
                 type="submit"
                 outputColor="purple"
-                // height="90px"
-                // weight="90px"
                 className="button"
                 onClick={() => navigate("/writing/first-step")}
             ></Button>
@@ -189,77 +199,3 @@ function WritingStart() {
 }
 
 export default WritingStart;
-
-// import React from "react";
-// import styled, { css } from "styled-components";
-
-// const ColorStyles = css`
-//     ${({ theme, inputColor, height, width }) => {
-//         const incolor = theme.palette[inputColor];
-//         return css`
-//             color: black;
-//             background: ${incolor};
-//             height: ${height};
-//             width: ${width};
-//         `;
-//     }}
-// `;
-
-// const HeaderButtons = styled.div`
-//     .button {
-//         min-width: 160px;
-//         font-size: 25px;
-//         height: 42.5px;
-//         width: 90px;
-//         ${ColorStyles};
-//         outline: 0;
-//         border: 0;
-//         letter-spacing: 1px;
-//         // cursor: pointer;
-//         position: relative;
-//         padding: 3px 35px;
-//         font-family: "상상토끼 꽃집막내딸 OTF";
-//         font-style: normal;
-//         font-weight: 400;
-//         border-radius: 25px;
-//         border: 2px solid black;
-//         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-
-//         &:before {
-//             z-index: -1;
-//             position: absolute;
-//             top: 0;
-//             right: 0;
-//             bottom: 0;
-//             left: 0;
-//             content: "";
-//             width: 98%;
-//             height: 98%;
-//             position: absolute;
-//             background: white;
-//             transform: translate3d(0.2em, 0.15em, 1em);
-//             border-radius: 25px;
-//             border: 2px solid black;
-//             transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-//             &:active {
-//                 z-index: -1;
-//             }
-//         }
-//     }
-// `;
-
-// function SimpleButton({ buttonText, ...rest }) {
-//     return (
-//         <HeaderButtons {...rest}>
-//             <div className="button">{buttonText}</div>
-//         </HeaderButtons>
-//     );
-// }
-
-// SimpleButton.defaultProps = {
-//     inputColor: "yellow",
-//     height: "42.5px",
-//     width: "90px",
-// };
-
-// export default SimpleButton;
