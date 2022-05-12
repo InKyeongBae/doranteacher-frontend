@@ -107,8 +107,8 @@ const MainBlock = styled.div`
             bottom: 0;
             left: 0;
             content: "";
-            width: 98%;
-            height: 98%;
+            width: 100%;
+            height: 100%;
             position: absolute;
             background: white;
             transform: translate3d(0.2em, 0.15em, 1em);
@@ -143,6 +143,11 @@ function getStringDate(date) {
 }
 function WritingStart() {
     // console.log(getStringDate(new Date()));
+    const [weather, setWeather] = useState(1);
+
+    const handleClickWeather = (weather) => {
+        setWeather(weather);
+    };
     const [date, setDate] = useState(getStringDate(new Date()));
     const navigate = useNavigate("");
     return (
@@ -182,7 +187,12 @@ function WritingStart() {
                     <h1 className="content"> 오늘 날씨는 어떤가요? </h1>
                     <div className="input_box_weather_list_wrapper">
                         {weatherList.map((it) => (
-                            <WeatherItem key={it.weather_id} {...it} />
+                            <WeatherItem
+                                key={it.weather_id}
+                                {...it}
+                                onClick={handleClickWeather}
+                                isSelected={it.weather_id === weather}
+                            />
                         ))}
                     </div>
                 </section>

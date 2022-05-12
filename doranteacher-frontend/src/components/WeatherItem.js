@@ -53,12 +53,37 @@ const WeatherItems = styled.div`
             }
         }
     }
+
+    .weatherItem_on {
+        &:hover {
+            background: #5dcb83;
+            transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+            top: 4px;
+            left: 3.5px;
+            &:before {
+                top: -4px;
+                left: -4.7px;
+            }
+        }
+    }
 `;
 
-function WeatherItem({ weather_id, weather_img, weather_description }) {
+function WeatherItem({
+    weather_id,
+    weather_img,
+    weather_description,
+    onClick,
+    isSelected,
+}) {
     return (
         <WeatherItems>
-            <div className="weatherItem">
+            <div
+                onClick={() => onClick(weather_id)}
+                className={[
+                    "weatherItem",
+                    isSelected ? `weatherItem_on` : "",
+                ].join(" ")}
+            >
                 <img src={weather_img} />
                 <span className="text">{weather_description}</span>
             </div>
