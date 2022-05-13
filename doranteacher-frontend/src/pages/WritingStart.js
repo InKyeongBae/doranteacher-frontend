@@ -1,62 +1,62 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Button from '../components/Button';
-import { signupUser } from '../_actions/user_action';
-import styled, { css, createGlobalStyle } from 'styled-components';
-import Header from '../components/Header';
-import GlobalStyle from '../components/GlobalStyle';
-import WeatherItem from '../components/WeatherItem';
-import ProgressBar from '../components/ProgressBar';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import Button from "../components/Button";
+import { signupUser } from "../_actions/user_action";
+import styled, { css, createGlobalStyle } from "styled-components";
+import Header from "../components/Header";
+import GlobalStyle from "../components/GlobalStyle";
+import WeatherItem from "../components/WeatherItem";
+import ProgressBar from "../components/ProgressBar";
+import { Link, useNavigate } from "react-router-dom";
 
 const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || '';
+env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 const weatherList = [
-	{
-		weather_id: 1,
-		weather_img: process.env.PUBLIC_URL + `/img/sun.png`,
-		weather_description: '화창해요',
-	},
-	{
-		weather_id: 2,
-		weather_img: process.env.PUBLIC_URL + `/img/cloud.png`,
-		weather_description: '구름이 많아요',
-	},
-	{
-		weather_id: 3,
-		weather_img: process.env.PUBLIC_URL + `/img/rain.png`,
-		weather_description: '비가 와요',
-	},
-	{
-		weather_id: 4,
-		weather_img: process.env.PUBLIC_URL + `/img/snow.png`,
-		weather_description: '눈이 내려요',
-	},
+    {
+        weather_id: 1,
+        weather_img: process.env.PUBLIC_URL + `/img/sun.png`,
+        weather_description: "화창해요",
+    },
+    {
+        weather_id: 2,
+        weather_img: process.env.PUBLIC_URL + `/img/cloud.png`,
+        weather_description: "구름이 많아요",
+    },
+    {
+        weather_id: 3,
+        weather_img: process.env.PUBLIC_URL + `/img/rain.png`,
+        weather_description: "비가 와요",
+    },
+    {
+        weather_id: 4,
+        weather_img: process.env.PUBLIC_URL + `/img/snow.png`,
+        weather_description: "눈이 내려요",
+    },
 ];
 const ColorStyles = css`
-	${({ theme, inputColor, outputColor }) => {
-		const incolor = theme.palette[inputColor];
-		const outcolor = theme.palette[outputColor];
-		return css`
-			color: black;
-			background: ${incolor};
-			&:hover {
-				background: ${outcolor};
-			}
-		`;
-	}}
+    ${({ theme, inputColor, outputColor }) => {
+        const incolor = theme.palette[inputColor];
+        const outcolor = theme.palette[outputColor];
+        return css`
+            color: black;
+            background: ${incolor};
+            &:hover {
+                background: ${outcolor};
+            }
+        `;
+    }}
 `;
 const LeftDoran = styled.div`
-	position: fixed;
-	bottom: 0;
-	padding: 0px 0px 0px 30px;
+    position: fixed;
+    bottom: 0;
+    padding: 0px 0px 0px 30px;
 
-	.leftDoran {
-		width: 200px;
-		height: 400px;
-		background: url('/img/doranSsam.png') no-repeat 0 0 / auto 400px;
-	}
+    .leftDoran {
+        width: 200px;
+        height: 400px;
+        background: url("/img/doranSsam.png") no-repeat 0 0 / auto 400px;
+    }
 `;
 
 const MainBlock = styled.div`
@@ -67,7 +67,7 @@ const MainBlock = styled.div`
 
 	
     .content {
-        font-family: "116Cafe24Syongsyong1.5";
+        font-family: "KOTRAHOPE";
         color: white;
         font-weight: lighter;
         font-style: normal;
@@ -126,7 +126,7 @@ const MainBlock = styled.div`
         margin-left:20px;
 
 		cursor:pointer;
-		font-family:"116Cafe24Syongsyong1.5";
+		font-family:"Cafe24Syongsyong";
 		font-size:30px;
 		text-align:center;
 
@@ -138,7 +138,9 @@ const MainBlock = styled.div`
 	}
 
 	.input_box_weather_list_wrapper {
-		margin-right: 50px;
+		// width:80%
+		margin-top:10px;
+		margin-right: 150px;
 		align-self:flex-end;
 
         display: flex;
@@ -153,76 +155,76 @@ const MainBlock = styled.div`
 `;
 
 function getStringDate(date) {
-	return date.toISOString().slice(0, 10);
+    return date.toISOString().slice(0, 10);
 }
 function WritingStart() {
-	// console.log(getStringDate(new Date()));
-	const [weather, setWeather] = useState(1);
+    // console.log(getStringDate(new Date()));
+    const [weather, setWeather] = useState(1);
 
-	const handleClickWeather = (weather) => {
-		setWeather(weather);
-	};
-	const [date, setDate] = useState(getStringDate(new Date()));
-	const navigate = useNavigate('');
-	return (
-		<>
-			<GlobalStyle backColor="red" />
-			<LeftDoran>
-				<div className="leftDoran" />
-			</LeftDoran>
-			<Header
-				isProgress
-				isLogout
-				isImgBtn
-				progress={
-					<ProgressBar
-						progressText={'1. 일기쓰기'}
-						progressWidth={'12.5'}
-						progressColor={'#E75244'}
-						backColor="red"
-					></ProgressBar>
-				}
-			/>
-			<MainBlock>
-				<section className="section">
-					<h1 className="content"> 오늘은 </h1>
-					<div className="input_box">
-						<div className="simpleButton">
-							<div className="input_date">
-								<input
-									className="input_date"
-									value={date}
-									onChange={(e) => setDate(e.target.value)}
-									type="date"
-								></input>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className="section">
-					<h1 className="content"> 오늘 날씨는 어떤가요? </h1>
-				</section>
+    const handleClickWeather = (weather) => {
+        setWeather(weather);
+    };
+    const [date, setDate] = useState(getStringDate(new Date()));
+    const navigate = useNavigate("");
+    return (
+        <>
+            <GlobalStyle backColor="red" />
+            <LeftDoran>
+                <div className="leftDoran" />
+            </LeftDoran>
+            <Header
+                isProgress
+                isLogout
+                isImgBtn
+                progress={
+                    <ProgressBar
+                        progressText={"1. 일기쓰기"}
+                        progressWidth={"12.5"}
+                        progressColor={"#E75244"}
+                        backColor="red"
+                    ></ProgressBar>
+                }
+            />
+            <MainBlock>
+                <section className="section">
+                    <h1 className="content"> 오늘은 </h1>
+                    <div className="input_box">
+                        <div className="simpleButton">
+                            <div className="input_date">
+                                <input
+                                    className="input_date"
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                    type="date"
+                                ></input>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="section">
+                    <h1 className="content"> 오늘 날씨는 어떤가요? </h1>
+                </section>
 
-				<div className="input_box_weather_list_wrapper">
-					{weatherList.map((it) => (
-						<WeatherItem
-							key={it.weather_id}
-							{...it}
-							onClick={handleClickWeather}
-							isSelected={it.weather_id === weather}
-						/>
-					))}
-				</div>
-				<Button
-					buttonText="다음"
-					type="submit"
-					outputColor="purple"
-					className="button"
-					onClick={() => navigate('/writing/first-step')}
-				></Button>
-			</MainBlock>
-		</>
-	);
+                <div className="input_box_weather_list_wrapper">
+                    {weatherList.map((it) => (
+                        <WeatherItem
+                            key={it.weather_id}
+                            {...it}
+                            onClick={handleClickWeather}
+                            isSelected={it.weather_id === weather}
+                        />
+                    ))}
+                </div>
+                <Button
+                    buttonText="다음"
+                    type="submit"
+                    outputColor="purple"
+                    className="button"
+                    onClick={() => navigate("/writing/first-step")}
+                ></Button>
+            </MainBlock>
+        </>
+    );
 }
 
 export default WritingStart;

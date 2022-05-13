@@ -77,13 +77,31 @@ const typeList = [
 ];
 const MainBlock = styled.div`
     .question {
-        margin-top: 40px;
-        font-family: "neodgm";
+        margin-top: 20px;
+        font-family: "KOTRAHOPE";
         font-style: normal;
         font-weight: 380;
         font-size: 38px;
         line-height: 48px;
         text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .input_box_diary_list_wrapper {
+        padding-left: 25%;
+        width: 50%;
+        place-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        row-gap: 15px;
+        column-gap: 20px;
+    }
+
+    .button {
+        float: right;
+        margin-top: 15px;
+        margin-right: 35px;
     }
 `;
 const TypeList = styled.div``;
@@ -106,7 +124,7 @@ function DiaryType() {
                 isImgBtn
                 progress={
                     <ProgressBar
-                        progressText={"3. 유형선택"}
+                        progressText={"3.유형선택"}
                         progressWidth={"37.5"}
                         progressColor={"#E75244"}
                         backColor="red"
@@ -119,13 +137,13 @@ function DiaryType() {
                     <br />
                     일기 유형을 추천해줄게!
                 </div>
-                <div className="input_box_weather_list_wrapper">
+                <div className="input_box_diary_list_wrapper">
                     {typeList.map((it) => (
                         <TypeItem
                             key={it.id}
                             {...it}
                             onClick={handleClickDiary}
-                            isSelected={it.weather_id === diary}
+                            isSelected={it.id === diary}
                         />
                     ))}
                 </div>
