@@ -5,7 +5,7 @@ import { useSentenceState } from '../diarycontents/SentenceContext';
 
 const SentenceCountStyle = styled.div`
 	.sentence-count {
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-weight: 350;
 		line-height: 35px;
@@ -24,7 +24,6 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 	const lenSentences = sentences.length;
 
 	function Step1Qs({ step1Qs, onChange }) {
-
 		return (
 			<div
 				className="question"
@@ -51,7 +50,6 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 					<div className="description" style={{ display: 'inline-block' }}>
 						일기를 쓰는 단계이니 완전한 한 문장으로 대답해 보아요!
 					</div>
-					
 				</div>
 				<br />
 			</div>

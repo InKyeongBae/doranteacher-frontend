@@ -21,7 +21,7 @@ const MainBlock = styled.div`
 	}
 	.error {
 		padding-top: 20px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 120px;
@@ -37,7 +37,7 @@ const MainBlock = styled.div`
 	}
 	.comment {
 		margin-top: 40px;
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-weight: 200;
 		font-size: 35px;

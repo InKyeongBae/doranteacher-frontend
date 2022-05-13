@@ -20,7 +20,7 @@ const MainBlock = styled.div`
 	}
 
 	.centercontent {
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 380;
 		font-size: 38px;
@@ -66,7 +66,7 @@ const MainBlock = styled.div`
 		border: 3px solid #000000;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -81,7 +81,7 @@ const MainBlock = styled.div`
 		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -95,7 +95,7 @@ const MainBlock = styled.div`
 	.xbutton {
 		z-index: 5;
 		display: inline-block;
-		font-family: 'ImcreSoojin OTF';
+		font-family: 'soojin';
 		font-size: 30px;
 		background: #e75244;
 		width: 50px;
@@ -110,7 +110,7 @@ const MainBlock = styled.div`
 	}
 
 	.description {
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-size: 25px;
 		color: white;
@@ -207,7 +207,7 @@ function Brainstorm() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			font-family: 'NeoDunggeunmo';
+			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
 			color: black;
@@ -252,7 +252,7 @@ function Brainstorm() {
 				<div className="paint">
 					<WordPaint />
 				</div>
-				<div className="nextBtn" style={lenWords === 0 ? {marginTop : "80px"} : {display : "block"}}>
+				<div className="nextBtn" style={lenWords === 0 ? { marginTop: '80px' } : { display: 'block' }}>
 					<NextButtonStyle>
 						<Button
 							buttonText="다음"
@@ -264,7 +264,7 @@ function Brainstorm() {
 									? lessNotify
 									: lenWords > 10
 									? moreNotify
-									: () => navigate('/writing/step1')
+									: () => navigate('/writing/diary-type')
 							}
 						></Button>
 					</NextButtonStyle>

@@ -4,11 +4,12 @@ import styled, { css } from "styled-components";
 const WeatherItems = styled.div`
     margin-right: 20px;
     .text {
-        font-family: "116angduk_honesty1.5";
+        margin-top: 10px;
+        font-family: "Cafe24Syongsyong";
         color: black;
         font-weight: lighter;
         font-style: normal;
-        font-size: 22px;
+        font-size: 21px;
     }
     .weatherItem {
         cursor: pointer;
@@ -50,6 +51,17 @@ const WeatherItems = styled.div`
             transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
             &:active {
                 z-index: -1;
+            }
+        }
+
+        &:hover {
+            background: #5dcb83;
+            transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+            top: 4px;
+            left: 3.5px;
+            &:before {
+                top: -4px;
+                left: -4.7px;
             }
         }
     }

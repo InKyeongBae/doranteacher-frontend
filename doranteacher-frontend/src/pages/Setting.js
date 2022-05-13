@@ -28,7 +28,7 @@ const QuestionBlock = styled.div`
 	}
 
 	.content {
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -76,7 +76,7 @@ const SettingUI = styled.div`
 		border: 2px solid black;
 
 		font-size: 20px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		line-height: 120%;
 		text-align: center;
 		font-style: normal;
@@ -96,7 +96,7 @@ function Setting() {
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isUndo backColor="yellow"/>
+			<Header isUndo backColor="yellow" />
 			<LeftDoran>
 				<div className="leftDoran" />
 			</LeftDoran>

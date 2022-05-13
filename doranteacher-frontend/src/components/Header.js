@@ -40,7 +40,7 @@ const HeaderIcon = styled.div`
 		padding-bottom: 5px;
 	}
 	.doranIconName {
-		font-family: 'Cafe24 Ssurround';
+		font-family: 'cafe24';
 		color: black;
 		font-style: normal;
 		font-weight: 700;

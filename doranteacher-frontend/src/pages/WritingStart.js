@@ -67,7 +67,7 @@ const MainBlock = styled.div`
 
 	
     .content {
-        font-family: "116angduk_honesty1.5";
+        font-family: "KOTRAHOPE";
         color: white;
         font-weight: lighter;
         font-style: normal;
@@ -82,15 +82,15 @@ const MainBlock = styled.div`
 		// flex-direction: center;
 		// align-items:center;
 
-        width: 300px;
+        width: 350px;
         height: 50px;
         background: #F9DE4B;
         outline: 0;
         border: 0;
         letter-spacing: 1px;
         position: relative;
-        padding-left: 35px;
-		padding-right: 35px;
+        // padding-left: 35px;
+		// padding-right: 35px;
         border-radius: 25px;
         border: 2px solid black;
         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
@@ -122,9 +122,11 @@ const MainBlock = styled.div`
 		background: #F9DE4B;
 
 		padding-top:5px;
+        margin-right:20px;
+        margin-left:20px;
 
 		cursor:pointer;
-		font-family:"116angduk_honesty1.5";
+		font-family:"Cafe24Syongsyong";
 		font-size:30px;
 		text-align:center;
 
@@ -136,7 +138,9 @@ const MainBlock = styled.div`
 	}
 
 	.input_box_weather_list_wrapper {
-		margin-right: 50px;
+		// width:80%
+		margin-top:10px;
+		margin-right: 150px;
 		align-self:flex-end;
 
         display: flex;

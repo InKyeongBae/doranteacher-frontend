@@ -13,7 +13,7 @@ const MainBlock = styled.div`
 	}
 
 	.centercontent {
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 380;
 		font-size: 38px;
@@ -55,7 +55,7 @@ const MainBlock = styled.div`
 		border: 3px solid #000000;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -69,7 +69,7 @@ const MainBlock = styled.div`
 		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -83,7 +83,7 @@ const MainBlock = styled.div`
 	.xbutton {
 		z-index: 5;
 		display: inline-block;
-		font-family: 'ImcreSoojin OTF';
+		font-family: 'soojin';
 		font-size: 30px;
 		background: #e75244;
 		width: 50px;
