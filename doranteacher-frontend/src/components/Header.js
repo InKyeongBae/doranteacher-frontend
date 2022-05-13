@@ -5,6 +5,7 @@ import ImgButton from './ImgButton';
 import { useNavigate } from 'react-router-dom';
 
 const HeaderBlock = styled.div`
+	z-index: 15;
 	position: sticky;
 	top: 0;
 	color: black;
