@@ -87,7 +87,7 @@ function SentencePaint() {
 		.Toastify__toast-body {
 			//font-family: 'Cafe24Syongsyong';
 			//font-family: 'ImcreSoojin OTF';
-			font-family: 'NeoDunggeunmo';
+			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
 			color: black;

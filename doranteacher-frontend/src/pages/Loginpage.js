@@ -29,7 +29,7 @@ const CenterLogo = styled.div`
 	}
 
 	.centercontent {
-		font-family: 'neodgm';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 25px;

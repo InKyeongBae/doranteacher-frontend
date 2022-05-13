@@ -1,43 +1,43 @@
 /*아래 폰트*/
 @font-face {
-    font-family: "angduk_honesty";
-    src: url("./fonts/116앵덕정직1.5.ttf");
+	font-family: 'angduk_honesty';
+	src: url('./fonts/116앵덕정직1.5.ttf');
 }
 /* 최근에 상상토끼 대안으로 추가한 글씨체@ */
 
 @font-face {
-    font-family: "neodgm";
-    src: url("./fonts/neodgm.ttf");
+	font-family: 'neodgm';
+	src: url('./fonts/neodgm.ttf');
 }
 /* 질문에 쓰이는 글씨체 ,, like 로봇같은 글씨체 */
 
 @font-face {
-    font-family: "Cafe24Syongsyong";
-    src: url("./fonts/SSYoungestDaughterRegular.ttf");
+	font-family: 'Cafe24Syongsyong';
+	src: url('./fonts/SSYoungestDaughterRegular.ttf');
 }
 /* 상상토끼-버튼에 쓰이는 글씨체 */
 
 @font-face {
-    font-family: "cafe24";
-    src: url("./fonts/Cafe24Ssurround.ttf");
+	font-family: 'cafe24';
+	src: url('./fonts/Cafe24Ssurround.ttf');
 }
 /* 도란쌤 로고에 쓰이는 글씨체 */
 
 @font-face {
-    font-family: "soojin";
-    src: url("./fonts/ImcreSoojin.ttf");
+	font-family: 'soojin';
+	src: url('./fonts/ImcreSoojin.ttf');
 }
 /* 아임크리수진체 */
 
 /* format("truetype") */
 
 @font-face {
-    font-family: "Cafe24Syongsyong";
-    src: url("./fonts/Cafe24Syongsyong.ttf");
+	font-family: 'Cafe24Syongsyong';
+	src: url('./fonts/Cafe24Syongsyong.ttf');
 }
 
 @font-face {
-    font-family: "KOTRAHOPE";
-    src: url("./fonts/KOTRA HOPE.ttf");
+	font-family: 'KOTRAHOPE';
+	src: url('./fonts/KOTRA HOPE.ttf');
 }
 /* 코트라희망체 */

@@ -25,7 +25,7 @@ const MainBlock = styled.div`
 	}
 
 	.centercontent {
-		font-family: 'neodgm';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 380;
 		font-size: 38px;
@@ -68,7 +68,7 @@ const MainBlock = styled.div`
 		border: 3px solid #000000;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'neodgm';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -82,7 +82,7 @@ const MainBlock = styled.div`
 		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'neodgm';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -189,7 +189,7 @@ function Step1() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			font-family: 'NeoDunggeunmo';
+			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
 			color: black;

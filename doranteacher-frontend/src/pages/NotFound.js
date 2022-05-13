@@ -21,7 +21,7 @@ const MainBlock = styled.div`
 	}
 	.error {
 		padding-top: 20px;
-		font-family: 'neodgm';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 120px;
