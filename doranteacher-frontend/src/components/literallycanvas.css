@@ -60,7 +60,7 @@
 
 /* 왼쪽 툴바와 그림판 사이 선 */
 .literally .lc-picker {
-	z-index: 1001;
+	z-index: 10;
 	border: 2px solid #f9de4b;
 }
 
