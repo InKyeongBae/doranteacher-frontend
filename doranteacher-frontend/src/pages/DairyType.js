@@ -98,10 +98,14 @@ const MainBlock = styled.div`
         column-gap: 20px;
     }
 
-    .button {
+    .nextbutton {
         float: right;
-        margin-top: 15px;
-        margin-right: 35px;
+        margin-top: 30px;
+        margin-right: 70px;
+    }
+
+    .button {
+        margin-top: 5px;
     }
 `;
 const TypeList = styled.div``;
@@ -151,7 +155,7 @@ function DiaryType() {
                     buttonText="다음"
                     type="submit"
                     outputColor="purple"
-                    className="button"
+                    className="nextbutton"
                     onClick={() => navigate("/writing/step1")}
                 ></Button>
             </MainBlock>
