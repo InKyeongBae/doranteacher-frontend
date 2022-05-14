@@ -207,10 +207,10 @@ function DiarySave() {
                 </div>
                 <div className="nextButton">
                     <Button
-                        buttonText="다음"
+                        buttonText="끝!"
                         type="submit"
                         outputColor="purple"
-                        onClick={() => navigate("/writing/step1")}
+                        onClick={() => navigate("")}
                     ></Button>
                 </div>
             </MainBlock>
