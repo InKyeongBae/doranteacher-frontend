@@ -3,7 +3,7 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
-import { MdSettingsInputAntenna } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
 
 // 단계 설정 페이지 용 도란쌤
 const LeftDoran = styled.div`
@@ -68,7 +68,7 @@ const MainBlock = styled.div`
     }
 
     .saveButton {
-        // margin: 10px 110px 10px 10px;
+        margin: 10px 110px 10px 10px;
         align-self: flex-end;
     }
 
@@ -88,6 +88,10 @@ function Setting() {
     const [setting, setSetting] = useState(0);
     // console.log(setting);
 
+    const onSave = (e) => {
+        // 여기 추가해야함
+    };
+
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -104,8 +108,7 @@ function Setting() {
                     <Button
                         buttonText="1단계"
                         outputColor="green"
-                        isSelected={1 === setting}
-                        className={[
+                        extraClassName={[
                             "step_button",
                             1 === setting ? `setting_on` : "",
                         ].join(" ")}
@@ -117,11 +120,13 @@ function Setting() {
                     <Button
                         buttonText="2단계"
                         outputColor="green"
-                        className="step_button"
+                        extraClassName={[
+                            "step_button",
+                            2 === setting ? `setting_on` : "",
+                        ].join(" ")}
                         width="190px"
                         height="80px"
                         onClick={() => setSetting(2)}
-                        isSelected={2 === setting ? `setting_on` : ""}
                     ></Button>
                 </div>
 
@@ -144,8 +149,12 @@ function Setting() {
                     type="submit"
                     outputColor="red"
                     className="saveButton"
+                    onClick={onSave}
                 ></Button>
             </MainBlock>
+            {/* <StyledContainer>
+                <ToastContainer />
+            </StyledContainer> */}
         </>
     );
 }

@@ -70,11 +70,11 @@ const HeaderButtons = styled.div`
     }
 `;
 
-function Button({ buttonText, className, ...rest }) {
-    const extraClassName = className ? "button " + className : "button";
+function Button({ buttonText, extraClassName, ...rest }) {
+    const className = extraClassName ? "button " + extraClassName : "button";
     return (
         <HeaderButtons {...rest}>
-            <button className={extraClassName}>{buttonText}</button>
+            <button className={className}>{buttonText}</button>
         </HeaderButtons>
     );
 }

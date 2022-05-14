@@ -36,7 +36,7 @@ function TypeItem({ id, type_name, onClick, isSelected }) {
                     onClick={() => onClick(id)}
                     width="100px"
                     height="90px"
-                    className={[
+                    extraClassName={[
                         "typeItem",
                         isSelected ? `typeItem_on` : "",
                     ].join(" ")}
