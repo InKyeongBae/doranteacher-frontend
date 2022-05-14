@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
+import { MdSettingsInputAntenna } from "react-icons/md";
 
 // 단계 설정 페이지 용 도란쌤
 const LeftDoran = styled.div`
@@ -22,7 +23,7 @@ const MainBlock = styled.div`
 
     .question {
         margin-top: 100px;
-        margin-bottom: 70px;
+        margin-bottom: 50px;
         line-height: 40px;
         font-family: "KOTRAHOPE";
         font-style: normal;
@@ -38,6 +39,8 @@ const MainBlock = styled.div`
 
     .step_button {
         padding: 0px 50px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
     .step_contents {
@@ -65,12 +68,26 @@ const MainBlock = styled.div`
     }
 
     .saveButton {
-        margin: 10px 110px 10px 10px;
+        // margin: 10px 110px 10px 10px;
         align-self: flex-end;
+    }
+
+    .setting_on {
+        background: #5dcb83;
+        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+        top: 4px;
+        left: 3.5px;
+        &:before {
+            top: -4px;
+            left: -4.7px;
+        }
     }
 `;
 
 function Setting() {
+    const [setting, setSetting] = useState(0);
+    // console.log(setting);
+
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -87,7 +104,12 @@ function Setting() {
                     <Button
                         buttonText="1단계"
                         outputColor="green"
-                        className="step_button"
+                        isSelected={1 === setting}
+                        className={[
+                            "step_button",
+                            1 === setting ? `setting_on` : "",
+                        ].join(" ")}
+                        onClick={() => setSetting(1)}
                         width="190px"
                         height="80px"
                     ></Button>
@@ -98,6 +120,8 @@ function Setting() {
                         className="step_button"
                         width="190px"
                         height="80px"
+                        onClick={() => setSetting(2)}
+                        isSelected={2 === setting ? `setting_on` : ""}
                     ></Button>
                 </div>
 

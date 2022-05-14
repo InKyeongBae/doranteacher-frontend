@@ -108,7 +108,7 @@ const MainBlock = styled.div`
         margin-top: 5px;
     }
 `;
-const TypeList = styled.div``;
+
 function DiaryType() {
     // console.log(getStringDate(new Date()));
     const [diary, setDiary] = useState(1);
