@@ -90,6 +90,7 @@ function Setting() {
 
     const onSave = (e) => {
         // 여기 추가해야함
+        console.log("저장");
     };
 
     return (
@@ -152,9 +153,6 @@ function Setting() {
                     onClick={onSave}
                 ></Button>
             </MainBlock>
-            {/* <StyledContainer>
-                <ToastContainer />
-            </StyledContainer> */}
         </>
     );
 }

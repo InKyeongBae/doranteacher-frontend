@@ -105,6 +105,9 @@ const MainBlock = styled.div`
     }
 
     .button {
+        margin-top: 5px;
+    }
+    .saveButton {
         margin-top: 15px;
     }
 `;
