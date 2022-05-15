@@ -98,13 +98,17 @@ const MainBlock = styled.div`
         column-gap: 20px;
     }
 
-    .button {
+    .nextbutton {
         float: right;
+        margin-top: 30px;
+        margin-right: 70px;
+    }
+
+    .button {
         margin-top: 15px;
-        margin-right: 35px;
     }
 `;
-const TypeList = styled.div``;
+
 function DiaryType() {
     // console.log(getStringDate(new Date()));
     const [diary, setDiary] = useState(1);
@@ -151,7 +155,7 @@ function DiaryType() {
                     buttonText="다음"
                     type="submit"
                     outputColor="purple"
-                    className="button"
+                    className="nextbutton"
                     onClick={() => navigate("/writing/step1")}
                 ></Button>
             </MainBlock>
