@@ -251,17 +251,6 @@ function Step1() {
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
-				<div className="btn">
-					<NextButtonStyle>
-						<Button
-							buttonText="다음"
-							type="submit"
-							outputColor="red"
-							className="button"
-							onClick={lessNotify}
-						></Button>
-					</NextButtonStyle>
-				</div>
 			</MainBlock>
 			<StyledContainer>
 				<ToastContainer />

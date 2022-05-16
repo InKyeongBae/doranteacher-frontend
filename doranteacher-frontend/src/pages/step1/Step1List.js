@@ -34,6 +34,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				<div className="centercontent">
 					<ImgButton
 						prev
+						inputColor="green" outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
 					/>
@@ -42,6 +43,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 					</div>
 					<ImgButton
 						next
+						inputColor="green" outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
 						style={{ visibility: step1Qs.id === 5 ? 'hidden' : 'show' }}
 					/>

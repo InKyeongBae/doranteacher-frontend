@@ -113,7 +113,7 @@ function SentencePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="다 썼어요!" outputColor="red" onClick={onSave} />
+				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
 			<div className="answer">
 				나의 대답 <TextInput initText="이게 맞나요" trash/>
