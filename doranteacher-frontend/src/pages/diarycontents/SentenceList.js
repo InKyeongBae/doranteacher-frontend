@@ -15,11 +15,12 @@ function Sentence({ sentence, onRemove }) {
 
 function SentenceList({ onRemove }) {
 	const sentences = useSentenceState();
+	console.log(sentences);
 	return (
 		<div className="sentences">
-			{sentences.map((sentence) => (
+			{/* {sentences.map((sentence) => (
 				<Sentence sentence={sentence} key={sentence.id} onRemove={onRemove} />
-			))}
+			))} */}
 		</div>
 	);
 }

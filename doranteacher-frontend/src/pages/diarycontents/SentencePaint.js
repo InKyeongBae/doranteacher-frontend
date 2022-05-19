@@ -63,9 +63,9 @@ function SentencePaint() {
 						type: 'CREATE_SENTENCE',
 						sentence: {
 							id: nextId.current,
-							content: newSentence,
+							answer: newSentence,
 						},
-					}).then(() => console.log(dispatch));
+					});
 					nextId.current += 1;
 				});
 		} catch (err) {
