@@ -6,6 +6,7 @@ import GlobalStyle from "../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
+import ImageUpload from "../components/ImageUpload";
 
 const MainBlock = styled.div`
     display: flex;
@@ -39,7 +40,7 @@ const MainBlock = styled.div`
         align-items: center;
 
         width: 600px;
-        height: 450px;
+        height: 480px;
         background: #f9de4b;
         outline: 0;
         border: 0;
@@ -105,6 +106,22 @@ const MainBlock = styled.div`
             left: -4.7px;
         }
     }
+
+    // input[type="file"] {
+    //     position: absolute;
+    //     width: 0;
+    //     height: 0;
+    //     padding: 0;
+    //     margin: -1px;
+    //     overflow: hidden;
+    //     clip: rect(0, 0, 0, 0);
+    //     border: 0;
+    // }
+
+    .imageUpload {
+        padding-left: 280px;
+        margin-top: 20px;
+    }
 `;
 
 function DiarySave() {
@@ -112,6 +129,8 @@ function DiarySave() {
     const [comment, setComment] = useState(0);
     const [correct, setCorrect] = useState(0);
     const [painting, setPainting] = useState(0);
+    const [file, setFile] = useState("");
+    console.log(painting);
 
     const navigate = useNavigate("");
     return (
@@ -201,8 +220,11 @@ function DiarySave() {
                                 inputColor="purple"
                                 extraClassName={painting === 2 ? "on" : ""}
                                 onClick={() => setPainting(2)}
-                            ></Button>
+                            />
                         </div>
+                    </div>
+                    <div className="imageUpload">
+                        <ImageUpload props={painting} />
                     </div>
                 </div>
                 <div className="nextButton">
@@ -210,7 +232,7 @@ function DiarySave() {
                         buttonText="끝!"
                         type="submit"
                         outputColor="purple"
-                        onClick={() => navigate("")}
+                        onClick={() => navigate("/")}
                     ></Button>
                 </div>
             </MainBlock>
