@@ -5,6 +5,7 @@ import ImgButton from './ImgButton';
 import { useNavigate } from 'react-router-dom';
 
 const HeaderBlock = styled.div`
+	z-index: 15;
 	position: sticky;
 	top: 0;
 	color: black;
@@ -40,7 +41,7 @@ const HeaderIcon = styled.div`
 		padding-bottom: 5px;
 	}
 	.doranIconName {
-		font-family: 'Cafe24 Ssurround';
+		font-family: 'cafe24';
 		color: black;
 		font-style: normal;
 		font-weight: 700;

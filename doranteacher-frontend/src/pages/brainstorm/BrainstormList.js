@@ -5,7 +5,7 @@ import { useWordState } from './WordContext';
 
 const WordCountStyle = styled.div`
 	.word-count {
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-weight: 350;
 		line-height: 35px;
@@ -24,7 +24,6 @@ function BrainstormList({ brainstormQs, onChange, countWords }) {
 	const lenWords = words.length;
 
 	function BrainstormQs({ brainstormQs, onChange }) {
-
 		return (
 			<div
 				className="question"
@@ -36,7 +35,9 @@ function BrainstormList({ brainstormQs, onChange, countWords }) {
 					<ImgButton
 						prev
 						onClick={() => onChange(brainstormQs.id, brainstormQs.id - 1)}
-						style={{ visibility: brainstormQs.id === 1 ? 'hidden' : 'show' }}
+						style={{
+							visibility: brainstormQs.id === 1 ? 'hidden' : 'show',
+						}}
 					/>
 					<div className="questioncontent">
 						{brainstormQs.question}
@@ -46,7 +47,9 @@ function BrainstormList({ brainstormQs, onChange, countWords }) {
 					<ImgButton
 						next
 						onClick={() => onChange(brainstormQs.id, brainstormQs.id + 1)}
-						style={{ visibility: brainstormQs.id === 10 ? 'hidden' : 'show' }}
+						style={{
+							visibility: brainstormQs.id === 10 ? 'hidden' : 'show',
+						}}
 					/>
 				</div>
 				<div className="explain-text" style={{ textAlign: 'center' }}>

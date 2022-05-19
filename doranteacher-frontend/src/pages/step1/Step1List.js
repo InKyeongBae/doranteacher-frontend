@@ -5,7 +5,7 @@ import { useSentenceState } from '../diarycontents/SentenceContext';
 
 const SentenceCountStyle = styled.div`
 	.sentence-count {
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-weight: 350;
 		line-height: 35px;
@@ -24,7 +24,6 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 	const lenSentences = sentences.length;
 
 	function Step1Qs({ step1Qs, onChange }) {
-
 		return (
 			<div
 				className="question"
@@ -38,9 +37,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
 					/> */}
-					<div className="questioncontent">
-						{step1Qs.question}
-					</div>
+					<div className="questioncontent">{step1Qs.question}</div>
 					{/* <ImgButton
 						next
 						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
@@ -51,7 +48,6 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 					<div className="description" style={{ display: 'inline-block' }}>
 						완전한 한 문장으로 입력해 주세요
 					</div>
-					
 				</div>
 				<br />
 			</div>

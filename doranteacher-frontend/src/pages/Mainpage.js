@@ -31,7 +31,7 @@ const CenterLogo = styled.div`
 	}
 
 	.centercontent {
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 30px;
@@ -146,7 +146,7 @@ function Mainpage() {
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isIcon isLogin isSignup isSetting backColor="yellow"/>
+			<Header isIcon isLogin isSignup isSetting backColor="yellow" />
 			<MainBlock>
 				<CenterLogo>
 					<div className="centerlogo">

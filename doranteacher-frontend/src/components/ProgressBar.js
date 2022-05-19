@@ -15,7 +15,7 @@ const MainBlock = styled.div`
 	letter-spacing: 1px;
 	font-size: 25px;
 
-	font-family: '상상토끼 꽃집막내딸 OTF';
+	font-family: 'Cafe24Syongsyong';
 	font-style: normal;
 	letter-spacing: 3px;
 	border-radius: 25px;

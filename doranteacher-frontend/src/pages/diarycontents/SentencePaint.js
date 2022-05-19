@@ -13,13 +13,9 @@ let _lc = null;
 
 function SentencePaint() {
 	const [images, setImages] = useState([]);
-<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
-	const [words, setWords] = useState("");
-=======
 
 	const dispatch = useSentenceDispatch();
 	const nextId = useSentenceNextId();
->>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -61,11 +57,6 @@ function SentencePaint() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
-<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
-					const word = result.filepath;
-					console.log(word);
-					setWords(word);
-=======
 					const newSentence = result.filepath;
 					dispatch({
 						type: 'CREATE',
@@ -75,7 +66,6 @@ function SentencePaint() {
 						},
 					});
 					nextId.current += 1;
->>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 				});
 		} catch (err) {
 			console.log(err);
@@ -95,9 +85,9 @@ function SentencePaint() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			//font-family: '상상토끼 꽃집막내딸 OTF';
+			//font-family: 'Cafe24Syongsyong';
 			//font-family: 'ImcreSoojin OTF';
-			font-family: 'NeoDunggeunmo';
+			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
 			color: black;
@@ -122,16 +112,6 @@ function SentencePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-<<<<<<< HEAD:doranteacher-frontend/src/components/SentencePaint.js
-				<Button buttonText="다 썼어요!" outputColor="red" onClick={onSave} />
-			</div>
-			<div className="answer" style={{ display: 'inline-block' }}>
-				나의 대답
-				<div className="answercontent" style={{width : "50px", backgroundColor : "white"}}>
-					<TextInput initText={words}/>
-				</div>
-			</div>
-=======
 				<Button buttonText="문장 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
@@ -139,7 +119,6 @@ function SentencePaint() {
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
->>>>>>> step1:doranteacher-frontend/src/pages/diarycontents/SentencePaint.js
 		</>
 	);
 }

@@ -19,12 +19,13 @@ const MainBlock = styled.div`
 		min-height: 453px;
 	}
 
-	.question, .btn {
+	.question,
+	.btn {
 		margin-left: 250px;
 	}
 
 	.centercontent {
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 380;
 		font-size: 38px;
@@ -61,17 +62,13 @@ const MainBlock = styled.div`
 		margin: 20px auto;
 	}
 
-<<<<<<< HEAD:doranteacher-frontend/src/pages/Step1.js
-	.answercontent {
-=======
 	.sentencelist {
->>>>>>> step1:doranteacher-frontend/src/pages/step1/Step1.js
 		padding: 15px;
 		background: #f9de4b;
 		border: 3px solid #000000;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -85,7 +82,7 @@ const MainBlock = styled.div`
 		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: 'NeoDunggeunmo';
+		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 40px;
@@ -99,7 +96,7 @@ const MainBlock = styled.div`
 	.xbutton {
 		z-index: 5;
 		display: inline-block;
-		font-family: 'ImcreSoojin OTF';
+		font-family: 'soojin';
 		font-size: 30px;
 		background: #e75244;
 		width: 50px;
@@ -114,7 +111,7 @@ const MainBlock = styled.div`
 	}
 
 	.description {
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-size: 25px;
 		color: white;
@@ -192,7 +189,7 @@ function Step1() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			font-family: 'NeoDunggeunmo';
+			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
 			color: black;
