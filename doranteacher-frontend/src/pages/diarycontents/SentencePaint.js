@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { SentenceProvider, useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import { SentenceProvider, useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
 import TextInput from '../../components/TextInput';
 
 const LC = require('literallycanvas');
@@ -60,12 +60,12 @@ function SentencePaint() {
 				.then((result) => {
 					const newSentence = result.filepath;
 					dispatch({
-						type: 'CREATE',
+						type: 'CREATE_SENTENCE',
 						sentence: {
 							id: nextId.current,
 							content: newSentence,
 						},
-					});
+					}).then(() => console.log(dispatch));
 					nextId.current += 1;
 				});
 		} catch (err) {
@@ -116,7 +116,7 @@ function SentencePaint() {
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
 			<div className="answer">
-				나의 대답 <TextInput initText="이게 맞나요" trash/>
+				나의 대답 <TextInput initText="이게 맞나요" trash />
 			</div>
 			<SentenceList onRemove={onRemove} />
 			<StyledContainer>
