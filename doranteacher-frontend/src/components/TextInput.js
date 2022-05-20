@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useWordDispatch, useWordState } from '../pages/brainstorm/WordContext';
 
-function TextInput({ initText }) {
+function TextInput({ initText, onUpdate, id }) {
 	const [text, setText] = useState(initText);
 	const [editable, setEditable] = useState(false);
+	const dispatch = useWordDispatch();
+
+	const ref = useRef(null);
 
 	// text상태일 때 onClick 이벤트로 넣어 줄 함수
-	const editOn = () => {
+	const editOn = (e) => {
 		setEditable(true);
 	};
 	// input상태일 때 내용의 변화를 감지해서 text를 바꾸어 줌
@@ -16,11 +20,15 @@ function TextInput({ initText }) {
 	const handleKeyDown = (e) => {
 		if (e.key === 'Enter') {
 			setEditable(!editable);
+			onUpdate(id, text);
 		}
 	};
-	const ref = useRef(null);
+
 	const handleClickOutside = (e) => {
-		if (editable == true && !ref.current.contains(e.target)) setEditable(false);
+		if (editable == true && !ref.current.contains(e.target)) {
+			setEditable(false);
+			onUpdate(id, text);
+		}
 	};
 	useEffect(() => {
 		window.addEventListener('click', handleClickOutside, true);
@@ -47,4 +55,3 @@ function TextInput({ initText }) {
 }
 
 export default TextInput;
-
