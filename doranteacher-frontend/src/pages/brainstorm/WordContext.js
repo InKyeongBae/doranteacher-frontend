@@ -8,6 +8,8 @@ function wordReducer(state, action) {
 			return state.concat(action.word);
 		case 'REMOVE':
 			return state.filter((word) => word.id !== action.id);
+		case 'UPDATE':
+			return state.map((word) => (word.id === action.word.id ? { ...word, content: action.word.content } : word));
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
 	}
