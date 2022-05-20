@@ -5,7 +5,7 @@ import GlobalStyle from '../../components/GlobalStyle';
 import ProgressBar from '../../components/ProgressBar';
 import SentencePaint from '../diarycontents/SentencePaint';
 import LeftDoran from '../../components/LeftDoran';
-import { SentenceProvider } from '../diarycontents/SentenceContext';
+import { SentenceProvider, useSentenceDispatch, useSentenceState } from '../diarycontents/SentenceContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -155,52 +155,6 @@ const NextButtonStyle = styled.div`
 `;
 
 function Step1() {
-	const [step1Qs, setStep1Qs] = useState([
-		{
-			id: 1,
-			question: 'Q1. 오늘 칭찬하고 싶은 사람은 누군가요?',
-			active: true,
-		},
-		{
-			id: 2,
-			question: 'Q2. 왜 그 사람을 칭찬하고 싶나요?',
-			active: false,
-		},
-		{
-			id: 3,
-			question: 'Q3. 그 사람의 행동을 봤을 때 어떤 기분이 들었나요?',
-			active: false,
-		},
-		{
-			id: 4,
-			question: 'Q4. 그 사람에게 칭찬하는 말을 한 번 남겨볼까요?',
-			active: false,
-		},
-		{
-			id: 5,
-			question: 'Q5. 방금 칭찬을 하면서 어떤 기분이 들었나요?',
-			active: false,
-		},
-	]);
-
-	function onChange(originId, nextId) {
-		setStep1Qs(
-			step1Qs.map((step1Qs) =>
-				step1Qs.id === originId
-					? { ...step1Qs, active: false }
-					: step1Qs.id === nextId
-					? { ...step1Qs, active: true }
-					: step1Qs,
-			),
-		);
-	}
-
-	const nowText = step1Qs.filter((step1Qs) => step1Qs.active);
-
-	const [lenSentences, setLenSentences] = useState(0);
-	const countSentences = (x) => {
-		setLenSentences(x);
-	};
 
 	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
@@ -246,7 +200,7 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List step1Qs={step1Qs} onChange={onChange} countSentences={countSentences} />
+				<Step1List />
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>

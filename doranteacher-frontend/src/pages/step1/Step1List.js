@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import ImgButton from '../../components/ImgButton';
-import { useSentenceState } from '../diarycontents/SentenceContext';
+import { useSentenceDispatch, useSentenceState } from '../diarycontents/SentenceContext';
 
 const SentenceCountStyle = styled.div`
 	.sentence-count {
@@ -19,10 +19,16 @@ const SentenceCountStyle = styled.div`
 	}
 `;
 
-function Step1List({ step1Qs, onChange, countSentences }) {
-	const sentences = useSentenceState();
-	const lenSentences = sentences.length;
-
+function Step1List() {
+	const step1Qs = useSentenceState();
+	const dispatch = useSentenceDispatch();
+	function onChange(originId, nextId) {
+		dispatch({
+			type: 'CHANGE_ACTIVE',
+			originId: originId,
+			nextId: nextId,
+		});
+	}
 	function Step1Qs({ step1Qs, onChange }) {
 		return (
 			<div
@@ -34,16 +40,16 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				<div className="centercontent">
 					<ImgButton
 						prev
-						inputColor="green" outputColor="purple"
+						inputColor="green"
+						outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
 					/>
-					<div className="questioncontent">
-						{step1Qs.question}
-					</div>
+					<div className="questioncontent">{step1Qs.question}</div>
 					<ImgButton
 						next
-						inputColor="green" outputColor="purple"
+						inputColor="green"
+						outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
 						style={{ visibility: step1Qs.id === 5 ? 'hidden' : 'show' }}
 					/>
@@ -58,7 +64,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 		);
 	}
 
-	useMemo(() => countSentences(lenSentences), [lenSentences]);
+	// useMemo(() => countSentences(lenSentences), [lenSentences]);
 
 	return (
 		<>

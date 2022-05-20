@@ -47,6 +47,14 @@ function sentenceReducer(state, action) {
 			return state.map((sentence) => sentence.id === action.sentence.id ? { ...sentence, answer: action.sentence.answer} : sentence)
 		case 'REMOVE_ANSWER':
 			return state.map((sentence) => sentence.id === action.sentence.id ? { ...sentence, answer: ""} : sentence)
+		case 'CHANGE_ACTIVE':
+			return state.map((sentence) =>
+				sentence.id === action.originId
+					? { ...sentence, active: false }
+					: sentence.id === action.nextId
+					? { ...sentence, active: true }
+					: sentence,
+			)
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
 	}
