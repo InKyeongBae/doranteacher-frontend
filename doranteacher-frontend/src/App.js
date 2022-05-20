@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Step1 from "./pages/step1/Step1";
 import Brainstorm from "./pages/brainstorm/Brainstorm";
 import DiaryType from "./pages/DairyType";
+import DiarySave from "./pages/DiarySave";
 
 const palette = {
     red: "#E75244",
@@ -44,6 +45,7 @@ function App() {
                         <Route path="first-step" element={<Brainstorm />} />
                         <Route path="diary-type" element={<DiaryType />} />
                         <Route path="step1" element={<Step1 />} />
+                        <Route path="save" element={<DiarySave />} />
                         {/* <Route path="*" element={<NotFound />} /> */}
                     </Route>
                     <Route path="*" element={<NotFound />} />

@@ -74,6 +74,14 @@ function WordPaint() {
 	};
 
 	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
+	const onUpdate = (id, content) =>
+		dispatch({
+			type: 'UPDATE',
+			word: {
+				id: id,
+				content: content,
+			},
+		});
 
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
@@ -110,7 +118,7 @@ function WordPaint() {
 				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<WordList onRemove={onRemove} />
+			<WordList onRemove={onRemove} onUpdate={onUpdate}/>
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
