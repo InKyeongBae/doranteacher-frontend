@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
-import SentenceList from './SentenceList';
+import Sentence from './Sentence';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { SentenceProvider, useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
-import TextInput from '../../components/TextInput';
+import { useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -60,7 +59,7 @@ function SentencePaint() {
 				.then((result) => {
 					const newSentence = result.filepath;
 					dispatch({
-						type: 'CREATE_SENTENCE',
+						type: 'CHANGE_ANSWER',
 						sentence: {
 							id: nextId.current,
 							answer: newSentence,
@@ -74,8 +73,6 @@ function SentencePaint() {
 	};
 	const img = new Image();
 	img.src = '/img/watermark.png';
-
-	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
@@ -96,6 +93,14 @@ function SentencePaint() {
 		.Toastify__progress-bar {
 		}
 	`;
+	const onUpdate = (id, answer) =>
+		dispatch({
+			type: 'CHANGE_ANSWER',
+			sentence: {
+				id: id,
+				answer: answer,
+			},
+		});
 
 	return (
 		<>
@@ -115,10 +120,7 @@ function SentencePaint() {
 			<div className="buttonline">
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
-			<div className="answer">
-				나의 대답 <TextInput initText="이게 맞나요" trash />
-			</div>
-			<SentenceList onRemove={onRemove} />
+			<Sentence onUpdate={onUpdate} />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>

@@ -199,7 +199,6 @@ function Step1() {
 
 	const [lenSentences, setLenSentences] = useState(0);
 	const countSentences = (x) => {
-		console.log(x);
 		setLenSentences(x);
 	};
 
