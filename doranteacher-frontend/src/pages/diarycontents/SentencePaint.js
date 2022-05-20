@@ -15,7 +15,8 @@ function SentencePaint() {
 	const [images, setImages] = useState([]);
 
 	const dispatch = useSentenceDispatch();
-	const nextId = useSentenceNextId();
+	const sentences = useSentenceState();
+	const active = sentences.filter(sentence => sentence.active);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -61,11 +62,10 @@ function SentencePaint() {
 					dispatch({
 						type: 'CHANGE_ANSWER',
 						sentence: {
-							id: nextId.current,
+							id: active[0].id,
 							answer: newSentence,
 						},
 					});
-					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);
