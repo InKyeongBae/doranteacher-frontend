@@ -114,7 +114,6 @@ function SentencePaint() {
 	}
 
 	const id = active[0].id;
-	console.log(text);
 	function changeText() {
 		setText(active[0].answer);
 		setEditable(true);
@@ -125,7 +124,6 @@ function SentencePaint() {
 	}
 	// enter키를 눌렀을 때 입력을 중지하는 함수
 	function handleKeyDown(e) {
-		console.log(e.target);
 		if (e.key === 'Enter') {
 			setEditable(!editable);
 			onUpdate(id, text);

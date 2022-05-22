@@ -19,9 +19,10 @@ const SentenceCountStyle = styled.div`
 	}
 `;
 
-function Step1List() {
+function Step1List(props) {
 	const step1Qs = useSentenceState();
 	const dispatch = useSentenceDispatch();
+	const active = step1Qs.filter((sentence) => sentence.active);
 	function onChange(originId, nextId) {
 		dispatch({
 			type: 'CHANGE_ACTIVE',
@@ -42,7 +43,11 @@ function Step1List() {
 						prev
 						inputColor="green"
 						outputColor="purple"
-						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
+						onClick={
+							active[0].answer === ''
+								? () => props.prevNotify()
+								: () => onChange(step1Qs.id, step1Qs.id - 1)
+						}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
 					/>
 					<div className="questioncontent">{step1Qs.question}</div>
@@ -50,7 +55,11 @@ function Step1List() {
 						next
 						inputColor="green"
 						outputColor="purple"
-						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
+						onClick={
+							active[0].answer === ''
+								? () => props.nextNotify()
+								: () => onChange(step1Qs.id, step1Qs.id + 1)
+						}
 						style={{ visibility: step1Qs.id === 5 ? 'hidden' : 'show' }}
 					/>
 				</div>

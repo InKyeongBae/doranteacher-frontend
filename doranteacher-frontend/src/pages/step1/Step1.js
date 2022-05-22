@@ -178,8 +178,15 @@ function Step1() {
 		}
 	`;
 
-	const lessNotify = () => {
+	const nextNotify = () => {
 		toast.error('대답을 써야 다음 질문을 볼 수 있어요!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
+		});
+	};
+
+	const prevNotify = () => {
+		toast.error('대답을 써야 이전 질문과 대답을 다시 볼 수 있어요!', {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: 3000,
 		});
@@ -203,7 +210,7 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List />
+				<Step1List nextNotify={nextNotify} prevNotify={prevNotify}/>
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
