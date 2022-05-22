@@ -116,6 +116,7 @@ function SentencePaint() {
 	const ref = useRef(null);
 	console.log(text);
 	function changeText() {
+		setText(active[0].answer);
 		setEditable(true);
 	}
 	// input상태일 때 내용의 변화를 감지해서 text를 바꾸어 줌
@@ -131,7 +132,7 @@ function SentencePaint() {
 	}
 
 	function handleClickOutside(e) {
-		if (editable == true && !ref.current.contains(e.target)) {
+		if (editable === true && !ref.current.contains(e.target)) {
 			setEditable(false);
 			onUpdate(id, text);
 		}
