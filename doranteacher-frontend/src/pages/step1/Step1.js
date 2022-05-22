@@ -5,7 +5,7 @@ import GlobalStyle from '../../components/GlobalStyle';
 import ProgressBar from '../../components/ProgressBar';
 import SentencePaint from '../diarycontents/SentencePaint';
 import LeftDoran from '../../components/LeftDoran';
-import { SentenceProvider } from '../diarycontents/SentenceContext';
+import { SentenceProvider, useSentenceDispatch, useSentenceState } from '../diarycontents/SentenceContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +24,18 @@ const MainBlock = styled.div`
 		margin-left: 250px;
 	}
 
+	.trash {
+		padding-left: 10px;
+		cursor: pointer;
+	}
+
 	.centercontent {
 		font-family: 'KOTRAHOPE';
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
 		font-style: normal;
+		margin: 0 30px;
 		font-weight: 380;
 		font-size: 38px;
 		line-height: 48px;
@@ -78,19 +87,38 @@ const MainBlock = styled.div`
 		color: #000000;
 	}
 
-	.onedit {
-		background: white;
-		box-sizing: border-box;
-		border-radius: 32px;
+	.answer {
 		font-family: 'KOTRAHOPE';
 		font-style: normal;
 		font-weight: 400;
-		font-size: 40px;
+		font-size: 25px;
+		line-height: 25px;
+	}
+
+	.answer {
+		display: inline-flex;
 		text-align: center;
-		display: inline-block;
-		max-width: calc(100% - 32px);
+		align-items: center;
+	}
+
+	.onedit,
+	.offedit {
+		background: white;
+		box-sizing: border-box;
+		border-radius: 32px;
+		font-family: 'Cafe24Syongsyong';
+		font-style: normal;
+		font-size: 25px;
+		display: inline-flex;
+		width: 700px;
 		align-items: center;
 		color: #000000;
+		padding: 30px 15px;
+		margin-left: 10px;
+	}
+
+	.offedit {
+		height: 38px;
 	}
 
 	.xbutton {
@@ -131,54 +159,6 @@ const NextButtonStyle = styled.div`
 `;
 
 function Step1() {
-	const [step1Qs, setStep1Qs] = useState([
-		{
-			id: 1,
-			question: '오늘 일기로 쓰고 싶은 일이 있었나요?',
-			active: true,
-		},
-		{
-			id: 2,
-			question: '오늘 아침을 생각하면 무엇이 가장 떠오르나요?',
-			active: false,
-		},
-		{
-			id: 3,
-			question: '오늘 점심을 생각하면 무엇이 가장 떠오르나요?',
-			active: false,
-		},
-		{
-			id: 4,
-			question: '오늘 저녁을 생각하면 무엇이 가장 떠오르나요?',
-			active: false,
-		},
-		{
-			id: 5,
-			question: '지금 눈 앞에 무엇이 보이나요?',
-			active: false,
-		},
-	]);
-
-	function onChange(originId, nextId) {
-		setStep1Qs(
-			step1Qs.map((step1Qs) =>
-				step1Qs.id === originId
-					? { ...step1Qs, active: false }
-					: step1Qs.id === nextId
-					? { ...step1Qs, active: true }
-					: step1Qs,
-			),
-		);
-	}
-
-	const nowText = step1Qs.filter((step1Qs) => step1Qs.active);
-
-	const [lenSentences, setLenSentences] = useState(0);
-	const countSentences = (x) => {
-		console.log(x);
-		setLenSentences(x);
-	};
-
 	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
@@ -199,14 +179,7 @@ function Step1() {
 	`;
 
 	const lessNotify = () => {
-		toast.error('단어가 부족해요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const moreNotify = () => {
-		toast.error('단어가 너무 많아요!', {
+		toast.error('대답을 써야 다음 질문을 볼 수 있어요!', {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: 3000,
 		});
@@ -230,29 +203,9 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List step1Qs={step1Qs} onChange={onChange} countSentences={countSentences} />
+				<Step1List />
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
-				</div>
-				<div className="btn">
-					<NextButtonStyle>
-						<Button
-							buttonText="이전"
-							type="submit"
-							outputColor="red"
-							className="button"
-							onClick={lessNotify}
-						></Button>
-					</NextButtonStyle>
-					<NextButtonStyle>
-						<Button
-							buttonText="다음"
-							type="submit"
-							outputColor="red"
-							className="button"
-							onClick={lessNotify}
-						></Button>
-					</NextButtonStyle>
 				</div>
 			</MainBlock>
 			<StyledContainer>

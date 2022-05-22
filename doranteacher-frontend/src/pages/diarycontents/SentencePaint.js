@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
-import SentenceList from './SentenceList';
+import { FaTrashAlt } from 'react-icons/fa';
+import Sentence from './Sentence';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { SentenceProvider, useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import { useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
 
 const LC = require('literallycanvas');
 let _lc = null;
 
 function SentencePaint() {
 	const [images, setImages] = useState([]);
+	const [text, setText] = useState('');
+	const [editable, setEditable] = useState(false);
 
 	const dispatch = useSentenceDispatch();
-	const nextId = useSentenceNextId();
+	const sentences = useSentenceState();
+	const active = sentences.filter((sentence) => sentence.active);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -28,17 +32,21 @@ function SentencePaint() {
 		reset.innerText = '새로 쓰기';
 	};
 
-	const pending = () => {
-		toast.loading(`단어를 추가하는 중`, {
+	const toastId = useRef(null);
+
+	const pending = () =>
+		(toastId.current = toast.loading(`단어를 추가하는 중`, {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: false,
-		});
-	};
+		}));
 
-	const onSave = (event) => {
+	const dismiss = () => toast.dismiss(toastId.current);
+
+	function onSave(event) {
 		if (!_lc) return;
 		const img = _lc.getImage();
 		if (!img) return;
+
 		try {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
@@ -58,23 +66,22 @@ function SentencePaint() {
 				.then((response) => response.json())
 				.then((result) => {
 					const newSentence = result.filepath;
+					setText(newSentence);
 					dispatch({
-						type: 'CREATE',
+						type: 'CHANGE_ANSWER',
 						sentence: {
-							id: nextId.current,
-							content: newSentence,
+							id: active[0].id,
+							answer: newSentence,
 						},
 					});
-					nextId.current += 1;
+					dismiss();
 				});
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}
 	const img = new Image();
 	img.src = '/img/watermark.png';
-
-	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
@@ -96,6 +103,54 @@ function SentencePaint() {
 		}
 	`;
 
+	function onUpdate(updateid, answer) {
+		dispatch({
+			type: 'CHANGE_ANSWER',
+			sentence: {
+				id: updateid,
+				answer: answer,
+			},
+		});
+	}
+
+	const id = active[0].id;
+	console.log(text);
+	function changeText() {
+		setText(active[0].answer);
+		setEditable(true);
+	}
+	// input상태일 때 내용의 변화를 감지해서 text를 바꾸어 줌
+	function handleChange(e) {
+		setText(e.target.value);
+	}
+	// enter키를 눌렀을 때 입력을 중지하는 함수
+	function handleKeyDown(e) {
+		console.log(e.target);
+		if (e.key === 'Enter') {
+			setEditable(!editable);
+			onUpdate(id, text);
+		}
+	}
+
+	function handleClickOutside(e) {
+		const target = e.target;
+		if (target === document.getElementsByClassName('onedit')[0]) return;
+		if (target === document.getElementsByClassName('offedit')[0]) return;
+		if (target === document.getElementsByClassName('trash')[0]) return;
+		const buttons = document.getElementsByClassName('button');
+		for (var i = 0; i < buttons.length; i++) {
+			if (buttons[i].contains(target)) return;
+		}
+		if (editable === true) {
+			setEditable(false);
+			onUpdate(id, text);
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('click', handleClickOutside, true);
+	});
+
 	return (
 		<>
 			<div className="canvas">
@@ -112,10 +167,37 @@ function SentencePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="문장 추가하기" outputColor="red" onClick={onSave} />
+				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
+			</div>
+			<div className="answer">
+				나의 대답
+				{editable ? (
+					<>
+						<input
+							className="onedit"
+							id="resizable"
+							type="text"
+							value={text}
+							onChange={(e) => handleChange(e)}
+							onKeyDown={handleKeyDown}
+						/>
+						<div className="trash">
+							<FaTrashAlt />
+						</div>
+					</>
+				) : (
+					<Sentence
+						key={1}
+						id={id}
+						active={active}
+						initText={text}
+						changeText={changeText}
+						editable={editable}
+						onUpdate={onUpdate}
+					/>
+				)}
 			</div>
 
-			<SentenceList onRemove={onRemove} />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>

@@ -66,7 +66,6 @@ function WordPaint() {
 							content: newWord,
 						},
 					});
-					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);

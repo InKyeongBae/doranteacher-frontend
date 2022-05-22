@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import ImgButton from '../../components/ImgButton';
-import { useSentenceState } from '../diarycontents/SentenceContext';
+import { useSentenceDispatch, useSentenceState } from '../diarycontents/SentenceContext';
 
 const SentenceCountStyle = styled.div`
 	.sentence-count {
@@ -19,10 +19,16 @@ const SentenceCountStyle = styled.div`
 	}
 `;
 
-function Step1List({ step1Qs, onChange, countSentences }) {
-	const sentences = useSentenceState();
-	const lenSentences = sentences.length;
-
+function Step1List() {
+	const step1Qs = useSentenceState();
+	const dispatch = useSentenceDispatch();
+	function onChange(originId, nextId) {
+		dispatch({
+			type: 'CHANGE_ACTIVE',
+			originId: originId,
+			nextId: nextId,
+		});
+	}
 	function Step1Qs({ step1Qs, onChange }) {
 		return (
 			<div
@@ -32,21 +38,25 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 				}}
 			>
 				<div className="centercontent">
-					{/* <ImgButton
+					<ImgButton
 						prev
+						inputColor="green"
+						outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id - 1)}
 						style={{ visibility: step1Qs.id === 1 ? 'hidden' : 'show' }}
-					/> */}
+					/>
 					<div className="questioncontent">{step1Qs.question}</div>
-					{/* <ImgButton
+					<ImgButton
 						next
+						inputColor="green"
+						outputColor="purple"
 						onClick={() => onChange(step1Qs.id, step1Qs.id + 1)}
-						style={{ visibility: step1Qs.id === 10 ? 'hidden' : 'show' }}
-					/> */}
+						style={{ visibility: step1Qs.id === 5 ? 'hidden' : 'show' }}
+					/>
 				</div>
 				<div className="explain-text" style={{ textAlign: 'center' }}>
 					<div className="description" style={{ display: 'inline-block' }}>
-						완전한 한 문장으로 입력해 주세요
+						일기를 쓰는 단계이니 완전한 한 문장으로 대답해 보아요!
 					</div>
 				</div>
 				<br />
@@ -54,7 +64,7 @@ function Step1List({ step1Qs, onChange, countSentences }) {
 		);
 	}
 
-	useMemo(() => countSentences(lenSentences), [lenSentences]);
+	// useMemo(() => countSentences(lenSentences), [lenSentences]);
 
 	return (
 		<>

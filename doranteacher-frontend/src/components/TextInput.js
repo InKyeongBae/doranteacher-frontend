@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useWordDispatch, useWordState } from '../pages/brainstorm/WordContext';
+import { FaTrashAlt } from 'react-icons/fa';
 
-function TextInput({ initText, onUpdate, id }) {
+function TextInput({ initText, onUpdate, id, trash }) {
 	const [text, setText] = useState(initText);
 	const [editable, setEditable] = useState(false);
-	const dispatch = useWordDispatch();
 
 	const ref = useRef(null);
 
@@ -47,7 +46,14 @@ function TextInput({ initText, onUpdate, id }) {
 						onKeyDown={handleKeyDown}
 					/>
 				) : (
-					<div onClick={() => editOn()}>{text}</div>
+					<div className="offedit" onClick={() => editOn()}>
+						<div className="text">{text}</div>
+						{trash && (
+							<div className="trash">
+								<FaTrashAlt />
+							</div>
+						)}
+					</div>
 				)}
 			</div>
 		</>
