@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
+import { FaTrashAlt } from 'react-icons/fa';
 import Sentence from './Sentence';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
@@ -113,7 +114,6 @@ function SentencePaint() {
 	}
 
 	const id = active[0].id;
-	const ref = useRef(null);
 	console.log(text);
 	function changeText() {
 		setText(active[0].answer);
@@ -125,6 +125,7 @@ function SentencePaint() {
 	}
 	// enter키를 눌렀을 때 입력을 중지하는 함수
 	function handleKeyDown(e) {
+		console.log(e.target);
 		if (e.key === 'Enter') {
 			setEditable(!editable);
 			onUpdate(id, text);
@@ -132,7 +133,15 @@ function SentencePaint() {
 	}
 
 	function handleClickOutside(e) {
-		if (editable === true && !ref.current.contains(e.target)) {
+		const target = e.target;
+		if (target === document.getElementsByClassName('onedit')[0]) return;
+		if (target === document.getElementsByClassName('offedit')[0]) return;
+		if (target === document.getElementsByClassName('trash')[0]) return;
+		const buttons = document.getElementsByClassName('button');
+		for (var i = 0; i < buttons.length; i++) {
+			if (buttons[i].contains(target)) return;
+		}
+		if (editable === true) {
 			setEditable(false);
 			onUpdate(id, text);
 		}
@@ -163,14 +172,19 @@ function SentencePaint() {
 			<div className="answer">
 				나의 대답
 				{editable ? (
-					<input
-						className="onedit"
-						id="resizable"
-						type="text"
-						value={text}
-						onChange={(e) => handleChange(e)}
-						onKeyDown={handleKeyDown}
-					/>
+					<>
+						<input
+							className="onedit"
+							id="resizable"
+							type="text"
+							value={text}
+							onChange={(e) => handleChange(e)}
+							onKeyDown={handleKeyDown}
+						/>
+						<div className="trash">
+							<FaTrashAlt />
+						</div>
+					</>
 				) : (
 					<Sentence
 						key={1}

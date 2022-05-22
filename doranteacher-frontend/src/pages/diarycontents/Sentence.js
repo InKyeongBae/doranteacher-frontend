@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SentenceInput from './SentenceInput';
 import { useSentenceState, useSentenceDispatch } from './SentenceContext';
 import { FaTrashAlt } from 'react-icons/fa';
 
@@ -15,34 +14,16 @@ function Sentence(props) {
 
 	return (
 		<>
-			{props.editable ? (
-				<>
-					<input
-						className="onedit"
-						id="resizable"
-						type="text"
-						value={text}
-						onChange={(e) => props.handleChange(e)}
-						onKeyDown={props.handleKeyDown}
-					/>
-					<div className="trash">
-						<FaTrashAlt />
-					</div>
-				</>
-			) : (
-				<>
-					<div className="offedit" onClick={() => props.changeText()}>
-						{text}
-					</div>
-					<div className="trash">
-						<FaTrashAlt
-							onClick={() => {
-								props.onUpdate(id, trashText);
-							}}
-						/>
-					</div>{' '}
-				</>
-			)}
+			<div className="offedit" onClick={() => props.changeText()}>
+				{text}
+			</div>
+			<div className="trash">
+				<FaTrashAlt
+					onClick={() => {
+						props.onUpdate(id, trashText);
+					}}
+				/>
+			</div>
 		</>
 	);
 }
