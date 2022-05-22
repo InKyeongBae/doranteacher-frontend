@@ -101,7 +101,7 @@ const MainBlock = styled.div`
 		background: white;
 		box-sizing: border-box;
 		border-radius: 32px;
-		font-family: '상상토끼 꽃집막내딸 OTF';
+		font-family: 'Cafe24Syongsyong';
 		font-style: normal;
 		font-size: 25px;
 		display: inline-flex;
@@ -155,7 +155,6 @@ const NextButtonStyle = styled.div`
 `;
 
 function Step1() {
-
 	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {

@@ -34,29 +34,37 @@ function SentenceInput({ initText, onUpdate, id, trash }) {
 	});
 
 	return (
-		<>
-			<div className="editbox" ref={ref}>
-				{editable ? (
-					<input
-						className="onedit"
-						id="resizable"
-						type="text"
-						value={text}
-						onChange={(e) => handleChange(e)}
-						onKeyDown={handleKeyDown}
-					/>
-				) : (
-					<div className="offedit" onClick={() => editOn()}>
-						<div className="text">{text}</div>
-						{trash && (
-							<div className="trash">
-								<FaTrashAlt />
-							</div>
-						)}
-					</div>
-				)}
-			</div>
-		</>
+		// <>
+		// 	<div className="editbox" ref={ref}>
+		// 		{editable ? (
+		// 			<input
+		// 				className="onedit"
+		// 				id="resizable"
+		// 				type="text"
+		// 				value={text}
+		// 				onChange={(e) => handleChange(e)}
+		// 				onKeyDown={handleKeyDown}
+		// 			/>
+		// 		) : (
+		// 			<div className="offedit" onClick={() => editOn()}>
+		// 				<div className="text">{text}</div>
+		// 				{trash && (
+		// 					<div className="trash">
+		// 						<FaTrashAlt />
+		// 					</div>
+		// 				)}
+		// 			</div>
+		// 		)}
+		// 	</div>
+		// </>
+		<div className="offedit">
+			<div className="text">{text}</div>
+			{trash && (
+				<div className="trash">
+					<FaTrashAlt />
+				</div>
+			)}
+		</div>
 	);
 }
 

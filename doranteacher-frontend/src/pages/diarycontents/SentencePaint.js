@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
 import Sentence from './Sentence';
@@ -16,7 +16,7 @@ function SentencePaint() {
 
 	const dispatch = useSentenceDispatch();
 	const sentences = useSentenceState();
-	const active = sentences.filter(sentence => sentence.active);
+	const active = sentences.filter((sentence) => sentence.active);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -29,17 +29,21 @@ function SentencePaint() {
 		reset.innerText = '새로 쓰기';
 	};
 
-	const pending = () => {
-		toast.loading(`단어를 추가하는 중`, {
+	const toastId = useRef(null);
+
+	const pending = () =>
+		(toastId.current = toast.loading(`단어를 추가하는 중`, {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: false,
-		});
-	};
+		}));
 
-	const onSave = (event) => {
+	const dismiss = () => toast.dismiss(toastId.current);
+
+	function onSave(event) {
 		if (!_lc) return;
 		const img = _lc.getImage();
 		if (!img) return;
+
 		try {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
@@ -66,11 +70,13 @@ function SentencePaint() {
 							answer: newSentence,
 						},
 					});
+					dismiss();
 				});
+
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}
 	const img = new Image();
 	img.src = '/img/watermark.png';
 
