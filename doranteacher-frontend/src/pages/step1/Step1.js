@@ -24,6 +24,11 @@ const MainBlock = styled.div`
 		margin-left: 250px;
 	}
 
+	.trash {
+		padding-left: 10px;
+		cursor: pointer;
+	}
+
 	.centercontent {
 		font-family: 'KOTRAHOPE';
 		display: flex;
@@ -105,15 +110,14 @@ const MainBlock = styled.div`
 		font-style: normal;
 		font-size: 25px;
 		display: inline-flex;
-		min-width: 700px;
+		width: 700px;
 		align-items: center;
 		color: #000000;
-		padding-left: 10px;
+		padding: 30px 15px;
 		margin-left: 10px;
 	}
 
 	.offedit {
-		padding-left: 10px;
 		height: 38px;
 	}
 

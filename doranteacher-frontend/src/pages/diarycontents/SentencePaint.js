@@ -72,7 +72,6 @@ function SentencePaint() {
 					});
 					dismiss();
 				});
-
 		} catch (err) {
 			console.log(err);
 		}
@@ -99,14 +98,6 @@ function SentencePaint() {
 		.Toastify__progress-bar {
 		}
 	`;
-	const onUpdate = (id, answer) =>
-		dispatch({
-			type: 'CHANGE_ANSWER',
-			sentence: {
-				id: id,
-				answer: answer,
-			},
-		});
 
 	return (
 		<>
@@ -126,7 +117,7 @@ function SentencePaint() {
 			<div className="buttonline">
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
-			<Sentence onUpdate={onUpdate} />
+			<Sentence />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
