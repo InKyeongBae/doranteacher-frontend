@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
-import Header from '../../components/Header';
 import GlobalStyle from '../../components/GlobalStyle';
-import ProgressBar from '../../components/ProgressBar';
-import SentencePaint from '../diarycontents/SentencePaint';
+import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
-import { SentenceProvider } from '../diarycontents/SentenceContext';
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
-import Step1List from './Step1List';
+import ProgressBar from '../../components/ProgressBar';
+import TitlePaint from './TitlePaint';
 
 const MainBlock = styled.div`
 	.literally {
@@ -152,8 +147,7 @@ const MainBlock = styled.div`
 	}
 `;
 
-function Step1() {
-	const navigate = useNavigate('');
+function Title() {
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
 			bottom: 80px;
@@ -171,30 +165,8 @@ function Step1() {
 		.Toastify__progress-bar {
 		}
 	`;
-
-	const nextNotify = () => {
-		toast.error('대답을 써야 다음 질문을 볼 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const levelNotify = () => {
-		toast.error('대답을 써야 다음 단계로 넘어갈 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const prevNotify = () => {
-		toast.error('대답을 써야 이전 질문과 대답을 다시 볼 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
 	return (
-		<SentenceProvider>
+		<div>
 			<GlobalStyle backColor="purple" />
 			<Header
 				isProgress
@@ -211,16 +183,22 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify}/>
+				<div className="centercontent">
+					<div className="questioncontent">
+						오늘 일기와 가장 어울리는
+						<br />
+						제목을 써 볼까요?
+					</div>
+				</div>
 				<div className="paint" style={{ paddingLeft: '250px' }}>
-					<SentencePaint />
+					<TitlePaint />
 				</div>
 			</MainBlock>
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
-		</SentenceProvider>
+		</div>
 	);
 }
 
-export default Step1;
+export default Title;
