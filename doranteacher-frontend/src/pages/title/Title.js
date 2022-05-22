@@ -10,7 +10,7 @@ import TitlePaint from './TitlePaint';
 const MainBlock = styled.div`
 	.literally {
 		width: 862px;
-		min-height: 453px;
+		min-height: 243px;
 	}
 
 	.question,
@@ -183,11 +183,13 @@ function Title() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<div className="centercontent">
-					<div className="questioncontent">
-						오늘 일기와 가장 어울리는
-						<br />
-						제목을 써 볼까요?
+				<div className="question">
+					<div className="centercontent">
+						<div className="questioncontent">
+							오늘 일기와 가장 어울리는
+							<br />
+							제목을 써 볼까요?
+						</div>
 					</div>
 				</div>
 				<div className="paint" style={{ paddingLeft: '250px' }}>

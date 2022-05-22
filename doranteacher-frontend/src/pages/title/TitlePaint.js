@@ -64,6 +64,7 @@ function SentencePaint() {
 					const newSentence = result.filepath;
 					setText(newSentence);
 					dismiss();
+					setEditable(false);
 				});
 		} catch (err) {
 			console.log(err);
@@ -92,8 +93,8 @@ function SentencePaint() {
 		}
 	`;
 	const onRemove = () => setText('');
-	const onUpdate = (answer) => setText(answer);
-	function changeText() {
+	function changeText(e) {
+		console.log(text);
 		setEditable(true);
 	}
 
@@ -105,7 +106,6 @@ function SentencePaint() {
 	function handleKeyDown(e) {
 		if (e.key === 'Enter') {
 			setEditable(!editable);
-			onUpdate(text);
 		}
 	}
 
@@ -120,7 +120,6 @@ function SentencePaint() {
 		}
 		if (editable === true) {
 			setEditable(false);
-			onUpdate(text);
 		}
 	}
 
@@ -134,20 +133,17 @@ function SentencePaint() {
 				<LC.LiterallyCanvasReactComponent
 					onInit={onInit}
 					backgroundColor="#ffffff"
-					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
-					imageSize={{ width: 800, height: 420 }}
+					imageSize={{ width: 800, height: 210 }}
 					tools={[LC.tools.Pencil, LC.tools.Eraser]}
 					strokeWidths={[3, 5, 7, 10, 15, 25]}
 					imageURLPrefix="/img"
-					watermarkImage={img}
-					watermarkScale="0.53"
 				/>
 			</div>
 			<div className="buttonline">
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
 			<div className="answer">
-				나의 대답{' '}
+				일기 제목{' '}
 				{editable ? (
 					<>
 						<input
