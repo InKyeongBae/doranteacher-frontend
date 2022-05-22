@@ -70,10 +70,10 @@ const ImgButtons = styled.div`
 	}
 `;
 
-function ImgButton({ setting, undo, next, prev, ...rest }) {
+function ImgButton({ setting, undo, next, prev, onClick, ...rest }) {
 	return (
 		<ImgButtons {...rest}>
-			<button className="button">
+			<button className="button" onClick={onClick}>
 				{setting && <MdSettings />}
 				{undo && <MdUndo />}
 				{next && <GoChevronRight />}
