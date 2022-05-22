@@ -12,11 +12,11 @@ import TextInput from '../../components/TextInput';
 const LC = require('literallycanvas');
 let _lc = null;
 
-function SentencePaint() {
+function TitlePaint() {
 	const [images, setImages] = useState([]);
 	const [text, setText] = useState('');
 	const [editable, setEditable] = useState(false);
-
+	
 	const onInit = (lc) => {
 		_lc = lc;
 		// 라벨 텍스트 stroke -> 색상
@@ -181,4 +181,4 @@ function SentencePaint() {
 	);
 }
 
-export default SentencePaint;
+export default TitlePaint;

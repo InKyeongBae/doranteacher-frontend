@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
+import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
@@ -165,6 +166,13 @@ function Title() {
 		.Toastify__progress-bar {
 		}
 	`;
+	const NextButtonStyle = styled.div`
+		text-align: center;
+		padding: 20px 0;
+	`;
+
+	const [check, setCheck] = useState('');
+
 	return (
 		<div>
 			<GlobalStyle backColor="purple" />
@@ -194,6 +202,23 @@ function Title() {
 				</div>
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<TitlePaint />
+					<div className="nextBtn">
+						<NextButtonStyle>
+							<Button
+								buttonText="다음"
+								type="submit"
+								outputColor="red"
+								className="button"
+								// onClick={
+								// 	lenWords < 5
+								// 		? lessNotify
+								// 		: lenWords > 10
+								// 		? moreNotify
+								// 		: () => navigate('/writing/diary-type')
+								// }
+							></Button>
+						</NextButtonStyle>
+					</div>
 				</div>
 			</MainBlock>
 			<StyledContainer>
