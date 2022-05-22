@@ -1,36 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SentenceInput from './SentenceInput';
 import { useSentenceState, useSentenceDispatch } from './SentenceContext';
 import { FaTrashAlt } from 'react-icons/fa';
 
-function Sentence() {
+function Sentence(props) {
 	const sentences = useSentenceState();
-	const dispatch = useSentenceDispatch();
 	const active = sentences.filter((sentence) => sentence.active);
-	const text = active[0].answer;
 	const id = active[0].id;
+	const text = active[0].answer;
+	console.log(props.editable);
 	console.log(sentences);
+
 	const trashText = '';
-	const onUpdate = (updateid, answer) =>
-		dispatch({
-			type: 'CHANGE_ANSWER',
-			sentence: {
-				id: updateid,
-				answer: answer,
-			},
-		});
+
 	return (
-		<div className="answer">
-			나의 대답
-			<div className="offedit">{text}</div>
-			<div className="trash">
-				<FaTrashAlt
-					onClick={() => {
-						onUpdate(id, trashText);
-					}}
-				/>
-			</div>
-		</div>
+		<>
+			{props.editable ? (
+				<>
+					<input
+						className="onedit"
+						id="resizable"
+						type="text"
+						value={text}
+						onChange={(e) => props.handleChange(e)}
+						onKeyDown={props.handleKeyDown}
+					/>
+					<div className="trash">
+						<FaTrashAlt />
+					</div>
+				</>
+			) : (
+				<>
+					<div className="offedit" onClick={() => props.changeText()}>
+						{text}
+					</div>
+					<div className="trash">
+						<FaTrashAlt
+							onClick={() => {
+								props.onUpdate(id, trashText);
+							}}
+						/>
+					</div>{' '}
+				</>
+			)}
+		</>
 	);
 }
 

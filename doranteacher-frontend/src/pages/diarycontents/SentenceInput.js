@@ -6,6 +6,8 @@ function SentenceInput({ initText, onUpdate, id, trash }) {
 	const [editable, setEditable] = useState(false);
 
 	const ref = useRef(null);
+	console.log(initText);
+	console.log(text);
 
 	// text상태일 때 onClick 이벤트로 넣어 줄 함수
 	const editOn = (e) => {
