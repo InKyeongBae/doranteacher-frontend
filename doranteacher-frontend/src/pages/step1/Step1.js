@@ -194,7 +194,7 @@ function Step1() {
 	};
 
 	return (
-		<SentenceProvider>
+		<>
 			<GlobalStyle backColor="purple" />
 			<Header
 				isProgress
@@ -219,7 +219,7 @@ function Step1() {
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
-		</SentenceProvider>
+		</>
 	);
 }
 
