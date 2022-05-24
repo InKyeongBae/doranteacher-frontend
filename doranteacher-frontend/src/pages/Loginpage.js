@@ -185,7 +185,7 @@ const Loginpage = (props) => {
                     <BigDoran>
                         <img
                             className="bigDoran"
-                            src="/img/big-doran-heart-right.png"
+                            src="/img/big-doran-heart-left.png"
                         />
                     </BigDoran>
                 </div>

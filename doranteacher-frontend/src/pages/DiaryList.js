@@ -10,12 +10,29 @@ import ImageUpload from "../components/ImageUpload";
 
 const MainBlock = styled.div``;
 
+const BigDoran = styled.div`
+    .bigDoran {
+        height: 700px;
+    }
+`;
+
 function DiaryList() {
     return (
         <>
             <GlobalStyle backColor="yellow" />
             <Header isUndo backColor="yellow" />
-            <MainBlock></MainBlock>
+            <MainBlock>
+                <div className="leftSide"></div>
+                <div className="middleSide"></div>
+                <div className="rightSide">
+                    <BigDoran>
+                        <img
+                            className="bigDoran"
+                            src="/img/big-doran-heart-left.png"
+                        />
+                    </BigDoran>
+                </div>
+            </MainBlock>
         </>
     );
 }

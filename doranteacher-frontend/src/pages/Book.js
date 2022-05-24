@@ -8,8 +8,33 @@ import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import ImageUpload from "../components/ImageUpload";
 
+const MainBlock = styled.div``;
+
+const BigDoran = styled.div`
+    .bigDoran {
+        height: 690px;
+    }
+`;
+
 function Book() {
-    return <>book</>;
+    return (
+        <>
+            <GlobalStyle backColor="yellow" />
+            <Header isUndo backColor="yellow" />
+            <MainBlock>
+                <div className="leftSide">
+                    <BigDoran>
+                        <img
+                            className="bigDoran"
+                            src="/img/big-doran-heart-right.png"
+                        />
+                    </BigDoran>
+                </div>
+                <div className="middleSide"></div>
+                <div className="rightSide"></div>
+            </MainBlock>
+        </>
+    );
 }
 
 export default Book;
