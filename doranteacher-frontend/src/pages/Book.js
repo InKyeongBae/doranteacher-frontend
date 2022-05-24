@@ -39,7 +39,7 @@ const MainBlock = styled.div`
 `;
 const BigDoran = styled.div`
     .bigDoran {
-        height: 700px;
+        height: 695px;
     }
 `;
 
