@@ -35,12 +35,44 @@ const MainBlock = styled.div`
 			margin: 10px 20px;
 		}
 	}
+
+	.diarycontents {
+		margin-top: 20px;
+		margin-left: 310px;
+		margin-right: 60px;
+	}
+
+	.contents-box {
+		background-color: white;
+		border-radius: 15px;
+		min-height: 60vh;
+
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	}
+
+	.answers {
+		padding: 30px;
+	}
+	.answer {
+		font-family: 'Cafe24Syongsyong';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 40px;
+		word-wrap: break-word;
+		padding: 7px 0;
+		/* text-decoration: underline;
+		text-underline-position: under; */
+		border-bottom: 2px solid black;
+	}
 `;
 
 function DiaryContentsView() {
 	const sentences = useSentenceState();
-	const answers = sentences.map(s => s.answer);
+	const answers = sentences.map((s) => s.answer);
 	console.log(answers);
+	var id = 1;
 	return (
 		<div>
 			<GlobalStyle backColor="purple" />
@@ -68,8 +100,16 @@ function DiaryContentsView() {
 						</div>
 					</div>
 				</div>
-				<div className="diarycontents" style={{ paddingLeft: '250px' }}>
-					
+				<div className="diarycontents">
+					<div className="contents-box">
+						<div className="answers">
+							{answers.map((answer) => (
+								<div className="answer" key={id++}>
+									{answer}
+								</div>
+							))}
+						</div>
+					</div>
 				</div>
 			</MainBlock>
 		</div>
