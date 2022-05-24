@@ -112,6 +112,7 @@ const Loginpage = (props) => {
             .post("http://localhost:8000/login", data)
             .then((res) => {
                 console.log(res);
+                localStorage.setItem("token", res.token);
             })
             .catch((err) => {
                 console.log(err);
