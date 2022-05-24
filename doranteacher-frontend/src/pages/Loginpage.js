@@ -5,6 +5,7 @@ import { loginUser } from "../_actions/user_action";
 import styled from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
+import axios from "axios";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -81,18 +82,41 @@ const Input = styled.input`
 `;
 
 const Loginpage = (props) => {
-    const handlesubmit = (e) => {
-        e.preventDefault();
+    const [Id, setId] = useState("");
+    const [Password, setPassword] = useState("");
+
+    // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
+    const handleId = (e) => {
+        setId(e.target.value);
     };
 
-    // // handler 함수들
-    // const onUsernameHandler = (event) => {
-    //     setId(event.currentTarget.value);
-    // };
+    const handlePasswrd = (e) => {
+        setPassword(e.target.value);
+    };
 
-    // const onPasswordHandler = (event) => {
-    //     setPassword(event.currentTarget.value);
-    // };
+    // login 버튼 클릭 이벤트
+    const onClickLogin = () => {
+        console.log("click login");
+    };
+
+    const handlesubmit = (e) => {
+        e.preventDefault();
+
+        let data = {
+            id: Id,
+            password: Password,
+        };
+
+        console.log(data);
+        axios
+            .post("http://localhost:8000/login", data)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     // const onSubmitHandler = (event) => {
     //     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
@@ -141,10 +165,9 @@ const Loginpage = (props) => {
                                     <label className="content">아이디</label>
                                     <Input
                                         className="input"
-                                        type="username"
-                                        onChange={(e) =>
-                                            (this.username = e.target.value)
-                                        }
+                                        type="id"
+                                        value={Id}
+                                        onChange={handleId}
                                     />
                                 </div>
                                 <div className="column">
@@ -152,9 +175,8 @@ const Loginpage = (props) => {
                                     <Input
                                         className="input"
                                         type="password"
-                                        onChange={(e) =>
-                                            (this.password = e.target.value)
-                                        }
+                                        value={Password}
+                                        onChange={handlePasswrd}
                                     />
                                 </div>
                                 <br />
@@ -163,6 +185,7 @@ const Loginpage = (props) => {
                                     type="submit"
                                     outputColor="red"
                                     className="content_button"
+                                    onClick={onClickLogin}
                                 ></Button>
                             </div>
                         </form>

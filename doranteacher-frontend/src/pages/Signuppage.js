@@ -151,7 +151,7 @@ function Signuppage(props) {
                     </CenterLogo>
 
                     <SignupUI>
-                        <form onSubmit={this.onSubmitHandler}>
+                        <form onSubmit={onSubmitHandler}>
                             <div className="signupform">
                                 <div className="column">
                                     <label className="content">이름</label>
