@@ -111,31 +111,12 @@ const Loginpage = (props) => {
             .post("http://localhost:8000/login", data)
             .then((res) => {
                 console.log(res);
-                localStorage.setItem("token", res.token);
+                localStorage.setItem("token", res.data.token);
             })
             .catch((err) => {
                 console.log(err);
             });
     };
-
-    // const onSubmitHandler = (event) => {
-    //     // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
-    //     event.preventDefault();
-
-    //     let body = {
-    //         username: Username,
-    //         password: Password,
-    //     };
-
-    //     // action의 반환값을 dispatch해준다.
-    //     dispatch(loginUser(body)).then((response) => {
-    //         if (response.payload.loginSuccess) {
-    //             props.history.push("/");
-    //         } else {
-    //             alert("Error");
-    //         }
-    //     });
-    // };
 
     return (
         <>
