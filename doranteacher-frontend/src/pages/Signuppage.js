@@ -105,6 +105,10 @@ function Signuppage(props) {
         setConfirmPassword(event.currentTarget.value);
     };
 
+    // login 버튼 클릭 이벤트
+    const onClickLogin = () => {
+        console.log("click login");
+    };
     const onSubmitHandler = (event) => {
         // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
         event.preventDefault();
@@ -118,6 +122,8 @@ function Signuppage(props) {
             id: Id,
             password: Password,
         };
+
+        console.log(data);
 
         axios
             .post("http://localhost:8000/signup", data)
@@ -207,6 +213,7 @@ function Signuppage(props) {
                                     type="submit"
                                     outputColor="red"
                                     className="content_button"
+                                    onClick={onClickLogin}
                                 ></Button>
                             </div>
                         </form>
