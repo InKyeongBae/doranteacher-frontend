@@ -16,7 +16,7 @@ function TitlePaint() {
 	const [images, setImages] = useState([]);
 	const [text, setText] = useState('');
 	const [editable, setEditable] = useState(false);
-	
+
 	const onInit = (lc) => {
 		_lc = lc;
 		// 라벨 텍스트 stroke -> 색상
