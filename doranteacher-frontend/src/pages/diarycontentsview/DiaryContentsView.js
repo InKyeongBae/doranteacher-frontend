@@ -1,5 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
@@ -38,8 +40,8 @@ const MainBlock = styled.div`
 
 	.diarycontents {
 		margin-top: 20px;
-		margin-left: 310px;
-		margin-right: 60px;
+		margin-left: 360px;
+		margin-right: 110px;
 	}
 
 	.contents-box {
@@ -70,11 +72,53 @@ const MainBlock = styled.div`
 	}
 `;
 
+const NextButtonStyle = styled.div`
+	text-align: center;
+	padding: 20px 0;
+`;
+
 function DiaryContentsView() {
 	const sentences = useSentenceState();
+	const [state, setState] = useState(false);
 	const answers = sentences.map((s) => s.answer);
-	console.log(answers);
+	const navigate = useNavigate('');
 	var id = 1;
+
+	function setAnimation() {
+		setState(true);
+		setTimeout(function setNavi() {
+			navigate('/writing/save');
+		}, 1800);
+	}
+
+	const DojangBlock = styled.div`
+		position: fixed;
+		width: 638px;
+		height: 638px;
+		bottom: 70px;
+		right: 130px;
+		background: url(/img/dojang1.png);
+		animation-name: stampani;
+		animation-duration: 1.3s;
+		animation-iteration-count: 1;
+		animation-timing-function: ease;
+
+		@keyframes stampani {
+			0% {
+				transform: scale(1);
+				opacity: 0;
+			}
+			50% {
+				transform: scale(5);
+				opacity: 0;
+			}
+			100% {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+	`;
+
 	return (
 		<div>
 			<GlobalStyle backColor="purple" />
@@ -113,6 +157,24 @@ function DiaryContentsView() {
 						</div>
 					</div>
 				</div>
+				{state ? (
+					<DojangBlock>
+						<div className="dojang-icon"></div>
+					</DojangBlock>
+				) : (
+					''
+				)}
+
+				<NextButtonStyle>
+					<Button
+						buttonText="다음"
+						type="submit"
+						inputColor="green"
+						outputColor="red"
+						className="button"
+						onClick={() => setAnimation()}
+					></Button>
+				</NextButtonStyle>
 			</MainBlock>
 		</div>
 	);
