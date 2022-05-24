@@ -61,9 +61,11 @@ const MainBlock = styled.div`
 		font-size: 40px;
 		line-height: 40px;
 		word-wrap: break-word;
-		padding: 7px 0;
-		/* text-decoration: underline;
-		text-underline-position: under; */
+		/* padding: 7px 0; */
+		text-decoration: underline;
+		text-underline-offset: 17px;
+		text-decoration-thickness: 2px;
+		line-height: 60px;
 		border-bottom: 2px solid black;
 	}
 `;
