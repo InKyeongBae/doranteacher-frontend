@@ -15,6 +15,7 @@ import DiarySave from './pages/DiarySave';
 import Title from './pages/title/Title';
 import DiaryContentsView from './pages/diarycontentsview/DiaryContentsView';
 import { SentenceProvider } from './pages/diarycontents/SentenceContext';
+import Step2 from './pages/step2/Step2';
 
 const palette = {
 	red: '#E75244',
@@ -49,6 +50,7 @@ function App() {
 							<Route path="first-step" element={<Brainstorm />} />
 							<Route path="diary-type" element={<DiaryType />} />
 							<Route path="step1" element={<Step1 />} />
+							<Route path="step2" element={<Step2 />} />
 							<Route path="diary-contents-view" element={<DiaryContentsView />} />
 							<Route path="title" element={<Title />} />
 							<Route path="save" element={<DiarySave />} />
