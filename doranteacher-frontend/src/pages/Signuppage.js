@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
+import axios from "axios";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -112,11 +113,20 @@ function Signuppage(props) {
             return alert("비밀번호와 비밀번호 확인은 같아야 해요!");
         }
 
-        let body = {
+        let data = {
             name: Name,
             id: Id,
             password: Password,
         };
+
+        axios
+            .post("http://localhost:8000/signup", data)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
 
         // // action의 반환값을 dispatch해준다.
         // dispatch(signupUser(body)).then((response) => {
