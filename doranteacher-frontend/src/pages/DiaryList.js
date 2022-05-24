@@ -8,8 +8,16 @@ import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import ImageUpload from "../components/ImageUpload";
 
+const MainBlock = styled.div``;
+
 function DiaryList() {
-    return <>diarylist</>;
+    return (
+        <>
+            <GlobalStyle backColor="yellow" />
+            <Header isUndo backColor="yellow" />
+            <MainBlock></MainBlock>
+        </>
+    );
 }
 
 export default DiaryList;
