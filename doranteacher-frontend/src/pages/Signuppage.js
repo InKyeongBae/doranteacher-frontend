@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 // import { useDispatch } from 'react-redux';
 import Button from "../components/Button";
-import { signupUser } from "../_actions/user_action";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
