@@ -87,7 +87,7 @@ function DiaryContentsView() {
 	function setAnimation() {
 		setState(true);
 		setTimeout(function setNavi() {
-			navigate('/writing/save');
+			navigate('/writing/title');
 		}, 1800);
 	}
 
