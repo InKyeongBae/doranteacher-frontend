@@ -143,16 +143,6 @@ const BottomBlock = styled.div`
     }
 `;
 
-function IssLogin() {
-    const [cookies] = useCookies(["acessToken"]);
-    if (cookies.acessToken !== undefined) {
-        // console.log(cookies.acessToken);
-        return true;
-    } else {
-        return false;
-    }
-}
-
 function Mainpage() {
     const navigate = useNavigate();
     const [cookies] = useCookies(["acessToken"]);
