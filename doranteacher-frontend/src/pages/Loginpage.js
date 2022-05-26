@@ -86,7 +86,7 @@ axios.defaults.withCredentials = true;
 const Loginpage = (props) => {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
-    const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
+    const [cookies, setCookie] = useCookies(["acessToken"]);
     const navigate = useNavigate();
 
     // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다

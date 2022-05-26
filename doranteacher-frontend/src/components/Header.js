@@ -71,6 +71,7 @@ function Header({
     backColor,
 }) {
     const navigate = useNavigate();
+    // const [Cookies] = useCookies(["acessToken"]);
     const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
 
     // navigate('/')
@@ -121,7 +122,7 @@ function Header({
                         outputColor="purple"
                         onClick={() => {
                             removeCookie("accessToken");
-                            console.log("logout");
+                            console.log(cookies.accessToken);
                             navigate("/"); //메인페이지로 이동
                         }}
                     ></Button>
