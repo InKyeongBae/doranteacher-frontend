@@ -1,23 +1,23 @@
 import React, { useReducer, createContext, useContext, useRef } from 'react';
 
-// const initialSentences = [
-// 	{
-// 		id: 1,
-// 		answer: '',
-// 		active: true,
-// 	},
-// 	{
-// 		id: 2,
-// 		answer: '',
-// 		active: false,
-// 	},
-// 	{
-// 		id: 3,
-// 		answer: '',
-// 		active: false,
-// 	},
-// ];
-const initialSentences = [];
+const initialSentences = [
+	{
+		id: 1,
+		answer: '',
+		active: true,
+	},
+	{
+		id: 2,
+		answer: '',
+		active: false,
+	},
+	{
+		id: 3,
+		answer: '',
+		active: false,
+	},
+];
+// const initialSentences = [];
 
 function sentenceReducer(state, action) {
 	switch (action.type) {
@@ -33,7 +33,7 @@ function sentenceReducer(state, action) {
 			);
 		case 'TOGGLE':
 			return state.map((sentence) =>
-				sentence.id === action.id ? { ...sentence, active: true } : { ...sentence, active : false },
+				sentence.id === action.id ? { ...sentence, active: true } : { ...sentence, active: false },
 			);
 		case 'CHANGE_ACTIVE':
 			return state.map((sentence) =>
@@ -54,7 +54,7 @@ const SentenceNextIdContext = createContext();
 
 export function Step2SentenceProvider({ children }) {
 	const [state, dispatch] = useReducer(sentenceReducer, initialSentences);
-	const nextId = useRef(1);
+	const nextId = useRef(4);
 
 	return (
 		<SentenceStateContext.Provider value={state}>

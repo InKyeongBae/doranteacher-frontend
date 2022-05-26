@@ -44,6 +44,19 @@ function SentencePaint() {
 
 	const dismiss = () => toast.dismiss(toastId.current);
 
+	const id = active[0].id;
+	console.log(id);
+
+	function onUpdate(updateid, answer) {
+		dispatch({
+			type: 'CHANGE_ANSWER',
+			sentence: {
+				id: updateid,
+				answer: answer,
+			},
+		});
+	}
+
 	function onSave(event) {
 		if (!_lc) return;
 		const img = _lc.getImage();
@@ -70,21 +83,24 @@ function SentencePaint() {
 					const newSentence = result.filepath;
 					setText(newSentence);
 					console.log(newSentence);
-					dispatch({
-						type: 'CREATE_ANSWER',
-						sentence: {
-							id: nextId.current,
-							answer: newSentence,
-							active: false,
-						},
-					});
-					dismiss();
-					nextId.current += 1;
+					onUpdate(id, newSentence);
 				})
 				.then(() => console.log(sentences));
 		} catch (err) {
 			console.log(err);
 		}
+	}
+
+	function onCreateBox(event) {
+		dispatch({
+			type: 'CREATE_ANSWER',
+			sentence: {
+				id: nextId.current,
+				answer: '',
+				active: false,
+			},
+		});
+		nextId.current += 1;
 	}
 	const img = new Image();
 	img.src = '/img/watermark.png';
@@ -133,6 +149,9 @@ function SentencePaint() {
 			<AnswerBox />
 			<AnswerBox /> */}
 			<AnswerList />
+			<div className="buttonline">
+				<Button buttonText="문장 추가하기" inputColor="green" outputColor="purple" onClick={onCreateBox} />
+			</div>
 
 			<StyledContainer>
 				<ToastContainer />

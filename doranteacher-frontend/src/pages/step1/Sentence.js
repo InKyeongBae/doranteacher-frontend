@@ -7,9 +7,6 @@ function Sentence(props) {
 	const active = sentences.filter((sentence) => sentence.active);
 	const id = active[0].id;
 	const text = active[0].answer;
-	console.log(props.editable);
-	console.log(sentences);
-
 	const trashText = '';
 
 	return (

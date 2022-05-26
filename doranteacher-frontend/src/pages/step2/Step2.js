@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
 import ProgressBar from '../../components/ProgressBar';
+import { useSentenceDispatch, useSentenceNextId } from './SentenceContext';
 import SentencePaint from './SentencePaint';
 
 const MainBlock = styled.div`
@@ -88,7 +90,8 @@ const MainBlock = styled.div`
 		line-height: 25px;
 	}
 
-	.answer, .editbox {
+	.answer,
+	.editbox {
 		display: inline-flex;
 		text-align: center;
 		align-items: center;
@@ -173,6 +176,31 @@ const MainBlock = styled.div`
 `;
 
 function Step2() {
+	// const dispatch = useSentenceDispatch;
+	// const nextId = useSentenceNextId;
+	// function onCreate() {
+	// 	console.log('!!!');
+	// 	console.log(dispatch);
+	// 	console.log(nextId);
+	// 	dispatch({
+	// 		type: 'CREATE_ANSWER',
+	// 		sentence: {
+	// 			id: nextId.current,
+	// 			answer: '',
+	// 			active: false,
+	// 		},
+	// 	});
+	// 	nextId.current += 1;
+	// }
+	// const onTest = () =>
+	// 	dispatch({
+	// 		type: 'CREATE_ANSWER',
+	// 		sentence: {
+	// 			id: nextId.current,
+	// 			answer: '',
+	// 			active: false,
+	// 		},
+	// 	});
 	return (
 		<>
 			<GlobalStyle backColor="purple" />
@@ -219,6 +247,7 @@ function Step2() {
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
+				
 			</MainBlock>
 		</>
 	);
