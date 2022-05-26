@@ -149,24 +149,8 @@ function SentencePaint() {
 		window.addEventListener('click', handleClickOutside, true);
 	});
 
-	return (
-		<>
-			<div className="canvas">
-				<LC.LiterallyCanvasReactComponent
-					onInit={onInit}
-					backgroundColor="#ffffff"
-					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
-					imageSize={{ width: 800, height: 420 }}
-					tools={[LC.tools.Pencil, LC.tools.Eraser]}
-					strokeWidths={[3, 5, 7, 10, 15, 25]}
-					imageURLPrefix="/img"
-					watermarkImage={img}
-					watermarkScale="0.53"
-				/>
-			</div>
-			<div className="buttonline">
-				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
-			</div>
+	function AnswerBox() {
+		return (
 			<div className="answer">
 				나의 대답
 				{editable ? (
@@ -195,6 +179,30 @@ function SentencePaint() {
 					/>
 				)}
 			</div>
+		);
+	}
+
+	return (
+		<>
+			<div className="canvas">
+				<LC.LiterallyCanvasReactComponent
+					onInit={onInit}
+					backgroundColor="#ffffff"
+					// 글씨판 가로세로 사이즈 설정(픽셀) 210 -> 420
+					imageSize={{ width: 800, height: 420 }}
+					tools={[LC.tools.Pencil, LC.tools.Eraser]}
+					strokeWidths={[3, 5, 7, 10, 15, 25]}
+					imageURLPrefix="/img"
+					watermarkImage={img}
+					watermarkScale="0.53"
+				/>
+			</div>
+			<div className="buttonline">
+				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
+			</div>
+			<AnswerBox />
+			<AnswerBox />
+			<AnswerBox />
 
 			<StyledContainer>
 				<ToastContainer />
