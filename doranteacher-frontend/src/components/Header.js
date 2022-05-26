@@ -71,12 +71,8 @@ function Header({
     backColor,
 }) {
     const navigate = useNavigate();
-    const [removeCookie] = useCookies(["acessToken"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
 
-    const logoutHandler = () => {
-        removeCookie("accessToken");
-        navigate("/");
-    };
     // navigate('/')
     return (
         <HeaderBlock backColor={backColor}>
@@ -123,7 +119,11 @@ function Header({
                     <Button
                         buttonText="로그아웃"
                         outputColor="purple"
-                        onClick={() => logoutHandler()}
+                        onClick={() => {
+                            removeCookie("accessToken");
+                            console.log("logout");
+                            navigate("/"); //메인페이지로 이동
+                        }}
                     ></Button>
                 ) : null}
                 {isSetting ? (
