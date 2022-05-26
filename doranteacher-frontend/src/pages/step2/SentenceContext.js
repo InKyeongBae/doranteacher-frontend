@@ -25,6 +25,8 @@ function sentenceReducer(state, action) {
 			return state.map((sentence) =>
 				sentence.id === action.sentence.id ? { ...sentence, answer: action.sentence.answer } : sentence,
 			);
+		case 'CREATE_ANSWER':
+			return state.concat(action.sentence);
 		case 'REMOVE_ANSWER':
 			return state.map((sentence) =>
 				sentence.id === action.sentence.id ? { ...sentence, answer: '' } : sentence,

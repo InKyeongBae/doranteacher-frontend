@@ -49,38 +49,49 @@ function SentencePaint() {
 		const img = _lc.getImage();
 		if (!img) return;
 
-		try {
-			const imgData = img.toDataURL();
-			// ...images, 없앰으로써 최종본만 저장되도록
-			setImages([imgData]);
-			console.log(imgData);
-			pending();
+		// try {
+		// 	const imgData = img.toDataURL();
+		// 	// ...images, 없앰으로써 최종본만 저장되도록
+		// 	setImages([imgData]);
+		// 	console.log(imgData);
+		// 	pending();
 
-			fetch('http://api.doranssam.com/ocrtext', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify({
-					filepath: imgData,
-				}),
-			})
-				.then((response) => response.json())
-				.then((result) => {
-					const newSentence = result.filepath;
-					setText(newSentence);
-					dispatch({
-						type: 'CHANGE_ANSWER',
-						sentence: {
-							id: nextId.current,
-							answer: newSentence,
-						},
-					});
-					dismiss();
-				});
-		} catch (err) {
-			console.log(err);
-		}
+		// 	fetch('http://api.doranssam.com/ocrtext', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify({
+		// 			filepath: imgData,
+		// 		}),
+		// 	})
+		// 		.then((response) => response.json())
+		// 		.then((result) => {
+		// 			const newSentence = result.filepath;
+		// 			setText(newSentence);
+		// 			console.log(newSentence);
+		// 			dispatch({
+		// 				type: 'CREATE_ANSWER',
+		// 				sentence: {
+		// 					id: nextId.current,
+		// 					answer: newSentence,
+		// 				},
+		// 			});
+		// 			dismiss();
+		// 		}).then(() => console.log(sentences));
+		// } catch (err) {
+		// 	console.log(err);
+		// }
+		const newSentence = '테스트중';
+		setText(newSentence);
+		dispatch({
+			type: 'CREATE_ANSWER',
+			sentence: {
+				id: nextId.current,
+				answer: newSentence,
+			},
+		});
+		nextId.current += 1;
 	}
 	const img = new Image();
 	img.src = '/img/watermark.png';
