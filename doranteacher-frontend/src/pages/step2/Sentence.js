@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSentenceState, useSentenceDispatch } from './SentenceContext';
+import React from 'react';
+import { useSentenceState } from './SentenceContext';
 import { FaTrashAlt } from 'react-icons/fa';
 
 function Sentence(props) {

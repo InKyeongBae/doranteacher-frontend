@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../../components/Header';
+import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
-import ProgressBar from '../../components/ProgressBar';
-import SentencePaint from './SentencePaint';
+import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
-import Step1List from './Step1List';
+import ProgressBar from '../../components/ProgressBar';
+import { useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import SentencePaint from './SentencePaint';
 
 const MainBlock = styled.div`
 	.literally {
@@ -31,11 +28,11 @@ const MainBlock = styled.div`
 		font-family: 'KOTRAHOPE';
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content: space-around;
 		font-style: normal;
 		margin: 0 30px;
 		font-weight: 380;
 		font-size: 38px;
+		justify-content: space-around;
 		line-height: 48px;
 		text-align: center;
 
@@ -93,7 +90,8 @@ const MainBlock = styled.div`
 		line-height: 25px;
 	}
 
-	.answer {
+	.answer,
+	.editbox {
 		display: inline-flex;
 		text-align: center;
 		align-items: center;
@@ -108,7 +106,7 @@ const MainBlock = styled.div`
 		font-style: normal;
 		font-size: 25px;
 		display: inline-flex;
-		width: 700px;
+		width: 650px;
 		align-items: center;
 		color: #000000;
 		padding: 30px 15px;
@@ -149,49 +147,60 @@ const MainBlock = styled.div`
 		flex-flow: row nowrap;
 		justify-content: space-around;
 	}
+	.mission {
+		height: 90px;
+		display: flex;
+		justify-content: center;
+		flex-flow: row nowrap;
+		text-align: center;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	.missionimg {
+		display: inline-flex;
+		width: 258px;
+		height: 90px;
+		background: url(/img/mission.png);
+	}
+
+	.talk {
+		display: inline-flex;
+		align-items: center;
+		font-family: 'Cafe24Syongsyong';
+		font-size: 23px;
+		padding: 0 10px;
+		line-height: 30px;
+		/* margin: 10px 0; */
+	}
 `;
 
-function Step1() {
-	const navigate = useNavigate('');
-	const StyledContainer = styled(ToastContainer)`
-		&&&.Toastify__toast-container {
-			bottom: 80px;
-			right: 20px;
-		}
-		.Toastify__toast {
-			font-size: 30px;
-		}
-		.Toastify__toast-body {
-			font-family: 'KOTRAHOPE';
-			font-style: normal;
-			font-size: 24px;
-			color: black;
-		}
-		.Toastify__progress-bar {
-		}
-	`;
-
-	const nextNotify = () => {
-		toast.error('대답을 써야 다음 질문을 볼 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const levelNotify = () => {
-		toast.error('대답을 써야 다음 단계로 넘어갈 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
-	const prevNotify = () => {
-		toast.error('대답을 써야 이전 질문과 대답을 다시 볼 수 있어요!', {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			autoClose: 3000,
-		});
-	};
-
+function Step2() {
+	// const dispatch = useSentenceDispatch;
+	// const nextId = useSentenceNextId;
+	// function onCreate() {
+	// 	console.log('!!!');
+	// 	console.log(dispatch);
+	// 	console.log(nextId);
+	// 	dispatch({
+	// 		type: 'CREATE_ANSWER',
+	// 		sentence: {
+	// 			id: nextId.current,
+	// 			answer: '',
+	// 			active: false,
+	// 		},
+	// 	});
+	// 	nextId.current += 1;
+	// }
+	// const onTest = () =>
+	// 	dispatch({
+	// 		type: 'CREATE_ANSWER',
+	// 		sentence: {
+	// 			id: nextId.current,
+	// 			answer: '',
+	// 			active: false,
+	// 		},
+	// 	});
 	return (
 		<>
 			<GlobalStyle backColor="purple" />
@@ -210,16 +219,38 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify}/>
+				{/* <Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify} /> */}
+				<div className="question">
+					<div className="centercontent">
+						<div className="questioncontent">
+							오늘 칭찬하고 싶은 사람은 누군가요?
+							<br />왜 그 사람을 칭찬하고 싶나요?
+							<br />그 사람의 행동을 봤을 때 어떤 기분이 들었나요?
+							<br />그 사람에게 칭찬하는 말을 한 번 남겨볼까요?
+							<br />
+							방금 칭찬을 하면서 어떤 기분이 들었나요?
+						</div>
+					</div>
+					<div className="mission">
+						<div className="missionimg"></div>
+						<div className="talk">
+							<span>
+								<span style={{ backgroundColor: '#5DCB83', color: 'white' }}>대화체</span>를 사용하여
+								일기를 써 보세요. <br />
+								대화체는 <span style={{ backgroundColor: '#5DCB83', color: 'white' }}>큰따옴표</span>를
+								감싸주어야합니다 !
+							</span>
+						</div>
+					</div>
+				</div>
+
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>
+				
 			</MainBlock>
-			<StyledContainer>
-				<ToastContainer />
-			</StyledContainer>
 		</>
 	);
 }
 
-export default Step1;
+export default Step2;
