@@ -17,10 +17,10 @@ const dummyData =
         weather: "화창해요",
         date: "2022년 05월 13일",
         diaryType: "효도일기",
-        keywords: ["#밥", "#고기", "#엄마", "#요리"],
+        keywords: ["#설거지", "#컴퓨터", "#엄마", "#요리"],
         // 키워드도 json 배열 형태로 넘겨와야함
-        title: "엄마가 고기반찬 해준 날🍖",
-        text: "엄마께 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들었다. 그래도 엄마가 우리딸 고마워라고 해주셨다. 앞으로도 자주 효도를 하고 싶다.",
+        title: "엄마에게 효도한 날",
+        text: "오늘은 내가 좋아하는 컴퓨터 게임을 조금만 하고 설거지를 도와드렸다. 세제 냄새가 싫었지만 그래도 참을만 했다. 오늘은 설거지를 제일 꼼꼼히 한 날이었다. 엄마가 칭찬을 해주셔서 너무 뿌듯했다.앞으로도 자주 효도를 하고 싶다.",
         before_text:
             "엄마꼐 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들어따. 그래도 엄마가 우리딸 고마워라고 해주얻따. 앞으로도 자주 효도를 하고 싶다.",
         isPrivate: true,
@@ -104,12 +104,15 @@ const MainBlock = styled.div`
         font-size: 20px;
         cursor: default;
         pointer-events: none;
-        padding-right: 10px;
-        padding-left: 10px;
+        padding-right: 3px;
+        padding-left: 3px;
         margin-right: 5px;
         margin-left: 5px;
     }
-
+    .comment_button {
+        cursor: default;
+        pointer-events: none;
+    }
     .on {
         background: #e75244;
         transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
@@ -119,6 +122,9 @@ const MainBlock = styled.div`
             top: -4px;
             left: -4.7px;
         }
+    }
+    .mama {
+        color: red;
     }
 
     .correct_button {
@@ -201,9 +207,25 @@ function DiaryDetail() {
                                     <div className="answer">
                                         제목 : {dummyData.title}
                                     </div>
-                                    <div className="answer">
-                                        {dummyData.text}
-                                    </div>
+                                    {!correct ? (
+                                        <div className="answer">
+                                            {dummyData.text}
+                                        </div>
+                                    ) : (
+                                        <div className="answer">
+                                            오늘은 내가 좋아하는 컴퓨터 게임을
+                                            조금만 하고 설거지를 도와드렸다.
+                                            세제 냄새가 싫었지만 그래도 참을만
+                                            했다. 오늘은 설거지를 제일 꼼꼼히 한
+                                            날이었다. 엄마가 칭찬을 해주셔서
+                                            너무
+                                            <span className="mama">
+                                                뿌듣했다.
+                                            </span>
+                                            앞으로도 자주 효도를 하고{" "}
+                                            <span className="mama">십다.</span>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -232,9 +254,8 @@ function DiaryDetail() {
                             </div>
                             <div className="comment">
                                 <Button
-                                    buttonText={
-                                        "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"
-                                    }
+                                    buttonText={"정말 뿌듯한 하루를 보냈네요."}
+                                    extraClassName="comment_button"
                                     width="500px;"
                                     height="120px;"
                                 ></Button>
