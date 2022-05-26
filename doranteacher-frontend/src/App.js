@@ -6,12 +6,15 @@ import LoginPage from './pages/Loginpage';
 import Signuppage from './pages/Signuppage';
 import NotFound from './pages/NotFound';
 import Setting from './pages/Setting';
+import DiaryList from './pages/DiaryList';
+import Book from './pages/Book';
 import WritingStart from './pages/WritingStart';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Step1 from './pages/step1/Step1';
 import Brainstorm from './pages/brainstorm/Brainstorm';
 import DiaryType from './pages/DairyType';
 import DiarySave from './pages/DiarySave';
+import DiaryDetail from './pages/DiaryDetail';
 import Title from './pages/title/Title';
 import DiaryContentsView from './pages/diarycontentsview/DiaryContentsView';
 import Step2 from './pages/step2/Step2';
@@ -58,6 +61,9 @@ function App() {
 								<Route path="save" element={<DiarySave />} />
 								{/* <Route path="*" element={<NotFound />} /> */}
 							</Route>
+							<Route path="diary-list" element={<DiaryList />} />
+							<Route path="book-list" element={<Book />} />
+							<Route path="/diary" element={<DiaryDetail />} />
 							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</ThemeProvider>
