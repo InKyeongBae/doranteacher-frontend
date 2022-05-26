@@ -102,16 +102,18 @@ const Loginpage = (props) => {
         e.preventDefault();
 
         let data = {
-            id: Id,
+            username: Id,
             password: Password,
         };
 
         console.log(data);
         axios
-            .post("http://localhost:8000/login", data)
+            .post("http://api.doranssam.com/auth/login", data)
             .then((res) => {
                 console.log(res);
-                // localStorage.setItem("token", res.data.token);
+                console.log(res.data);
+                localStorage.setItem("refreshToken", res.data["refreshToken"]);
+                setCookie("accessToken", res.data["accessToken"]);
 
                 const { accessToken } = res.data;
 

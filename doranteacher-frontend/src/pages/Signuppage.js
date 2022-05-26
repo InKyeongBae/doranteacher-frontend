@@ -118,17 +118,19 @@ function Signuppage(props) {
         }
 
         let data = {
-            name: Name,
-            id: Id,
-            password: Password,
+            nickname: Name,
+            username: Id,
+            password1: Password,
+            password2: Password,
         };
 
         console.log(data);
 
         axios
-            .post("http://localhost:8000/signup", data)
+            .post("http://api.doranssam.com/auth/signup", data)
             .then((res) => {
                 console.log(res);
+                //이동할 url 연결 해야함
             })
             .catch((err) => {
                 console.log(err);
