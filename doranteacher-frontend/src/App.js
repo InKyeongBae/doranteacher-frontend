@@ -15,7 +15,8 @@ import DiarySave from './pages/DiarySave';
 import Title from './pages/title/Title';
 import DiaryContentsView from './pages/diarycontentsview/DiaryContentsView';
 import Step2 from './pages/step2/Step2';
-import { SentenceProvider } from './pages/step1/SentenceContext';
+import { Step1SentenceProvider } from './pages/step1/SentenceContext';
+import { Step2SentenceProvider } from './pages/step2/SentenceContext';
 
 const palette = {
 	red: '#E75244',
@@ -38,28 +39,30 @@ function Writing() {
 function App() {
 	return (
 		<BrowserRouter>
-			<SentenceProvider>
-				<ThemeProvider theme={{ palette }}>
-					<Routes>
-						<Route path="/" element={<Mainpage />} />
-						<Route path="/login" element={<LoginPage />} />
-						<Route path="/signup" element={<Signuppage />} />
-						<Route path="/setting" element={<Setting />} />
-						<Route path="/writing" element={<Writing />}>
-							<Route path="start" element={<WritingStart />} />
-							<Route path="first-step" element={<Brainstorm />} />
-							<Route path="diary-type" element={<DiaryType />} />
-							<Route path="step1" element={<Step1 />} />
-							<Route path="step2" element={<Step2 />} />
-							<Route path="diary-contents-view" element={<DiaryContentsView />} />
-							<Route path="title" element={<Title />} />
-							<Route path="save" element={<DiarySave />} />
-							{/* <Route path="*" element={<NotFound />} /> */}
-						</Route>
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-				</ThemeProvider>
-			</SentenceProvider>
+			<Step1SentenceProvider>
+				<Step2SentenceProvider>
+					<ThemeProvider theme={{ palette }}>
+						<Routes>
+							<Route path="/" element={<Mainpage />} />
+							<Route path="/login" element={<LoginPage />} />
+							<Route path="/signup" element={<Signuppage />} />
+							<Route path="/setting" element={<Setting />} />
+							<Route path="/writing" element={<Writing />}>
+								<Route path="start" element={<WritingStart />} />
+								<Route path="first-step" element={<Brainstorm />} />
+								<Route path="diary-type" element={<DiaryType />} />
+								<Route path="step1" element={<Step1 />} />
+								<Route path="step2" element={<Step2 />} />
+								<Route path="diary-contents-view" element={<DiaryContentsView />} />
+								<Route path="title" element={<Title />} />
+								<Route path="save" element={<DiarySave />} />
+								{/* <Route path="*" element={<NotFound />} /> */}
+							</Route>
+							<Route path="*" element={<NotFound />} />
+						</Routes>
+					</ThemeProvider>
+				</Step2SentenceProvider>
+			</Step1SentenceProvider>
 		</BrowserRouter>
 	);
 }

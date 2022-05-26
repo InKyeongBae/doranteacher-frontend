@@ -44,9 +44,13 @@ function sentenceReducer(state, action) {
 		// 		),
 		// 	};
 		case 'CHANGE_ANSWER':
-			return state.map((sentence) => sentence.id === action.sentence.id ? { ...sentence, answer: action.sentence.answer} : sentence)
+			return state.map((sentence) =>
+				sentence.id === action.sentence.id ? { ...sentence, answer: action.sentence.answer } : sentence,
+			);
 		case 'REMOVE_ANSWER':
-			return state.map((sentence) => sentence.id === action.sentence.id ? { ...sentence, answer: ""} : sentence)
+			return state.map((sentence) =>
+				sentence.id === action.sentence.id ? { ...sentence, answer: '' } : sentence,
+			);
 		case 'CHANGE_ACTIVE':
 			return state.map((sentence) =>
 				sentence.id === action.originId
@@ -54,7 +58,7 @@ function sentenceReducer(state, action) {
 					: sentence.id === action.nextId
 					? { ...sentence, active: true }
 					: sentence,
-			)
+			);
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
 	}
@@ -64,7 +68,7 @@ const SentenceStateContext = createContext();
 const SentenceDispatchContext = createContext();
 const SentenceNextIdContext = createContext();
 
-export function Step1SentenceProvider({ children }) {
+export function Step2SentenceProvider({ children }) {
 	const [state, dispatch] = useReducer(sentenceReducer, initialSentences);
 	const nextId = useRef(1);
 
