@@ -75,7 +75,7 @@ function App() {
                             </Route>
                             <Route path="diary-list" element={<DiaryList />} />
                             <Route path="book-list" element={<Book />} />
-                            <Route path="/diary" element={<DiaryDetail />} />
+                            <Route path="diary" element={<DiaryDetail />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </ThemeProvider>

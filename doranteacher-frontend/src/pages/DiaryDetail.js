@@ -58,11 +58,23 @@ const MainBlock = styled.div`
         line-height: 60px;
         border-bottom: 2px solid black;
     }
+
+    .diaryType_button {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .keyword_button {
+        // font-family: "KOTRAHOPE";
+        font-size: 18px;
+        cursor: default;
+        pointer-events: none;
+    }
 `;
 
 function DiaryDetail() {
     // console.log(getStringDate(new Date()));
-    const [correct, setCorrect] = useState(0);
+    const [correct, setCorrect] = useState(false);
     // console.log(painting);
 
     const navigate = useNavigate("");
@@ -71,17 +83,36 @@ function DiaryDetail() {
             <GlobalStyle backColor="yellow" />
             <Header isUndo />
             <MainBlock>
-                <div classNAme="main-wrapper">
+                <div className="main-wrapper">
                     <div className="leftside">
                         <div className="mini-header-wrapper">
                             <div className="diaryType-wrapper">
-                                {dummyData.diaryType}
+                                <Button
+                                    buttonText={dummyData.diaryType}
+                                    extraClassName="diaryType_button"
+                                    inputColor="green"
+                                ></Button>
+                            </div>
+                            <div className="keywords-wrapper">
+                                {dummyData.keywords.map((it) => (
+                                    <Button
+                                        buttonText={it}
+                                        width="120px;"
+                                        extraClassName="keyword_button"
+                                    ></Button>
+                                    // <WeatherItem
+                                    //     key={it.weather_id}
+                                    //     {...it}
+                                    //     onClick={handleClickWeather}
+                                    //     isSelected={it.weather_id === weather}
+                                    // />
+                                ))}
                             </div>
                             {/* 여기는 for문이 들어가야함 */}
                             <ImgButton
                                 // setting={false}
                                 check={true}
-                                outputColor="white"
+                                outputColor="red"
                                 // onClick={() => navigate(-1)}
                             ></ImgButton>
                         </div>
