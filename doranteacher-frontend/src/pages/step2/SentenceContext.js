@@ -33,7 +33,7 @@ function sentenceReducer(state, action) {
 			);
 		case 'TOGGLE':
 			return state.map((sentence) =>
-				sentence.id === action.id ? { ...sentence, active: !sentence.active } : sentence,
+				sentence.id === action.id ? { ...sentence, active: true } : { ...sentence, active : false },
 			);
 		case 'CHANGE_ACTIVE':
 			return state.map((sentence) =>
