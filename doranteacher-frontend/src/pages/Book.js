@@ -12,12 +12,9 @@ const MainBlock = styled.div`
     display: flex;
     justify-content: space-between;
 
-    .rightSide {
-    }
-
     .buttons {
         margin-top: 50px;
-        margin-right: 225px;
+        margin-right: 400px;
         display: flex;
     }
 
@@ -39,7 +36,7 @@ const MainBlock = styled.div`
 `;
 const BigDoran = styled.div`
     .bigDoran {
-        height: 695px;
+        height: 700px;
     }
 `;
 
@@ -81,8 +78,8 @@ function Book() {
                         </div>
                     </div>
                 </div>
-                <div className="middleSide"></div>
-                <div className="rightSide"></div>
+                {/* <div className="middleSide"></div>
+                <div className="rightSide"></div> */}
             </MainBlock>
         </>
     );

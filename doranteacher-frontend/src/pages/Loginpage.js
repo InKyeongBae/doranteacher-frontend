@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import styled from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
+import { useCookies } from "react-cookie";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -83,6 +84,8 @@ const Input = styled.input`
 const Loginpage = (props) => {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
+    const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
+    const navigate = useNavigate();
 
     // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
     const handleId = (e) => {
@@ -102,25 +105,25 @@ const Loginpage = (props) => {
         e.preventDefault();
 
         let data = {
-            id: Id,
+            username: Id,
             password: Password,
         };
 
         console.log(data);
         axios
-            .post("http://localhost:8000/login", data)
+            .post("http://api.doranssam.com/auth/login", data)
             .then((res) => {
                 console.log(res);
-                // localStorage.setItem("token", res.data.token);
-
-                const { accessToken } = res.data;
+                console.log(res.data);
+                localStorage.setItem("refreshToken", res.data["refreshToken"]);
+                setCookie("accessToken", res.data["accessToken"]);
+                navigate("/");
 
                 // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
                 axios.defaults.headers.common[
                     "Authorization"
-                ] = `Bearer ${accessToken}`;
-
-                // accessToken을 localStorage, cookie 등에 저장하지 않는다!
+                ] = `Bearer ${res.data["accessToken"]}`;
+                // ${res.payload.accessToken}
             })
             .catch((err) => {
                 console.log(err);

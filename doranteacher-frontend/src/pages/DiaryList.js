@@ -11,7 +11,12 @@ import ImageUpload from "../components/ImageUpload";
 const MainBlock = styled.div`
     display: flex;
     justify-content: space-between;
+    .leftSide {
+        width: 1vw;
+    }
 
+    .middleSide {
+    }
     .rightSide {
     }
 
@@ -40,6 +45,7 @@ const MainBlock = styled.div`
 `;
 const BigDoran = styled.div`
     .bigDoran {
+        // margin-top: 50px;
         height: 700px;
     }
 `;
@@ -74,6 +80,7 @@ function DiaryList() {
                         </div>
                     </div>
                 </div>
+                {/* <div className="middleSide"></div> */}
                 <div className="rightSide">
                     <BigDoran>
                         <img
