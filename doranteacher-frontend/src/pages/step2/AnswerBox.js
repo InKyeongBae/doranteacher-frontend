@@ -24,7 +24,7 @@ const CheckCircle = styled.div`
 		`}
 `;
 
-function AnswerBox({ initText, onUpdate, id }) {
+function AnswerBox({ initText, id }) {
 	const [text, setText] = useState(initText);
 	const dispatch = useSentenceDispatch();
 	const state = useSentenceState();
