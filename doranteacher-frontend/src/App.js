@@ -14,6 +14,7 @@ import Step1 from "./pages/step1/Step1";
 import Brainstorm from "./pages/brainstorm/Brainstorm";
 import DiaryType from "./pages/DairyType";
 import DiarySave from "./pages/DiarySave";
+import DiaryDetail from "./pages/DiaryDetail";
 import Title from "./pages/title/Title";
 import DiaryContentsView from "./pages/diarycontentsview/DiaryContentsView";
 import Step2 from "./pages/step2/Step2";
@@ -74,6 +75,7 @@ function App() {
                             </Route>
                             <Route path="diary-list" element={<DiaryList />} />
                             <Route path="book-list" element={<Book />} />
+                            <Route path="/diary" element={<DiaryDetail />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </ThemeProvider>

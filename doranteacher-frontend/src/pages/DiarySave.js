@@ -135,7 +135,7 @@ function DiarySave() {
     const navigate = useNavigate("");
     return (
         <>
-            <GlobalStyle backColor="green" />
+            <GlobalStyle backColor="yellow" />
             <LeftDoran />
             <Header
                 isProgress
