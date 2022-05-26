@@ -9,22 +9,12 @@ import ProgressBar from "../components/ProgressBar";
 import ImageUpload from "../components/ImageUpload";
 
 const MainBlock = styled.div`
-    display: flex;
-    justify-content: space-between;
-    .leftSide {
-        width: 1vw;
-    }
-
-    .middleSide {
-    }
-    .rightSide {
-    }
-
     .buttons {
-        margin-top: 50px;
-        margin-left: 380px;
+        margin-top: 30px;
+        justify-content: center;
         // margin-right: 200px;
         display: flex;
+        align-items: center;
     }
 
     .button {
@@ -42,11 +32,16 @@ const MainBlock = styled.div`
             left: -4.7px;
         }
     }
+
+    .main {
+        display: flex;
+        justify-content: flex-end;
+    }
 `;
 const BigDoran = styled.div`
     .bigDoran {
-        // margin-top: 50px;
-        height: 700px;
+        margin-top: 50px;
+        height: 550px;
     }
 `;
 
@@ -57,37 +52,37 @@ function DiaryList() {
             <GlobalStyle backColor="yellow" />
             <Header backColor="yellow" />
             <MainBlock>
-                <div className="leftSide">
-                    <div className="buttons">
-                        <div className="button">
-                            <Button
-                                buttonText="이달의 일기"
-                                width="250px"
-                                height="50px"
-                                extraClassName="on"
-                            ></Button>
-                        </div>
-                        <div className="button">
-                            <Button
-                                buttonText="책으로 엮어보기"
-                                width="250px"
-                                height="50px"
-                                onClick={() => navigate("/book-list")}
-                            ></Button>
-                        </div>
-                        <div className="diarys">
-                            {/* 일기 리스트 출력하는 곳 */}
-                        </div>
+                <div className="buttons">
+                    <div className="button">
+                        <Button
+                            buttonText="이달의 일기"
+                            width="250px"
+                            height="50px"
+                            extraClassName="on"
+                        ></Button>
+                    </div>
+                    <div className="button">
+                        <Button
+                            buttonText="책으로 엮어보기"
+                            width="250px"
+                            height="50px"
+                            onClick={() => navigate("/book-list")}
+                        ></Button>
                     </div>
                 </div>
-                {/* <div className="middleSide"></div> */}
-                <div className="rightSide">
-                    <BigDoran>
-                        <img
-                            className="bigDoran"
-                            src="/img/big-doran-heart-left.png"
-                        />
-                    </BigDoran>
+                <div className="main">
+                    <div className="leftside">
+                        {/*일기 리스트 출력하는 곳*/}
+                    </div>
+                    {/* <div className="middleSide"></div> */}
+                    <div className="rightSide">
+                        <BigDoran>
+                            <img
+                                className="bigDoran"
+                                src="/img/big-doran-heart-left.png"
+                            />
+                        </BigDoran>
+                    </div>
                 </div>
             </MainBlock>
         </>

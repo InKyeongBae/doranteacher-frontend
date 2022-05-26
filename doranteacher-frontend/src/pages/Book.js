@@ -9,10 +9,6 @@ import ProgressBar from "../components/ProgressBar";
 import ImageUpload from "../components/ImageUpload";
 
 const MainBlock = styled.div`
-    // display: flex;
-    // justify-content: space-between;
-    // flex-direction: column;
-
     .buttons {
         margin-top: 30px;
         justify-content: center;
@@ -39,6 +35,7 @@ const MainBlock = styled.div`
 
     .main {
         display: flex;
+        justify-content: flex-start;
     }
 `;
 const BigDoran = styled.div`
