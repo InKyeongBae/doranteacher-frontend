@@ -19,6 +19,8 @@ const MainBlock = styled.div`
 
 	.trash {
 		padding-left: 10px;
+		display: inline-flex;
+		align-items: center;
 		cursor: pointer;
 	}
 
@@ -162,7 +164,6 @@ const MainBlock = styled.div`
 `;
 
 function Step2() {
-
 	return (
 		<>
 			<GlobalStyle backColor="purple" />

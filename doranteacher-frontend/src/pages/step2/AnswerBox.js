@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Sentence from './Sentence';
 
-function AnswerBox({ initText, onUpdate, id, trash }) {
+function AnswerBox({ initText, onUpdate, id }) {
 	const [text, setText] = useState(initText);
 	const [editable, setEditable] = useState(false);
 
@@ -35,33 +35,37 @@ function AnswerBox({ initText, onUpdate, id, trash }) {
 	});
 	return (
 		<div className="answer">
-			나의 대답
-			{editable ? (
-				<>
-					<input
-						className="onedit"
-						id="resizable"
-						type="text"
-						value={text}
-						onChange={(e) => handleChange(e)}
-						onKeyDown={handleKeyDown}
-					/>
-					<div className="trash">
-						<FaTrashAlt />
-					</div>
-				</>
-			) : (
-				<div className="offedit" onClick={() => editOn()}>
-					{text}
-					<div className="trash">
-						<FaTrashAlt
-							onClick={() => {
-								onUpdate(id, "");
-							}}
+			{id}번째 문장
+			<div className="editbox" ref={ref}>
+				{editable ? (
+					<>
+						<input
+							className="onedit"
+							id="resizable"
+							type="text"
+							value={text}
+							onChange={(e) => handleChange(e)}
+							onKeyDown={handleKeyDown}
 						/>
-					</div>
-				</div>
-			)}
+						<div className="trash">
+							<FaTrashAlt />
+						</div>
+					</>
+				) : (
+					<>
+						<div className="offedit" onClick={() => editOn()}>
+							{text}
+						</div>
+						<div className="trash">
+							<FaTrashAlt
+								onClick={() => {
+									onUpdate(id, '');
+								}}
+							/>
+						</div>
+					</>
+				)}
+			</div>
 		</div>
 	);
 }
