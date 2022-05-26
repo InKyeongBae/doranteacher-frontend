@@ -147,19 +147,29 @@ const MainBlock = styled.div`
 		justify-content: space-around;
 	}
 	.mission {
-		justify-content: space-around;
+		height: 90px;
+		display: flex;
+		justify-content: center;
+		flex-flow: row nowrap;
 		text-align: center;
+		align-items: center;
 	}
 
 	.missionimg {
-		display: inline-block;
+		display: inline-flex;
 		width: 258px;
 		height: 90px;
 		background: url(/img/mission.png);
 	}
 
 	.talk {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		font-family: 'Cafe24Syongsyong';
+		font-size: 23px;
+		padding: 0 10px;
+		line-height: 30px;
+		/* margin: 10px 0; */
 	}
 `;
 
@@ -197,8 +207,12 @@ function Step2() {
 					<div className="mission">
 						<div className="missionimg"></div>
 						<div className="talk">
-							대화체를 사용하여 일기를 써 보세요. <br />
-							대화체는 큰따옴표를 감싸주어야합니다 !
+							<span>
+								<span style={{ backgroundColor: '#5DCB83', color: 'white' }}>대화체</span>를 사용하여
+								일기를 써 보세요. <br />
+								대화체는 <span style={{ backgroundColor: '#5DCB83', color: 'white' }}>큰따옴표</span>를
+								감싸주어야합니다 !
+							</span>
 						</div>
 					</div>
 				</div>
