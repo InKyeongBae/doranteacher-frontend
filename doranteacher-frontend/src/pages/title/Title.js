@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
@@ -149,6 +150,7 @@ const MainBlock = styled.div`
 `;
 
 function Title() {
+	const navigate = useNavigate('');
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
 			bottom: 80px;
@@ -171,23 +173,38 @@ function Title() {
 		padding: 20px 0;
 	`;
 
-	const [check, setCheck] = useState('');
+	const notify = () => {
+		console.log(document.querySelector('p'));
+		toast.error('제목을 작성해야 다음 단계로 넘어갈 수 있어요!', {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
+		});
+	};
+
+	function checking() {
+		const check = document.querySelector('p');
+		if (check.innerText === '') {
+			notify();
+		} else {
+			navigate('/writing/save');
+		}
+	}
 
 	return (
 		<div>
-			<GlobalStyle backColor="purple" />
+			<GlobalStyle backColor="green" />
 			<Header
 				isProgress
 				isLogout
 				isImgBtn
 				progress={
 					<ProgressBar
-						progressText={'4.일기쓰기'}
-						progressWidth={'50'}
+						progressText={'6.제목쓰기'}
+						progressWidth={'70'}
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
-				backColor="purple"
+				backColor="green"
 			/>
 			<MainBlock>
 				<LeftDoran />
@@ -208,14 +225,9 @@ function Title() {
 								buttonText="다음"
 								type="submit"
 								outputColor="red"
+								inputColor="purple"
 								className="button"
-								// onClick={
-								// 	lenWords < 5
-								// 		? lessNotify
-								// 		: lenWords > 10
-								// 		? moreNotify
-								// 		: () => navigate('/writing/diary-type')
-								// }
+								onClick={checking}
 							></Button>
 						</NextButtonStyle>
 					</div>
