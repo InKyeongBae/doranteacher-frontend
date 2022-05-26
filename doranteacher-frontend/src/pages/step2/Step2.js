@@ -176,31 +176,6 @@ const MainBlock = styled.div`
 `;
 
 function Step2() {
-	// const dispatch = useSentenceDispatch;
-	// const nextId = useSentenceNextId;
-	// function onCreate() {
-	// 	console.log('!!!');
-	// 	console.log(dispatch);
-	// 	console.log(nextId);
-	// 	dispatch({
-	// 		type: 'CREATE_ANSWER',
-	// 		sentence: {
-	// 			id: nextId.current,
-	// 			answer: '',
-	// 			active: false,
-	// 		},
-	// 	});
-	// 	nextId.current += 1;
-	// }
-	// const onTest = () =>
-	// 	dispatch({
-	// 		type: 'CREATE_ANSWER',
-	// 		sentence: {
-	// 			id: nextId.current,
-	// 			answer: '',
-	// 			active: false,
-	// 		},
-	// 	});
 	return (
 		<>
 			<GlobalStyle backColor="purple" />
