@@ -120,7 +120,7 @@ const Loginpage = (props) => {
                         res.data["refreshToken"]
                     );
                     setCookie("accessToken", res.data["accessToken"]);
-                    console.log(cookies.get("ccessToken"));
+                    console.log(cookies.get("accessToken"));
                     navigate("/");
 
                     // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
