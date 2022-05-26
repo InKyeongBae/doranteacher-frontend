@@ -5,7 +5,7 @@ import { useSentenceState } from './SentenceContext';
 function Answer({ answer }) {
 	console.log(answer);
 	return (
-		<div className="answerlist" id={answer.id}>
+		<div className="answerlist" id={answer.id} style={{ margin: '10px 0' }}>
 			<AnswerBox initText={answer.answer} id={answer.id} />
 		</div>
 	);
@@ -17,7 +17,7 @@ function AnswerList() {
 	return (
 		<div className="sentences">
 			{answers.map((answer) => (
-				<Answer answer={answer} key={answer.id} ></Answer>
+				<Answer answer={answer} key={answer.id}></Answer>
 			))}
 		</div>
 	);

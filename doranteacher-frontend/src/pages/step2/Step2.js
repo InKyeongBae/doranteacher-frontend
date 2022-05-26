@@ -18,10 +18,6 @@ const MainBlock = styled.div`
 	}
 
 	.trash {
-		/* padding-left: 10px;
-		display: inline-flex;
-		align-items: center;
-		cursor: pointer; */
 		padding-left: 10px;
 		cursor: pointer;
 	}
@@ -107,7 +103,7 @@ const MainBlock = styled.div`
 		font-style: normal;
 		font-size: 25px;
 		display: inline-flex;
-		width: 700px;
+		width: 650px;
 		align-items: center;
 		color: #000000;
 		padding: 30px 15px;

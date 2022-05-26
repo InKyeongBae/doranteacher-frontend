@@ -75,6 +75,7 @@ function SentencePaint() {
 						sentence: {
 							id: nextId.current,
 							answer: newSentence,
+							active: false,
 						},
 					});
 					dismiss();
