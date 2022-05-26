@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
+import { Cookies } from "react-cookie";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -99,6 +100,7 @@ const Loginpage = (props) => {
     };
 
     const handlesubmit = (e) => {
+        const cookies = new Cookies();
         e.preventDefault();
 
         let data = {
