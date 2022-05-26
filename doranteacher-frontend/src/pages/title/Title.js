@@ -182,8 +182,8 @@ function Title() {
 				isImgBtn
 				progress={
 					<ProgressBar
-						progressText={'4.일기쓰기'}
-						progressWidth={'50'}
+						progressText={'6.제목쓰기'}
+						progressWidth={'70'}
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
