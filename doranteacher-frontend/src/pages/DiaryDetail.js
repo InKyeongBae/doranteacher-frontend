@@ -70,12 +70,23 @@ const MainBlock = styled.div`
         cursor: default;
         pointer-events: none;
     }
+
+    .on {
+        background: #e75244;
+        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+        top: 4px;
+        left: 3.5px;
+        &:before {
+            top: -4px;
+            left: -4.7px;
+        }
+    }
 `;
 
 function DiaryDetail() {
     // console.log(getStringDate(new Date()));
     const [correct, setCorrect] = useState(false);
-    // console.log(painting);
+    console.log(correct);
 
     const navigate = useNavigate("");
     return (
@@ -98,21 +109,18 @@ function DiaryDetail() {
                                     <Button
                                         buttonText={it}
                                         width="120px;"
+                                        // extraClassName="keyword_button"
+
                                         extraClassName="keyword_button"
                                     ></Button>
-                                    // <WeatherItem
-                                    //     key={it.weather_id}
-                                    //     {...it}
-                                    //     onClick={handleClickWeather}
-                                    //     isSelected={it.weather_id === weather}
-                                    // />
                                 ))}
                             </div>
-                            {/* 여기는 for문이 들어가야함 */}
                             <ImgButton
                                 // setting={false}
                                 check={true}
+                                onClick={() => setCorrect(!correct)}
                                 outputColor="red"
+                                extraClassName={correct === true ? `on` : ""}
                                 // onClick={() => navigate(-1)}
                             ></ImgButton>
                         </div>
