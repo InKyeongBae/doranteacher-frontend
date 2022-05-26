@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
-import { Cookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -84,6 +84,7 @@ const Input = styled.input`
 const Loginpage = (props) => {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
+    const [cookies, setCookie, removeCookie] = useCookies();
 
     // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
     const handleId = (e) => {
@@ -100,7 +101,6 @@ const Loginpage = (props) => {
     };
 
     const handlesubmit = (e) => {
-        const cookies = new Cookies();
         e.preventDefault();
 
         let data = {
@@ -117,12 +117,12 @@ const Loginpage = (props) => {
                 localStorage.setItem("refreshToken", res.data["refreshToken"]);
                 setCookie("accessToken", res.data["accessToken"]);
 
-                const { accessToken } = res.data;
+                // const { accessToken } = res.data;
 
                 // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-                axios.defaults.headers.common[
-                    "Authorization"
-                ] = `Bearer ${accessToken}`;
+                // axios.defaults.headers.common[
+                //     "Authorization"
+                // ] = `Bearer ${accessToken}`;
 
                 // accessToken을 localStorage, cookie 등에 저장하지 않는다!
             })
