@@ -153,6 +153,7 @@ const MainBlock = styled.div`
 		flex-flow: row nowrap;
 		text-align: center;
 		align-items: center;
+		margin-bottom: 20px;
 	}
 
 	.missionimg {
