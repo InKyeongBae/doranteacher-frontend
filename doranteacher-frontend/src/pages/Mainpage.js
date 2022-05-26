@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import ShakingHands from "../components/ShakingHands";
 import GlobalStyle from "../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
-import IsLogin from "../IsLogin";
 import { useCookies } from "react-cookie";
 
 const MainBlock = styled.div`

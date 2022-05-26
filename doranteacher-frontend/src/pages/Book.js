@@ -45,7 +45,7 @@ function Book() {
     return (
         <>
             <GlobalStyle backColor="yellow" />
-            <Header isUndo backColor="yellow" />
+            <Header backColor="yellow" />
             <MainBlock>
                 <div className="leftSide">
                     <BigDoran>
