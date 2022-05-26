@@ -168,8 +168,9 @@ function DiaryDetail() {
                                 ></Button>
                             </div>
                             <div className="keywords-wrapper">
-                                {dummyData.keywords.map((it) => (
+                                {dummyData.keywords.map((it, index) => (
                                     <Button
+                                        key={index}
                                         buttonText={it}
                                         width="80px;"
                                         extraClassName="keyword_button"
