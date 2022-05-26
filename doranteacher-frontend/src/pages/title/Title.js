@@ -175,7 +175,7 @@ function Title() {
 
 	return (
 		<div>
-			<GlobalStyle backColor="purple" />
+			<GlobalStyle backColor="green" />
 			<Header
 				isProgress
 				isLogout
@@ -187,7 +187,7 @@ function Title() {
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
-				backColor="purple"
+				backColor="green"
 			/>
 			<MainBlock>
 				<LeftDoran />
@@ -208,6 +208,7 @@ function Title() {
 								buttonText="다음"
 								type="submit"
 								outputColor="red"
+								inputColor="purple"
 								className="button"
 								// onClick={
 								// 	lenWords < 5

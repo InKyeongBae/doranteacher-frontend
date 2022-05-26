@@ -140,7 +140,7 @@ function TitlePaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
+				<Button buttonText="다 썼어요!" inputColor="purple" outputColor="green" onClick={onSave} />
 			</div>
 			<div className="answer">
 				일기 제목{' '}
