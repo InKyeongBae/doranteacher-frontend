@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useHistory } from "react-router";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -85,7 +85,7 @@ const Loginpage = (props) => {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
     const handleId = (e) => {
@@ -117,12 +117,8 @@ const Loginpage = (props) => {
                 console.log(res.data);
                 localStorage.setItem("refreshToken", res.data["refreshToken"]);
                 setCookie("accessToken", res.data["accessToken"]);
-                // history.push("/");
-                history.push({
-                    pathname: "/",
-                    state: { login: Loginpage }, // ..
-                });
-                // const { accessToken } = res.data;
+                navigate("/");
+
                 // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
                 // axios.defaults.headers.common[
                 //     "Authorization"
