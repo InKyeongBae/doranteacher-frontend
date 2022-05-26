@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import ShakingHands from "../components/ShakingHands";
 import GlobalStyle from "../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
+import IsLogin from "../IsLogin";
+import { useCookies } from "react-cookie";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -143,10 +145,29 @@ const BottomBlock = styled.div`
 
 function Mainpage() {
     const navigate = useNavigate();
+    const [cookies] = useCookies(["acessToken"]);
+    // console.log(cookies.acessToken !== undefined);
+    const [isLogin, setIsLogin] = useState(false);
+    useEffect(() => {
+        if (cookies.acessToken !== undefined) {
+            // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 없다면
+            console.log("isLogin ??? :: ", isLogin);
+            // 로그인 상태 변경
+            // setIsLogin(true);
+        } else {
+            // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
+            console.log("isLogin ?? :: ", isLogin);
+        }
+    });
     return (
         <>
             <GlobalStyle backColor="yellow" />
-            <Header isIcon isLogin isSignup isSetting backColor="yellow" />
+            {isLogin ? (
+                <Header isIcon isLogout backColor="yellow" />
+            ) : (
+                <Header isIcon isLogin isSignup isSetting backColor="yellow" />
+            )}
+
             <MainBlock>
                 <CenterLogo>
                     <div className="centerlogo">
