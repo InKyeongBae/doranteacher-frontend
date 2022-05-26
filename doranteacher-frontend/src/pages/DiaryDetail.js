@@ -11,7 +11,7 @@ const dummyData =
         weather: "sunny",
         date: "2022-05-13",
         diaryType: "효도일기",
-        keywords: ["#밥", "#고기", "#엄마", "#요리", "#저녁"],
+        keywords: ["#밥", "#고기", "#엄마", "#요리"],
         // 키워드도 json 배열 형태로 넘겨와야함
         title: "엄마가 저녁에 고기반찬 해준 날🍖",
         text: "엄마께 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들었다. 그래도 엄마가 우리딸 고마워라고 해주셨다. 앞으로도 자주 효도를 하고 싶다.",
@@ -26,15 +26,18 @@ const dummyData =
 
 const MainBlock = styled.div`
     .diarycontents {
-        margin-top: 20px;
-        margin-left: 360px;
-        margin-right: 110px;
+        margin-top: 30px;
+        margin-left: 20px;
+        // margin-right: 110px;
     }
 
     .contents-box {
         background-color: white;
         border-radius: 15px;
-        min-height: 60vh;
+        min-height: 70vh;
+        max-width: 50vw;
+        display: flex;
+        align-items: center;
 
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -59,16 +62,32 @@ const MainBlock = styled.div`
         border-bottom: 2px solid black;
     }
 
+    .mini-header-wrapper {
+        margin-top: 10px;
+        display: flex;
+    }
     .diaryType_button {
         cursor: default;
         pointer-events: none;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: 5px;
+        margin-left: 30px;
+    }
+
+    .keywords-wrapper {
+        display: flex;
     }
 
     .keyword_button {
         // font-family: "KOTRAHOPE";
-        font-size: 18px;
+        font-size: 20px;
         cursor: default;
         pointer-events: none;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
     }
 
     .on {
@@ -80,6 +99,15 @@ const MainBlock = styled.div`
             top: -4px;
             left: -4.7px;
         }
+    }
+
+    .correct_button {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .main-wrapper {
+        display: flex;
     }
 `;
 
@@ -102,15 +130,14 @@ function DiaryDetail() {
                                     buttonText={dummyData.diaryType}
                                     extraClassName="diaryType_button"
                                     inputColor="green"
+                                    width="120px;"
                                 ></Button>
                             </div>
                             <div className="keywords-wrapper">
                                 {dummyData.keywords.map((it) => (
                                     <Button
                                         buttonText={it}
-                                        width="120px;"
-                                        // extraClassName="keyword_button"
-
+                                        width="80px;"
                                         extraClassName="keyword_button"
                                     ></Button>
                                 ))}
@@ -120,15 +147,19 @@ function DiaryDetail() {
                                 check={true}
                                 onClick={() => setCorrect(!correct)}
                                 outputColor="red"
-                                extraClassName={correct === true ? `on` : ""}
-                                // onClick={() => navigate(-1)}
+                                extraClassName={
+                                    correct === true
+                                        ? `correct_button on`
+                                        : "correct_button"
+                                }
                             ></ImgButton>
                         </div>
-                        <div className="text"></div>
                         <div className="diarycontents">
                             <div className="contents-box">
                                 <div className="answers">
-                                    {dummyData.text}
+                                    <div className="answer">
+                                        {dummyData.text}
+                                    </div>
                                     {/* {answers.map((answer) => (
                                         <div className="answer" key={id++}>
                                             {answer}
