@@ -161,7 +161,7 @@ function TitlePaint() {
 				) : (
 					<>
 						<div className="offedit" onClick={() => changeText()}>
-							{text}
+							<p>{text}</p>
 						</div>
 						<div className="trash">
 							<FaTrashAlt
