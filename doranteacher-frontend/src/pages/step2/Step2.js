@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
@@ -162,6 +162,7 @@ const MainBlock = styled.div`
 `;
 
 function Step2() {
+
 	return (
 		<>
 			<GlobalStyle backColor="purple" />

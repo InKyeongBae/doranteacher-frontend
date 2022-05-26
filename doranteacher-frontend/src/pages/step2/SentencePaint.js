@@ -7,7 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { useSentenceDispatch, useSentenceState } from './SentenceContext';
+import { useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
+import AnswerList from './AnswerList';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -20,6 +21,7 @@ function SentencePaint() {
 	const dispatch = useSentenceDispatch();
 	const sentences = useSentenceState();
 	const active = sentences.filter((sentence) => sentence.active);
+	const nextId = useSentenceNextId();
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -70,7 +72,7 @@ function SentencePaint() {
 					dispatch({
 						type: 'CHANGE_ANSWER',
 						sentence: {
-							id: active[0].id,
+							id: nextId.current,
 							answer: newSentence,
 						},
 					});
@@ -113,74 +115,7 @@ function SentencePaint() {
 		});
 	}
 
-	const id = active[0].id;
-	function changeText() {
-		setText(active[0].answer);
-		setEditable(true);
-	}
-	// input상태일 때 내용의 변화를 감지해서 text를 바꾸어 줌
-	function handleChange(e) {
-		setText(e.target.value);
-	}
-	// enter키를 눌렀을 때 입력을 중지하는 함수
-	function handleKeyDown(e) {
-		if (e.key === 'Enter') {
-			setEditable(!editable);
-			onUpdate(id, text);
-		}
-	}
-
-	function handleClickOutside(e) {
-		const target = e.target;
-		if (target === document.getElementsByClassName('onedit')[0]) return;
-		if (target === document.getElementsByClassName('offedit')[0]) return;
-		if (target === document.getElementsByClassName('trash')[0]) return;
-		const buttons = document.getElementsByClassName('button');
-		for (var i = 0; i < buttons.length; i++) {
-			if (buttons[i].contains(target)) return;
-		}
-		if (editable === true) {
-			setEditable(false);
-			onUpdate(id, text);
-		}
-	}
-
-	useEffect(() => {
-		window.addEventListener('click', handleClickOutside, true);
-	});
-
-	function AnswerBox() {
-		return (
-			<div className="answer">
-				나의 대답
-				{editable ? (
-					<>
-						<input
-							className="onedit"
-							id="resizable"
-							type="text"
-							value={text}
-							onChange={(e) => handleChange(e)}
-							onKeyDown={handleKeyDown}
-						/>
-						<div className="trash">
-							<FaTrashAlt />
-						</div>
-					</>
-				) : (
-					<Sentence
-						key={1}
-						id={id}
-						active={active}
-						initText={text}
-						changeText={changeText}
-						editable={editable}
-						onUpdate={onUpdate}
-					/>
-				)}
-			</div>
-		);
-	}
+	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
 	return (
 		<>
@@ -200,9 +135,10 @@ function SentencePaint() {
 			<div className="buttonline">
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
+			{/* <AnswerBox />
 			<AnswerBox />
-			<AnswerBox />
-			<AnswerBox />
+			<AnswerBox /> */}
+			<AnswerList onRemove={onRemove} onUpdate={onUpdate} />
 
 			<StyledContainer>
 				<ToastContainer />
