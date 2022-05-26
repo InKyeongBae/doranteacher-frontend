@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import Button from "../components/Button";
 import styled from "styled-components";
 import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -84,7 +84,8 @@ const Input = styled.input`
 const Loginpage = (props) => {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies, setCookie, removeCookie] = useCookies(["acessToken"]);
+    const history = useHistory();
 
     // input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
     const handleId = (e) => {
@@ -116,15 +117,16 @@ const Loginpage = (props) => {
                 console.log(res.data);
                 localStorage.setItem("refreshToken", res.data["refreshToken"]);
                 setCookie("accessToken", res.data["accessToken"]);
-
+                // history.push("/");
+                history.push({
+                    pathname: "/",
+                    state: { login: Loginpage }, // ..
+                });
                 // const { accessToken } = res.data;
-
                 // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
                 // axios.defaults.headers.common[
                 //     "Authorization"
                 // ] = `Bearer ${accessToken}`;
-
-                // accessToken을 localStorage, cookie 등에 저장하지 않는다!
             })
             .catch((err) => {
                 console.log(err);
