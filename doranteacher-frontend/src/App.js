@@ -14,6 +14,7 @@ import DiaryList from "./pages/DiaryList";
 import Book from "./pages/Book";
 import DiaryType from "./pages/DairyType";
 import DiarySave from "./pages/DiarySave";
+import DiaryDetail from "./pages/DiaryDetail";
 import Title from "./pages/title/Title";
 import DiaryContentsView from "./pages/diarycontentsview/DiaryContentsView";
 import { SentenceProvider } from "./pages/diarycontents/SentenceContext";
@@ -61,6 +62,8 @@ function App() {
                         </Route>
                         <Route path="/diary-list" element={<DiaryList />} />
                         <Route path="/book-list" element={<Book />} />
+                        <Route path="/diary" element={<DiaryDetail />} />
+                        {/* diary/<id:int></id> */}
                         {/* <Route
                             path="/diary-detail"
                             element={<DiaryDetail />}

@@ -50,7 +50,7 @@ function Book() {
     return (
         <>
             <GlobalStyle backColor="yellow" />
-            <Header backColor="yellow" />
+            <Header backColor="yellow" isLogout />
             <MainBlock>
                 <div className="buttons">
                     <div className="button">
