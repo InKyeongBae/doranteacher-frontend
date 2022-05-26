@@ -2,22 +2,22 @@ import React from 'react';
 import AnswerBox from './AnswerBox';
 import { useSentenceState } from './SentenceContext';
 
-function Answer({ answer, onUpdate }) {
+function Answer({ answer }) {
 	console.log(answer);
 	return (
 		<div className="answerlist" id={answer.id}>
-			<AnswerBox initText={answer.answer} onUpdate={onUpdate} id={answer.id} />
+			<AnswerBox initText={answer.answer} id={answer.id} />
 		</div>
 	);
 }
 
-function AnswerList({ onRemove, onUpdate }) {
+function AnswerList() {
 	const answers = useSentenceState();
 	console.log(answers);
 	return (
 		<div className="sentences">
 			{answers.map((answer) => (
-				<Answer answer={answer} key={answer.id} onUpdate={onUpdate}></Answer>
+				<Answer answer={answer} key={answer.id} ></Answer>
 			))}
 		</div>
 	);

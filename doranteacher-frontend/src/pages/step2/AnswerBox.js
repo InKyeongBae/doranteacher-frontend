@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Sentence from './Sentence';
+import { useSentenceDispatch } from './SentenceContext';
 
 function AnswerBox({ initText, onUpdate, id }) {
 	const [text, setText] = useState(initText);
+	const dispatch = useSentenceDispatch();
 	const [editable, setEditable] = useState(false);
 
 	const ref = useRef(null);
@@ -33,6 +35,18 @@ function AnswerBox({ initText, onUpdate, id }) {
 	useEffect(() => {
 		window.addEventListener('click', handleClickOutside, true);
 	});
+
+	function onUpdate(updateid, answer) {
+		dispatch({
+			type: 'CHANGE_ANSWER',
+			sentence: {
+				id: updateid,
+				answer: answer,
+			},
+		});
+		setText(answer);
+	}
+
 	return (
 		<div className="answer">
 			{id}번째 문장

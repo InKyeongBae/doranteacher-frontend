@@ -108,16 +108,6 @@ function SentencePaint() {
 		}
 	`;
 
-	function onUpdate(updateid, answer) {
-		dispatch({
-			type: 'CHANGE_ANSWER',
-			sentence: {
-				id: updateid,
-				answer: answer,
-			},
-		});
-	}
-
 	const onRemove = (id) => dispatch({ type: 'REMOVE', id });
 
 	return (
@@ -141,7 +131,7 @@ function SentencePaint() {
 			{/* <AnswerBox />
 			<AnswerBox />
 			<AnswerBox /> */}
-			<AnswerList onRemove={onRemove} onUpdate={onUpdate} />
+			<AnswerList />
 
 			<StyledContainer>
 				<ToastContainer />

@@ -18,9 +18,11 @@ const MainBlock = styled.div`
 	}
 
 	.trash {
-		padding-left: 10px;
+		/* padding-left: 10px;
 		display: inline-flex;
 		align-items: center;
+		cursor: pointer; */
+		padding-left: 10px;
 		cursor: pointer;
 	}
 
@@ -90,7 +92,7 @@ const MainBlock = styled.div`
 		line-height: 25px;
 	}
 
-	.answer {
+	.answer, .editbox {
 		display: inline-flex;
 		text-align: center;
 		align-items: center;
