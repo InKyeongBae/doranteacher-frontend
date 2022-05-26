@@ -4,7 +4,7 @@ import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
 import ProgressBar from '../../components/ProgressBar';
-import SentencePaint from '../diarycontents/SentencePaint';
+import SentencePaint from '../step1/SentencePaint';
 
 const MainBlock = styled.div`
 	.literally {

@@ -14,8 +14,8 @@ import DiaryType from './pages/DairyType';
 import DiarySave from './pages/DiarySave';
 import Title from './pages/title/Title';
 import DiaryContentsView from './pages/diarycontentsview/DiaryContentsView';
-import { SentenceProvider } from './pages/diarycontents/SentenceContext';
 import Step2 from './pages/step2/Step2';
+import { SentenceProvider } from './pages/step1/SentenceContext';
 
 const palette = {
 	red: '#E75244',

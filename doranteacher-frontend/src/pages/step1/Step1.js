@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import Header from '../../components/Header';
 import GlobalStyle from '../../components/GlobalStyle';
 import ProgressBar from '../../components/ProgressBar';
-import SentencePaint from '../diarycontents/SentencePaint';
+import SentencePaint from './SentencePaint';
 import LeftDoran from '../../components/LeftDoran';
-import { SentenceProvider } from '../diarycontents/SentenceContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';

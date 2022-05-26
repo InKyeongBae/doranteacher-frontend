@@ -6,7 +6,7 @@ import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
 import ProgressBar from '../../components/ProgressBar';
-import { useSentenceState } from '../diarycontents/SentenceContext';
+import { useSentenceState } from '../step1/SentenceContext';
 
 const MainBlock = styled.div`
 	.question {
