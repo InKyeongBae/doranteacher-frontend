@@ -8,6 +8,7 @@ import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import ImageUpload from "../components/ImageUpload";
 
+const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
 const MainBlock = styled.div`
     .buttons {
         margin-top: 30px;
@@ -37,6 +38,17 @@ const MainBlock = styled.div`
         display: flex;
         justify-content: flex-end;
     }
+
+    .diary_img {
+        cursor: pointer;
+        margin-top: 85px;
+        margin-right: 1000px;
+        // border-radius: 15px;
+        // border: 3px solid gray;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+            rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    }
 `;
 const BigDoran = styled.div`
     .bigDoran {
@@ -47,6 +59,9 @@ const BigDoran = styled.div`
 
 function DiaryList() {
     const navigate = useNavigate("");
+    const hmm = () => {
+        navigate("/diary");
+    };
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -72,6 +87,13 @@ function DiaryList() {
                 </div>
                 <div className="main">
                     <div className="leftside">
+                        <img
+                            className="diary_img"
+                            src={diary_img}
+                            height="200"
+                            width="150"
+                            onClick={hmm}
+                        />
                         {/*일기 리스트 출력하는 곳*/}
                     </div>
                     {/* <div className="middleSide"></div> */}
