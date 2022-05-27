@@ -24,17 +24,20 @@ const CheckCircle = styled.div`
 		`}
 `;
 
-function AnswerBox({ initText, onUpdate, id }) {
-	const [text, setText] = useState(initText);
+function AnswerBox({ id, checkfirst }) {
 	const dispatch = useSentenceDispatch();
 	const state = useSentenceState();
 	const [editable, setEditable] = useState(false);
-
+	const [text, setText] = useState('');
 	const ref = useRef(null);
 
 	// text상태일 때 onClick 이벤트로 넣어 줄 함수
 	const editOn = (e) => {
 		setText(text);
+		setEditable(true);
+	};
+	const editOn1 = (e) => {
+		setText(state[id - 1].answer);
 		setEditable(true);
 	};
 	// input상태일 때 내용의 변화를 감지해서 text를 바꾸어 줌
@@ -71,16 +74,6 @@ function AnswerBox({ initText, onUpdate, id }) {
 		setText(answer);
 	}
 
-	function checkOnlyOne(element) {
-		const checkboxes = document.getElementsByName('checkbox');
-
-		checkboxes.forEach((cb) => {
-			cb.checked = false;
-		});
-
-		console.log(element);
-	}
-
 	const act = state[id - 1].active;
 	const onToggle = () => dispatch({ type: 'TOGGLE', id });
 
@@ -107,9 +100,17 @@ function AnswerBox({ initText, onUpdate, id }) {
 					</>
 				) : (
 					<>
-						<div className="offedit" onClick={() => editOn()}>
-							{text}
-						</div>
+						{checkfirst && (
+							<div className="offedit" onClick={() => editOn1()}>
+								{state[id - 1].answer}
+							</div>
+						)}
+						{!checkfirst && (
+							<div className="offedit" onClick={() => editOn()}>
+								{text}
+							</div>
+						)}
+
 						<div className="trash">
 							<FaTrashAlt
 								onClick={() => {

@@ -15,7 +15,7 @@ let _lc = null;
 
 function SentencePaint() {
 	const [images, setImages] = useState([]);
-	const [text, setText] = useState('');
+	const [first, setFirst] = useState(false);
 	const [editable, setEditable] = useState(false);
 
 	const dispatch = useSentenceDispatch();
@@ -81,11 +81,9 @@ function SentencePaint() {
 				.then((response) => response.json())
 				.then((result) => {
 					const newSentence = result.filepath;
-					setText(newSentence);
-					console.log(newSentence);
+					setFirst(true);
 					onUpdate(id, newSentence);
-				})
-				.then(() => console.log(sentences));
+				});
 		} catch (err) {
 			console.log(err);
 		}
@@ -148,7 +146,7 @@ function SentencePaint() {
 			{/* <AnswerBox />
 			<AnswerBox />
 			<AnswerBox /> */}
-			<AnswerList />
+			<AnswerList first={first}/>
 			<div className="buttonline">
 				<Button buttonText="문장 추가하기" inputColor="green" outputColor="purple" onClick={onCreateBox} />
 			</div>
