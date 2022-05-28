@@ -31,6 +31,10 @@ function AnswerBox({ id, checkfirst }) {
 	const [text, setText] = useState('');
 	const ref = useRef(null);
 
+	useEffect(() => {
+		setText(state[id - 1].answer);
+	}, [state]);
+
 	// text상태일 때 onClick 이벤트로 넣어 줄 함수
 	const editOn = (e) => {
 		setText(text);
