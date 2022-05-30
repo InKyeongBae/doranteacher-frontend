@@ -56,6 +56,7 @@ const MainBlock = styled.div`
 		text-align: center;
 		width: 862px;
 		margin: 0 auto;
+		margin-bottom: 50px;
 		.canvas {
 			.literally toolbar-at-top {
 				text-align: center;
@@ -210,7 +211,7 @@ function Step1() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				<Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify}/>
+				<Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify} />
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
 				</div>

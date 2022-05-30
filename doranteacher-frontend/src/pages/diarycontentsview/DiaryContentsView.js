@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
+import NextButton from '../../components/NextButton';
 import ProgressBar from '../../components/ProgressBar';
 import { useSentenceState } from '../step1/SentenceContext';
 
@@ -69,6 +70,11 @@ const MainBlock = styled.div`
 		text-decoration-thickness: 2px;
 		line-height: 60px;
 		border-bottom: 2px solid black;
+	}
+
+	.container {
+		margin-top: 30px;
+		margin-right: 100px;
 	}
 `;
 
@@ -164,17 +170,7 @@ function DiaryContentsView() {
 				) : (
 					''
 				)}
-
-				<NextButtonStyle>
-					<Button
-						buttonText="다음"
-						type="submit"
-						inputColor="green"
-						outputColor="red"
-						className="button"
-						onClick={() => setAnimation()}
-					></Button>
-				</NextButtonStyle>
+				<NextButton onClick={() => setAnimation()} />
 			</MainBlock>
 		</div>
 	);

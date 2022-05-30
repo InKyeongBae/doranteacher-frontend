@@ -6,6 +6,7 @@ import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
+import NextButton from '../../components/NextButton';
 import ProgressBar from '../../components/ProgressBar';
 import TitlePaint from './TitlePaint';
 
@@ -147,6 +148,10 @@ const MainBlock = styled.div`
 		flex-flow: row nowrap;
 		justify-content: space-around;
 	}
+
+	.container {
+		margin-top: 30px;
+	}
 `;
 
 function Title() {
@@ -220,16 +225,7 @@ function Title() {
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<TitlePaint />
 					<div className="nextBtn">
-						<NextButtonStyle>
-							<Button
-								buttonText="다음"
-								type="submit"
-								outputColor="red"
-								inputColor="purple"
-								className="button"
-								onClick={checking}
-							></Button>
-						</NextButtonStyle>
+						<NextButton onClick={checking} />
 					</div>
 				</div>
 			</MainBlock>
