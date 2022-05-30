@@ -226,7 +226,7 @@ function NextButton() {
 			<div class="container">
 				<ul style={{ listStyle: 'None' }}>
 					<li>
-						<a class="animated-arrow">
+						<a class="animated-arrow" style={{ cursor: 'pointer' }}>
 							<span class="the-arrow -left">
 								<span class="shaft"></span>
 							</span>
