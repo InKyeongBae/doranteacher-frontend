@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
+import NextButton from '../../components/NextButton';
 import ProgressBar from '../../components/ProgressBar';
 import { useSentenceDispatch, useSentenceNextId } from './SentenceContext';
 import SentencePaint from './SentencePaint';
@@ -221,8 +222,8 @@ function Step2() {
 
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
+					<NextButton />
 				</div>
-				
 			</MainBlock>
 		</>
 	);
