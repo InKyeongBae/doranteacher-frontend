@@ -12,6 +12,7 @@ import { WordProvider } from './WordContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import NextButton from '../../components/NextButton';
 
 const MainBlock = styled.div`
 	.literally {
@@ -115,6 +116,10 @@ const MainBlock = styled.div`
 		font-size: 25px;
 		color: white;
 		line-height: 35px;
+	}
+
+	.container {
+		margin-right: 100px;
 	}
 `;
 
@@ -253,7 +258,7 @@ function Brainstorm() {
 					<WordPaint />
 				</div>
 				<div className="nextBtn" style={lenWords === 0 ? { marginTop: '80px' } : { display: 'block' }}>
-					<NextButtonStyle>
+					{/* <NextButtonStyle>
 						<Button
 							buttonText="다음"
 							type="submit"
@@ -267,7 +272,16 @@ function Brainstorm() {
 									: () => navigate('/writing/diary-type')
 							}
 						></Button>
-					</NextButtonStyle>
+					</NextButtonStyle> */}
+					<NextButton
+						onClick={
+							lenWords < 5
+								? lessNotify
+								: lenWords > 10
+								? moreNotify
+								: () => navigate('/writing/diary-type')
+						}
+					/>
 				</div>
 			</MainBlock>
 			<StyledContainer>
