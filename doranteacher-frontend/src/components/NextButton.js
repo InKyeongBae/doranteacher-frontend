@@ -220,20 +220,20 @@ const BtnStyle = styled.div`
 	}
 `;
 
-function NextButton() {
+function NextButton({onClick}) {
 	return (
 		<BtnStyle>
-			<div class="container">
+			<div className="container">
 				<ul style={{ listStyle: 'None' }}>
 					<li>
-						<a class="animated-arrow" style={{ cursor: 'pointer' }}>
-							<span class="the-arrow -left">
-								<span class="shaft"></span>
+						<a className="animated-arrow" style={{ cursor: 'pointer' }} onClick={onClick}>
+							<span className="the-arrow -left">
+								<span className="shaft"></span>
 							</span>
-							<span class="main">
-								<span class="text">다음 단계</span>
-								<span class="the-arrow -right">
-									<span class="shaft"></span>
+							<span className="main">
+								<span className="text">다음 단계</span>
+								<span className="the-arrow -right">
+									<span className="shaft"></span>
 								</span>
 							</span>
 						</a>
