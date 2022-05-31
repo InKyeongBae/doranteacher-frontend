@@ -62,7 +62,7 @@ function Step1List(props) {
 							onClick={
 								active[0].answer === ''
 									? () => props.levelNotify()
-									: () => navigate('/writing/diary-contents-view')
+									: () => navigate('/writing/step1/diary-contents-view')
 							}
 						/>
 					) : (

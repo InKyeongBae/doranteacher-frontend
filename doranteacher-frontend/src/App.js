@@ -16,10 +16,11 @@ import DiaryType from './pages/DairyType';
 import DiarySave from './pages/DiarySave';
 import DiaryDetail from './pages/DiaryDetail';
 import Title from './pages/title/Title';
-import DiaryContentsView from './pages/diarycontentsview/DiaryContentsView';
+import DiaryContentsViewStep1 from './pages/diarycontentsview/DiaryContentsViewStep1';
 import Step2 from './pages/step2/Step2';
 import { Step1SentenceProvider } from './pages/step1/SentenceContext';
 import { Step2SentenceProvider } from './pages/step2/SentenceContext';
+import DiaryContentsViewStep2 from './pages/diarycontentsview/DiaryContentsViewStep2';
 
 const palette = {
 	red: '#E75244',
@@ -56,7 +57,8 @@ function App() {
 								<Route path="diary-type" element={<DiaryType />} />
 								<Route path="step1" element={<Step1 />} />
 								<Route path="step2" element={<Step2 />} />
-								<Route path="diary-contents-view" element={<DiaryContentsView />} />
+								<Route path="step1/diary-contents-view" element={<DiaryContentsViewStep1 />} />
+								<Route path="step2/diary-contents-view" element={<DiaryContentsViewStep2 />} />
 								<Route path="title" element={<Title />} />
 								<Route path="save" element={<DiarySave />} />
 								{/* <Route path="*" element={<NotFound />} /> */}

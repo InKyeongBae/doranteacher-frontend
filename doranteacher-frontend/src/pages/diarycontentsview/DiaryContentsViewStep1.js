@@ -83,7 +83,7 @@ const NextButtonStyle = styled.div`
 	padding: 20px 0;
 `;
 
-function DiaryContentsView() {
+function DiaryContentsViewStep1() {
 	const sentences = useSentenceState();
 	const [state, setState] = useState(false);
 	const answers = sentences.map((s) => s.answer);
@@ -176,4 +176,4 @@ function DiaryContentsView() {
 	);
 }
 
-export default DiaryContentsView;
+export default DiaryContentsViewStep1;
