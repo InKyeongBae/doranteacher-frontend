@@ -24,8 +24,8 @@ const MainBlock = styled.div`
     }
 
     .question {
-        margin-top: 30px;
-        margin-bottom: 15px;
+        margin-top: 25px;
+        margin-bottom: 20px;
         font-family: "KOTRAHOPE";
         font-style: normal;
         font-weight: 380;
@@ -38,6 +38,7 @@ const MainBlock = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-top: 20px;
 
         width: 600px;
         height: 480px;
@@ -121,16 +122,20 @@ const MainBlock = styled.div`
     .imageUpload {
         padding-left: 280px;
         margin-top: 20px;
+        margin-bottom: -20px;
     }
 `;
 
 function DiarySave() {
     // console.log(getStringDate(new Date()));
-    const [comment, setComment] = useState(0);
-    const [correct, setCorrect] = useState(0);
-    const [painting, setPainting] = useState(0);
-    const [file, setFile] = useState("");
+    let [painting, setPainting] = useState(true);
+    let [correct, setCorrect] = useState(true);
+    let [comment, setComment] = useState(true);
+
+    // const [file, setFile] = useState("");
     console.log(painting);
+    console.log(correct);
+    console.log(comment);
 
     const navigate = useNavigate("");
     return (
@@ -158,26 +163,30 @@ function DiarySave() {
                 </div>
                 <div className="yellowbox">
                     <div className="question">
-                        Q1. 도란쌤의 <span className="key">코멘트</span>를 받고
-                        싶나요?
+                        Q1. 일기와 어울리는 <span className="key">그림</span>을
+                        추천해줄까요?
                     </div>
                     <div className="buttons">
                         <div className="buttonStyle">
                             <Button
-                                buttonText="좋아요"
+                                buttonText="네"
                                 inputColor="purple"
-                                extraClassName={comment === 1 ? `on` : ""}
-                                onClick={() => setComment(1)}
+                                extraClassName={painting === true ? `on` : ""}
+                                onClick={() => setPainting(!painting)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
-                                buttonText="저만 볼래요"
+                                buttonText="사진업로드"
                                 inputColor="purple"
-                                extraClassName={comment === 2 ? "on" : ""}
-                                onClick={() => setComment(2)}
-                            ></Button>
+                                extraClassName={painting === false ? "on" : ""}
+                                onClick={() => setPainting(!painting)}
+                            />
                         </div>
+                    </div>
+
+                    <div className="imageUpload">
+                        <ImageUpload props={painting} />
                     </div>
                     <div className="question">
                         Q2. 도란쌤의 <span className="key">맞춤법 교정</span>을
@@ -188,43 +197,40 @@ function DiarySave() {
                             <Button
                                 buttonText="네"
                                 inputColor="purple"
-                                extraClassName={correct === 1 ? `on` : ""}
-                                onClick={() => setCorrect(1)}
+                                extraClassName={correct === true ? `on` : ""}
+                                onClick={() => setCorrect(!correct)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
                                 buttonText="아니요"
                                 inputColor="purple"
-                                extraClassName={correct === 2 ? "on" : ""}
-                                onClick={() => setCorrect(2)}
+                                extraClassName={correct === false ? "on" : ""}
+                                onClick={() => setCorrect(!correct)}
                             ></Button>
                         </div>
                     </div>
                     <div className="question">
-                        Q3. 일기와 어울리는 <span className="key">그림</span>을
-                        추천해줄까요?
+                        Q3. 도란쌤의 <span className="key">답변</span>를 받고
+                        싶나요?
                     </div>
                     <div className="buttons">
                         <div className="buttonStyle">
                             <Button
                                 buttonText="네"
                                 inputColor="purple"
-                                extraClassName={painting === 1 ? `on` : ""}
-                                onClick={() => setPainting(1)}
+                                extraClassName={comment === true ? `on` : ""}
+                                onClick={() => setComment(!comment)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
-                                buttonText="사진업로드"
+                                buttonText="아니요"
                                 inputColor="purple"
-                                extraClassName={painting === 2 ? "on" : ""}
-                                onClick={() => setPainting(2)}
-                            />
+                                extraClassName={comment === false ? "on" : ""}
+                                onClick={() => setComment(!comment)}
+                            ></Button>
                         </div>
-                    </div>
-                    <div className="imageUpload">
-                        <ImageUpload props={painting} />
                     </div>
                 </div>
                 <div className="nextButton">

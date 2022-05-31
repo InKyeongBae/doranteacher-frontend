@@ -26,8 +26,8 @@ const dummyData =
         isPrivate: true,
         wantToCorrect: true,
         hasImage: true,
-        imagePath: "",
-        // 이미지 경로도 있어야함
+        // imagePath: "",
+        // // 이미지 경로도 있어야함
     };
 
 const MainBlock = styled.div`
@@ -40,8 +40,6 @@ const MainBlock = styled.div`
     .contents-box {
         background-color: white;
         border-radius: 15px;
-        min-height: 70vh;
-        max-width: 50vw;
         display: flex;
         align-items: center;
 
@@ -51,17 +49,17 @@ const MainBlock = styled.div`
     }
 
     .diary_img {
-        margin-top: 85px;
+        // margin-top: 20px;
         // margin-left: 30px;
         border-radius: 15px;
-        border: 3px solid gray;
-        // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-        //     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-        //     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        // border: 3px solid gray;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+            rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
 
     .answers {
-        padding: 30px;
+        padding: 40px;
     }
     .answer {
         font-family: "Cafe24Syongsyong";
@@ -110,6 +108,7 @@ const MainBlock = styled.div`
         margin-left: 5px;
     }
     .comment_button {
+        margin-right: 25px;
         cursor: default;
         pointer-events: none;
     }
@@ -137,14 +136,19 @@ const MainBlock = styled.div`
         // justify-content: space-between;
     }
 
+    .leftside {
+        // width: 65%;
+    }
     .rightside {
-        margin-left: 30px;
+        // width: 35%;
+        // margin-left: 30px;
         display: flex;
         flex-direction: column;
     }
 
     .comment-title-wrapper {
         margin-top: 30px;
+        margin-right: 30px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -230,14 +234,6 @@ function DiaryDetail() {
                         </div>
                     </div>
                     <div className="rightside">
-                        <div className="photo-wrapper">
-                            <img
-                                className="diary_img"
-                                src={diary_img}
-                                height="250"
-                                width="500"
-                            />
-                        </div>
                         <div className="comment-wrapper">
                             <div className="comment-title-wrapper">
                                 <img
@@ -259,6 +255,16 @@ function DiaryDetail() {
                                     height="120px;"
                                 ></Button>
                             </div>
+                        </div>
+                        <div className="photo-wrapper">
+                            <div className="content">사진으로 보는 일기</div>
+                            <img
+                                className="diary_img"
+                                src={diary_img}
+                                height="350"
+                                width="350"
+                                alt=""
+                            />
                         </div>
                     </div>
                 </div>
