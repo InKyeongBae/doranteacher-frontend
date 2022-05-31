@@ -158,7 +158,7 @@ function DiarySave() {
                 </div>
                 <div className="yellowbox">
                     <div className="question">
-                        Q1. 도란쌤의 <span className="key">코멘트</span>를 받고
+                        Q1. 도란쌤의 <span className="key">답변</span>를 받고
                         싶나요?
                     </div>
                     <div className="buttons">
@@ -172,7 +172,7 @@ function DiarySave() {
                         </div>
                         <div className="buttonStyle">
                             <Button
-                                buttonText="저만 볼래요"
+                                buttonText="아니요"
                                 inputColor="purple"
                                 extraClassName={comment === 2 ? "on" : ""}
                                 onClick={() => setComment(2)}
