@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
@@ -177,6 +178,12 @@ const MainBlock = styled.div`
 `;
 
 function Step2() {
+	const navigate = useNavigate('');
+
+	function pagemove() {
+		navigate('/writing/step2/diary-contents-view');
+	}
+
 	return (
 		<>
 			<GlobalStyle backColor="purple" />
@@ -222,7 +229,7 @@ function Step2() {
 
 				<div className="paint" style={{ paddingLeft: '250px' }}>
 					<SentencePaint />
-					<NextButton />
+					<NextButton onClick={pagemove} />
 				</div>
 			</MainBlock>
 		</>
