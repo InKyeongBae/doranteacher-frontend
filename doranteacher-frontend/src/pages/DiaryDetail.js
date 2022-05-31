@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
-import ImgButton from "../components/ImgButton";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -274,11 +273,24 @@ function DiaryDetail() {
     const [correct, setCorrect] = useState(false);
     console.log(correct);
 
-    const navigate = useNavigate("");
+    useEffect(() => {
+        const script = document.createElement("script");
+
+        script.src = "https://unpkg.com/type-hangul";
+        script.async = true;
+
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
     return (
         <>
             <GlobalStyle backColor="yellow" />
             <Header isUndo />
+            <div id="target">안녕하세요.</div>
+            <script>TypeHangul.type('#target');</script>
             <MainBlock>
                 <div className="main-wrapper">
                     <div className="leftside">
