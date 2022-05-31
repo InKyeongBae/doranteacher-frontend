@@ -77,12 +77,22 @@ const MainBlock = styled.div`
     .correct_button {
         position: absolute;
         cursor: pointer;
-        top: 20%;
+        top: 2%;
         left: 70%;
         z-index: 1;
-        // margin-right: 5px;
-        // margin-left: 5px;
-        // align-self: start;
+        font-size: 20px;
+        line-height: 30px;
+        height: 30px;
+        // width: 100px;
+        border: 0;
+        letter-spacing: 1px;
+        cursor: pointer;
+        padding: 0px 30px;
+        font-family: "Cafe24Syongsyong";
+        font-style: normal;
+        font-weight: 400;
+        border-radius: 25px;
+        border: 2px solid black;
     }
     .contents-box {
         background-color: white;
@@ -283,6 +293,7 @@ function DiaryDetail() {
                                         key={index}
                                         buttonText={it}
                                         width="80px;"
+                                        inputColor="green"
                                         extraClassName="keyword_button"
                                     ></Button>
                                 ))}
@@ -319,17 +330,22 @@ function DiaryDetail() {
                                         </div>
                                     )}
                                 </div>
-                                {/* 맞춤법 교정 선택한 친구인지 아닌지 확인 */}
-                                <div
-                                    className={[
-                                        "correct_button",
-                                        dummyData.wantToCorrect
-                                            ? `correct_button_on`
-                                            : "",
-                                    ].join(" ")}
-                                >
-                                    맞춤법 교정 전
-                                </div>
+                                {dummyData.wantToCorrect ? (
+                                    <div
+                                        className={[
+                                            "correct_button",
+                                            correct === true
+                                                ? `correct_button_on`
+                                                : "",
+                                        ].join(" ")}
+                                        onClick={() => setCorrect(!correct)}
+                                    >
+                                        맞춤법 비교
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
+
                                 {/* <ImgButton
                                     // setting={false}
                                     check={true}
