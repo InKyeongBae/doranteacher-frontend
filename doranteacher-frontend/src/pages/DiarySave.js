@@ -128,11 +128,14 @@ const MainBlock = styled.div`
 
 function DiarySave() {
     // console.log(getStringDate(new Date()));
-    const [comment, setComment] = useState(0);
-    const [correct, setCorrect] = useState(0);
-    const [painting, setPainting] = useState(0);
-    const [file, setFile] = useState("");
+    let [painting, setPainting] = useState(true);
+    let [correct, setCorrect] = useState(true);
+    let [comment, setComment] = useState(true);
+
+    // const [file, setFile] = useState("");
     console.log(painting);
+    console.log(correct);
+    console.log(comment);
 
     const navigate = useNavigate("");
     return (
@@ -168,16 +171,16 @@ function DiarySave() {
                             <Button
                                 buttonText="네"
                                 inputColor="purple"
-                                extraClassName={painting === 1 ? `on` : ""}
-                                onClick={() => setPainting(1)}
+                                extraClassName={painting === true ? `on` : ""}
+                                onClick={() => setPainting(!painting)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
                                 buttonText="사진업로드"
                                 inputColor="purple"
-                                extraClassName={painting === 2 ? "on" : ""}
-                                onClick={() => setPainting(2)}
+                                extraClassName={painting === false ? "on" : ""}
+                                onClick={() => setPainting(!painting)}
                             />
                         </div>
                     </div>
@@ -194,16 +197,16 @@ function DiarySave() {
                             <Button
                                 buttonText="네"
                                 inputColor="purple"
-                                extraClassName={correct === 1 ? `on` : ""}
-                                onClick={() => setCorrect(1)}
+                                extraClassName={correct === true ? `on` : ""}
+                                onClick={() => setCorrect(!correct)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
                                 buttonText="아니요"
                                 inputColor="purple"
-                                extraClassName={correct === 2 ? "on" : ""}
-                                onClick={() => setCorrect(2)}
+                                extraClassName={correct === false ? "on" : ""}
+                                onClick={() => setCorrect(!correct)}
                             ></Button>
                         </div>
                     </div>
@@ -216,16 +219,16 @@ function DiarySave() {
                             <Button
                                 buttonText="네"
                                 inputColor="purple"
-                                extraClassName={comment === 1 ? `on` : ""}
-                                onClick={() => setComment(1)}
+                                extraClassName={comment === true ? `on` : ""}
+                                onClick={() => setComment(!comment)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
                                 buttonText="아니요"
                                 inputColor="purple"
-                                extraClassName={comment === 2 ? "on" : ""}
-                                onClick={() => setComment(2)}
+                                extraClassName={comment === false ? "on" : ""}
+                                onClick={() => setComment(!comment)}
                             ></Button>
                         </div>
                     </div>
