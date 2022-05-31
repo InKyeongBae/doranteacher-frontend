@@ -3,8 +3,8 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
+import { Helmet } from "react-helmet";
 import { TypeHangul } from "type-hangul";
-
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
@@ -276,7 +276,9 @@ function DiaryDetail() {
     return (
         <>
             <GlobalStyle backColor="yellow" />
+
             <Header isUndo />
+
             <MainBlock>
                 <div className="main-wrapper">
                     <div className="leftside">
@@ -365,9 +367,13 @@ function DiaryDetail() {
                                     코멘트
                                 </div>
                             </div>
-                            <div className="comment-box">
+                            <div className="comment-box" id="target">
                                 {dummyData.comment}
                             </div>
+                            {/* <div id="target">안녕하세요.</div> */}
+                            <Helmet>
+                                <script>TypeHangul.type('#target');</script>
+                            </Helmet>
                         </div>
                         <div className="photo-wrapper">
                             <div className="content">
