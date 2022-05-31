@@ -104,6 +104,7 @@ function WeatherItem({
                     src={weather_img}
                     height="80"
                     width="90"
+                    alt=""
                 />
                 <span className="text">{weather_description}</span>
             </div>
