@@ -8,6 +8,7 @@
 		"@testing-library/user-event": "^13.5.0",
 		"axios": "^0.26.1",
 		"create-react-class": "15.6.3",
+		"hanspell": "^0.9.4",
 		"http-proxy-middleware": "^2.0.6",
 		"literallycanvas": "0.5.2",
 		"prop-types": "^15.8.1",
