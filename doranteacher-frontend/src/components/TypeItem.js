@@ -5,7 +5,7 @@ import Button from "./Button";
 const TypeItems = styled.div`
     .typeItem {
         cursor: pointer;
-
+        min-width: 160px;
         border-radius: 25px;
 
         display: flex;
