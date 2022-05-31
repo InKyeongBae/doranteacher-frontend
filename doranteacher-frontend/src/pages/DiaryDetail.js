@@ -83,7 +83,6 @@ const MainBlock = styled.div`
         font-size: 20px;
         line-height: 30px;
         height: 30px;
-        // width: 100px;
         border: 0;
         letter-spacing: 1px;
         cursor: pointer;
@@ -93,6 +92,11 @@ const MainBlock = styled.div`
         font-weight: 400;
         border-radius: 25px;
         border: 2px solid black;
+    }
+    .correct_button_on {
+        background-color: #d3d3d3;
+        color: #e75244;
+        border: 3px solid #e75244;
     }
     .contents-box {
         background-color: white;
@@ -345,18 +349,6 @@ function DiaryDetail() {
                                 ) : (
                                     ""
                                 )}
-
-                                {/* <ImgButton
-                                    // setting={false}
-                                    check={true}
-                                    onClick={() => setCorrect(!correct)}
-                                    outputColor="red"
-                                    extraClassName={
-                                        correct === true
-                                            ? `correct_button on`
-                                            : "correct_button"
-                                    }
-                                ></ImgButton> */}
                             </div>
                         </div>
                     </div>
