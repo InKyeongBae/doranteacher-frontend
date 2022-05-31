@@ -38,6 +38,7 @@ const MainBlock = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-top: 20px;
 
         width: 600px;
         height: 480px;
@@ -213,7 +214,7 @@ function DiarySave() {
                     <div className="buttons">
                         <div className="buttonStyle">
                             <Button
-                                buttonText="좋아요"
+                                buttonText="네"
                                 inputColor="purple"
                                 extraClassName={comment === 1 ? `on` : ""}
                                 onClick={() => setComment(1)}
