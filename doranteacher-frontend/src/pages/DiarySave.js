@@ -24,8 +24,8 @@ const MainBlock = styled.div`
     }
 
     .question {
-        margin-top: 30px;
-        margin-bottom: 15px;
+        margin-top: 25px;
+        margin-bottom: 20px;
         font-family: "KOTRAHOPE";
         font-style: normal;
         font-weight: 380;
@@ -121,6 +121,7 @@ const MainBlock = styled.div`
     .imageUpload {
         padding-left: 280px;
         margin-top: 20px;
+        margin-bottom: -20px;
     }
 `;
 
@@ -158,26 +159,30 @@ function DiarySave() {
                 </div>
                 <div className="yellowbox">
                     <div className="question">
-                        Q1. 도란쌤의 <span className="key">답변</span>를 받고
-                        싶나요?
+                        Q1. 일기와 어울리는 <span className="key">그림</span>을
+                        추천해줄까요?
                     </div>
                     <div className="buttons">
                         <div className="buttonStyle">
                             <Button
-                                buttonText="좋아요"
+                                buttonText="네"
                                 inputColor="purple"
-                                extraClassName={comment === 1 ? `on` : ""}
-                                onClick={() => setComment(1)}
+                                extraClassName={painting === 1 ? `on` : ""}
+                                onClick={() => setPainting(1)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
-                                buttonText="아니요"
+                                buttonText="사진업로드"
                                 inputColor="purple"
-                                extraClassName={comment === 2 ? "on" : ""}
-                                onClick={() => setComment(2)}
-                            ></Button>
+                                extraClassName={painting === 2 ? "on" : ""}
+                                onClick={() => setPainting(2)}
+                            />
                         </div>
+                    </div>
+
+                    <div className="imageUpload">
+                        <ImageUpload props={painting} />
                     </div>
                     <div className="question">
                         Q2. 도란쌤의 <span className="key">맞춤법 교정</span>을
@@ -202,29 +207,26 @@ function DiarySave() {
                         </div>
                     </div>
                     <div className="question">
-                        Q3. 일기와 어울리는 <span className="key">그림</span>을
-                        추천해줄까요?
+                        Q3. 도란쌤의 <span className="key">답변</span>를 받고
+                        싶나요?
                     </div>
                     <div className="buttons">
                         <div className="buttonStyle">
                             <Button
-                                buttonText="네"
+                                buttonText="좋아요"
                                 inputColor="purple"
-                                extraClassName={painting === 1 ? `on` : ""}
-                                onClick={() => setPainting(1)}
+                                extraClassName={comment === 1 ? `on` : ""}
+                                onClick={() => setComment(1)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
                             <Button
-                                buttonText="사진업로드"
+                                buttonText="아니요"
                                 inputColor="purple"
-                                extraClassName={painting === 2 ? "on" : ""}
-                                onClick={() => setPainting(2)}
-                            />
+                                extraClassName={comment === 2 ? "on" : ""}
+                                onClick={() => setComment(2)}
+                            ></Button>
                         </div>
-                    </div>
-                    <div className="imageUpload">
-                        <ImageUpload props={painting} />
                     </div>
                 </div>
                 <div className="nextButton">
