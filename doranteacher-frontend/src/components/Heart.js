@@ -4,7 +4,6 @@ const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 function Heart({ id }) {
-    console.log(id);
     var heart_img;
     var width;
     if (id === 1) {
