@@ -23,21 +23,21 @@ import { Step2SentenceProvider } from './pages/step2/SentenceContext';
 import DiaryContentsViewStep2 from './pages/diarycontentsview/DiaryContentsViewStep2';
 
 const palette = {
-	red: '#E75244',
-	blue: '#367BBE',
-	purple: '#8491E0',
-	yellow: '#F9DE4B',
-	green: '#5DCB83',
-	white: '#ffffff',
-	black: '#000000',
+    red: "#E75244",
+    blue: "#367BBE",
+    purple: "#8491E0",
+    yellow: "#F9DE4B",
+    green: "#5DCB83",
+    white: "#ffffff",
+    black: "#000000",
 };
 
 function Writing() {
-	return (
-		<>
-			<Outlet />
-		</>
-	);
+    return (
+        <>
+            <Outlet />
+        </>
+    );
 }
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
 							</Route>
 							<Route path="diary-list" element={<DiaryList />} />
 							<Route path="book-list" element={<Book />} />
-							<Route path="/diary" element={<DiaryDetail />} />
+							<Route path="diary" element={<DiaryDetail />} />
 							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</ThemeProvider>

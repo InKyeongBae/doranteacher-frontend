@@ -70,10 +70,20 @@ const ImgButtons = styled.div`
     }
 `;
 
-function ImgButton({ setting, undo, next, prev, check, onClick, ...rest }) {
+function ImgButton({
+    extraClassName,
+    setting,
+    undo,
+    next,
+    prev,
+    check,
+    onClick,
+    ...rest
+}) {
+    const className = extraClassName ? "button " + extraClassName : "button";
     return (
         <ImgButtons {...rest}>
-            <button className="button" onClick={onClick}>
+            <button className={className} onClick={onClick}>
                 {setting && <MdSettings />}
                 {undo && <MdUndo />}
                 {next && <GoChevronRight />}

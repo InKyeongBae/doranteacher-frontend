@@ -1,24 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import { element } from 'prop-types';
+import React from "react";
+import styled from "styled-components";
+import axios from "axios";
+import { element } from "prop-types";
 
 const LeftDoranStyle = styled.div`
-	position: fixed;
-	bottom: 0;
-	padding: 0px 0px 0px 30px;
+    position: fixed;
+    bottom: 0;
+    padding: 0px 0px 0px 30px;
 
-	.leftDoran {
-		width: 200px;
-		height: 400px;
-		background: url('/img/doranSsam.png') no-repeat 0 0 / auto 400px;
-	}
+    .leftDoran {
+        width: 200px;
+        height: 400px;
+        background: url("/img/doranSsam.png") no-repeat 0 0 / auto 400px;
+    }
 `;
 
 const question = [
-	'오늘 일기로 쓰고 싶은 일이 있었나요?',
-	'오늘 아침을 생각하면 무엇이 가장 떠오르나요?',
-	'오늘 점심을 생각하면 무엇이 가장 떠오르나요?',
+    "오늘 일기로 쓰고 싶은 일이 있었나요?",
+    "오늘 아침을 생각하면 무엇이 가장 떠오르나요?",
+    "오늘 점심을 생각하면 무엇이 가장 떠오르나요?",
 ];
 const audio = [];
 // question.forEach(function (element) {
@@ -50,35 +50,34 @@ const audio = [];
 
 const context = [];
 var step;
-for(step = 0; step < 3; step++) {
-	context.push(new AudioContext());
+for (step = 0; step < 3; step++) {
+    context.push(new AudioContext());
 }
 
 function test(text) {
-	const nowId = text[0].id - 1;
-	const data = audio[nowId];
-	
-	var step;
-	for(step = 0; step < 3; step++) {
-		if (context[step].state === 'running') context[step].close();
-	}
+    const nowId = text[0].id - 1;
+    const data = audio[nowId];
 
-	context[nowId].decodeAudioData(data, (buffer) => {
-		const source = context[nowId].createBufferSource();
-		source.buffer = buffer;
-		source.connect(context[nowId].destination);
-		source.start(0);
-	});
-	console.log(nowId);
+    var step;
+    for (step = 0; step < 3; step++) {
+        if (context[step].state === "running") context[step].close();
+    }
 
+    context[nowId].decodeAudioData(data, (buffer) => {
+        const source = context[nowId].createBufferSource();
+        source.buffer = buffer;
+        source.connect(context[nowId].destination);
+        source.start(0);
+    });
+    console.log(nowId);
 }
 
 function LeftDoran({ text }) {
-	return (
-		<LeftDoranStyle>
-			<div className="leftDoran" onClick={() => test(text)} />
-		</LeftDoranStyle>
-	);
+    return (
+        <LeftDoranStyle>
+            <div className="leftDoran" onClick={() => test(text)} />
+        </LeftDoranStyle>
+    );
 }
 
 export default LeftDoran;
