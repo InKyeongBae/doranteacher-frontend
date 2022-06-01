@@ -135,7 +135,7 @@ function DiarySave() {
 				progress={
 					<ProgressBar
 						progressText={'7.일기저장'}
-						progressWidth={'87.5'}
+						progressWidth={'100'}
 						progressColor={'#E75244'}
 						backColor="red"
 					></ProgressBar>
