@@ -238,12 +238,10 @@ function Brainstorm() {
 	const words = useWordState();
 
 	const nextStep = () => {
-		console.log(words.length);
 		var returnText = '';
 		for (var i = 0; i < words.length; i++) {
 			returnText += '#' + words[i].content;
 		}
-		console.log(returnText);
 		localStorage.setItem('keywords', returnText);
 		navigate('/writing/diary-type');
 	};
