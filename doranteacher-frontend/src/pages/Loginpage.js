@@ -118,13 +118,13 @@ const Loginpage = (props) => {
 					console.log(res);
 					console.log(res.data.results[0].accessToken);
 					localStorage.setItem('refreshToken', res.data.results[0].refreshToken);
-					setCookie('accessToken', res.data.results[0].accessToken);
-					console.log(cookies.get('accessToken'));
+					var now = new Date();
+					setCookie('accessToken', res.data.results[0].accessToken, 60 * 60 * 24 + now);
+					console.log(cookies);
 					navigate('/');
 
 					// API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-					axios.defaults.headers.common['Authorization'] = `Bearer ${res.data['accessToken']}`;
-					// ${res.payload.accessToken}
+					axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.results[0].accessToken}`;
 				})
 				.catch((err) => {
 					console.log(err);
