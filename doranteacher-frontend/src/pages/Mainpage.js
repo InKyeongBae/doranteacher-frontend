@@ -168,6 +168,7 @@ function Mainpage() {
 			.then((res) => localStorage.setItem('step', res.data.results[0].writingStep))
 			.then(() => navigate('/writing/start'));
 	}
+	
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />

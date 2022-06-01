@@ -181,6 +181,22 @@ function WritingStart() {
 	};
 	const [date, setDate] = useState(getStringDate(new Date()));
 	const navigate = useNavigate('');
+
+	function writeStartNext() {
+		localStorage.setItem('date', date);
+		var w;
+		if (weather === 1) {
+			w = '화창해요';
+		} else if (weather === 2) {
+			w = '구름이 많아요';
+		} else if (weather === 3) {
+			w = '비가 와요';
+		} else {
+			w = '눈이 내려요';
+		}
+		localStorage.setItem('weather', w);
+		navigate('/writing/first-step');
+	}
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -231,7 +247,7 @@ function WritingStart() {
 							/>
 						))}
 					</div>
-					<NextButton onClick={() => navigate('/writing/first-step')} />
+					<NextButton onClick={writeStartNext} />
 				</div>
 			</MainBlock>
 		</>
