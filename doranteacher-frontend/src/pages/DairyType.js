@@ -130,6 +130,15 @@ function DiaryType() {
 	};
 
 	const navigate = useNavigate('');
+
+	function nextStep() {
+		localStorage.setItem('diaryType', typeList[diary - 1].type_name);
+		if (localStorage.getItem('step') === 1) {
+			navigate('/writing/step1');
+		} else {
+			navigate('/writing/step2');
+		}
+	}
 	return (
 		<>
 			<GlobalStyle backColor="red" />
@@ -158,7 +167,7 @@ function DiaryType() {
 						<TypeItem key={it.id} {...it} onClick={handleClickDiary} isSelected={it.id === diary} />
 					))}
 				</div>
-				<NextButton onClick={() => navigate('/writing/step1')} />
+				<NextButton onClick={nextStep} />
 			</MainBlock>
 		</>
 	);
