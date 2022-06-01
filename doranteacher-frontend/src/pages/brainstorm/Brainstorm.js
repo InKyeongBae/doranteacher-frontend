@@ -8,7 +8,7 @@ import LeftDoran from '../../components/LeftDoran';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import WordPaint from './WordPaint';
-import { WordProvider } from './WordContext';
+import { useWordState, WordProvider } from './WordContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -235,8 +235,21 @@ function Brainstorm() {
 		});
 	};
 
+	const words = useWordState();
+
+	const nextStep = () => {
+		console.log(words.length);
+		var returnText = '';
+		for (var i = 0; i < words.length; i++) {
+			returnText += '#' + words[i].content;
+		}
+		console.log(returnText);
+		localStorage.setItem('keywords', returnText);
+		navigate('/writing/diary-type');
+	};
+
 	return (
-		<WordProvider>
+		<>
 			<GlobalStyle backColor="red" />
 			<Header
 				isProgress
@@ -258,36 +271,13 @@ function Brainstorm() {
 					<WordPaint />
 				</div>
 				<div className="nextBtn" style={lenWords === 0 ? { marginTop: '80px' } : { display: 'block' }}>
-					{/* <NextButtonStyle>
-						<Button
-							buttonText="다음"
-							type="submit"
-							outputColor="red"
-							className="button"
-							onClick={
-								lenWords < 5
-									? lessNotify
-									: lenWords > 10
-									? moreNotify
-									: () => navigate('/writing/diary-type')
-							}
-						></Button>
-					</NextButtonStyle> */}
-					<NextButton
-						onClick={
-							lenWords < 5
-								? lessNotify
-								: lenWords > 10
-								? moreNotify
-								: () => navigate('/writing/diary-type')
-						}
-					/>
+					<NextButton onClick={lenWords < 5 ? lessNotify : lenWords > 10 ? moreNotify : nextStep} />
 				</div>
 			</MainBlock>
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
-		</WordProvider>
+		</>
 	);
 }
 
