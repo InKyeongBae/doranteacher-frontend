@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -90,16 +90,18 @@ function Setting() {
     const [cookies] = useCookies(["acessToken"]);
     console.log(setting);
 
-    axios("http://3.39.158.98:8080/user/me", {
-        method: "GET",
-        headers: {
-            // 'Content-type': 'application/json',
-            Authorization: `Bearer ${cookies["accessToken"]}`,
-        },
-    }).then((res) => {
-        // console.log(res.data.results[0]["writingStep"]);
-        setSetting(res.data.results[0]["writingStep"]);
-    });
+    useEffect(() => {
+        axios("http://3.39.158.98:8080/user/me", {
+            method: "GET",
+            headers: {
+                // 'Content-type': 'application/json',
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+        }).then((res) => {
+            // console.log(res.data.results[0]["writingStep"]);
+            setSetting(res.data.results[0]["writingStep"]);
+        });
+    }, []);
 
     const onSave = (e) => {
         // 여기 추가해야함
