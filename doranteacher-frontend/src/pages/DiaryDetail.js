@@ -5,8 +5,9 @@ import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
 import { Helmet } from "react-helmet";
 import { TypeHangul } from "type-hangul";
+
 const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
+env.PUBLIC_URL = env.PUBLIC_URL || '';
 const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
 const doran_img = process.env.PUBLIC_URL + `/img/doran_half_1.png`;
 
@@ -394,6 +395,7 @@ function DiaryDetail() {
             </MainBlock>
         </>
     );
+
 }
 
 export default DiaryDetail;

@@ -40,6 +40,36 @@ function WordPaint() {
 		if (!_lc) return;
 		const img = _lc.getImage();
 		if (!img) return;
+		// try {
+		// 	const imgData = img.toDataURL();
+		// 	// ...images, 없앰으로써 최종본만 저장되도록
+		// 	setImages([imgData]);
+		// 	console.log(imgData);
+		// 	pending();
+
+		// 	fetch('http://api.doranssam.com/ocrtext', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify({
+		// 			filepath: imgData,
+		// 		}),
+		// 	})
+		// 		.then((response) => response.json())
+		// 		.then((result) => {
+		// 			const newWord = result.filepath;
+		// 			dispatch({
+		// 				type: 'CREATE',
+		// 				word: {
+		// 					id: nextId.current,
+		// 					content: newWord,
+		// 				},
+		// 			});
+		// 		});
+		// } catch (err) {
+		// 	console.log(err);
+		// }
 		try {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
@@ -47,7 +77,7 @@ function WordPaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://api.doranssam.com/ocrtext', {
+			fetch('http://3.39.158.98:8080/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -117,7 +147,7 @@ function WordPaint() {
 				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
 			</div>
 
-			<WordList onRemove={onRemove} onUpdate={onUpdate}/>
+			<WordList onRemove={onRemove} onUpdate={onUpdate} />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
