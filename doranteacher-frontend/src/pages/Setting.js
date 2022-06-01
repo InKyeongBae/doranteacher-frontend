@@ -118,7 +118,7 @@ function Setting() {
             <MainBlock>
                 <div className="question">
                     자! 이제 도란쌤과 함께 일기를 써볼꺼야.
-                    <br />그 전에 , OO이는 일기와 얼만큼 친해?
+                    <br />그 전에 , 원하는 일기 쓰기 단계를 선택해볼까?
                 </div>
                 <div className="step_buttons">
                     <Button
