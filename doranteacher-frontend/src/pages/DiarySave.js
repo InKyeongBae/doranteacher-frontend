@@ -6,6 +6,7 @@ import GlobalStyle from '../components/GlobalStyle';
 import { useNavigate, Link } from 'react-router-dom';
 import LeftDoran from '../components/LeftDoran';
 import ProgressBar from '../components/ProgressBar';
+import { useCookies } from 'react-cookie';
 
 const MainBlock = styled.div`
 	display: flex;
@@ -111,17 +112,33 @@ function DiarySave() {
 	let [correct, setCorrect] = useState(true);
 	let [comment, setComment] = useState(true);
 	const [file, setFile] = useState(null);
+	const [cookies] = useCookies(['acessToken']);
 
 	const navigate = useNavigate('');
 
 	function saveFunc() {
-		console.log(painting);
-		console.log(correct);
-		console.log(comment);
-		console.log(file);
-		localStorage.setItem('wantToImage', painting);
-		localStorage.setItem('wantToCorrect', correct);
-		localStorage.setItem('isPrivate', comment);
+		console.log(typeof localStorage.getItem('title'));
+		fetch('http://3.39.158.98:8080/diaries', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${cookies['accessToken']}`,
+			},
+			body: JSON.stringify({
+				title: localStorage.getItem('title'),
+				date: localStorage.getItem('date'),
+				weather: localStorage.getItem('weather'),
+				keywords: localStorage.getItem('keywords'),
+				text: localStorage.getItem('text'),
+				diaryType: localStorage.getItem('diaryType'),
+				isPrivate: comment,
+				wantToCorrect: correct,
+				wantToImage: painting,
+			}),
+		})
+			.then((response) => response.json())
+			.then((res) => console.log(res));
+
 		// navigate('/')
 	}
 	return (
