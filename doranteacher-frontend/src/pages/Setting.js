@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
-import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 // 단계 설정 페이지 용 도란쌤
 const LeftDoran = styled.div`
@@ -86,11 +88,37 @@ const MainBlock = styled.div`
 
 function Setting() {
     const [setting, setSetting] = useState(0);
-    // console.log(setting);
+    const [cookies] = useCookies(["acessToken"]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log("??");
+        axios
+            .get("http://3.39.158.98:8080/user/me", {
+                headers: {
+                    Authorization: `Bearer ${cookies["accessToken"]}`,
+                    "Content-type": "application/json",
+                },
+            })
+            .then((res) => {
+                console.log(res.data.results[0]["writingStep"]);
+                setSetting(res.data.results[0]["writingStep"]);
+            });
+    }, []);
 
     const onSave = (e) => {
-        // 여기 추가해야함
-        console.log("저장");
+        fetch("http://3.39.158.98:8080/user/me", {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+            body: JSON.stringify({
+                writingStep: setting,
+            }),
+        })
+            .then((response) => response.json())
+            .then(() => navigate("/"));
     };
 
     return (
@@ -103,7 +131,7 @@ function Setting() {
             <MainBlock>
                 <div className="question">
                     자! 이제 도란쌤과 함께 일기를 써볼꺼야.
-                    <br />그 전에 , OO이는 일기와 얼만큼 친해?
+                    <br />그 전에 , 원하는 일기 쓰기 단계를 선택해볼까?
                 </div>
                 <div className="step_buttons">
                     <Button
