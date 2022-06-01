@@ -33,6 +33,17 @@ function Step1List(props) {
 			nextId: nextId,
 		});
 	}
+
+	function pagemove() {
+		var diaries = '';
+		for (var i = 0; i < 5; i++) {
+			diaries += ' ';
+			diaries += step1Qs[i].answer;
+			console.log(step1Qs[i].answer);
+		}
+		localStorage.setItem('text', diaries);
+		navigate('/writing/step1/diary-contents-view');
+	}
 	function Step1Qs({ step1Qs, onChange }) {
 		return (
 			<div
@@ -59,11 +70,7 @@ function Step1List(props) {
 							inputColor="green"
 							outputColor="purple"
 							buttonText={'다음'}
-							onClick={
-								active[0].answer === ''
-									? () => props.levelNotify()
-									: () => navigate('/writing/step1/diary-contents-view')
-							}
+							onClick={active[0].answer === '' ? () => props.levelNotify() : () => pagemove()}
 						/>
 					) : (
 						<ImgButton

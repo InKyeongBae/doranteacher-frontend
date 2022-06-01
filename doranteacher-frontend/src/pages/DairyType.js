@@ -131,50 +131,46 @@ function DiaryType() {
 
     const navigate = useNavigate("");
 
-    function nextStep() {
-        localStorage.setItem("diaryType", typeList[diary - 1].type_name);
-        if (localStorage.getItem("step") === 1) {
-            navigate("/writing/step1");
-        } else {
-            navigate("/writing/step2");
-        }
-    }
-    return (
-        <>
-            <GlobalStyle backColor="red" />
-            <LeftDoran />
-            <Header
-                isProgress
-                isLogout
-                isImgBtn
-                progress={
-                    <ProgressBar
-                        progressText={"3.유형선택"}
-                        progressWidth={"42"}
-                        progressColor={"#E75244"}
-                        backColor="red"
-                    ></ProgressBar>
-                }
-            />
-            <MainBlock>
-                <div className="question">
-                    오늘 너에게 딱 맞는
-                    <br />
-                    일기 유형을 추천해줄게!
-                </div>
-                <div className="input_box_diary_list_wrapper">
-                    {typeList.map((it) => (
-                        <TypeItem
-                            key={it.id}
-                            {...it}
-                            onClick={handleClickDiary}
-                            isSelected={it.id === diary}
-                        />
-                    ))}
-                </div>
-                <NextButton onClick={nextStep} />
-            </MainBlock>
-        </>
-    );
+	function nextStep() {
+		localStorage.setItem('diaryType', typeList[diary - 1].type_name);
+		console.log(localStorage.getItem('step'));
+		if (localStorage.getItem('step') == 1) {
+			navigate('/writing/step1');
+		} else {
+			navigate('/writing/step2');
+		}
+	}
+	return (
+		<>
+			<GlobalStyle backColor="red" />
+			<LeftDoran />
+			<Header
+				isProgress
+				isLogout
+				isImgBtn
+				progress={
+					<ProgressBar
+						progressText={'3.유형선택'}
+						progressWidth={'42'}
+						progressColor={'#E75244'}
+						backColor="red"
+					></ProgressBar>
+				}
+			/>
+			<MainBlock>
+				<div className="question">
+					오늘 너에게 딱 맞는
+					<br />
+					일기 유형을 추천해줄게!
+				</div>
+				<div className="input_box_diary_list_wrapper">
+					{typeList.map((it) => (
+						<TypeItem key={it.id} {...it} onClick={handleClickDiary} isSelected={it.id === diary} />
+					))}
+				</div>
+				<NextButton onClick={nextStep} />
+			</MainBlock>
+		</>
+	);
 }
 export default DiaryType;

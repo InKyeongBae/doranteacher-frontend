@@ -8,102 +8,103 @@ import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
 
+
 const MainBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .content {
-        margin-top: 30px;
-        margin-bottom: 20px;
-        font-family: "KOTRAHOPE";
-        font-style: normal;
-        font-weight: 380;
-        font-size: 35px;
-        line-height: 48px;
-        text-align: center;
-    }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.content {
+		margin-top: 30px;
+		margin-bottom: 20px;
+		font-family: 'KOTRAHOPE';
+		font-style: normal;
+		font-weight: 380;
+		font-size: 35px;
+		line-height: 48px;
+		text-align: center;
+	}
 
-    .question {
-        margin-top: 25px;
-        margin-bottom: 20px;
-        font-family: "KOTRAHOPE";
-        font-style: normal;
-        font-weight: 380;
-        font-size: 25px;
-        line-height: 48px;
-        text-align: center;
-    }
+	.question {
+		margin-top: 25px;
+		margin-bottom: 20px;
+		font-family: 'KOTRAHOPE';
+		font-style: normal;
+		font-weight: 380;
+		font-size: 25px;
+		line-height: 48px;
+		text-align: center;
+	}
 
-    .yellowbox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 20px;
+	.yellowbox {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 20px;
 
-        width: 600px;
-        height: 480px;
-        z-index: 1;
-        background: white;
-        outline: 0;
-        border: 0;
-        letter-spacing: 1px;
-        position: relative;
+		width: 600px;
+		height: 480px;
+		z-index: 1;
+		background: white;
+		outline: 0;
+		border: 0;
+		letter-spacing: 1px;
+		position: relative;
 
-        border-radius: 25px;
-        border: 2px solid black;
-        transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-    }
+		border-radius: 25px;
+		border: 2px solid black;
+		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+	}
 
-    .buttons {
-        display: flex;
-    }
+	.buttons {
+		display: flex;
+	}
 
-    .buttonStyle {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+	.buttonStyle {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 
-    .saveButton {
-        margin-top: 15px;
-    }
+	.saveButton {
+		margin-top: 15px;
+	}
 
-    .key {
-        color: #e75244;
-    }
+	.key {
+		color: #e75244;
+	}
 
-    .nextButton {
-        align-self: flex-end;
-        margin-top: 20px;
-        margin-right: 70px;
-    }
+	.nextButton {
+		align-self: flex-end;
+		margin-top: 20px;
+		margin-right: 70px;
+	}
 
-    .on {
-        background: #e75244;
-        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-        top: 4px;
-        left: 3.5px;
-        &:before {
-            top: -4px;
-            left: -4.7px;
-        }
-    }
+	.on {
+		background: #e75244;
+		transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+		top: 4px;
+		left: 3.5px;
+		&:before {
+			top: -4px;
+			left: -4.7px;
+		}
+	}
 
-    // input[type="file"] {
-    //     position: absolute;
-    //     width: 0;
-    //     height: 0;
-    //     padding: 0;
-    //     margin: -1px;
-    //     overflow: hidden;
-    //     clip: rect(0, 0, 0, 0);
-    //     border: 0;
-    // }
+	// input[type="file"] {
+	//     position: absolute;
+	//     width: 0;
+	//     height: 0;
+	//     padding: 0;
+	//     margin: -1px;
+	//     overflow: hidden;
+	//     clip: rect(0, 0, 0, 0);
+	//     border: 0;
+	// }
 
-    .imageUpload {
-        padding-left: 280px;
-        margin-top: 20px;
-        margin-bottom: -20px;
-    }
+	.imageUpload {
+		padding-left: 280px;
+		margin-top: 20px;
+		margin-bottom: -20px;
+	}
 `;
 
 function DiarySave() {
@@ -256,5 +257,6 @@ function DiarySave() {
             </StyledContainer>
         </>
     );
+
 }
 export default DiarySave;
