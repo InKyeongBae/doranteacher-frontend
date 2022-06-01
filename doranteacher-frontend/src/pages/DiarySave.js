@@ -147,6 +147,13 @@ function DiarySave() {
         });
     };
 
+    const successNotify = () => {
+        toast.success("회원가입에 성공했어요!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1800,
+        });
+    };
+
     function saveFunc() {
         if (!painting && !file) {
             errorNotify();
@@ -170,9 +177,13 @@ function DiarySave() {
                 wantToCorrect: correct,
                 wantToImage: painting,
             }),
-        })
-            .then((response) => response.json())
-            .then((res) => console.log(res));
+        }).then((response) => {
+            successNotify();
+            // setTimeout(function setNavi() {
+            //     navigate("/");
+            // }, 1800);
+        });
+        // .then((res) => console.log(res));
     }
     return (
         <>
