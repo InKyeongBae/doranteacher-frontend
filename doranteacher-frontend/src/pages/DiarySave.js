@@ -7,112 +7,115 @@ import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useCookies } from "react-cookie";
 
 const MainBlock = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	.content {
-		margin-top: 30px;
-		margin-bottom: 20px;
-		font-family: 'KOTRAHOPE';
-		font-style: normal;
-		font-weight: 380;
-		font-size: 35px;
-		line-height: 48px;
-		text-align: center;
-	}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-family: "KOTRAHOPE";
+        font-style: normal;
+        font-weight: 380;
+        font-size: 35px;
+        line-height: 48px;
+        text-align: center;
+    }
 
-	.question {
-		margin-top: 25px;
-		margin-bottom: 20px;
-		font-family: 'KOTRAHOPE';
-		font-style: normal;
-		font-weight: 380;
-		font-size: 25px;
-		line-height: 48px;
-		text-align: center;
-	}
+    .question {
+        margin-top: 25px;
+        margin-bottom: 20px;
+        font-family: "KOTRAHOPE";
+        font-style: normal;
+        font-weight: 380;
+        font-size: 25px;
+        line-height: 48px;
+        text-align: center;
+    }
 
-	.yellowbox {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding-top: 20px;
+    .yellowbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
 
-		width: 600px;
-		height: 480px;
-		z-index: 1;
-		background: white;
-		outline: 0;
-		border: 0;
-		letter-spacing: 1px;
-		position: relative;
+        width: 600px;
+        height: 480px;
+        z-index: 1;
+        background: white;
+        outline: 0;
+        border: 0;
+        letter-spacing: 1px;
+        position: relative;
 
-		border-radius: 25px;
-		border: 2px solid black;
-		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-	}
+        border-radius: 25px;
+        border: 2px solid black;
+        transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+    }
 
-	.buttons {
-		display: flex;
-	}
+    .buttons {
+        display: flex;
+    }
 
-	.buttonStyle {
-		margin-left: 10px;
-		margin-right: 10px;
-	}
+    .buttonStyle {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-	.saveButton {
-		margin-top: 15px;
-	}
+    .saveButton {
+        margin-top: 15px;
+    }
 
-	.key {
-		color: #e75244;
-	}
+    .key {
+        color: #e75244;
+    }
 
-	.nextButton {
-		align-self: flex-end;
-		margin-top: 20px;
-		margin-right: 70px;
-	}
+    .nextButton {
+        align-self: flex-end;
+        margin-top: 20px;
+        margin-right: 70px;
+    }
 
-	.on {
-		background: #e75244;
-		transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-		top: 4px;
-		left: 3.5px;
-		&:before {
-			top: -4px;
-			left: -4.7px;
-		}
-	}
+    .on {
+        background: #e75244;
+        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+        top: 4px;
+        left: 3.5px;
+        &:before {
+            top: -4px;
+            left: -4.7px;
+        }
+    }
 
-	// input[type="file"] {
-	//     position: absolute;
-	//     width: 0;
-	//     height: 0;
-	//     padding: 0;
-	//     margin: -1px;
-	//     overflow: hidden;
-	//     clip: rect(0, 0, 0, 0);
-	//     border: 0;
-	// }
+    // input[type="file"] {
+    //     position: absolute;
+    //     width: 0;
+    //     height: 0;
+    //     padding: 0;
+    //     margin: -1px;
+    //     overflow: hidden;
+    //     clip: rect(0, 0, 0, 0);
+    //     border: 0;
+    // }
 
-	.imageUpload {
-		padding-left: 280px;
-		margin-top: 20px;
-		margin-bottom: -20px;
-	}
+    .imageUpload {
+        padding-left: 280px;
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
 `;
 
 function DiarySave() {
     // console.log(getStringDate(new Date()));
-    let [painting, setPainting] = useState(true);
-    let [correct, setCorrect] = useState(true);
-    let [comment, setComment] = useState(true);
+    const [painting, setPainting] = useState(true);
+    const [correct, setCorrect] = useState(true);
+    const [comment, setComment] = useState(true);
     const [file, setFile] = useState(null);
+    // const [text, setText] = useState(localStorage.getItem("text"));
+    // const [correctText, setCorrectText] = useState(null);
+    const [cookies] = useCookies(["acessToken"]);
 
     console.log(painting);
     console.log(correct);
@@ -139,6 +142,71 @@ function DiarySave() {
         }
     `;
 
+    const errorNotify = () => {
+        toast.error("사진을 업로드해주세요", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1000,
+        });
+    };
+
+    const successNotify = () => {
+        toast.success("회원가입에 성공했어요!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1800,
+        });
+    };
+
+    // function checkSpelling() {
+    // text =
+    //     "엄마꼐 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들어따. 그래도 엄마가 우리딸 고마워라고 해주얻따. 앞으로도 자주 효도를 하고 싶다.";
+    // 1. 맞춤법 교정을 하고,
+    // 2. 1번 결과값을 textdㅔ update하고,
+    // 3. 맞춤법교정 표시까지 된 텍스트는 correct_Text에 Update
+    // hanspell-example.js
+
+    // const sentence = text;
+    // const end = function () {
+    //     console.log("// check ends");
+    // };
+    // const error = function (err) {
+    //     console.error("// error: " + err);
+    // };
+
+    // hanspell.spellCheckByDAUM(sentence, 6000, console.log, end, error);
+    // hanspell.spellCheckByPNU(sentence, 6000, console.log, end, error);
+    // return "hello";
+    // }
+
+    function saveFunc() {
+        if (!painting && !file) {
+            errorNotify();
+        }
+
+        console.log(typeof localStorage.getItem("title"));
+        fetch("http://3.39.158.98:8080/diaries", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+            body: JSON.stringify({
+                title: localStorage.getItem("title"),
+                date: localStorage.getItem("date"),
+                weather: localStorage.getItem("weather"),
+                keywords: localStorage.getItem("keywords"),
+                text: localStorage.getItem("text"),
+                diaryType: localStorage.getItem("diaryType"),
+                isPrivate: comment,
+                wantToCorrect: correct,
+                wantToImage: painting,
+            }),
+        }).then((response) => {
+            successNotify();
+            // setTimeout(function setNavi() {
+            //     navigate("/");
+            // }, 1800);
+        });
+    }
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -248,7 +316,7 @@ function DiarySave() {
                         buttonText="끝!"
                         type="submit"
                         outputColor="purple"
-                        onClick={() => navigate("/")}
+                        onClick={saveFunc}
                     ></Button>
                 </div>
             </MainBlock>
@@ -257,6 +325,5 @@ function DiarySave() {
             </StyledContainer>
         </>
     );
-
 }
 export default DiarySave;
