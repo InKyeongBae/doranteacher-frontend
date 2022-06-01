@@ -6,6 +6,7 @@ import GlobalStyle from "../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
+import { ToastContainer, toast } from "react-toastify";
 
 const MainBlock = styled.div`
     display: flex;
@@ -118,6 +119,25 @@ function DiarySave() {
     console.log(file);
 
     const navigate = useNavigate("");
+
+    const StyledContainer = styled(ToastContainer)`
+        &&&.Toastify__toast-container {
+            bottom: 80px;
+            right: 20px;
+        }
+        .Toastify__toast {
+            font-size: 30px;
+        }
+        .Toastify__toast-body {
+            font-family: "KOTRAHOPE";
+            font-style: normal;
+            font-size: 24px;
+            color: black;
+        }
+        .Toastify__progress-bar {
+        }
+    `;
+
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -231,6 +251,9 @@ function DiarySave() {
                     ></Button>
                 </div>
             </MainBlock>
+            <StyledContainer>
+                <ToastContainer />
+            </StyledContainer>
         </>
     );
 }
