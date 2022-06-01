@@ -164,7 +164,7 @@ function Mainpage() {
         <>
             <GlobalStyle backColor="yellow" />
             {isLogin ? (
-                <Header isIcon isLogout backColor="yellow" />
+                <Header isIcon isLogout isSetting backColor="yellow" />
             ) : (
                 <Header isIcon isLogin isSignup isSetting backColor="yellow" />
             )}
