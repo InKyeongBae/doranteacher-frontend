@@ -7,112 +7,113 @@ import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useCookies } from "react-cookie";
 
 const MainBlock = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	.content {
-		margin-top: 30px;
-		margin-bottom: 20px;
-		font-family: 'KOTRAHOPE';
-		font-style: normal;
-		font-weight: 380;
-		font-size: 35px;
-		line-height: 48px;
-		text-align: center;
-	}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-family: "KOTRAHOPE";
+        font-style: normal;
+        font-weight: 380;
+        font-size: 35px;
+        line-height: 48px;
+        text-align: center;
+    }
 
-	.question {
-		margin-top: 25px;
-		margin-bottom: 20px;
-		font-family: 'KOTRAHOPE';
-		font-style: normal;
-		font-weight: 380;
-		font-size: 25px;
-		line-height: 48px;
-		text-align: center;
-	}
+    .question {
+        margin-top: 25px;
+        margin-bottom: 20px;
+        font-family: "KOTRAHOPE";
+        font-style: normal;
+        font-weight: 380;
+        font-size: 25px;
+        line-height: 48px;
+        text-align: center;
+    }
 
-	.yellowbox {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding-top: 20px;
+    .yellowbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
 
-		width: 600px;
-		height: 480px;
-		z-index: 1;
-		background: white;
-		outline: 0;
-		border: 0;
-		letter-spacing: 1px;
-		position: relative;
+        width: 600px;
+        height: 480px;
+        z-index: 1;
+        background: white;
+        outline: 0;
+        border: 0;
+        letter-spacing: 1px;
+        position: relative;
 
-		border-radius: 25px;
-		border: 2px solid black;
-		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-	}
+        border-radius: 25px;
+        border: 2px solid black;
+        transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+    }
 
-	.buttons {
-		display: flex;
-	}
+    .buttons {
+        display: flex;
+    }
 
-	.buttonStyle {
-		margin-left: 10px;
-		margin-right: 10px;
-	}
+    .buttonStyle {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 
-	.saveButton {
-		margin-top: 15px;
-	}
+    .saveButton {
+        margin-top: 15px;
+    }
 
-	.key {
-		color: #e75244;
-	}
+    .key {
+        color: #e75244;
+    }
 
-	.nextButton {
-		align-self: flex-end;
-		margin-top: 20px;
-		margin-right: 70px;
-	}
+    .nextButton {
+        align-self: flex-end;
+        margin-top: 20px;
+        margin-right: 70px;
+    }
 
-	.on {
-		background: #e75244;
-		transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-		top: 4px;
-		left: 3.5px;
-		&:before {
-			top: -4px;
-			left: -4.7px;
-		}
-	}
+    .on {
+        background: #e75244;
+        transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+        top: 4px;
+        left: 3.5px;
+        &:before {
+            top: -4px;
+            left: -4.7px;
+        }
+    }
 
-	// input[type="file"] {
-	//     position: absolute;
-	//     width: 0;
-	//     height: 0;
-	//     padding: 0;
-	//     margin: -1px;
-	//     overflow: hidden;
-	//     clip: rect(0, 0, 0, 0);
-	//     border: 0;
-	// }
+    // input[type="file"] {
+    //     position: absolute;
+    //     width: 0;
+    //     height: 0;
+    //     padding: 0;
+    //     margin: -1px;
+    //     overflow: hidden;
+    //     clip: rect(0, 0, 0, 0);
+    //     border: 0;
+    // }
 
-	.imageUpload {
-		padding-left: 280px;
-		margin-top: 20px;
-		margin-bottom: -20px;
-	}
+    .imageUpload {
+        padding-left: 280px;
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
 `;
 
 function DiarySave() {
     // console.log(getStringDate(new Date()));
-    let [painting, setPainting] = useState(true);
-    let [correct, setCorrect] = useState(true);
-    let [comment, setComment] = useState(true);
+    const [painting, setPainting] = useState(true);
+    const [correct, setCorrect] = useState(true);
+    const [comment, setComment] = useState(true);
     const [file, setFile] = useState(null);
+    const [cookies] = useCookies(["acessToken"]);
 
     console.log(painting);
     console.log(correct);
@@ -139,6 +140,40 @@ function DiarySave() {
         }
     `;
 
+    const errorNotify = () => {
+        toast.error("사진을 업로드해주세요", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1000,
+        });
+    };
+
+    function saveFunc() {
+        if (!painting && !file) {
+            errorNotify();
+            console.log("!!");
+        }
+        console.log(typeof localStorage.getItem("title"));
+        fetch("http://3.39.158.98:8080/diaries", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+            body: JSON.stringify({
+                title: localStorage.getItem("title"),
+                date: localStorage.getItem("date"),
+                weather: localStorage.getItem("weather"),
+                keywords: localStorage.getItem("keywords"),
+                text: localStorage.getItem("text"),
+                diaryType: localStorage.getItem("diaryType"),
+                isPrivate: comment,
+                wantToCorrect: correct,
+                wantToImage: painting,
+            }),
+        })
+            .then((response) => response.json())
+            .then((res) => console.log(res));
+    }
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -248,7 +283,7 @@ function DiarySave() {
                         buttonText="끝!"
                         type="submit"
                         outputColor="purple"
-                        onClick={() => navigate("/")}
+                        onClick={saveFunc}
                     ></Button>
                 </div>
             </MainBlock>
@@ -257,6 +292,5 @@ function DiarySave() {
             </StyledContainer>
         </>
     );
-
 }
 export default DiarySave;
