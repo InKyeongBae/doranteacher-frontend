@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import styled, { css, createGlobalStyle } from 'styled-components';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import GlobalStyle from '../components/GlobalStyle';
-import { useNavigate, Link } from 'react-router-dom';
-import LeftDoran from '../components/LeftDoran';
-import ProgressBar from '../components/ProgressBar';
-import { useCookies } from 'react-cookie';
+import React, { useState } from "react";
+import styled, { css, createGlobalStyle } from "styled-components";
+import Header from "../components/Header";
+import Button from "../components/Button";
+import GlobalStyle from "../components/GlobalStyle";
+import { useNavigate, Link } from "react-router-dom";
+import LeftDoran from "../components/LeftDoran";
+import ProgressBar from "../components/ProgressBar";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const MainBlock = styled.div`
 	display: flex;
@@ -107,146 +108,155 @@ const MainBlock = styled.div`
 `;
 
 function DiarySave() {
-	// console.log(getStringDate(new Date()));
-	let [painting, setPainting] = useState(true);
-	let [correct, setCorrect] = useState(true);
-	let [comment, setComment] = useState(true);
-	const [file, setFile] = useState(null);
-	const [cookies] = useCookies(['acessToken']);
+    // console.log(getStringDate(new Date()));
+    let [painting, setPainting] = useState(true);
+    let [correct, setCorrect] = useState(true);
+    let [comment, setComment] = useState(true);
+    const [file, setFile] = useState(null);
 
-	const navigate = useNavigate('');
+    console.log(painting);
+    console.log(correct);
+    console.log(comment);
+    console.log(file);
 
-	function saveFunc() {
-		console.log(typeof localStorage.getItem('title'));
-		fetch('http://3.39.158.98:8080/diaries', {
-			method: 'POST',
-			headers: {
-				'Content-type': 'application/json',
-				Authorization: `Bearer ${cookies['accessToken']}`,
-			},
-			body: JSON.stringify({
-				title: localStorage.getItem('title'),
-				date: localStorage.getItem('date'),
-				weather: localStorage.getItem('weather'),
-				keywords: localStorage.getItem('keywords'),
-				text: localStorage.getItem('text'),
-				diaryType: localStorage.getItem('diaryType'),
-				isPrivate: comment,
-				wantToCorrect: correct,
-				wantToImage: painting,
-			}),
-		})
-			.then((response) => response.json())
-			.then((res) => console.log(res));
+    const navigate = useNavigate("");
 
-		// navigate('/')
-	}
-	return (
-		<>
-			<GlobalStyle backColor="yellow" />
-			<LeftDoran />
-			<Header
-				isProgress
-				isLogout
-				isImgBtn
-				progress={
-					<ProgressBar
-						progressText={'7.일기저장'}
-						progressWidth={'100'}
-						progressColor={'#E75244'}
-						backColor="red"
-					></ProgressBar>
-				}
-			/>
-			<MainBlock>
-				<div className="content">
-					거의 다 끝났어요!
-					<br />
-					아래의 질문에 대답해볼까요?
-				</div>
-				<div className="yellowbox">
-					<div className="question">
-						Q1. 일기와 어울리는 <span className="key">그림</span>을 추천해줄까요?
-					</div>
-					<div className="buttons">
-						<div className="buttonStyle">
-							<Button
-								buttonText="네"
-								inputColor="purple"
-								extraClassName={painting === true ? `on` : ''}
-								onClick={() => setPainting(!painting)}
-							></Button>
-						</div>
-						<div className="buttonStyle">
-							<Button
-								buttonText="사진업로드"
-								inputColor="purple"
-								extraClassName={painting === false ? 'on' : ''}
-								onClick={() => setPainting(!painting)}
-							/>
-						</div>
-					</div>
+    const StyledContainer = styled(ToastContainer)`
+        &&&.Toastify__toast-container {
+            bottom: 80px;
+            right: 20px;
+        }
+        .Toastify__toast {
+            font-size: 30px;
+        }
+        .Toastify__toast-body {
+            font-family: "KOTRAHOPE";
+            font-style: normal;
+            font-size: 24px;
+            color: black;
+        }
+        .Toastify__progress-bar {
+        }
+    `;
 
-					<div className="imageUpload">
-						{!painting ? (
-							<input
-								type="file"
-								id="ex_file"
-								accept="image/jpg, image/png, image/jpeg"
-								onChange={(e) => setFile(e.target.files[0])}
-							/>
-						) : (
-							''
-						)}
-					</div>
-					<div className="question">
-						Q2. 도란쌤의 <span className="key">맞춤법 교정</span>을 원하나요?
-					</div>
-					<div className="buttons">
-						<div className="buttonStyle">
-							<Button
-								buttonText="네"
-								inputColor="purple"
-								extraClassName={correct === true ? `on` : ''}
-								onClick={() => setCorrect(!correct)}
-							></Button>
-						</div>
-						<div className="buttonStyle">
-							<Button
-								buttonText="아니요"
-								inputColor="purple"
-								extraClassName={correct === false ? 'on' : ''}
-								onClick={() => setCorrect(!correct)}
-							></Button>
-						</div>
-					</div>
-					<div className="question">
-						Q3. 도란쌤의 <span className="key">답변</span>를 받고 싶나요?
-					</div>
-					<div className="buttons">
-						<div className="buttonStyle">
-							<Button
-								buttonText="네"
-								inputColor="purple"
-								extraClassName={comment === true ? `on` : ''}
-								onClick={() => setComment(!comment)}
-							></Button>
-						</div>
-						<div className="buttonStyle">
-							<Button
-								buttonText="아니요"
-								inputColor="purple"
-								extraClassName={comment === false ? 'on' : ''}
-								onClick={() => setComment(!comment)}
-							></Button>
-						</div>
-					</div>
-				</div>
-				<div className="nextButton">
-					<Button buttonText="끝!" type="submit" outputColor="purple" onClick={saveFunc}></Button>
-				</div>
-			</MainBlock>
-		</>
-	);
+    return (
+        <>
+            <GlobalStyle backColor="yellow" />
+            <LeftDoran />
+            <Header
+                isProgress
+                isLogout
+                isImgBtn
+                progress={
+                    <ProgressBar
+                        progressText={"7.일기저장"}
+                        progressWidth={"100"}
+                        progressColor={"#E75244"}
+                        backColor="red"
+                    ></ProgressBar>
+                }
+            />
+            <MainBlock>
+                <div className="content">
+                    거의 다 끝났어요!
+                    <br />
+                    아래의 질문에 대답해볼까요?
+                </div>
+                <div className="yellowbox">
+                    <div className="question">
+                        Q1. 일기와 어울리는 <span className="key">그림</span>을
+                        추천해줄까요?
+                    </div>
+                    <div className="buttons">
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="네"
+                                inputColor="purple"
+                                extraClassName={painting === true ? `on` : ""}
+                                onClick={() => setPainting(!painting)}
+                            ></Button>
+                        </div>
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="사진업로드"
+                                inputColor="purple"
+                                extraClassName={painting === false ? "on" : ""}
+                                onClick={() => setPainting(!painting)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="imageUpload">
+                        {!painting ? (
+                            <input
+                                type="file"
+                                id="ex_file"
+                                accept="image/jpg, image/png, image/jpeg"
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                        ) : (
+                            ""
+                        )}
+                    </div>
+                    <div className="question">
+                        Q2. 도란쌤의 <span className="key">맞춤법 교정</span>을
+                        원하나요?
+                    </div>
+                    <div className="buttons">
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="네"
+                                inputColor="purple"
+                                extraClassName={correct === true ? `on` : ""}
+                                onClick={() => setCorrect(!correct)}
+                            ></Button>
+                        </div>
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="아니요"
+                                inputColor="purple"
+                                extraClassName={correct === false ? "on" : ""}
+                                onClick={() => setCorrect(!correct)}
+                            ></Button>
+                        </div>
+                    </div>
+                    <div className="question">
+                        Q3. 도란쌤의 <span className="key">답변</span>를 받고
+                        싶나요?
+                    </div>
+                    <div className="buttons">
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="네"
+                                inputColor="purple"
+                                extraClassName={comment === true ? `on` : ""}
+                                onClick={() => setComment(!comment)}
+                            ></Button>
+                        </div>
+                        <div className="buttonStyle">
+                            <Button
+                                buttonText="아니요"
+                                inputColor="purple"
+                                extraClassName={comment === false ? "on" : ""}
+                                onClick={() => setComment(!comment)}
+                            ></Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="nextButton">
+                    <Button
+                        buttonText="끝!"
+                        type="submit"
+                        outputColor="purple"
+                        onClick={() => navigate("/")}
+                    ></Button>
+                </div>
+            </MainBlock>
+            <StyledContainer>
+                <ToastContainer />
+            </StyledContainer>
+        </>
+    );
+
 }
 export default DiarySave;

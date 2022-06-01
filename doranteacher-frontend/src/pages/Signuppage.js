@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const MainBlock = styled.div`
     background: #f9de4b;
@@ -88,6 +89,23 @@ function Signuppage(props) {
     const [ConfirmPassword, setConfirmPassword] = useState("");
 
     const navigate = useNavigate();
+    const StyledContainer = styled(ToastContainer)`
+        &&&.Toastify__toast-container {
+            bottom: 80px;
+            right: 20px;
+        }
+        .Toastify__toast {
+            font-size: 30px;
+        }
+        .Toastify__toast-body {
+            font-family: "KOTRAHOPE";
+            font-style: normal;
+            font-size: 24px;
+            color: black;
+        }
+        .Toastify__progress-bar {
+        }
+    `;
 
     // const dispatch = useDispatch();
 
@@ -112,9 +130,18 @@ function Signuppage(props) {
     const onClickLogin = () => {
         console.log("click login");
     };
+
+    const successNotify = () => {
+        toast.success("회원가입에 성공했어요!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 3000,
+        });
+    };
+
     const onSubmitHandler = (event) => {
         // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
         event.preventDefault();
+        console.log(">");
 
         if (Password !== ConfirmPassword) {
             return alert("비밀번호와 비밀번호 확인은 같아야 해요!");
@@ -133,21 +160,18 @@ function Signuppage(props) {
             .post("http://3.39.158.98:8080/auth/signup", data)
             .then((res) => {
                 console.log(res);
-                navigate("/login");
+                console.log("토스트시작");
+                successNotify();
+                console.log("토스트끝");
+                setTimeout(function setNavi() {
+                    navigate("/login");
+                }, 1800);
+                // navigate("/login");
                 //이동할 url 연결 해야함
             })
             .catch((err) => {
                 console.log(err);
             });
-
-        // // action의 반환값을 dispatch해준다.
-        // dispatch(signupUser(body)).then((response) => {
-        //     if (response.payload.loginSuccess) {
-        //         props.history.push("/login");
-        //     } else {
-        //         alert("회원가입에 실패했어요.");
-        //     }
-        // });
     };
 
     return (
@@ -234,6 +258,9 @@ function Signuppage(props) {
                     </BigDoran>
                 </div>
             </MainBlock>
+            <StyledContainer>
+                <ToastContainer />
+            </StyledContainer>
         </>
     );
 }
