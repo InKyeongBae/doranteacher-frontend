@@ -63,7 +63,6 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 	const navigate = useNavigate();
 	// const [Cookies] = useCookies(["acessToken"]);
 	const [cookies, setCookie, removeCookie] = useCookies(['acessToken']);
-
 	// navigate('/')
 	return (
 		<HeaderBlock backColor={backColor}>
@@ -103,7 +102,7 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 						}}
 					></Button>
 				) : null}
-				{isSetting ? (
+				{isSetting && isLogin ? (
 					<ImgButton
 						setting={true}
 						undo={false}

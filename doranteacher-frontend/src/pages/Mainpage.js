@@ -174,7 +174,7 @@ function Mainpage() {
 			{isLogin ? (
 				<Header isIcon isLogout isSetting backColor="yellow" />
 			) : (
-				<Header isIcon isLogin isSignup isSetting backColor="yellow" />
+				<Header isIcon isLogin isSignup backColor="yellow" />
 			)}
 
 			<MainBlock>
