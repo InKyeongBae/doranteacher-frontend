@@ -113,6 +113,8 @@ function DiarySave() {
     const [correct, setCorrect] = useState(true);
     const [comment, setComment] = useState(true);
     const [file, setFile] = useState(null);
+    // const [text, setText] = useState(localStorage.getItem("text"));
+    // const [correctText, setCorrectText] = useState(null);
     const [cookies] = useCookies(["acessToken"]);
 
     console.log(painting);
@@ -154,11 +156,32 @@ function DiarySave() {
         });
     };
 
+    // function checkSpelling() {
+    // text =
+    //     "엄마꼐 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들어따. 그래도 엄마가 우리딸 고마워라고 해주얻따. 앞으로도 자주 효도를 하고 싶다.";
+    // 1. 맞춤법 교정을 하고,
+    // 2. 1번 결과값을 textdㅔ update하고,
+    // 3. 맞춤법교정 표시까지 된 텍스트는 correct_Text에 Update
+    // hanspell-example.js
+
+    // const sentence = text;
+    // const end = function () {
+    //     console.log("// check ends");
+    // };
+    // const error = function (err) {
+    //     console.error("// error: " + err);
+    // };
+
+    // hanspell.spellCheckByDAUM(sentence, 6000, console.log, end, error);
+    // hanspell.spellCheckByPNU(sentence, 6000, console.log, end, error);
+    // return "hello";
+    // }
+
     function saveFunc() {
         if (!painting && !file) {
             errorNotify();
-            console.log("!!");
         }
+
         console.log(typeof localStorage.getItem("title"));
         fetch("http://3.39.158.98:8080/diaries", {
             method: "POST",
@@ -183,7 +206,6 @@ function DiarySave() {
             //     navigate("/");
             // }, 1800);
         });
-        // .then((res) => console.log(res));
     }
     return (
         <>
