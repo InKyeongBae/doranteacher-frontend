@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
 import NextButton from '../../components/NextButton';
 import ProgressBar from '../../components/ProgressBar';
-import { useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import { useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
 import SentencePaint from './SentencePaint';
 
 const MainBlock = styled.div`
@@ -179,8 +179,16 @@ const MainBlock = styled.div`
 
 function Step2() {
 	const navigate = useNavigate('');
+	const step2 = useSentenceState();
 
 	function pagemove() {
+		var diaries = '';
+		for (var i = 0; i < step2.length; i++) {
+			if (step2[i].answer !== '') {
+				diaries += step2[i].answer;
+			}
+		}
+		localStorage.setItem('text', diaries);
 		navigate('/writing/step2/diary-contents-view');
 	}
 
