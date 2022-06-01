@@ -133,7 +133,8 @@ function DiaryType() {
 
 	function nextStep() {
 		localStorage.setItem('diaryType', typeList[diary - 1].type_name);
-		if (localStorage.getItem('step') === 1) {
+		console.log(localStorage.getItem('step'));
+		if (localStorage.getItem('step') == 1) {
 			navigate('/writing/step1');
 		} else {
 			navigate('/writing/step2');
