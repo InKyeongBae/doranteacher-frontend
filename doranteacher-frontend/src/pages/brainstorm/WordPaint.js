@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { useCookies } from 'react-cookie';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -16,6 +17,8 @@ function WordPaint() {
 
 	const dispatch = useWordDispatch();
 	const nextId = useWordNextId();
+
+	const [cookies, setCookie] = useCookies(['acessToken']);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -81,6 +84,7 @@ function WordPaint() {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
+					Authorization: `Bearer ${cookies['accessToken']}`,
 				},
 				body: JSON.stringify({
 					filepath: imgData,
