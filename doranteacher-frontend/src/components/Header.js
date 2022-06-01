@@ -102,7 +102,7 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 						}}
 					></Button>
 				) : null}
-				{isSetting && isLogin ? (
+				{isSetting ? (
 					<ImgButton
 						setting={true}
 						undo={false}
