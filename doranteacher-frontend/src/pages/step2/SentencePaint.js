@@ -69,7 +69,7 @@ function SentencePaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://api.doranssam.com/ocrtext', {
+			fetch('http://3.39.158.98:8080/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -146,7 +146,7 @@ function SentencePaint() {
 			{/* <AnswerBox />
 			<AnswerBox />
 			<AnswerBox /> */}
-			<AnswerList first={first}/>
+			<AnswerList first={first} />
 			<div className="buttonline">
 				<Button buttonText="문장 추가하기" inputColor="green" outputColor="purple" onClick={onCreateBox} />
 			</div>

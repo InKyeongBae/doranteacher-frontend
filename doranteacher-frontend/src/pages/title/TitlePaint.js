@@ -50,7 +50,7 @@ function TitlePaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://api.doranssam.com/ocrtext', {
+			fetch('http://3.39.158.98:8080/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
