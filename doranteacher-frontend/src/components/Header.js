@@ -64,20 +64,29 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 	// const [Cookies] = useCookies(["acessToken"]);
 	const [cookies, setCookie, removeCookie] = useCookies(['acessToken']);
 	// navigate('/')
+	//
+
+	function returnMain() {
+		console.log('!!');
+		const remain = localStorage.getItem('refreshToken');
+		localStorage.clear();
+		localStorage.setItem('refreshToken', remain);
+		navigate('/');
+	}
 	return (
 		<HeaderBlock backColor={backColor}>
 			<HeaderIcon className="mainIcon">
 				<>
-					<div className="link" onClick={() => navigate('/')}>
-						{isIcon ? (
-							<>
-								<img className="doranIcon" src="/img/header-doran-face.png" />
-								<span className="doranIconName">도란쌤</span>
-							</>
-						) : (
+					{isIcon ? (
+						<div className="link" onClick={() => navigate('/')}>
+							<img className="doranIcon" src="/img/header-doran-face.png" />
+							<span className="doranIconName">도란쌤</span>
+						</div>
+					) : (
+						<div className="link" onClick={returnMain}>
 							<img className="doranIcon" src="/img/doranlogo.png" />
-						)}
-					</div>
+						</div>
+					)}
 				</>
 			</HeaderIcon>
 
