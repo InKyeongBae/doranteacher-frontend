@@ -6,6 +6,7 @@ import GlobalStyle from '../../components/GlobalStyle';
 import { useNavigate, Link } from 'react-router-dom';
 import LeftDoran from '../../components/LeftDoran';
 import ProgressBar from '../../components/ProgressBar';
+import Monthly from './Monthly';
 
 const MainBlock = styled.div`
 	.buttons {
@@ -72,8 +73,8 @@ const BookStyle = styled.div`
 	*:after,
 	*:before {
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
+		/* -moz-box-sizing: border-box;
+		box-sizing: border-box; */
 	}
 
 	* {
@@ -99,9 +100,14 @@ const BookStyle = styled.div`
 	body {
 		background: #ecf0f1;
 		color: #34495e;
-		font-family: 'Lato', 'Arial', sans-serif;
+		font-family: 'KOTRAHOPE';
 		font-weight: 400;
 		line-height: 1.2;
+	}
+
+	h1,
+	p {
+		font-family: 'KOTRAHOPE';
 	}
 
 	ul {
@@ -129,7 +135,8 @@ const BookStyle = styled.div`
 		text-transform: uppercase;
 		border: 2px solid #2c3e50;
 		margin-top: 100px;
-		font-size: 0.7em;
+		font-family: 'KOTRAHOPE';
+		font-size: 1.5em;
 		font-weight: 700;
 		padding: 0.1em 0.4em;
 		text-align: center;
@@ -668,7 +675,7 @@ Table of Contents
 
 	.coverDesign h1 {
 		color: #fff;
-		font-size: 2.2em;
+		font-size: 2.7em;
 		letter-spacing: 0.05em;
 		text-align: center;
 		margin: 54% 0 0 0;
@@ -677,7 +684,7 @@ Table of Contents
 
 	.coverDesign p {
 		color: #f8f8f8;
-		font-size: 1em;
+		font-size: 1.8em;
 		text-align: center;
 		text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.1);
 	}
@@ -696,11 +703,18 @@ Table of Contents
 		background-image: linear-gradient(to bottom, #3498db 58%, #2a90d4 0%);
 	}
 
-	.grey {
-		background-color: #f8e9d1;
-		background-image: -webkit-linear-gradient(top, #f8e9d1 58%, #e7d5b7 0%);
-		background-image: -moz-linear-gradient(top, #f8e9d1 58%, #e7d5b7 0%);
-		background-image: linear-gradient(to bottom, #f8e9d1 58%, #e7d5b7 0%);
+	.green {
+		background-color: #5dcb83;
+		background-image: -webkit-linear-gradient(top, #5dcb83 58%, #5dcb83 0%);
+		background-image: -moz-linear-gradient(top, #5dcb83 58%, #5dcb83 0%);
+		background-image: linear-gradient(to bottom, #5dcb83 58%, #5dcb83 0%);
+	}
+
+	.red {
+		background-color: #e75244;
+		background-image: -webkit-linear-gradient(top, #e75244 58%, #e75244 0%);
+		background-image: -moz-linear-gradient(top, #e75244 58%, #e75244 0%);
+		background-image: linear-gradient(to bottom, #e75244 58%, #e75244 0%);
 	}
 
 	/* Basic ribbon */
@@ -800,187 +814,14 @@ function Book() {
 					<div className="rightSide">
 						<div className="centercontent">
 							<BookStyle>
-								<div class="container">
-									<div class="component">
-										<ul class="align">
-											<li>
-												<figure class="book">
-													<ul class="hardcover-front">
-														<li>
-															<div class="coverDesign yellow">
-																<span class="ribbon">NEW</span>
-																<h1>CSS</h1>
-																<p>TRANSFORM</p>
-															</div>
-														</li>
-
-														<li></li>
-													</ul>
-													<ul class="page">
-														<li></li>
-														<li>
-															<a href="#" class="btn">
-																Download
-															</a>
-														</li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-													<ul class="hardcover-back">
-														<li></li>
-														<li></li>
-													</ul>
-													<ul class="book-spine">
-														<li></li>
-														<li></li>
-													</ul>
-												</figure>
-											</li>
-											<li>
-												<figure class="book">
-													<ul class="hardcover-front">
-														<li>
-															<div class="coverDesign blue">
-																<h1>JS</h1>
-																<p>FUNCTION</p>
-															</div>
-														</li>
-
-														<li></li>
-													</ul>
-
-													<ul class="page">
-														<li></li>
-														<li>
-															<a href="#" class="btn">
-																Download
-															</a>
-														</li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="hardcover-back">
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="book-spine">
-														<li></li>
-														<li></li>
-													</ul>
-												</figure>
-											</li>
-											<li>
-												<figure class="book">
-													<ul class="hardcover-front">
-														<li>
-															<div class="coverDesign blue">
-																<h1>JS</h1>
-																<p>FUNCTION</p>
-															</div>
-														</li>
-
-														<li></li>
-													</ul>
-
-													<ul class="page">
-														<li></li>
-														<li>
-															<a href="#" class="btn">
-																Download
-															</a>
-														</li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="hardcover-back">
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="book-spine">
-														<li></li>
-														<li></li>
-													</ul>
-												</figure>
-											</li>
-											<li>
-												<figure class="book">
-													<ul class="hardcover-front">
-														<li>
-															<div class="coverDesign blue">
-																<h1>JS</h1>
-																<p>FUNCTION</p>
-															</div>
-														</li>
-
-														<li></li>
-													</ul>
-
-													<ul class="page">
-														<li></li>
-														<li>
-															<a href="#" class="btn">
-																Download
-															</a>
-														</li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="hardcover-back">
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="book-spine">
-														<li></li>
-														<li></li>
-													</ul>
-												</figure>
-											</li>
-											<li>
-												<figure class="book">
-													<ul class="hardcover-front">
-														<li>
-															<div class="coverDesign blue">
-																<h1>JS</h1>
-																<p>FUNCTION</p>
-															</div>
-														</li>
-
-														<li></li>
-													</ul>
-
-													<ul class="page">
-														<li></li>
-														<li>
-															<a href="#" class="btn">
-																Download
-															</a>
-														</li>
-														<li></li>
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="hardcover-back">
-														<li></li>
-														<li></li>
-													</ul>
-
-													<ul class="book-spine">
-														<li></li>
-														<li></li>
-													</ul>
-												</figure>
-											</li>
+								<div className="container">
+									<div className="component">
+										<ul className="align">
+											<Monthly year="2022년" month="5월의 일기" recent bookColor="red" />
+											<Monthly year="2022년" month="4월의 일기" bookColor="blue" />
+											<Monthly year="2022년" month="3월의 일기" bookColor="green" />
+											<Monthly year="2022년" month="2월의 일기" bookColor="yellow" />
+											<Monthly year="2022년" month="1월의 일기" bookColor="red" />
 										</ul>
 									</div>
 								</div>
