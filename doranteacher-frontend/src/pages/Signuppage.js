@@ -134,14 +134,13 @@ function Signuppage(props) {
     const successNotify = () => {
         toast.success("회원가입에 성공했어요!", {
             position: toast.POSITION.BOTTOM_RIGHT,
-            autoClose: 3000,
+            autoClose: 1800,
         });
     };
 
     const onSubmitHandler = (event) => {
         // 태그의 기본 기능으로 리프레쉬 되는 것을 방지.
         event.preventDefault();
-        console.log(">");
 
         if (Password !== ConfirmPassword) {
             return alert("비밀번호와 비밀번호 확인은 같아야 해요!");
