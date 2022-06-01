@@ -191,6 +191,7 @@ function Title() {
 		if (check.innerText === '') {
 			notify();
 		} else {
+			localStorage.setItem('title', check.innerText);
 			navigate('/writing/save');
 		}
 	}
