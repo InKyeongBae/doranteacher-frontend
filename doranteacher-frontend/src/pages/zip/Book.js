@@ -6,7 +6,6 @@ import GlobalStyle from '../../components/GlobalStyle';
 import { useNavigate, Link } from 'react-router-dom';
 import LeftDoran from '../../components/LeftDoran';
 import ProgressBar from '../../components/ProgressBar';
-import ImageUpload from '../../components/ImageUpload';
 
 const MainBlock = styled.div`
 	.buttons {

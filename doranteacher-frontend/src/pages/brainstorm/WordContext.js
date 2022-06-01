@@ -1,6 +1,31 @@
 import React, { useReducer, createContext, useContext, useRef, useMemo } from 'react';
 
-const initialWords = [];
+const initialWords = [
+	{
+		id: 1,
+		content: 'newWord',
+	},
+	{
+		id: 2,
+		content: '테스트',
+	},
+	{
+		id: 3,
+		content: '중',
+	},
+	{
+		id: 4,
+		content: '삭제',
+	},
+	{
+		id: 5,
+		content: '예정',
+	},
+	{
+		id: 6,
+		content: '하위',
+	},
+];
 
 function wordReducer(state, action) {
 	switch (action.type) {
@@ -21,7 +46,7 @@ const WordNextIdContext = createContext();
 
 export function WordProvider({ children }) {
 	const [state, dispatch] = useReducer(wordReducer, initialWords);
-	const nextId = useRef(1);
+	const nextId = useRef(7);
 
 	return (
 		<WordStateContext.Provider value={state}>
