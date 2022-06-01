@@ -93,6 +93,6 @@ function DiaryList() {
 			</MainBlock>
 		</>
 	);
-}
+};
 
 export default DiaryList;
