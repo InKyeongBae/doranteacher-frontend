@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 // 단계 설정 페이지 용 도란쌤
 const LeftDoran = styled.div`
@@ -88,24 +89,36 @@ const MainBlock = styled.div`
 function Setting() {
     const [setting, setSetting] = useState(0);
     const [cookies] = useCookies(["acessToken"]);
-    console.log(setting);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios("http://3.39.158.98:8080/user/me", {
-            method: "GET",
-            headers: {
-                // 'Content-type': 'application/json',
-                Authorization: `Bearer ${cookies["accessToken"]}`,
-            },
-        }).then((res) => {
-            // console.log(res.data.results[0]["writingStep"]);
-            setSetting(res.data.results[0]["writingStep"]);
-        });
+        console.log("??");
+        axios
+            .get("http://3.39.158.98:8080/user/me", {
+                headers: {
+                    Authorization: `Bearer ${cookies["accessToken"]}`,
+                    "Content-type": "application/json",
+                },
+            })
+            .then((res) => {
+                console.log(res.data.results[0]["writingStep"]);
+                setSetting(res.data.results[0]["writingStep"]);
+            });
     }, []);
 
     const onSave = (e) => {
-        // 여기 추가해야함
-        console.log("저장");
+        fetch("http://3.39.158.98:8080/user/me", {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+            body: JSON.stringify({
+                writingStep: setting,
+            }),
+        })
+            .then((response) => response.json())
+            .then(() => navigate("/"));
     };
 
     return (
