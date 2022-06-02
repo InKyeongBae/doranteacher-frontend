@@ -26,6 +26,7 @@ import DiaryDetail3 from './pages/demos/DiaryDetail3';
 import DiaryDetail4 from './pages/demos/DiaryDetail4';
 import DiaryDetail5 from './pages/demos/DiaryDetail5';
 import DiaryDetail1 from './pages/demos/DiaryDetail1';
+import DiaryList2 from './pages/demos/DiaryList2';
 
 const palette = {
 	red: '#E75244',
@@ -70,6 +71,7 @@ function App() {
 									{/* <Route path="*" element={<NotFound />} /> */}
 								</Route>
 								<Route path="diary-list" element={<DiaryList />} />
+								<Route path="diary-list/img" element={<DiaryList2 />} />
 								<Route path="book-list" element={<Book />} />
 								<Route path="diary/1" element={<DiaryDetail1 />} />
 								<Route path="diary/2" element={<DiaryDetail2 />} />
