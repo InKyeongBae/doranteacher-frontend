@@ -17,6 +17,9 @@ const loading_img =
 const finish_img =
     process.env.PUBLIC_URL + `/img/image_recommend/painting_finish.png`;
 
+const hamburger_img =
+    process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`;
+
 const MainBlock = styled.div`
     .buttons {
         margin-top: 30px;
@@ -84,9 +87,9 @@ const BigDoran = styled.div`
     }
 `;
 
-function DiaryList2() {
+function DiaryList2_ham() {
     const navigate = useNavigate("");
-
+    const flag = 3;
     const hmm = () => {
         navigate("/diary");
     };
@@ -123,10 +126,9 @@ function DiaryList2() {
                                 width="170"
                                 onClick={() => navigate("/diary/1")}
                             />
-
                             <img
                                 className="diary_img"
-                                src={loading_img}
+                                src={hamburger_img}
                                 height="200"
                                 width="200"
                                 // onClick={() =>
@@ -152,4 +154,4 @@ function DiaryList2() {
     );
 }
 
-export default DiaryList2;
+export default DiaryList2_ham;

@@ -3,7 +3,7 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,35 +17,43 @@ const imgList = [
     // 내가 알아서 크롭해야함
     {
         id: 1, //이미지 식별하려고 붙여놓은 이름
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_1.png`,
     },
     {
         id: 2,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_2.png`,
     },
     {
         id: 3,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_3.png`,
     },
     {
         id: 4,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_4.png`,
     },
     {
         id: 5,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_5.png`,
     },
     {
         id: 6,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_6.png`,
     },
     {
         id: 7,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`,
     },
     {
         id: 8,
-        img_url: process.env.PUBLIC_URL + `/img/sun.png`,
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_8.png`,
     },
 ];
 
@@ -62,7 +70,7 @@ const MainBlock = styled.div`
     }
 
     .input_box_img_list_wrapper {
-        // padding-left: 25%;
+        padding-left: 5%;
         // width: 50%;
         place-items: center;
         display: grid;
@@ -74,8 +82,8 @@ const MainBlock = styled.div`
 
     .whitebox {
         display: flex;
-        flex-direction: column;
-        // align-items: center;
+        // flex-direction: column;
+        align-items: center;
         padding-top: 20px;
 
         width: 600px;
@@ -103,8 +111,14 @@ const MainBlock = styled.div`
         margin-right: 40px;
         margin-bottom: 20px;
     }
+
+    .hamburger_img {
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
 `;
 function SelectImage() {
+    const navigate = useNavigate("");
     return (
         <>
             <GlobalStyle backColor="yellow" />
@@ -123,7 +137,16 @@ function SelectImage() {
                         <div className="input_box_img_list_wrapper">
                             {imgList.map(
                                 (it) => (
-                                    <div>hello</div>
+                                    <img
+                                        className="hamburger_img"
+                                        src={it.img_url}
+                                        height="120"
+                                        width="120"
+                                        alt=""
+                                        onClick={() => {
+                                            navigate("/diary/2");
+                                        }}
+                                    />
                                 )
                                 // <TypeItem
                                 //     key={it.id}
@@ -134,7 +157,7 @@ function SelectImage() {
                             )}
                         </div>
                     </div>
-                    <div className="button-wrapper">
+                    {/* <div className="button-wrapper">
                         <Button
                             buttonText="저장"
                             inputColor="purple"
@@ -143,7 +166,7 @@ function SelectImage() {
                             extraClassName="save_button"
                             // onClick={saveFunc}
                         ></Button>
-                    </div>
+                    </div> */}
                 </div>
             </MainBlock>
         </>
