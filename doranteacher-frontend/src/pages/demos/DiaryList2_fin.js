@@ -84,7 +84,7 @@ const BigDoran = styled.div`
     }
 `;
 
-function DiaryList2() {
+function DiaryList2_temp() {
     const navigate = useNavigate("");
 
     const hmm = () => {
@@ -126,12 +126,10 @@ function DiaryList2() {
 
                             <img
                                 className="diary_img"
-                                src={loading_img}
+                                src={finish_img}
                                 height="200"
                                 width="200"
-                                // onClick={() =>
-                                //     navigate("/diary/select-image")
-                                // }
+                                onClick={() => navigate("/diary/select-image")}
                             />
 
                             {/*일기 리스트 출력하는 곳*/}
@@ -152,4 +150,4 @@ function DiaryList2() {
     );
 }
 
-export default DiaryList2;
+export default DiaryList2_temp;

@@ -27,6 +27,8 @@ import DiaryDetail4 from "./pages/demos/DiaryDetail4";
 import DiaryDetail5 from "./pages/demos/DiaryDetail5";
 import DiaryDetail1 from "./pages/demos/DiaryDetail1";
 import DiaryList2 from "./pages/demos/DiaryList2";
+import DiaryList2_ham from "./pages/demos/DiaryList2_ham";
+import DiaryList2_fin from "./pages/demos/DiaryList2_fin";
 import SelectImage from "./pages/SelectImage";
 
 const palette = {
@@ -99,6 +101,14 @@ function App() {
                                 <Route
                                     path="diary-list/img"
                                     element={<DiaryList2 />}
+                                />
+                                <Route
+                                    path="diary-list/img/ham"
+                                    element={<DiaryList2_ham />}
+                                />
+                                <Route
+                                    path="diary-list/img/fin"
+                                    element={<DiaryList2_fin />}
                                 />
                                 <Route
                                     path="diary/select-image"
