@@ -12,6 +12,7 @@ import NextButton from "../components/NextButton";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
+// 1034 × 776
 const imgList = [
     // 내가 알아서 크롭해야함
     {
