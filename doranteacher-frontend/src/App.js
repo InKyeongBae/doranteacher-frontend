@@ -14,7 +14,6 @@ import Step1 from './pages/step1/Step1';
 import Brainstorm from './pages/brainstorm/Brainstorm';
 import DiaryType from './pages/DairyType';
 import DiarySave from './pages/DiarySave';
-import DiaryDetail from './pages/DiaryDetail';
 import Title from './pages/title/Title';
 import DiaryContentsViewStep1 from './pages/diarycontentsview/DiaryContentsViewStep1';
 import Step2 from './pages/step2/Step2';
@@ -22,6 +21,12 @@ import { Step1SentenceProvider } from './pages/step1/SentenceContext';
 import { Step2SentenceProvider } from './pages/step2/SentenceContext';
 import DiaryContentsViewStep2 from './pages/diarycontentsview/DiaryContentsViewStep2';
 import { WordProvider } from './pages/brainstorm/WordContext';
+import DiaryDetail2 from './pages/demos/DiaryDetail2';
+import DiaryDetail3 from './pages/demos/DiaryDetail3';
+import DiaryDetail4 from './pages/demos/DiaryDetail4';
+import DiaryDetail5 from './pages/demos/DiaryDetail5';
+import DiaryDetail1 from './pages/demos/DiaryDetail1';
+import DiaryList2 from './pages/demos/DiaryList2';
 
 const palette = {
 	red: '#E75244',
@@ -66,8 +71,13 @@ function App() {
 									{/* <Route path="*" element={<NotFound />} /> */}
 								</Route>
 								<Route path="diary-list" element={<DiaryList />} />
+								<Route path="diary-list/img" element={<DiaryList2 />} />
 								<Route path="book-list" element={<Book />} />
-								<Route path="diary" element={<DiaryDetail />} />
+								<Route path="diary/1" element={<DiaryDetail1 />} />
+								<Route path="diary/2" element={<DiaryDetail2 />} />
+								<Route path="diary/3" element={<DiaryDetail3 />} />
+								<Route path="diary/4" element={<DiaryDetail4 />} />
+								<Route path="diary/5" element={<DiaryDetail5 />} />
 								<Route path="*" element={<NotFound />} />
 							</Routes>
 						</ThemeProvider>
