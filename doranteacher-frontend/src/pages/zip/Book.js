@@ -817,7 +817,13 @@ function Book() {
 								<div className="container">
 									<div className="component">
 										<ul className="align">
-											<Monthly year="2022년" month="5월의 일기" recent bookColor="red" />
+											<Monthly
+												year="2022년"
+												month="5월의 일기"
+												recent
+												bookColor="red"
+												link="/diary/3"
+											/>
 											<Monthly year="2022년" month="4월의 일기" bookColor="blue" />
 											<Monthly year="2022년" month="3월의 일기" bookColor="green" />
 											<Monthly year="2022년" month="2월의 일기" bookColor="yellow" />
