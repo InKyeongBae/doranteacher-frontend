@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Monthly({ year, month, recent, bookColor, link }) {
+function Monthly({ year, month, recent, bookColor, link, num }) {
 	const cName = 'coverDesign ' + bookColor;
 	return (
 		<li>
@@ -36,6 +36,7 @@ function Monthly({ year, month, recent, bookColor, link }) {
 					<li></li>
 				</ul>
 			</figure>
+			<div className="diariesnum">일기 개수 : {num}개</div>
 		</li>
 	);
 }
