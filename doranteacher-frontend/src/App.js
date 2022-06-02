@@ -28,22 +28,23 @@ import DiaryDetail5 from './pages/demos/DiaryDetail5';
 import DiaryDetail1 from './pages/demos/DiaryDetail1';
 import DiaryList2 from './pages/demos/DiaryList2';
 
+
 const palette = {
-	red: '#E75244',
-	blue: '#367BBE',
-	purple: '#8491E0',
-	yellow: '#F9DE4B',
-	green: '#5DCB83',
-	white: '#ffffff',
-	black: '#000000',
+    red: "#E75244",
+    blue: "#367BBE",
+    purple: "#8491E0",
+    yellow: "#F9DE4B",
+    green: "#5DCB83",
+    white: "#ffffff",
+    black: "#000000",
 };
 
 function Writing() {
-	return (
-		<>
-			<Outlet />
-		</>
-	);
+    return (
+        <>
+            <Outlet />
+        </>
+    );
 }
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
 			</Step1SentenceProvider>
 		</BrowserRouter>
 	);
+
 }
 
 export default App;
