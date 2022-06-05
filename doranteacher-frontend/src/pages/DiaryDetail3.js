@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
-import Header from '../../components/Header';
-import Button from '../../components/Button';
-import GlobalStyle from '../../components/GlobalStyle';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import GlobalStyle from '../components/GlobalStyle';
 import { Helmet } from 'react-helmet';
 import { TypeHangul } from 'type-hangul';
-import ImgButton from '../../components/ImgButton';
+import ImgButton from '../components/ImgButton';
 import { useNavigate } from 'react-router-dom';
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 // const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
-const diary_img = 'https://static.news.zumst.com/images/37/2021/06/14/db7d7364fe9a4a7c8cbc91dff7b1ada5.jpg';
+const diary_img = 'https://www.smlounge.co.kr/upload/best/article/201904/thumb/41804-364682-sampleM.jpg';
 const doran_img = process.env.PUBLIC_URL + `/img/doran_half_1.png`;
 
 const dummyData =
 	// 서버로부터 데이터를 받아와야함
 	{
-		weather: '구름이 많아요',
-		date: '2022년 05월 20일',
-		diaryType: '사건일기',
-		keywords: ['#생일', '#케이크', '#방방', '#음료수', '#맨발'],
+		weather: '화창해요',
+		date: '2022년 05월 08일',
+		diaryType: '효도일기',
+		keywords: ['#빨래', '#수박', '#어버이날', '#연어초밥', '#엄마'],
 		// 키워드도 json 배열 형태로 넘겨와야함
-		title: '생일 파티는 행복해',
-		text: '오늘은 내 생일이었다. 그래서 가장 친한 친구들과 생일파티를 했다. 생일 케이크에 초를 불고 소원을 빌었다. 항상 생일 때 먹던 처갓집 양념치킨도 먹었다. 방방도 타러 갔다. 생일이 1년 중에 가장 행복하다. 벌써 내년 생일이 기다려진다.',
+		title: '어버이날은 효도하는 날',
+		text: '오늘은 엄마께 빨래를 널어 효도를 했다. 어버이날이라 집안일을 도와드렸다. 엄마가 고맙다고 하셨다. 효도를 하니 감사한 마음이 들었다. 엄마가 평소에도 도와주었으면 좋겠다고 하셨다. 앞으로도 자주 집안일을 도와드려야겠다.',
 		before_text:
-			'오늘은 내 생일이#였다. 그래서 가장 친한 친구들과 생일파티를 했다. 생일 케이크에 초를 불고 소원을 빌었다. 항상 생일 때 먹던 처갓집 양념#치킌도 먹었다. 방방도 #타러갔다. 생일이 1년 중에 가장 행복하다. 벌써 내년 생일이 기다려진다.',
+			'오늘은 엄마께 빨#레를 널어 효도를 했다. 어버이날이라 집안일을 도와#드려따. 엄마가 고맙다고 하셨다. 효도를 하니 감사한 마음이 #드러따. 엄마가 평소에도 도와주었으면 좋겠다고 하셨다. 앞으로도 자주 집안일을 도와드려야겠다.',
 		isPrivate: true,
-		comment: '즐거운 시간이었겠네요.',
+		comment: '건강에도 좋겠네요.',
 		wantToCorrect: true,
 		hasImage: true,
 		// imagePath: "",
@@ -287,7 +287,7 @@ const MainBlock = styled.div`
 	}
 `;
 
-function DiaryDetail4() {
+function DiaryDetail3() {
 	const navigate = useNavigate('');
 	// console.log(getStringDate(new Date()));
 	const [correct, setCorrect] = useState(false);
@@ -310,8 +310,12 @@ function DiaryDetail4() {
 				>
 					<ImgButton
 						prev
-						onClick={() => navigate('/diary/3')}
-						style={{ display: 'inline-flex', margin: 'auto 10px' }}
+						onClick={() => navigate('/diary/5')}
+						style={{
+							display: 'inline-flex',
+							margin: 'auto 10px',
+							visibility: 'hidden',
+						}}
 					/>
 					<div className="main-wrapper">
 						<div className="leftside">
@@ -354,13 +358,11 @@ function DiaryDetail4() {
 											<div className="answer">{dummyData.text}</div>
 										) : (
 											<div className="answer">
-												오늘은 내 생일이
-												<span className="mama">였다</span>. 그래서 가장 친한 친구들과 생일파티를
-												했다. 생일 케이크에 초를 불고 소원을 빌었다. 항상 생일 때 먹던 처갓집
-												양념
-												<span className="mama">취킨</span>도 먹었다. 방방도{' '}
-												<span className="mama">타러갔다</span>. 생일이 1년 중에 가장 행복하다.
-												벌써 내년 생일이 기다려진다.'
+												오늘은 엄마께 빨<span className="mama">레</span>를 널어 효도를 했다.
+												어버이날이라 집안일을 도와
+												<span className="mama">드려따</span>. 엄마가 고맙다고 하셨다. 효도를
+												하니 감사한 마음이 <span className="mama">드러따</span>. 엄마가 평소에도
+												도와주었으면 좋겠다고 하셨다. 앞으로도 자주 집안일을 도와드려야겠다.
 											</div>
 										)}
 									</div>
@@ -408,7 +410,7 @@ function DiaryDetail4() {
 					</div>
 					<ImgButton
 						next
-						onClick={() => navigate('/diary/5')}
+						onClick={() => navigate('/diary/4')}
 						style={{ display: 'inline-flex', margin: 'auto 10px' }}
 					/>
 				</div>
@@ -417,4 +419,4 @@ function DiaryDetail4() {
 	);
 }
 
-export default DiaryDetail4;
+export default DiaryDetail3;

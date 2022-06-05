@@ -21,14 +21,8 @@ import { Step1SentenceProvider } from './pages/step1/SentenceContext';
 import { Step2SentenceProvider } from './pages/step2/SentenceContext';
 import DiaryContentsViewStep2 from './pages/diarycontentsview/DiaryContentsViewStep2';
 import { WordProvider } from './pages/brainstorm/WordContext';
-import DiaryDetail2 from './pages/demos/DiaryDetail2';
-import DiaryDetail3 from './pages/demos/DiaryDetail3';
-import DiaryDetail4 from './pages/demos/DiaryDetail4';
-import DiaryDetail5 from './pages/demos/DiaryDetail5';
-import DiaryDetail1 from './pages/demos/DiaryDetail1';
-import DiaryList2 from './pages/demos/DiaryList2';
-import DiaryList2_ham from './pages/demos/DiaryList2_ham';
-import DiaryList2_fin from './pages/demos/DiaryList2_fin';
+import DiaryDetail3 from './pages/DiaryDetail3';
+import DiaryDetail1 from './pages/DiaryDetail1';
 import SelectImage from './pages/SelectImage';
 
 const palette = {

@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
-import Header from '../../components/Header';
-import Button from '../../components/Button';
-import GlobalStyle from '../../components/GlobalStyle';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import GlobalStyle from '../components/GlobalStyle';
 import { Helmet } from 'react-helmet';
 import { TypeHangul } from 'type-hangul';
+
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 // const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
-const diary_img = process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`;
+const diary_img = 'https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg';
 const doran_img = process.env.PUBLIC_URL + `/img/doran_half_1.png`;
 
 const dummyData =
 	// 서버로부터 데이터를 받아와야함
 	{
-		weather: '화창해요',
-		date: '2022년 06월 02일',
-		diaryType: '요리일기',
-		keywords: ['#요리', '#햄버거', '#연필', '#냉장고', '#가족', '#일요일'],
+		weather: '구름이 많아요',
+		date: '2022년 06월 01일',
+		diaryType: '시청일기',
+		keywords: ['#영화', '#마법', '#신호등', '#자동차', '#가족'],
 		// 키워드도 json 배열 형태로 넘겨와야함
-		title: '우리 햄버거로 장사해도 되겠다',
-		text: '은서네 집에 가서 햄버거를 만들었다. 친구한테 같이 밥 먹자고 전화했는데 집에 와서 요리하자고 했다. 패티랑 양상추랑 토마토를 넣었다. 치즈도 많이 올렸다. 만들기는 정말 쉬웠는데 정말 정말 맛있었다! 내일은 내가 잘하는 짜파게티를 해주기로 했다. 맛있겠다!',
+		title: '닥터스트레인지 별이 다섯 개',
+		text: '영화 닥터스트레인지를 봤다. 이 영화가 개봉하는 날만 계속 기다렸다. 주인공이 마법을 하는데 화려한 기술이 정말 멋있었다. 영화를 보면서 나도 마법을 할 수 있는 상상을 했다. 닥터스트레인지는 기대만큼 재미있었다. 별점 만점이다.',
 		before_text:
-			'인경이랑 은서네 집에 가서 김치볶음밥을 만들었다. 친구한테 같이 밥 먹자고 전화했는데 집에 와서 요리하자고 했다. 김치랑 밥이랑 스팸을 넣었다. 계란후라이도 올렸다. 만들기는 정말 쉬웠는데 정말 정말 맛있었다! 내일은 내가 잘하는 짜파게티를 해주기로 했다. 맛있겠다!',
+			'영화 닥터스트레인지를 봤다. 이 영화가 개봉 하는 날만 계속 기다려따. 주인공이 마법을 하는데 화려한 기술이 정말 멋있었다. 영화를 보면서 나도 마법을 할 수 있는 상상을 했다. 닥터스트레인지는 기대 만큼 재미있었다. 별점 만점이다.',
 		isPrivate: true,
-		comment: '맛이 없든 있든 좋을 것 같아요.',
+		comment: '시간 가는 줄 모르겠어요',
 		wantToCorrect: true,
 		hasImage: true,
 		// imagePath: "",
@@ -59,7 +60,6 @@ const MainBlock = styled.div`
 	.keywords-wrapper {
 		display: flex;
 	}
-
 	.keyword_button {
 		font-size: 20px;
 		cursor: default;
@@ -195,24 +195,24 @@ const MainBlock = styled.div`
 		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
 		// &:before {
-		//     z-index: -1;
-		//     position: absolute;
-		//     top: 0;
-		//     right: 0;
-		//     bottom: 0;
-		//     left: 0;
-		//     content: "";
-		//     width: 100%;
-		//     height: 100%;
-		//     position: absolute;
-		//     background: white;
-		//     transform: translate3d(0.2em, 0.15em, 1em);
-		//     border-radius: 20px;
-		//     border: 2px solid black;
-		//     transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-		//     &:active {
-		//         z-index: -1;
-		//     }
+		// 	z-index: -1;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	right: 0;
+		// 	bottom: 0;
+		// 	left: 0;
+		// 	content: '';
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	position: absolute;
+		// 	background: white;
+		// 	transform: translate3d(0.2em, 0.15em, 1em);
+		// 	border-radius: 20px;
+		// 	border: 2px solid black;
+		// 	transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+		// 	&:active {
+		// 		z-index: -1;
+		// 	}
 		// }
 	}
 	.photo-box {
@@ -282,7 +282,7 @@ const MainBlock = styled.div`
 	}
 `;
 
-function DiaryDetail2() {
+function DiaryDetail1() {
 	// console.log(getStringDate(new Date()));
 	const [correct, setCorrect] = useState(false);
 	console.log(correct);
@@ -291,7 +291,7 @@ function DiaryDetail2() {
 		<>
 			<GlobalStyle backColor="yellow" />
 
-			<Header isUndoTemp />
+			<Header isUndo />
 
 			<MainBlock>
 				<div className="main-wrapper">
@@ -307,15 +307,13 @@ function DiaryDetail2() {
 							</div>
 							<div className="keywords-wrapper">
 								{dummyData.keywords.map((it, index) => (
-									<div className="key" id={index}>
-										<Button
-											key={index}
-											buttonText={it}
-											width="120px;"
-											inputColor="green"
-											extraClassName="keyword_button"
-										></Button>
-									</div>
+									<Button
+										key={index}
+										buttonText={it}
+										width="120px;"
+										inputColor="green"
+										extraClassName="keyword_button"
+									></Button>
 								))}
 							</div>
 						</div>
@@ -335,18 +333,12 @@ function DiaryDetail2() {
 										<div className="answer">{dummyData.text}</div>
 									) : (
 										<div className="answer">
-											{/* 은서네 집에 가서 햄버거를만들었다. 
-											친구한테 같이 밥 먹자고 전화했는데 집에 와서 요리하자고 했다. 
-											패티랑 양상추랑 토마토를 넣었다. 치즈도 많이 올렸다. 
-											만들기는 정말 쉬웠는데 정말 정말 맛있었다! 
-											내일은 내가 잘하는 짜파게티를 해주기로 했다. 맛있겠다! */}
-											은서
-											<span className="mama">내</span> 집에 가서 햄버거를 만들었다. 친구한테 같이
-											밥 먹자고 전화했는데 집에 와서 요리하자고 했다. 패티랑 양상추랑 토마토를{' '}
-											<span className="mama">너었따.</span> 치즈도 많이 올렸다. 만들기는 정말{' '}
-											<span className="mama">시웠 </span>
-											는데 정말 정말 맛있었다! 내일은 내가 잘하는 짜파게티를 해주기로 했다.
-											맛있겠다!
+											영화 닥터스트레인지를 봤다. 이 영화가{' '}
+											<span className="mama">개봉 하는</span> 날만 계속{' '}
+											<span className="mama">기다려따</span>. 주인공이 마법을 하는데 화려한 기술이
+											정말 멋있었다. 영화를 보면서 나도 마법을 할 수 있는 상상을 했다.
+											닥터스트레인지는 <span className="mama">기대 만큼</span> 재미있었다. 별점
+											만점이다.
 										</div>
 									)}
 								</div>
@@ -396,4 +388,4 @@ function DiaryDetail2() {
 	);
 }
 
-export default DiaryDetail2;
+export default DiaryDetail1;
