@@ -34,6 +34,7 @@ const HeaderButtons = styled.div`
 		min-width: 160px;
 		padding: 10px 25px;
 		border-radius: 25px;
+		border: 2px solid #404040;
 		background-color: var(--yellow);
 		${ColorStyles};
 		text-transform: uppercase;
