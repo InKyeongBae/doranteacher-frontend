@@ -143,9 +143,6 @@ function SentencePaint() {
 			<div className="buttonline">
 				<Button buttonText="다 썼어요!" inputColor="green" outputColor="purple" onClick={onSave} />
 			</div>
-			{/* <AnswerBox />
-			<AnswerBox />
-			<AnswerBox /> */}
 			<AnswerList first={first} />
 			<div className="buttonline">
 				<Button buttonText="문장 추가하기" inputColor="green" outputColor="purple" onClick={onCreateBox} />
