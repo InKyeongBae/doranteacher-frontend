@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import LeftDoran from '../../components/LeftDoran';
 import NextButton from '../../components/NextButton';
 import ProgressBar from '../../components/ProgressBar';
-import { useSentenceDispatch, useSentenceNextId } from './SentenceContext';
+import { useSentenceDispatch, useSentenceNextId, useSentenceState } from './SentenceContext';
 import SentencePaint from './SentencePaint';
 
 const MainBlock = styled.div`
@@ -179,8 +179,16 @@ const MainBlock = styled.div`
 
 function Step2() {
 	const navigate = useNavigate('');
+	const step2 = useSentenceState();
 
 	function pagemove() {
+		var diaries = '';
+		for (var i = 0; i < step2.length; i++) {
+			if (step2[i].answer !== '') {
+				diaries += step2[i].answer;
+			}
+		}
+		localStorage.setItem('text', diaries);
 		navigate('/writing/step2/diary-contents-view');
 	}
 
@@ -194,7 +202,7 @@ function Step2() {
 				progress={
 					<ProgressBar
 						progressText={'4.일기쓰기'}
-						progressWidth={'50'}
+						progressWidth={'56'}
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}
@@ -206,22 +214,34 @@ function Step2() {
 				<div className="question">
 					<div className="centercontent">
 						<div className="questioncontent">
-							오늘 칭찬하고 싶은 사람은 누군가요?
-							<br />왜 그 사람을 칭찬하고 싶나요?
-							<br />그 사람의 행동을 봤을 때 어떤 기분이 들었나요?
-							<br />그 사람에게 칭찬하는 말을 한 번 남겨볼까요?
-							<br />
-							방금 칭찬을 하면서 어떤 기분이 들었나요?
+							오늘 어떤 요리를 했나요? 요리 과정을 설명해주세요. <br />
+							완성된 요리는 맛있었나요? <br />
+							다음에 요리할 음식은 무엇인가요?
 						</div>
 					</div>
 					<div className="mission">
 						<div className="missionimg"></div>
 						<div className="talk">
 							<span>
-								<span style={{ backgroundColor: '#5DCB83', color: 'white' }}>대화체</span>를 사용하여
-								일기를 써 보세요. <br />
-								대화체는 <span style={{ backgroundColor: '#5DCB83', color: 'white' }}>큰따옴표</span>를
-								감싸주어야합니다 !
+								<span
+									style={{
+										backgroundColor: '#5DCB83',
+										color: 'white',
+									}}
+								>
+									대화체
+								</span>
+								를 사용하여 일기를 써 보세요. <br />
+								대화체는{' '}
+								<span
+									style={{
+										backgroundColor: '#5DCB83',
+										color: 'white',
+									}}
+								>
+									큰따옴표
+								</span>
+								를 감싸주어야합니다 !
 							</span>
 						</div>
 					</div>

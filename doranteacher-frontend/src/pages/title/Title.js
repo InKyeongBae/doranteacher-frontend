@@ -191,6 +191,7 @@ function Title() {
 		if (check.innerText === '') {
 			notify();
 		} else {
+			localStorage.setItem('title', check.innerText);
 			navigate('/writing/save');
 		}
 	}
@@ -205,7 +206,7 @@ function Title() {
 				progress={
 					<ProgressBar
 						progressText={'6.제목쓰기'}
-						progressWidth={'70'}
+						progressWidth={'84'}
 						progressColor={'#E75244'}
 					></ProgressBar>
 				}

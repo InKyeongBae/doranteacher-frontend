@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { useCookies } from 'react-cookie';
 
 const LC = require('literallycanvas');
 let _lc = null;
@@ -16,6 +17,8 @@ function WordPaint() {
 
 	const dispatch = useWordDispatch();
 	const nextId = useWordNextId();
+
+	const [cookies, setCookie] = useCookies(['acessToken']);
 
 	const onInit = (lc) => {
 		_lc = lc;
@@ -40,6 +43,37 @@ function WordPaint() {
 		if (!_lc) return;
 		const img = _lc.getImage();
 		if (!img) return;
+		// try {
+		// 	const imgData = img.toDataURL();
+		// 	// ...images, 없앰으로써 최종본만 저장되도록
+		// 	setImages([imgData]);
+		// 	console.log(imgData);
+		// 	pending();
+
+		// 	fetch('http://api.doranssam.com/ocrtext', {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			'Content-type': 'application/json',
+		// 		},
+		// 		body: JSON.stringify({
+		// 			filepath: imgData,
+		// 		}),
+		// 	})
+		// 		.then((response) => response.json())
+		// 		.then((result) => {
+		// 			const newWord = result.filepath;
+		// 			dispatch({
+		// 				type: 'CREATE',
+		// 				word: {
+		// 					id: nextId.current,
+		// 					content: newWord,
+		// 				},
+		// 			});
+		//			nextId.current += 1;
+		// 		});
+		// } catch (err) {
+		// 	console.log(err);
+		// }
 		try {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
@@ -47,10 +81,11 @@ function WordPaint() {
 			console.log(imgData);
 			pending();
 
-			fetch('http://api.doranssam.com/ocrtext', {
+			fetch('http://3.39.158.98:8080/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
+					Authorization: `Bearer ${cookies['accessToken']}`,
 				},
 				body: JSON.stringify({
 					filepath: imgData,
@@ -66,6 +101,7 @@ function WordPaint() {
 							content: newWord,
 						},
 					});
+					nextId.current += 1;
 				});
 		} catch (err) {
 			console.log(err);
@@ -114,10 +150,10 @@ function WordPaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
+				<Button buttonText="단어 추가" outputColor="red" onClick={onSave} />
 			</div>
 
-			<WordList onRemove={onRemove} onUpdate={onUpdate}/>
+			<WordList onRemove={onRemove} onUpdate={onUpdate} />
 			<StyledContainer>
 				<ToastContainer />
 			</StyledContainer>
