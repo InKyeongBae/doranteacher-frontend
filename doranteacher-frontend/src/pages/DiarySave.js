@@ -101,17 +101,6 @@ const MainBlock = styled.div`
         }
     }
 
-    // input[type="file"] {
-    //     position: absolute;
-    //     width: 0;
-    //     height: 0;
-    //     padding: 0;
-    //     margin: -1px;
-    //     overflow: hidden;
-    //     clip: rect(0, 0, 0, 0);
-    //     border: 0;
-    // }
-
     .imageUpload {
         padding-left: 280px;
         margin-top: 20px;
@@ -167,27 +156,6 @@ function DiarySave() {
             autoClose: 1800,
         });
     };
-
-    // function checkSpelling() {
-    // text =
-    //     "엄마꼐 재롱을 부렸다. 보상이 있기 때문에 재롱을 부렸다. 열심히 효도하는 것은 힘들어따. 그래도 엄마가 우리딸 고마워라고 해주얻따. 앞으로도 자주 효도를 하고 싶다.";
-    // 1. 맞춤법 교정을 하고,
-    // 2. 1번 결과값을 textdㅔ update하고,
-    // 3. 맞춤법교정 표시까지 된 텍스트는 correct_Text에 Update
-    // hanspell-example.js
-
-    // const sentence = text;
-    // const end = function () {
-    //     console.log("// check ends");
-    // };
-    // const error = function (err) {
-    //     console.error("// error: " + err);
-    // };
-
-    // hanspell.spellCheckByDAUM(sentence, 6000, console.log, end, error);
-    // hanspell.spellCheckByPNU(sentence, 6000, console.log, end, error);
-    // return "hello";
-    // }
 
     function saveFunc() {
         if (!painting && !file) {
@@ -253,7 +221,7 @@ function DiarySave() {
                                 buttonText="네"
                                 inputColor="purple"
                                 extraClassName={painting === true ? `on` : ""}
-                                onClick={() => setPainting(!painting)}
+                                onClick={() => setPainting(true)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
@@ -261,7 +229,7 @@ function DiarySave() {
                                 buttonText="사진업로드"
                                 inputColor="purple"
                                 extraClassName={painting === false ? "on" : ""}
-                                onClick={() => setPainting(!painting)}
+                                onClick={() => setPainting(false)}
                             />
                         </div>
                     </div>
@@ -288,7 +256,7 @@ function DiarySave() {
                                 buttonText="네"
                                 inputColor="purple"
                                 extraClassName={correct === true ? `on` : ""}
-                                onClick={() => setCorrect(!correct)}
+                                onClick={() => setCorrect(true)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
@@ -296,7 +264,7 @@ function DiarySave() {
                                 buttonText="아니요"
                                 inputColor="purple"
                                 extraClassName={correct === false ? "on" : ""}
-                                onClick={() => setCorrect(!correct)}
+                                onClick={() => setCorrect(false)}
                             ></Button>
                         </div>
                     </div>
@@ -310,7 +278,7 @@ function DiarySave() {
                                 buttonText="네"
                                 inputColor="purple"
                                 extraClassName={comment === true ? `on` : ""}
-                                onClick={() => setComment(!comment)}
+                                onClick={() => setComment(true)}
                             ></Button>
                         </div>
                         <div className="buttonStyle">
@@ -318,7 +286,7 @@ function DiarySave() {
                                 buttonText="아니요"
                                 inputColor="purple"
                                 extraClassName={comment === false ? "on" : ""}
-                                onClick={() => setComment(!comment)}
+                                onClick={() => setComment(false)}
                             ></Button>
                         </div>
                     </div>
