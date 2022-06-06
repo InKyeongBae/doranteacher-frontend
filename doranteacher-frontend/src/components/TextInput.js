@@ -23,6 +23,16 @@ function TextInput({ initText, onUpdate, id, trash }) {
 		}
 	};
 
+	const handleClickOutside = (e) => {
+		if (editable == true && !ref.current.contains(e.target)) {
+			setEditable(false);
+			onUpdate(id, text);
+		}
+	};
+	useEffect(() => {
+		window.addEventListener('click', handleClickOutside, true);
+	});
+
 	return (
 		<>
 			<div className="editbox" ref={ref}>
