@@ -135,12 +135,6 @@ const Loginpage = (props) => {
 		}
 	};
 
-	useEffect(() => {
-		console.log('LoginPage render ...');
-		localStorage.setItem('refreshToken', '');
-		setCookie('accessToken', '');
-	}, []);
-
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
