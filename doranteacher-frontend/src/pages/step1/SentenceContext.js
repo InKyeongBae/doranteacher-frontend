@@ -35,14 +35,6 @@ const initialSentences = [
 
 function sentenceReducer(state, action) {
 	switch (action.type) {
-		// case 'CREATE_QUESTION':
-		// 	console.log('!!!');
-		// 	return {
-		// 		...state,
-		// 		sentences: state.map((sentence) =>
-		// 			sentence.id === action.id ? { ...sentence, question: action.sentence } : sentence,
-		// 		),
-		// 	};
 		case 'CHANGE_ANSWER':
 			return state.map((sentence) =>
 				sentence.id === action.sentence.id ? { ...sentence, answer: action.sentence.answer } : sentence,

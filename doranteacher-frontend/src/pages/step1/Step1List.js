@@ -1,25 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import Button from '../../components/Button';
 import ImgButton from '../../components/ImgButton';
 import { useSentenceDispatch, useSentenceState } from './SentenceContext';
-
-const SentenceCountStyle = styled.div`
-	.sentence-count {
-		font-family: 'Cafe24Syongsyong';
-		font-style: normal;
-		font-weight: 350;
-		line-height: 35px;
-		margin-left: 10px;
-		font-size: 28px;
-		background-color: white;
-		padding: 3px 13px;
-		font-weight: 500;
-		box-sizing: border-box;
-		border-radius: 30px;
-	}
-`;
 
 function Step1List(props) {
 	const step1Qs = useSentenceState();
@@ -44,6 +27,7 @@ function Step1List(props) {
 		localStorage.setItem('text', diaries);
 		navigate('/writing/step1/diary-contents-view');
 	}
+	
 	function Step1Qs({ step1Qs, onChange }) {
 		return (
 			<div
@@ -95,8 +79,6 @@ function Step1List(props) {
 			</div>
 		);
 	}
-
-	// useMemo(() => countSentences(lenSentences), [lenSentences]);
 
 	return (
 		<>

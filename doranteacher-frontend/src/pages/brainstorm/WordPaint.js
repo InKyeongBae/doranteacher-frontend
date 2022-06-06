@@ -43,37 +43,7 @@ function WordPaint() {
 		if (!_lc) return;
 		const img = _lc.getImage();
 		if (!img) return;
-		// try {
-		// 	const imgData = img.toDataURL();
-		// 	// ...images, 없앰으로써 최종본만 저장되도록
-		// 	setImages([imgData]);
-		// 	console.log(imgData);
-		// 	pending();
 
-		// 	fetch('http://api.doranssam.com/ocrtext', {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify({
-		// 			filepath: imgData,
-		// 		}),
-		// 	})
-		// 		.then((response) => response.json())
-		// 		.then((result) => {
-		// 			const newWord = result.filepath;
-		// 			dispatch({
-		// 				type: 'CREATE',
-		// 				word: {
-		// 					id: nextId.current,
-		// 					content: newWord,
-		// 				},
-		// 			});
-		//			nextId.current += 1;
-		// 		});
-		// } catch (err) {
-		// 	console.log(err);
-		// }
 		try {
 			const imgData = img.toDataURL();
 			// ...images, 없앰으로써 최종본만 저장되도록
@@ -154,9 +124,6 @@ function WordPaint() {
 			</div>
 
 			<WordList onRemove={onRemove} onUpdate={onUpdate} />
-			<StyledContainer>
-				<ToastContainer />
-			</StyledContainer>
 		</>
 	);
 }
