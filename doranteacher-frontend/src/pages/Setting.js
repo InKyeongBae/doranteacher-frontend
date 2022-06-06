@@ -77,11 +77,22 @@ const MainBlock = styled.div`
     .setting_on {
         background: #5dcb83;
         transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-        top: 4px;
-        left: 3.5px;
-        &:before {
-            top: -4px;
-            left: -4.7px;
+        top: 3px;
+        left: -3px;
+        box-shadow: -3px 3px 0 var(--brown);
+
+        &::after {
+            top: 1px;
+            left: -2px;
+            width: var(--angle);
+            height: var(--angle);
+        }
+
+        &::before {
+            bottom: -2px;
+            right: 1px;
+            width: var(--angle);
+            height: var(--angle);
         }
     }
 `;

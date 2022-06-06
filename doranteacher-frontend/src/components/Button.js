@@ -98,25 +98,25 @@ const HeaderButtons = styled.div`
         }
     }
 
-    a.btn {
-        position: relative;
-    }
+    // a.btn {
+    //     position: relative;
+    // }
 
-    a:active.btn {
-        top: 6px;
-        left: -6px;
-        box-shadow: none;
+    // a:active.btn {
+    //     top: 6px;
+    //     left: -6px;
+    //     box-shadow: none;
 
-        &:before {
-            bottom: 1px;
-            right: 1px;
-        }
+    //     &:before {
+    //         bottom: 1px;
+    //         right: 1px;
+    //     }
 
-        &:after {
-            top: 1px;
-            left: 1px;
-        }
-    }
+    //     &:after {
+    //         top: 1px;
+    //         left: 1px;
+    //     }
+    // }
 `;
 
 function Button({ buttonText, extraClassName, ...rest }) {
