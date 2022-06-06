@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../../components/Button';
 import '../../components/literallycanvas.css';
-import { useWordDispatch, useWordNextId } from './WordContext';
+import { useWordDispatch, useWordNextId, useWordState } from './WordContext';
 import WordList from './WordList';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
@@ -16,6 +16,7 @@ function WordPaint() {
 	const [images, setImages] = useState([]);
 
 	const dispatch = useWordDispatch();
+	const words = useWordState();
 	const nextId = useWordNextId();
 
 	const [cookies, setCookie] = useCookies(['acessToken']);
@@ -33,9 +34,17 @@ function WordPaint() {
 	};
 
 	const pending = () => {
-		toast.loading(`단어를 추가하는 중`, {
+		const toastId = toast.loading(`단어를 추가하는 중`, {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: false,
+		});
+		return toastId;
+	};
+
+	const sameWord = () => {
+		toast.error(`이미 추가 된 단어입니다. 다른 단어를 추가해 주세요!`, {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: 3000,
 		});
 	};
 
@@ -49,7 +58,7 @@ function WordPaint() {
 			// ...images, 없앰으로써 최종본만 저장되도록
 			setImages([imgData]);
 			console.log(imgData);
-			pending();
+			const removeId = pending();
 
 			fetch('http://3.39.158.98:8080/ocrtext', {
 				method: 'POST',
@@ -64,14 +73,29 @@ function WordPaint() {
 				.then((response) => response.json())
 				.then((result) => {
 					const newWord = result.filepath;
-					dispatch({
-						type: 'CREATE',
-						word: {
-							id: nextId.current,
-							content: newWord,
-						},
-					});
-					nextId.current += 1;
+					toast.clearWaitingQueue();
+					console.log(removeId);
+					toast.clearWaitingQueue({ containerId: removeId });
+					for (var i = 0; i < words.length; i++) {
+						if (newWord === words[i].content) {
+							return false;
+						}
+					}
+					return newWord;
+				})
+				.then((newWord) => {
+					if (newWord !== false) {
+						dispatch({
+							type: 'CREATE',
+							word: {
+								id: nextId.current,
+								content: newWord,
+							},
+						});
+						nextId.current += 1;
+					} else {
+						sameWord();
+					}
 				});
 		} catch (err) {
 			console.log(err);
