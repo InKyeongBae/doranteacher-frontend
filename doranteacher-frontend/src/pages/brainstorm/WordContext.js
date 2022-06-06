@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useContext, useRef, useMemo } from 'react';
+import React, { useReducer, createContext, useContext, useRef } from 'react';
 
 const initialWords = [];
 

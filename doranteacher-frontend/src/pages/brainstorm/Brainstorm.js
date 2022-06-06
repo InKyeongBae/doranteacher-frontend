@@ -5,10 +5,9 @@ import GlobalStyle from '../../components/GlobalStyle';
 import ProgressBar from '../../components/ProgressBar';
 import BrainstormList from './BrainstormList';
 import LeftDoran from '../../components/LeftDoran';
-import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import WordPaint from './WordPaint';
-import { useWordState, WordProvider } from './WordContext';
+import { useWordState } from './WordContext';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
