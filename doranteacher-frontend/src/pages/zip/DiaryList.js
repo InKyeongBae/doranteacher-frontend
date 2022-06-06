@@ -24,7 +24,7 @@ const MainBlock = styled.div`
 
 	.on {
 		background: #e75244;
-		transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
+		transition: all 0.15s linear 0s;
 		top: 4px;
 		left: 3.5px;
 		&:before {
@@ -47,7 +47,7 @@ const MainBlock = styled.div`
 		// border: 3px solid gray;
 		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-		width: 160px;
+		width: 190px;
 		height: 250px;
 		/* padding-left: 60px; */
 	}

@@ -11,7 +11,7 @@ const MainBlock = styled.div`
 	outline: 0;
 	border: 0;
 	margin: auto 5px;
-
+	padding: 5px 25px;
 	letter-spacing: 1px;
 	font-size: 25px;
 
@@ -19,27 +19,15 @@ const MainBlock = styled.div`
 	font-style: normal;
 	letter-spacing: 3px;
 	border-radius: 25px;
-	border: 2px solid black;
+	border: 2px solid #404040;
 
 	position: relative;
-	transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
-	&:before {
-		z-index: -1;
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		content: '';
-		width: 99.5%;
-		height: 98%;
-		position: absolute;
-		background: white;
-		transform: translate3d(0.2em, 0.15em, 1em);
-		border-radius: 25px;
-		border: 2px solid black;
-	}
+	/* top: 0;
+	left: 0; */
+	transition: all 0.15s linear 0s;
+	position: relative;
+	box-shadow: -6px 6px 0 #404040;
 
 	.progressBg {
 		margin-top: 10px;

@@ -150,7 +150,7 @@ function WordPaint() {
 				/>
 			</div>
 			<div className="buttonline">
-				<Button buttonText="단어 추가하기" outputColor="red" onClick={onSave} />
+				<Button buttonText="단어 추가" outputColor="red" onClick={onSave} />
 			</div>
 
 			<WordList onRemove={onRemove} onUpdate={onUpdate} />

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
-import Header from '../../components/Header';
-import Button from '../../components/Button';
-import GlobalStyle from '../../components/GlobalStyle';
+import Header from '../components/Header';
+import Button from '../components/Button';
+import GlobalStyle from '../components/GlobalStyle';
 import { Helmet } from 'react-helmet';
 import { TypeHangul } from 'type-hangul';
+
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
@@ -193,26 +194,26 @@ const MainBlock = styled.div`
 		border: 2px solid black;
 		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
-		&:before {
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			content: '';
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			background: white;
-			transform: translate3d(0.2em, 0.15em, 1em);
-			border-radius: 20px;
-			border: 2px solid black;
-			transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-			&:active {
-				z-index: -1;
-			}
-		}
+		// &:before {
+		// 	z-index: -1;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	right: 0;
+		// 	bottom: 0;
+		// 	left: 0;
+		// 	content: '';
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	position: absolute;
+		// 	background: white;
+		// 	transform: translate3d(0.2em, 0.15em, 1em);
+		// 	border-radius: 20px;
+		// 	border: 2px solid black;
+		// 	transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+		// 	&:active {
+		// 		z-index: -1;
+		// 	}
+		// }
 	}
 	.photo-box {
 		text-align: center;
@@ -235,26 +236,26 @@ const MainBlock = styled.div`
 		border: 2px solid black;
 		transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
-		&:before {
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			content: '';
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			background: white;
-			transform: translate3d(0.2em, 0.15em, 1em);
-			border-radius: 20px;
-			border: 2px solid black;
-			transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-			&:active {
-				z-index: -1;
-			}
-		}
+		// &:before {
+		//     z-index: -1;
+		//     position: absolute;
+		//     top: 0;
+		//     right: 0;
+		//     bottom: 0;
+		//     left: 0;
+		//     content: "";
+		//     width: 100%;
+		//     height: 100%;
+		//     position: absolute;
+		//     background: white;
+		//     transform: translate3d(0.2em, 0.15em, 1em);
+		//     border-radius: 20px;
+		//     border: 2px solid black;
+		//     transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+		//     &:active {
+		//         z-index: -1;
+		//     }
+		// }
 	}
 	.diary_img {
 		margin-top: 30px;

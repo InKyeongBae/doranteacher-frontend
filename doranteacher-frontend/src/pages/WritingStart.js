@@ -82,7 +82,7 @@ const MainBlock = styled.div`
         // align-items:center;
 
         width: 350px;
-        height: 50px;
+        height: 60px;
         background: #f9de4b;
         outline: 0;
         border: 0;
@@ -94,33 +94,33 @@ const MainBlock = styled.div`
         border: 2px solid black;
         transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
 
-        &:before {
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: white;
-            transform: translate3d(0.2em, 0.15em, 1em);
-            border-radius: 25px;
-            border: 2px solid black;
-            transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
-            &:active {
-                z-index: -1;
-            }
-        }
+        // &:before {
+        //     z-index: -1;
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     content: "";
+        //     width: 100%;
+        //     height: 100%;
+        //     position: absolute;
+        //     background: white;
+        //     transform: translate3d(0.2em, 0.15em, 1em);
+        //     border-radius: 25px;
+        //     border: 2px solid black;
+        //     transition: transform 0.2s cubic-bezier(0, 0, 0.7, 1);
+        //     &:active {
+        //         z-index: -1;
+        //     }
+        // }
     }
 
     .input_date {
         border: none;
         background: #f9de4b;
 
-        padding-top: 5px;
+        // padding-top: 5px;
         margin-right: 20px;
         margin-left: 20px;
 

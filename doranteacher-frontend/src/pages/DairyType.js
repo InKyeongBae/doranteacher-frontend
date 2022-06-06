@@ -13,66 +13,65 @@ const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 
 const typeList = [
-	// 서버로부터 데이터를 받아와야함
 	{
-		id: 1, //id가 곧 유형 순위를 의미함
-		type_name: '효도일기',
+		id: 1,
+		type_name: '시청일기',
 	},
 	{
 		id: 2,
-		type_name: '요리일기',
+		type_name: '감상일기',
 	},
 	{
 		id: 3,
-		type_name: '만화일기',
-	},
-	{
-		id: 4,
-		type_name: '과학일기',
-	},
-	{
-		id: 5,
-		type_name: '추론일기',
-	},
-	{
-		id: 6,
-		type_name: '환경일기',
-	},
-	{
-		id: 7,
-		type_name: '칭찬일기',
-	},
-	{
-		id: 8,
-		type_name: '영화일기',
-	},
-	{
-		id: 9,
-		type_name: '신문일기',
-	},
-	{
-		id: 10,
-		type_name: '관찰일기',
-	},
-	{
-		id: 11,
 		type_name: '체험일기',
 	},
 	{
-		id: 12,
-		type_name: '견학일기',
+		id: 4,
+		type_name: '관찰일기',
 	},
 	{
-		id: 13,
-		type_name: '기행일기',
+		id: 5,
+		type_name: '소식일기',
 	},
 	{
-		id: 14,
+		id: 6,
 		type_name: '사물일기',
 	},
 	{
+		id: 7,
+		type_name: '편지일기',
+	},
+	{
+		id: 8,
+		type_name: '생각일기',
+	},
+	{
+		id: 9,
+		type_name: '사건일기',
+	},
+	{
+		id: 10,
+		type_name: '과학일기',
+	},
+	{
+		id: 11,
+		type_name: '칭찬일기',
+	},
+	{
+		id: 12,
+		type_name: '학습일기',
+	},
+	{
+		id: 13,
+		type_name: '효도일기',
+	},
+	{
+		id: 14,
+		type_name: '요리일기',
+	},
+	{
 		id: 15,
-		type_name: '주제일기',
+		type_name: '여행일기',
 	},
 	{
 		id: 16,

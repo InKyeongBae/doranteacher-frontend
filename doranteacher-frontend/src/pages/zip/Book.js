@@ -783,6 +783,13 @@ Table of Contents
 			font-size: 90%;
 		}
 	}
+
+	.diariesnum {
+		font-family: 'KOTRAHOPE';
+		font-size: 1.8em;
+		margin-top: 30px;
+		width: 180px;
+	}
 `;
 
 function Book() {
@@ -823,11 +830,12 @@ function Book() {
 												recent
 												bookColor="red"
 												link="/diary/3"
+												num="3"
 											/>
-											<Monthly year="2022년" month="4월의 일기" bookColor="blue" />
-											<Monthly year="2022년" month="3월의 일기" bookColor="green" />
-											<Monthly year="2022년" month="2월의 일기" bookColor="yellow" />
-											<Monthly year="2022년" month="1월의 일기" bookColor="red" />
+											<Monthly year="2022년" month="4월의 일기" bookColor="blue" num="5" />
+											<Monthly year="2022년" month="3월의 일기" bookColor="green" num="15" />
+											<Monthly year="2022년" month="2월의 일기" bookColor="yellow" num="20" />
+											<Monthly year="2022년" month="1월의 일기" bookColor="red" num="11" />
 										</ul>
 									</div>
 								</div>

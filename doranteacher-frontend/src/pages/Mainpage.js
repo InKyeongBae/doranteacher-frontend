@@ -6,6 +6,7 @@ import GlobalStyle from '../components/GlobalStyle';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 const MainBlock = styled.div`
 	background: #f9de4b;
@@ -170,6 +171,36 @@ function Mainpage() {
 			.then(() => navigate('/writing/start'));
 	}
 
+	const StyledContainer = styled(ToastContainer)`
+		&&&.Toastify__toast-container {
+			bottom: 80px;
+			right: 20px;
+		}
+		.Toastify__toast {
+			font-size: 30px;
+		}
+		.Toastify__toast-body {
+			font-family: 'KOTRAHOPE';
+			font-style: normal;
+			font-size: 24px;
+			color: black;
+		}
+		.Toastify__progress-bar {
+		}
+	`;
+
+	const notify = () => {
+		toast('🦄 서비스가 준비 중입니다!', {
+			position: 'top-center',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+	};
+
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
@@ -178,54 +209,63 @@ function Mainpage() {
 			) : (
 				<Header isIcon isLogin isSignup backColor="yellow" />
 			)}
-
-			<MainBlock>
-				<CenterLogo>
-					<div className="centerlogo">
-						<img className="doranLogo" src="/img/doranlogo.png" onClick={() => navigate('/')} />
-					</div>
-					<div className="centercontent">
-						AI 도란쌤과 함께
-						<br />
-						일기 마스터하기
-					</div>
-				</CenterLogo>
-				<BottomBlock>
-					<div className="block">
-						<div>
-							<img className="imgblock" src="/img/block1.png" />
+			<>
+				<MainBlock>
+					<CenterLogo>
+						<div className="centerlogo">
+							<img className="doranLogo" src="/img/doranlogo.png" onClick={() => navigate('/')} />
 						</div>
-						<div>
-							<img className="imgblock2" id="blockani1" src="/img/block2.png" />
+						<div className="centercontent">
+							AI 도란쌤과 함께
+							<br />
+							일기 마스터하기
 						</div>
-
-						<div>
-							<img className="imgblock" src="/img/block3.png" />
-						</div>
-						<div>
+					</CenterLogo>
+					<BottomBlock>
+						<div className="block">
+							<div>
+								<img className="imgblock" src="/img/block1.png" />
+							</div>
 							<div>
 								<img
 									className="imgblock2"
-									id="blockani2"
-									src="/img/block4-1.png"
-									onClick={() => navigate('/diary-list')}
+									id="blockani1"
+									src="/img/block2.png"
+									onClick={() => notify()}
 								/>
+							</div>
+
+							<div>
+								<img className="imgblock" src="/img/block3.png" />
 							</div>
 							<div>
 								<div>
 									<img
 										className="imgblock2"
-										id="blockani3"
-										src="/img/block4-2.png"
-										onClick={writeStart}
+										id="blockani2"
+										src="/img/block4-1.png"
+										onClick={() => navigate('/diary-list')}
 									/>
+								</div>
+								<div>
+									<div>
+										<img
+											className="imgblock2"
+											id="blockani3"
+											src="/img/block4-2.png"
+											onClick={writeStart}
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</BottomBlock>
-				<ShakingHands />
-			</MainBlock>
+					</BottomBlock>
+					<ShakingHands />
+				</MainBlock>
+				<StyledContainer>
+					<ToastContainer />
+				</StyledContainer>
+			</>
 		</>
 	);
 }

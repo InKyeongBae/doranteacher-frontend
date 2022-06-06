@@ -59,7 +59,18 @@ const HeaderButtons = styled.div`
 	}
 `;
 
-function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, isUndo, progress, backColor }) {
+function Header({
+	isIcon,
+	isProgress,
+	isSignup,
+	isLogin,
+	isLogout,
+	isSetting,
+	isUndo,
+	progress,
+	backColor,
+	isUndoTemp,
+}) {
 	const navigate = useNavigate();
 	// const [Cookies] = useCookies(["acessToken"]);
 	const [cookies, setCookie, removeCookie] = useCookies(['acessToken']);
@@ -122,6 +133,14 @@ function Header({ isIcon, isProgress, isSignup, isLogin, isLogout, isSetting, is
 
 				{isUndo ? (
 					<ImgButton setting={false} undo={true} outputColor="white" onClick={() => navigate(-1)}></ImgButton>
+				) : null}
+				{isUndoTemp ? (
+					<ImgButton
+						setting={false}
+						undo={true}
+						outputColor="white"
+						onClick={() => navigate('/diary-list/img/ham')}
+					></ImgButton>
 				) : null}
 			</HeaderButtons>
 		</HeaderBlock>
