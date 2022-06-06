@@ -97,26 +97,6 @@ const HeaderButtons = styled.div`
             z-index: -1;
         }
     }
-
-    // a.btn {
-    //     position: relative;
-    // }
-
-    // a:active.btn {
-    //     top: 6px;
-    //     left: -6px;
-    //     box-shadow: none;
-
-    //     &:before {
-    //         bottom: 1px;
-    //         right: 1px;
-    //     }
-
-    //     &:after {
-    //         top: 1px;
-    //         left: 1px;
-    //     }
-    // }
 `;
 
 function Button({ buttonText, extraClassName, ...rest }) {
