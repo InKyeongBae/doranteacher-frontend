@@ -92,8 +92,6 @@ function SentencePaint() {
 			font-size: 30px;
 		}
 		.Toastify__toast-body {
-			//font-family: 'Cafe24Syongsyong';
-			//font-family: 'ImcreSoojin OTF';
 			font-family: 'KOTRAHOPE';
 			font-style: normal;
 			font-size: 24px;
@@ -195,10 +193,6 @@ function SentencePaint() {
 					/>
 				)}
 			</div>
-
-			<StyledContainer>
-				<ToastContainer />
-			</StyledContainer>
 		</>
 	);
 }
