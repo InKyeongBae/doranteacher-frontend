@@ -201,6 +201,18 @@ function Mainpage() {
 		});
 	};
 
+	const loginNotify = () => {
+		toast.error('로그인 후 이용할 수 있습니다!', {
+			position: 'top-center',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+	};
+
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
@@ -244,7 +256,7 @@ function Mainpage() {
 										className="imgblock2"
 										id="blockani2"
 										src="/img/block4-1.png"
-										onClick={() => navigate('/diary-list')}
+										onClick={isLogin ? () => navigate('/diary-list') : () => loginNotify()}
 									/>
 								</div>
 								<div>
@@ -253,7 +265,7 @@ function Mainpage() {
 											className="imgblock2"
 											id="blockani3"
 											src="/img/block4-2.png"
-											onClick={writeStart}
+											onClick={isLogin ? writeStart : () => loginNotify()}
 										/>
 									</div>
 								</div>
