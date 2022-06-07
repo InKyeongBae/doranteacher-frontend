@@ -33,13 +33,16 @@ function WordPaint() {
 		reset.innerText = '새로 쓰기';
 	};
 
+	const toastId = React.useRef(null);
+
 	const pending = () => {
-		const toastId = toast.loading(`단어를 추가하는 중`, {
+		toastId.current = toast.loading(`단어를 추가하는 중`, {
 			position: toast.POSITION.BOTTOM_RIGHT,
 			autoClose: false,
 		});
-		return toastId;
 	};
+
+	const dismiss = () => toast.dismiss(toastId.current);
 
 	const sameWord = () => {
 		toast.error(`이미 추가 된 단어입니다. 다른 단어를 추가해 주세요!`, {
@@ -73,9 +76,7 @@ function WordPaint() {
 				.then((response) => response.json())
 				.then((result) => {
 					const newWord = result.filepath;
-					toast.clearWaitingQueue();
-					console.log(removeId);
-					toast.clearWaitingQueue({ containerId: removeId });
+					dismiss();
 					for (var i = 0; i < words.length; i++) {
 						if (newWord === words[i].content) {
 							return false;
