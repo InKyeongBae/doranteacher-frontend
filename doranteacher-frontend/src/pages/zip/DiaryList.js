@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
@@ -6,6 +6,7 @@ import GlobalStyle from "../../components/GlobalStyle";
 import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../../components/LeftDoran";
 import ProgressBar from "../../components/ProgressBar";
+import axios from "axios";
 
 const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
 const MainBlock = styled.div`
@@ -91,6 +92,7 @@ function DiaryList() {
     const hmm = () => {
         navigate("/diary");
     };
+
     return (
         <>
             <GlobalStyle backColor="yellow" />
