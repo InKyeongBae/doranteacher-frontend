@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../../components/LeftDoran";
 import ProgressBar from "../../components/ProgressBar";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
 const MainBlock = styled.div`
@@ -89,9 +90,39 @@ const BigDoran = styled.div`
 
 function DiaryList() {
     const navigate = useNavigate("");
-    const hmm = () => {
-        navigate("/diary");
+    const [cookies] = useCookies(["acessToken"]);
+    const [datas, setDatas] = useState([]);
+    const diayList = () => {
+        axios
+            .get("http://3.39.158.98:8080/diaries", {
+                headers: {
+                    Authorization: `Bearer ${cookies["accessToken"]}`,
+                    "Content-type": "application/json",
+                },
+            })
+            .then((res) => {
+                console.log(res.data.results);
+                setDatas(res.data.results);
+            });
     };
+
+    useEffect(() => {
+        diayList();
+    }, []);
+
+    // const types = await axios
+    // 		.get(`http://3.39.158.98:8080/diaries/book/count`, {
+    // 			headers: {
+    // 				Authorization: `Bearer ${cookies['accessToken']}`,
+    // 				'Content-type': 'application/json',
+    // 			},
+    // 		})
+    // 		.then((res) => {
+    // 			var r = [];
+    // 			setMonthNum(res.data.results.length);
+    // 			return r;
+    // 		})
+    // 		.then((res) => setData(res));
 
     return (
         <>
@@ -119,14 +150,19 @@ function DiaryList() {
                 <div className="main">
                     <div className="leftSide">
                         <div className="centercontent">
-                            <img
-                                className="diary_img"
-                                src={diary_img}
-                                height="200"
-                                width="150"
-                                onClick={() => navigate("/diary/1")}
-                            />
-                            {/*일기 리스트 출력하는 곳*/}
+                            {datas.map((data, index) => (
+                                <img
+                                    key={index}
+                                    className="diary_img"
+                                    src={data["diaryImgUrl"]}
+                                    height="200"
+                                    width="150"
+                                    onClick={() =>
+                                        navigate("/diary/" + data["diaryId"])
+                                    }
+                                    alt=""
+                                />
+                            ))}
                         </div>
                     </div>
                     {/* <div className="middleSide"></div> */}

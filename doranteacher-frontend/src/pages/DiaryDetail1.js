@@ -3,8 +3,10 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
+import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { TypeHangul } from "type-hangul";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
 const env = process.env;
@@ -293,9 +295,37 @@ const MainBlock = styled.div`
 `;
 
 function DiaryDetail1() {
-    // console.log(getStringDate(new Date()));
     const [correct, setCorrect] = useState(false);
-    console.log(correct);
+    const { id } = useParams();
+    const [cookies] = useCookies(["acessToken"]);
+    const [data, setData] = useState([]);
+    // data.keywords.map((num, idx) => {
+    //     console.log(num);
+    // });
+    // console.log(keylist);
+
+    // const numbers = [1, 2, 3, 4, 5];
+    // const keywords = data.keywords;
+    // const result = keywords.map((num) => {
+    //     console.log(num);
+    // });
+    const diaryDetail = () => {
+        axios
+            .get(`http://3.39.158.98:8080/diaries/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${cookies["accessToken"]}`,
+                    "Content-type": "application/json",
+                },
+            })
+            .then((res) => {
+                console.log(res.data.results[0]);
+                setData(res.data.results[0]);
+            });
+    };
+
+    useEffect(() => {
+        diaryDetail();
+    }, []);
 
     const dummyData =
         // 서버로부터 데이터를 받아와야함
@@ -345,58 +375,59 @@ function DiaryDetail1() {
                         <div className="mini-header-wrapper">
                             <div className="diaryType-wrapper">
                                 <Button
-                                    buttonText={dummyData.diaryType}
+                                    buttonText={data.diaryType}
                                     extraClassName="diaryType_button"
                                     inputColor="purple"
                                     width="130px;"
                                 ></Button>
                             </div>
                             <div className="keywords-wrapper">
-                                {dummyData.keywords.map((it, index) => (
-                                    <Button
-                                        key={index}
-                                        buttonText={it}
-                                        width="120px;"
-                                        inputColor="green"
-                                        extraClassName="keyword_button"
-                                    ></Button>
-                                ))}
+                                {data.keywords &&
+                                    data.keywords.map((it, index) => (
+                                        <Button
+                                            key={index}
+                                            buttonText={it}
+                                            width="120px;"
+                                            inputColor="green"
+                                            extraClassName="keyword_button"
+                                        ></Button>
+                                    ))}
                             </div>
                         </div>
                         <div className="diarycontents">
                             <div className="contents-box">
                                 <div className="answers">
                                     <div className="answer" id="sub">
-                                        날짜 | {dummyData.date}
+                                        날짜 | {data.date}
                                     </div>
                                     <div className="answer" id="sub">
-                                        날씨 | {dummyData.weather}
+                                        날씨 | {data.weather}
                                     </div>
                                     <div className="answer" id="sub">
-                                        제목 | {dummyData.title}
+                                        제목 | {data.title}
                                     </div>
                                     {!correct ? (
                                         <div className="answer">
-                                            {dummyData.original_text}
+                                            {data.original_text}
                                         </div>
                                     ) : (
                                         <div>
-                                            {dummyData.correct_text.map(
-                                                (text, index) =>
-                                                    text[0] === "#" ? (
-                                                        <span className="answer_green">
-                                                            {text.slice(1)}
-                                                        </span>
-                                                    ) : (
-                                                        <span className="answer_black">
-                                                            {text}
-                                                        </span>
-                                                    )
+                                            {/* 여기 제대로 불러오는지 확인해야함 */}
+                                            {data.correct_text.map((text) =>
+                                                text[0] === "#" ? (
+                                                    <span className="answer_green">
+                                                        {text.slice(1)}
+                                                    </span>
+                                                ) : (
+                                                    <span className="answer_black">
+                                                        {text}
+                                                    </span>
+                                                )
                                             )}
                                         </div>
                                     )}
                                 </div>
-                                {dummyData.wantToCorrect ? (
+                                {data.wantToCorrect ? (
                                     <div
                                         className={[
                                             "correct_button",
@@ -430,9 +461,8 @@ function DiaryDetail1() {
                                 </div>
                             </div>
                             <div className="comment-box" id="target">
-                                {dummyData.comment}
+                                {data.comment}
                             </div>
-                            {/* <div id="target">안녕하세요.</div> */}
                             <Helmet>
                                 <script>TypeHangul.type('#target');</script>
                             </Helmet>
@@ -444,7 +474,7 @@ function DiaryDetail1() {
                             <div className="photo-box">
                                 <img
                                     className="diary_img"
-                                    src={diary_img}
+                                    src={data.selectedImage}
                                     height="240"
                                     width="380"
                                     alt=""
