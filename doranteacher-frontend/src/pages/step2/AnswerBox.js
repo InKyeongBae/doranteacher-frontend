@@ -56,18 +56,6 @@ function AnswerBox({ id, checkfirst }) {
 		}
 	};
 
-	// const handleClickOutside = (e) => {
-	// 	if (editable == true && !ref.current.contains(e.target)) {
-	// 		setEditable(false);
-	// 		onUpdate(id, text);
-	// 		setText(text);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	window.addEventListener('click', handleClickOutside, true);
-	// });
-
 	function onUpdate(updateid, answer) {
 		dispatch({
 			type: 'CHANGE_ANSWER',

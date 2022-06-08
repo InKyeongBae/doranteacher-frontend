@@ -27,7 +27,7 @@ function Step1List(props) {
 		localStorage.setItem('text', diaries);
 		navigate('/writing/step1/diary-contents-view');
 	}
-	
+
 	function Step1Qs({ step1Qs, onChange }) {
 		return (
 			<div
