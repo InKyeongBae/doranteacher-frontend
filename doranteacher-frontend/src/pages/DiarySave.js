@@ -154,14 +154,23 @@ function DiarySave() {
 
 	const toastId = React.useRef(null);
 
+	const pending = () => {
+		toastId.current = toast.loading(`일기를 저장하는 중`, {
+			position: toast.POSITION.BOTTOM_RIGHT,
+			autoClose: false,
+		});
+	};
+
+	const dismiss = () => toast.dismiss(toastId.current);
+
 	const [cm, setCm] = useState('');
 	const [gm, setGm] = useState([]);
 	const [correctSentence, setCorrectSentence] = useState('');
+
 	useEffect(() => {
-		console.log(cm);
-	}, [cm]);
-	useEffect(() => {
-		console.log(gm);
+		if (gm.length !== 0) {
+			pending();
+		}
 	}, [gm]);
 
 	function saveFunc() {
@@ -233,6 +242,12 @@ function DiarySave() {
 									.then((response) => response.json())
 									.then((res) => {
 										console.log(res);
+									})
+									.then(() => {
+										successNotify();
+										setTimeout(function setNavi() {
+											navigate('/');
+										}, 1800);
 									});
 							});
 					});
@@ -279,6 +294,12 @@ function DiarySave() {
 							.then((response) => response.json())
 							.then((res) => {
 								console.log(res);
+							})
+							.then(() => {
+								successNotify();
+								setTimeout(function setNavi() {
+									navigate('/');
+								}, 1800);
 							});
 					});
 			}
