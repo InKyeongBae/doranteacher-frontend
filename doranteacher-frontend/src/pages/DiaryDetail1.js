@@ -133,7 +133,7 @@ const MainBlock = styled.div`
         font-size: 40px;
         line-height: 40px;
         word-wrap: break-word;
-        color: #5dcb83;
+        color: #33ff33;
         padding: 7px 0;
         text-underline-offset: 17px;
         text-decoration-thickness: 2px;
@@ -295,63 +295,7 @@ const MainBlock = styled.div`
 function DiaryDetail1() {
     // console.log(getStringDate(new Date()));
     const [correct, setCorrect] = useState(false);
-    const [original, setOriginal] = useState("");
     console.log(correct);
-
-    useEffect(() => {
-        fetch("http://3.35.27.115:5000/comment", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                text: "은서네 집에서 초코 케이크를 만들엇따. 친구한테 뭐 하냐고 전화했는데 집에와서 케이크를 만들자고 했기때문이다. 초코를 엄청 많이 너었고 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 맛있엇따! 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
-            }),
-        })
-            .then((res) => {
-                return res.json();
-            })
-            .then((json) => {
-                console.log(json.result); // 서버에서 주는 json데이터가 출력 됨
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch("http://3.35.27.115:5000/correct", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                text: "은서네 집에서 초코 케이크를 만들엇따. 친구한테 뭐 하냐고 전화했는데 집에와서 케이크를 만들자고 했기때문이다. 초코를 엄청 많이 너었고 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 맛있엇따! 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
-            }),
-        })
-            .then((res) => {
-                return res.json();
-            })
-            .then((json) => {
-                // console.log(json); // 서버에서 주는 json데이터가 출력 됨
-                setOriginal(json.original);
-            });
-    }, []);
-
-    const correct_text = [
-        "은서네 집에서 초코 케이크를 ",
-        "#만들었다.",
-        " 친구한테 뭐 하냐고 전화했는데 ",
-        "#집에",
-        " ",
-        "#와서",
-        " 케이크를 만들자고 ",
-        "#했기",
-        " ",
-        "#때문이다.",
-        " 초코를 엄청 많이 ",
-        "#넣었고",
-        " 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 ",
-        "#맛있었다!",
-        " 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
-    ];
 
     const dummyData =
         // 서버로부터 데이터를 받아와야함
@@ -362,9 +306,25 @@ function DiaryDetail1() {
             keywords: ["#영화", "#마법", "#신호등", "#자동차", "#가족"],
             // 키워드도 json 배열 형태로 넘겨와야함
             title: "닥터스트레인지 별이 다섯 개",
-            correct_text:
-                "영화 닥터스트레인지를 봤다. 이 영화가 개봉하는 날만 계속 기다렸다. 주인공이 마법을 하는데 화려한 기술이 정말 멋있었다. 영화를 보면서 나도 마법을 할 수 있는 상상을 했다. 닥터스트레인지는 기대만큼 재미있었다. 별점 만점이다.",
-            original_text: original,
+            correct_text: [
+                "은서네 집에서 초코 케이크를 ",
+                "#만들었다.",
+                " 친구한테 뭐 하냐고 전화했는데 ",
+                "#집에",
+                " ",
+                "#와서",
+                " 케이크를 만들자고 ",
+                "#했기",
+                " ",
+                "#때문이다.",
+                " 초코를 엄청 많이 ",
+                "#넣었고",
+                " 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 ",
+                "#맛있었다!",
+                " 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
+            ],
+            original_text:
+                "은서네 집에서 초코 케이크를 만들엇따. 친구한테 뭐 하냐고 전화했는데 집에와서 케이크를 만들자고 했기때문이다. 초코를 엄청 많이 너었고 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 맛있엇따! 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
             isPrivate: true,
             comment: "시간 가는 줄 모르겠어요",
             wantToCorrect: true,
@@ -421,7 +381,7 @@ function DiaryDetail1() {
                                         </div>
                                     ) : (
                                         <div>
-                                            {correct_text.map(
+                                            {dummyData.correct_text.map(
                                                 (text, index) =>
                                                     text[0] === "#" ? (
                                                         <span className="answer_green">
@@ -432,27 +392,8 @@ function DiaryDetail1() {
                                                             {text}
                                                         </span>
                                                     )
-
-                                                // <span key={index}>
-                                                //     {week}
-                                                //     {" / "}
-                                                // </span>
                                             )}
                                         </div>
-                                        // <div className="answer">
-                                        //     영화 닥터스트레인지를 봤다. 이영화가</div>
-                                        //     <span className="mama">
-                                        //         개봉 하는
-                                        //     </span><div>
-
-                                        //     . 주인공이 마법을 하는데 화려한
-                                        //     기술이 정말 멋있었다. 영화를 보면서
-                                        //     나도 마법을 할 수 있는 상상을 했다.
-                                        //     닥터스트레인지는</div>
-                                        //     <span className="mama">
-                                        //         기대 만큼
-                                        //     </span><div>
-                                        //     재미있었다. 별점 만점이다.</div>
                                     )}
                                 </div>
                                 {dummyData.wantToCorrect ? (

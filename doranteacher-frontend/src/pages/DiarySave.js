@@ -161,6 +161,43 @@ function DiarySave() {
         if (!painting && !file) {
             errorNotify();
         }
+        // useEffect(() => {
+        //     fetch("http://3.35.27.115:5000/comment", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             text: "은서네 집에서 초코 케이크를 만들엇따. 친구한테 뭐 하냐고 전화했는데 집에와서 케이크를 만들자고 했기때문이다. 초코를 엄청 많이 너었고 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 맛있엇따! 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
+        //         }),
+        //     })
+        //         .then((res) => {
+        //             return res.json();
+        //         })
+        //         .then((json) => {
+        //             console.log(json.result); // 서버에서 주는 json데이터가 출력 됨
+        //             setComment(json.result);
+        //         });
+        // }, []);
+
+        // useEffect(() => {
+        //     fetch("http://3.35.27.115:5000/correct", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-type": "application/json",
+        //         },
+        //         body: JSON.stringify({
+        //             text: "은서네 집에서 초코 케이크를 만들엇따. 친구한테 뭐 하냐고 전화했는데 집에와서 케이크를 만들자고 했기때문이다. 초코를 엄청 많이 너었고 생크림도 듬뿍 발랐다. 만들기는 정말 쉬웠는데 정말 정말 맛있엇따! 곧 생일인 인경이에게 선물해줘야겠다. 맛있겠다!",
+        //         }),
+        //     })
+        //         .then((res) => {
+        //             return res.json();
+        //         })
+        //         .then((json) => {
+        //             // console.log(json); // 서버에서 주는 json데이터가 출력 됨
+        //             setOriginal(json.original);
+        //         });
+        // }, []);
 
         console.log(typeof localStorage.getItem("title"));
         fetch("http://3.39.158.98:8080/diaries", {
