@@ -2,6 +2,7 @@ import React from 'react';
 
 function Monthly({ year, month, recent, bookColor, link, num }) {
 	const cName = 'coverDesign ' + bookColor;
+
 	return (
 		<li>
 			<figure className="book">
@@ -9,8 +10,8 @@ function Monthly({ year, month, recent, bookColor, link, num }) {
 					<li>
 						<div className={cName}>
 							{recent ? <span className="ribbon">NEW</span> : ''}
-							<h1>{year}</h1>
-							<p>{month}</p>
+							<h1>{year}년</h1>
+							<p>{month}월의 일기</p>
 						</div>
 					</li>
 
