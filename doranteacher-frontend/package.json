@@ -14,6 +14,7 @@
 		"https-browserify": "^1.0.0",
 		"literallycanvas": "0.5.2",
 		"prop-types": "^15.8.1",
+		"qs": "^6.10.5",
 		"react": "^17.0.2",
 		"react-cookie": "^4.1.1",
 		"react-dom": "^17.0.2",
@@ -40,7 +41,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"deploy": "aws s3 sync ./build s3://doran-frontend --profile=doran-frontend-s3",
-		"invalidate" : "aws cloudfront create-invalidation --profil=doran-frontend-s3 --distribution-id EQFE5HX84XCSJ --paths /*"
+		"invalidate": "aws cloudfront create-invalidation --profil=doran-frontend-s3 --distribution-id EQFE5HX84XCSJ --paths /*"
 	},
 	"eslintConfig": {
 		"extends": [
