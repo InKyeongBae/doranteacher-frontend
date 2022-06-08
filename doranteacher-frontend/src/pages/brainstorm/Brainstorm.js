@@ -238,10 +238,17 @@ function Brainstorm() {
 
 	const nextStep = () => {
 		var returnText = '';
+		var apiText = '';
 		for (var i = 0; i < words.length; i++) {
 			returnText += '#' + words[i].content;
+			if (i !== 0) {
+				apiText += ',' + words[i].content;
+			} else {
+				apiText += words[i].content;
+			}
 		}
 		localStorage.setItem('keywords', returnText);
+		localStorage.setItem('apiKeywords', apiText);
 		navigate('/writing/diary-type');
 	};
 
