@@ -308,7 +308,8 @@ function BookDiaryDetail() {
     });
     const year = query.yearmonth.substr(0, 4);
     const month = query.yearmonth.substr(5, 8);
-    const id = query.id;
+    const id = Number(query.id);
+    console.log(id + 1);
     console.log(year, month);
 
     const [cookies] = useCookies(["acessToken"]);
@@ -358,7 +359,9 @@ function BookDiaryDetail() {
                 >
                     <ImgButton
                         prev
-                        onClick={() => navigate("/diary/5")}
+                        onClick={() =>
+                            navigate(`?yearmonth=${year}-${month}&id=${id - 1}`)
+                        }
                         style={{
                             display: "inline-flex",
                             margin: "auto 10px",
@@ -481,7 +484,9 @@ function BookDiaryDetail() {
                     </div>
                     <ImgButton
                         next
-                        onClick={() => navigate("/diary/4")}
+                        onClick={() =>
+                            navigate(`?yearmonth=${year}-${month}&id=${id + 1}`)
+                        }
                         style={{ display: "inline-flex", margin: "auto 10px" }}
                     />
                 </div>
