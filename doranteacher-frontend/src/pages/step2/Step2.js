@@ -187,7 +187,7 @@ function Step2() {
 		var diaries = '';
 		for (var i = 0; i < step2.length; i++) {
 			if (step2[i].answer !== '') {
-				diaries += step2[i].answer;
+				diaries += ' ' + step2[i].answer;
 			}
 		}
 		localStorage.setItem('text', diaries);
