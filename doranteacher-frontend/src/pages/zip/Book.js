@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import styled, { css, createGlobalStyle } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
-import { useNavigate, Link } from 'react-router-dom';
-import LeftDoran from '../../components/LeftDoran';
-import ProgressBar from '../../components/ProgressBar';
+import { useNavigate } from 'react-router-dom';
 import Monthly from './Monthly';
 
 const MainBlock = styled.div`
@@ -25,11 +23,22 @@ const MainBlock = styled.div`
 	.on {
 		background: #e75244;
 		transition: all 0.1s cubic-bezier(0, 0, 0.7, 1);
-		top: 4px;
-		left: 3.5px;
-		&:before {
-			top: -5px;
-			left: -4.7px;
+		top: 3px;
+		left: -3px;
+		box-shadow: -3px 3px 0 var(--brown);
+
+		&::after {
+			top: 1px;
+			left: -2px;
+			width: var(--angle);
+			height: var(--angle);
+		}
+
+		&::before {
+			bottom: -2px;
+			right: 1px;
+			width: var(--angle);
+			height: var(--angle);
 		}
 	}
 
@@ -60,21 +69,12 @@ const BigDoran = styled.div`
 `;
 
 const BookStyle = styled.div`
-	@import url(https://fonts.googleapis.com/css?family=Lato:300, 400, 700);
-
-	/**********************************
-              HEADER
-***********************************/
-
-	/**************************************
-	A. Mini Reset 
-***************************************/
 	*,
 	*:after,
 	*:before {
 		-webkit-box-sizing: border-box;
-		/* -moz-box-sizing: border-box;
-		box-sizing: border-box; */
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
 	* {
@@ -127,9 +127,6 @@ const BookStyle = styled.div`
 		height: 100%;
 	}
 
-	/******************************
-            Button
-*******************************/
 	.btn {
 		display: inline-block;
 		text-transform: uppercase;
@@ -170,28 +167,6 @@ const BookStyle = styled.div`
 		vertical-align: top;
 	}
 
-	/* ///////////////////////////////////////////////////
-
-HARDCOVER
-Table of Contents
-
-1. container
-2. background & color
-3. opening cover, back cover and pages
-4. position, transform y transition
-5. events
-6. Bonus
-	- Cover design
-	- Ribbon
-	- Figcaption
-7. mini-reset
-
-/////////////////////////////////////////////////////*/
-
-	/*********************************
-	1. container
-*********************************/
-
 	.book {
 		position: relative;
 		width: 160px;
@@ -203,10 +178,6 @@ Table of Contents
 		-moz-transform-style: preserve-3d;
 		transform-style: preserve-3d;
 	}
-
-	/*********************************
-	2. background & color
-**********************************/
 
 	/* HARDCOVER FRONT */
 	.hardcover-front li:first-child {
@@ -264,9 +235,6 @@ Table of Contents
 		border-radius: 0px 5px 5px 0px;
 	}
 
-	/*********************************
-3. opening cover, back cover and pages
-**********************************/
 	.hardcover-front {
 		-webkit-transform: rotateY(-34deg) translateZ(8px);
 		-moz-transform: rotateY(-34deg) translateZ(8px);
@@ -310,9 +278,6 @@ Table of Contents
 		transform: rotateY(-36deg);
 	}
 
-	/*********************************
-4. position, transform & transition
-**********************************/
 	.hardcover-front,
 	.hardcover-back,
 	.book-spine,
@@ -643,10 +608,6 @@ Table of Contents
 		-moz-transition-duration: 1.2s;
 		transition-duration: 1.2s;
 	}
-
-	/*****************************************
-  6. BONUS
-******************************************/
 
 	/* COVER CSS */
 	.coverDesign {
