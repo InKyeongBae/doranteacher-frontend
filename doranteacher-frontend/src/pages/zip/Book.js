@@ -778,6 +778,7 @@ function Book() {
 						year: res.data.results[i].date.substr(0, 4),
 						month: parseInt(res.data.results[i].date.substr(5, 8)),
 						diaryNum: res.data.results[i].diaryCount,
+						date: res.data.results[i].date,
 					};
 					r.push(diary);
 				}
@@ -839,6 +840,7 @@ function Book() {
 																? 'green'
 																: 'yellow'
 														}
+														link={'/diary/monthly?yearmonth=' + it.date + '&id=1'}
 													/>
 												) : (
 													<Monthly
@@ -856,6 +858,7 @@ function Book() {
 																? 'green'
 																: 'yellow'
 														}
+														link={'/diary/monthly?yearmonth=' + it.date + '&id=1'}
 													/>
 												),
 											)}

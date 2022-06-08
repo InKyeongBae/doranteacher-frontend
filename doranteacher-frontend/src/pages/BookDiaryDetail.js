@@ -6,7 +6,10 @@ import GlobalStyle from '../components/GlobalStyle';
 import { Helmet } from 'react-helmet';
 import { TypeHangul } from 'type-hangul';
 import ImgButton from '../components/ImgButton';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import qs from 'qs';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
@@ -287,11 +290,45 @@ const MainBlock = styled.div`
 	}
 `;
 
-function DiaryDetail3() {
+function BookDiaryDetail() {
 	const navigate = useNavigate('');
 	// console.log(getStringDate(new Date()));
 	const [correct, setCorrect] = useState(false);
 	console.log(correct);
+
+	const location = useLocation();
+
+	console.log(location);
+	const query = qs.parse(location.search, {
+		ignoreQueryPrefix: true,
+	});
+	const year = query.yearmonth.substr(0, 4);
+	const month = query.yearmonth.substr(5, 8);
+	const id = query.id;
+	console.log(year, month);
+
+	const [cookies] = useCookies(['acessToken']);
+
+	const getMonthNum = async () => {
+		const getId = await axios.get(`http://3.39.158.98:8080/diaries?year=${year}&month=${month}`, {
+			headers: {
+				Authorization: `Bearer ${cookies['accessToken']}`,
+				'Content-type': 'application/json',
+			},
+		});
+		const dId = getId.data.results[id - 1].diaryId;
+		const getDetail = await axios.get(`http://3.39.158.98:8080/diaries/${dId}`, {
+			headers: {
+				Authorization: `Bearer ${cookies['accessToken']}`,
+				'Content-type': 'application/json',
+			},
+		});
+		console.log(getDetail);
+	};
+
+	useEffect(() => {
+		getMonthNum();
+	}, []);
 
 	return (
 		<>
@@ -419,4 +456,4 @@ function DiaryDetail3() {
 	);
 }
 
-export default DiaryDetail3;
+export default BookDiaryDetail;
