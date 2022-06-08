@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../components/Button';
@@ -180,7 +182,7 @@ const MainBlock = styled.div`
 function Step2() {
 	const navigate = useNavigate('');
 	const step2 = useSentenceState();
-
+	const [cookies] = useCookies(['acessToken']);
 	function pagemove() {
 		var diaries = '';
 		for (var i = 0; i < step2.length; i++) {
@@ -191,7 +193,25 @@ function Step2() {
 		localStorage.setItem('text', diaries);
 		navigate('/writing/step2/diary-contents-view');
 	}
+	// const diaryType = localStorage.getItem('diaryType');
+	const diaryType = '요리일기';
+	const [qs, setQs] = useState('');
+	const changeQs = async () => {
+		await axios
+			.get(`http://3.39.158.98:8080/diary-types/questions/step2?type=${diaryType}`, {
+				headers: {
+					Authorization: `Bearer ${cookies['accessToken']}`,
+					'Content-type': 'application/json',
+				},
+			})
+			.then((res) => {
+				setQs(res.data.results[0]);
+			});
+	};
 
+	useEffect(() => {
+		changeQs();
+	}, []);
 	return (
 		<>
 			<GlobalStyle backColor="purple" />
@@ -210,13 +230,17 @@ function Step2() {
 			/>
 			<MainBlock>
 				<LeftDoran />
-				{/* <Step1List nextNotify={nextNotify} prevNotify={prevNotify} levelNotify={levelNotify} /> */}
 				<div className="question">
 					<div className="centercontent">
 						<div className="questioncontent">
-							오늘 어떤 요리를 했나요? 요리 과정을 설명해주세요. <br />
-							완성된 요리는 맛있었나요? <br />
-							다음에 요리할 음식은 무엇인가요?
+							{qs.split('\n').map((line) => {
+								return (
+									<span>
+										{line}
+										<br />
+									</span>
+								);
+							})}
 						</div>
 					</div>
 					<div className="mission">
