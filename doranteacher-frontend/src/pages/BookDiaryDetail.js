@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import qs from "qs";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { setDefaultImageURLPrefix } from "literallycanvas/lib/js";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -296,6 +297,7 @@ function BookDiaryDetail() {
     const navigate = useNavigate("");
     // console.log(getStringDate(new Date()));
     const [correct, setCorrect] = useState(false);
+    const [data, setData] = useState([]);
     console.log(correct);
 
     const location = useLocation();
@@ -331,8 +333,8 @@ function BookDiaryDetail() {
                 },
             }
         );
-        console.log(getDetail.data.results);
-        console.log(1);
+        console.log(getDetail.data.results[0]);
+        setData(getDetail.data.results[0]);
     };
 
     useEffect(() => {
@@ -368,15 +370,15 @@ function BookDiaryDetail() {
                             <div className="mini-header-wrapper">
                                 <div className="diaryType-wrapper">
                                     <Button
-                                        buttonText={dummyData.diaryType}
+                                        buttonText={data.diaryType}
                                         extraClassName="diaryType_button"
                                         inputColor="purple"
                                         width="130px;"
                                     ></Button>
                                 </div>
                                 <div className="keywords-wrapper">
-                                    {dummyData.keywords.map((it, index) => (
-                                        <div className="key" id={index}>
+                                    {data.keywords &&
+                                        data.keywords.map((it, index) => (
                                             <Button
                                                 key={index}
                                                 buttonText={it}
@@ -384,47 +386,43 @@ function BookDiaryDetail() {
                                                 inputColor="green"
                                                 extraClassName="keyword_button"
                                             ></Button>
-                                        </div>
-                                    ))}
+                                        ))}
                                 </div>
                             </div>
                             <div className="diarycontents">
                                 <div className="contents-box">
                                     <div className="answers">
                                         <div className="answer" id="sub">
-                                            날짜 | {dummyData.date}
+                                            날짜 | {data.date}
                                         </div>
                                         <div className="answer" id="sub">
-                                            날씨 | {dummyData.weather}
+                                            날씨 | {data.weather}
                                         </div>
                                         <div className="answer" id="sub">
-                                            제목 | {dummyData.title}
+                                            제목 | {data.title}
                                         </div>
                                         {!correct ? (
                                             <div className="answer">
-                                                {dummyData.text}
+                                                {data.original_text}
                                             </div>
                                         ) : (
                                             <div className="answer">
-                                                오늘은 엄마께 빨
-                                                <span className="mama">레</span>
-                                                를 널어 효도를 했다.
-                                                어버이날이라 집안일을 도와
-                                                <span className="mama">
-                                                    드려따
-                                                </span>
-                                                . 엄마가 고맙다고 하셨다. 효도를
-                                                하니 감사한 마음이{" "}
-                                                <span className="mama">
-                                                    드러따
-                                                </span>
-                                                . 엄마가 평소에도 도와주었으면
-                                                좋겠다고 하셨다. 앞으로도 자주
-                                                집안일을 도와드려야겠다.
+                                                {/* 여기 제대로 불러오는지 확인해야함 */}
+                                                {data.correct_text.map((text) =>
+                                                    text[0] === "#" ? (
+                                                        <span className="answer_green">
+                                                            {text.slice(1)}
+                                                        </span>
+                                                    ) : (
+                                                        <span className="answer_black">
+                                                            {text}
+                                                        </span>
+                                                    )
+                                                )}
                                             </div>
                                         )}
                                     </div>
-                                    {dummyData.wantToCorrect ? (
+                                    {data.wantToCorrect ? (
                                         <div
                                             className={[
                                                 "correct_button",
@@ -458,7 +456,7 @@ function BookDiaryDetail() {
                                     </div>
                                 </div>
                                 <div className="comment-box" id="target">
-                                    {dummyData.comment}
+                                    {data.comment}
                                 </div>
                                 {/* <div id="target">안녕하세요.</div> */}
                                 <Helmet>
@@ -472,7 +470,7 @@ function BookDiaryDetail() {
                                 <div className="photo-box">
                                     <img
                                         className="diary_img"
-                                        src={diary_img}
+                                        src={data.selectedImage}
                                         height="240"
                                         width="290"
                                         alt=""
