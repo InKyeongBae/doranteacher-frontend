@@ -763,29 +763,36 @@ function Book() {
 	const [data, setData] = useState([]);
 
 	const getMonthNum = async () => {
-		const types = await axios.get(`http://3.39.158.98:8080/diaries/book/count`, {
-			headers: {
-				Authorization: `Bearer ${cookies['accessToken']}`,
-				'Content-type': 'application/json',
-			},
-		});
-		setMonthNum(types.data.results.length);
-		for (var i = 0; i < types.data.results.length; i++) {
-			const diary = {
-				id: i,
-				year: types.data.results[i].date.substr(0, 4),
-				month: parseInt(types.data.results[i].date.substr(5, 8)),
-				diaryNum: types.data.results[i].diaryCount,
-			};
-			setData([...data, diary]);
-		}
+		const types = await axios
+			.get(`http://3.39.158.98:8080/diaries/book/count`, {
+				headers: {
+					Authorization: `Bearer ${cookies['accessToken']}`,
+					'Content-type': 'application/json',
+				},
+			})
+			.then((res) => {
+				var r = [];
+				for (var i = 0; i < res.data.results.length; i++) {
+					const diary = {
+						id: i,
+						year: res.data.results[i].date.substr(0, 4),
+						month: parseInt(res.data.results[i].date.substr(5, 8)),
+						diaryNum: res.data.results[i].diaryCount,
+					};
+					r.push(diary);
+				}
+				setMonthNum(res.data.results.length);
+				return r;
+			})
+			.then((res) => setData(res));
 	};
 
 	useEffect(() => {
 		getMonthNum();
-		console.log(monthNum);
-		console.log(data);
 	}, []);
+
+	console.log(data);
+
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
