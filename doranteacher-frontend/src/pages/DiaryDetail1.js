@@ -299,8 +299,17 @@ function DiaryDetail1() {
     const { id } = useParams();
     const [cookies] = useCookies(["acessToken"]);
     const [data, setData] = useState([]);
+    // data.keywords.map((num, idx) => {
+    //     console.log(num);
+    // });
+    // console.log(keylist);
 
-    const diayDetail = () => {
+    // const numbers = [1, 2, 3, 4, 5];
+    // const keywords = data.keywords;
+    // const result = keywords.map((num) => {
+    //     console.log(num);
+    // });
+    const diaryDetail = () => {
         axios
             .get(`http://3.39.158.98:8080/diaries/${id}`, {
                 headers: {
@@ -315,7 +324,7 @@ function DiaryDetail1() {
     };
 
     useEffect(() => {
-        diayDetail();
+        diaryDetail();
     }, []);
 
     const dummyData =
@@ -366,22 +375,23 @@ function DiaryDetail1() {
                         <div className="mini-header-wrapper">
                             <div className="diaryType-wrapper">
                                 <Button
-                                    buttonText={dummyData.diaryType}
+                                    buttonText={data.diaryType}
                                     extraClassName="diaryType_button"
                                     inputColor="purple"
                                     width="130px;"
                                 ></Button>
                             </div>
                             <div className="keywords-wrapper">
-                                {dummyData.keywords.map((it, index) => (
-                                    <Button
-                                        key={index}
-                                        buttonText={it}
-                                        width="120px;"
-                                        inputColor="green"
-                                        extraClassName="keyword_button"
-                                    ></Button>
-                                ))}
+                                {data.keywords &&
+                                    data.keywords.map((it, index) => (
+                                        <Button
+                                            key={index}
+                                            buttonText={it}
+                                            width="120px;"
+                                            inputColor="green"
+                                            extraClassName="keyword_button"
+                                        ></Button>
+                                    ))}
                             </div>
                         </div>
                         <div className="diarycontents">
