@@ -3,31 +3,31 @@ import React, { useReducer, createContext, useContext, useRef } from 'react';
 const initialSentences = [
 	{
 		id: 1,
-		question: 'Q1. 오늘 본 영상의 제목이 무엇인가요?',
+		question: 'Q1. ',
 		answer: '',
 		active: true,
 	},
 	{
 		id: 2,
-		question: 'Q2. 영상을 보게 된 계기가 있나요?',
+		question: 'Q2. ',
 		answer: '',
 		active: false,
 	},
 	{
 		id: 3,
-		question: 'Q3. 가장 기억에 남는 장면이 무엇인가요? 왜 기억이 남았나요?',
+		question: 'Q3. ',
 		answer: '',
 		active: false,
 	},
 	{
 		id: 4,
-		question: 'Q4. 영상을 보고 어떤 생각이 들었나요?',
+		question: 'Q4. ',
 		answer: '',
 		active: false,
 	},
 	{
 		id: 5,
-		question: 'Q5. 오늘 본 영상을 주변 사람들에게 소개한다면 어떻게 말할 수 있을까요?',
+		question: 'Q5. ',
 		answer: '',
 		active: false,
 	},
@@ -49,6 +49,12 @@ function sentenceReducer(state, action) {
 					? { ...sentence, active: false }
 					: sentence.id === action.nextId
 					? { ...sentence, active: true }
+					: sentence,
+			);
+		case 'CHANGE_QUESTION':
+			return state.map((sentence) =>
+				sentence.id === action.sentence.id
+					? { ...sentence, question: 'Q' + sentence.id + '. ' + action.sentence.question }
 					: sentence,
 			);
 		default:

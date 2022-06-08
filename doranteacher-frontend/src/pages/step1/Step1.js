@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import GlobalStyle from '../../components/GlobalStyle';
@@ -10,6 +10,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Step1List from './Step1List';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import { useSentenceDispatch } from './SentenceContext';
 
 const MainBlock = styled.div`
 	.literally {
@@ -154,6 +157,8 @@ const MainBlock = styled.div`
 
 function Step1() {
 	const navigate = useNavigate('');
+	const [cookies] = useCookies(['acessToken']);
+	const [qsList, setQsList] = useState([]);
 	const StyledContainer = styled(ToastContainer)`
 		&&&.Toastify__toast-container {
 			bottom: 80px;
@@ -192,6 +197,40 @@ function Step1() {
 			autoClose: 3000,
 		});
 	};
+
+	const dispatch = useSentenceDispatch();
+	// const diaryType = localStorage.getItem('diaryType');
+	const diaryType = '요리일기';
+
+	const changeAnswer = async () => {
+		await axios
+			.get(`http://3.39.158.98:8080/diary-types/questions/step1?type=${diaryType}`, {
+				headers: {
+					Authorization: `Bearer ${cookies['accessToken']}`,
+					'Content-type': 'application/json',
+				},
+			})
+			.then((res) => {
+				setQsList(res.data.results);
+			});
+	};
+
+	useEffect(() => {
+		changeAnswer();
+	}, []);
+
+	useEffect(() => {
+		for (var i = 0; i < qsList.length; i++) {
+			console.log(qsList[i]);
+			dispatch({
+				type: 'CHANGE_QUESTION',
+				sentence: {
+					id: i + 1,
+					question: qsList[i],
+				},
+			});
+		}
+	}, [qsList]);
 
 	return (
 		<>
