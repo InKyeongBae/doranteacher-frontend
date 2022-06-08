@@ -1,83 +1,18 @@
-import React, { useState } from 'react';
-import styled, { css, createGlobalStyle } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Header from '../components/Header';
-import Button from '../components/Button';
+import axios from 'axios';
 import GlobalStyle from '../components/GlobalStyle';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LeftDoran from '../components/LeftDoran';
 import ProgressBar from '../components/ProgressBar';
 import TypeItem from '../components/TypeItem';
 import NextButton from '../components/NextButton';
+import { useCookies } from 'react-cookie';
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
 
-const typeList = [
-	{
-		id: 1,
-		type_name: '시청일기',
-	},
-	{
-		id: 2,
-		type_name: '감상일기',
-	},
-	{
-		id: 3,
-		type_name: '체험일기',
-	},
-	{
-		id: 4,
-		type_name: '관찰일기',
-	},
-	{
-		id: 5,
-		type_name: '소식일기',
-	},
-	{
-		id: 6,
-		type_name: '사물일기',
-	},
-	{
-		id: 7,
-		type_name: '편지일기',
-	},
-	{
-		id: 8,
-		type_name: '생각일기',
-	},
-	{
-		id: 9,
-		type_name: '사건일기',
-	},
-	{
-		id: 10,
-		type_name: '과학일기',
-	},
-	{
-		id: 11,
-		type_name: '칭찬일기',
-	},
-	{
-		id: 12,
-		type_name: '학습일기',
-	},
-	{
-		id: 13,
-		type_name: '효도일기',
-	},
-	{
-		id: 14,
-		type_name: '요리일기',
-	},
-	{
-		id: 15,
-		type_name: '여행일기',
-	},
-	{
-		id: 16,
-		type_name: '자유일기',
-	},
-];
 const MainBlock = styled.div`
 	.question {
 		margin-top: 20px;
@@ -123,15 +58,32 @@ const MainBlock = styled.div`
 function DiaryType() {
 	// console.log(getStringDate(new Date()));
 	const [diary, setDiary] = useState(1);
+	const [cookies] = useCookies(['acessToken']);
+	const words = localStorage.getItem('apiKeywords');
+	const [typeList, setTypeList] = useState([]);
+
+	const getTypes = async () => {
+		const types = await axios.get(`http://3.39.158.98:8080/diary-types/recommend?keywords=${words}`, {
+			headers: {
+				Authorization: `Bearer ${cookies['accessToken']}`,
+				'Content-type': 'application/json',
+			},
+		});
+		setTypeList(types.data.results);
+	};
 
 	const handleClickDiary = (diary) => {
 		setDiary(diary);
 	};
 
+	useEffect(() => {
+		getTypes();
+	}, []);
+
 	const navigate = useNavigate('');
 
 	function nextStep() {
-		localStorage.setItem('diaryType', typeList[diary - 1].type_name);
+		localStorage.setItem('diaryType', typeList[diary - 1].diaryType);
 		console.log(localStorage.getItem('step'));
 		if (localStorage.getItem('step') == 1) {
 			navigate('/writing/step1');

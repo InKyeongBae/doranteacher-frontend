@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import GlobalStyle from '../../components/GlobalStyle';
 import { useNavigate } from 'react-router-dom';
 import Monthly from './Monthly';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 const MainBlock = styled.div`
 	.buttons {
@@ -755,6 +757,41 @@ const BookStyle = styled.div`
 
 function Book() {
 	const navigate = useNavigate('');
+
+	const [cookies] = useCookies(['acessToken']);
+	const [monthNum, setMonthNum] = useState(0);
+	const [data, setData] = useState([]);
+
+	const getMonthNum = async () => {
+		const types = await axios
+			.get(`http://3.39.158.98:8080/diaries/book/count`, {
+				headers: {
+					Authorization: `Bearer ${cookies['accessToken']}`,
+					'Content-type': 'application/json',
+				},
+			})
+			.then((res) => {
+				var r = [];
+				for (var i = 0; i < res.data.results.length; i++) {
+					const diary = {
+						id: i,
+						year: res.data.results[i].date.substr(0, 4),
+						month: parseInt(res.data.results[i].date.substr(5, 8)),
+						diaryNum: res.data.results[i].diaryCount,
+						date: res.data.results[i].date,
+					};
+					r.push(diary);
+				}
+				setMonthNum(res.data.results.length);
+				return r;
+			})
+			.then((res) => setData(res));
+	};
+
+	useEffect(() => {
+		getMonthNum();
+	}, []);
+
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
@@ -785,18 +822,54 @@ function Book() {
 								<div className="container">
 									<div className="component">
 										<ul className="align">
-											<Monthly
+											{data.map((it) =>
+												it.id === 0 ? (
+													<Monthly
+														key={it.id}
+														{...it}
+														year={it.year}
+														month={it.month}
+														num={it.diaryNum}
+														recent
+														bookColor={
+															it.id % 4 === 0
+																? 'red'
+																: it.id % 4 === 1
+																? 'blue'
+																: it.id % 4 === 2
+																? 'green'
+																: 'yellow'
+														}
+														link={'/diary/monthly?yearmonth=' + it.date + '&id=1'}
+													/>
+												) : (
+													<Monthly
+														key={it.id}
+														{...it}
+														year={it.year}
+														month={it.month}
+														num={it.diaryNum}
+														bookColor={
+															it.id % 4 === 0
+																? 'red'
+																: it.id % 4 === 1
+																? 'blue'
+																: it.id % 4 === 2
+																? 'green'
+																: 'yellow'
+														}
+														link={'/diary/monthly?yearmonth=' + it.date + '&id=1'}
+													/>
+												),
+											)}
+											{/* <Monthly
 												year="2022년"
 												month="5월의 일기"
 												recent
 												bookColor="red"
 												link="/diary/3"
 												num="3"
-											/>
-											<Monthly year="2022년" month="4월의 일기" bookColor="blue" num="5" />
-											<Monthly year="2022년" month="3월의 일기" bookColor="green" num="15" />
-											<Monthly year="2022년" month="2월의 일기" bookColor="yellow" num="20" />
-											<Monthly year="2022년" month="1월의 일기" bookColor="red" num="11" />
+											/> */}
 										</ul>
 									</div>
 								</div>
