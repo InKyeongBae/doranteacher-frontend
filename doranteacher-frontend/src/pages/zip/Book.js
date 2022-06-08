@@ -791,8 +791,6 @@ function Book() {
 		getMonthNum();
 	}, []);
 
-	console.log(data);
-
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
