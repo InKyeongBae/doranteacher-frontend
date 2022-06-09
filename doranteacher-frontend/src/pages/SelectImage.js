@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import GlobalStyle from "../components/GlobalStyle";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 import {
     useNavigate,
     Link,
@@ -13,59 +15,51 @@ import {
 import LeftDoran from "../components/LeftDoran";
 import ProgressBar from "../components/ProgressBar";
 import { ToastContainer, toast } from "react-toastify";
-import { useCookies } from "react-cookie";
 import NextButton from "../components/NextButton";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
-
-// 0 -125 -250 -375
-// -125 하고 0 -125 -250 -375
-// 1034 × 776
-
-// margin: 10px 20px 15px 5px; 상 우 좌 하 (시계 방향 순서)
-
 const imgList = [
     // 내가 알아서 크롭해야함
     {
         id: 1, //이미지 식별하려고 붙여놓은 이름
-        x: "0px",
-        y: "0px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_1.png`,
     },
     {
         id: 2,
-        x: "0px",
-        y: "-125px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_2.png`,
     },
     {
         id: 3,
-        x: "0px",
-        y: "-250px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_3.png`,
     },
     {
         id: 4,
-        x: "0px",
-        y: "-375px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_4.png`,
     },
     {
         id: 5,
-        x: "-125px",
-        y: "0px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_5.png`,
     },
     {
         id: 6,
-        x: "-125px",
-        y: "-125px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_6.png`,
     },
     {
         id: 7,
-        x: "-125px",
-        y: "-250px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`,
     },
     {
         id: 8,
-        x: "-125px",
-        y: "-375px",
+        img_url:
+            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_8.png`,
     },
 ];
 
@@ -82,7 +76,7 @@ const MainBlock = styled.div`
     }
 
     .input_box_img_list_wrapper {
-        padding-left: 5%;
+        padding-left: 3%;
         // width: 50%;
         place-items: center;
         display: grid;
@@ -98,7 +92,7 @@ const MainBlock = styled.div`
         align-items: center;
         // padding-top: 20px;
 
-        width: 600px;
+        width: 700px;
         height: 450px;
         z-index: 1;
         background: white;
@@ -131,28 +125,68 @@ const MainBlock = styled.div`
         overflow: hidden;
     }
 
-    .cropped img {
-        margin: 0px 0px 0px 0px;
+    // .cropped img {
+    //     margin-top: -270px;
+    //     margin-bottom: -270px;
+    //     margin-left: 0px;
+    //     margin-right: 0px;
+    // }
+
+    .img {
+        cursor: pointer;
     }
 `;
-const Img = styled.div``;
 
-function SelectImage({ route }) {
-    // 1. 이미지 url이랑 diaryid 값 가져와야하고
-    // 2. 특정 이미지 누르면 해당 patch로 API 호출해야함
-    // 3. 디테일 페이지 에서두...비두ㅈ
-    // const location = useLocation();
-    // const id = location.state.id;
-    // const job = location.state.job;
-    // console.log(id);
-    // console.log(job);
-    const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
+function SelectImage() {
+    const [cookies] = useCookies(["acessToken"]);
+    const [data, setData] = useState([]);
+    const [imgId, setImgId] = useState(null);
+    const { id } = useParams();
+    // console.log(imgId);
+    const selectImage = () => {
+        axios
+            .get(`http://3.39.158.98:8080/images/recommend?diaryId=${id}`, {
+                headers: {
+                    Authorization: `Bearer ${cookies["accessToken"]}`,
+                    "Content-type": "application/json",
+                },
+            })
+            .then((res) => {
+                console.log(res.data.results);
+                setData(res.data.results);
+            });
+    };
 
-    imgList.map((it) => console.log(it.id));
+    useEffect(() => {
+        selectImage();
+    }, []);
+
+    // const handleClickWeather = (weather) => {
+    // 	setWeather(weather);
+    // };
+
+    const saveImage = (imgId) => {
+        console.log(id);
+        console.log(imgId);
+        fetch("http://3.39.158.98:8080/images/recommend", {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${cookies["accessToken"]}`,
+            },
+            body: JSON.stringify({
+                diaryId: id,
+                selectedImgId: imgId,
+            }),
+        })
+            .then((response) => response.json())
+            .then(() => {
+                navigate(`/diary/${id}`);
+            });
+    };
+
+    // imgList.map((it) => console.log(it.id));
     const navigate = useNavigate("");
-
-    console.log(process.env.PUBLIC_URL);
-    // const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
 
     return (
         <>
@@ -168,22 +202,25 @@ function SelectImage({ route }) {
                     그림을 선택해봐 !
                 </div>
                 <div className="content-wrapper">
-                    {/* <div className="whitebox"> */}
-                    <div className="input_box_img_list_wrapper">
-                        {imgList.map((it) => (
-                            <div className="cropped">
-                                <Img {...it}>
-                                    <img
-                                        src="/img/recommend.jpg"
-                                        alt=""
-                                        x={it.x}
-                                        y={it.y}
-                                    ></img>
-                                </Img>
-                            </div>
-                        ))}
+                    <div className="whitebox">
+                        <div className="input_box_img_list_wrapper">
+                            {data.map((it, index) => (
+                                <img
+                                    key={index}
+                                    className="img"
+                                    src={it.imgUrl}
+                                    alt=""
+                                    width="150px"
+                                    // onClick={saveImage}
+                                    onClick={() => {
+                                        setImgId(it.imgId);
+                                        saveImage(it.imgId);
+                                    }}
+                                    // onClick={() => saveImage(it.imgID)}
+                                ></img>
+                            ))}
+                        </div>
                     </div>
-                    {/* </div> */}
                 </div>
             </MainBlock>
         </>
