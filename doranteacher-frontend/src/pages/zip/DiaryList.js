@@ -7,9 +7,13 @@ import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../../components/LeftDoran";
 import ProgressBar from "../../components/ProgressBar";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
-const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
+const processing_img = process.env.PUBLIC_URL + `/img/processing.png`;
+const select_img = process.env.PUBLIC_URL + `/img/select.png`;
 const MainBlock = styled.div`
     .buttons {
         margin-top: 30px;
@@ -110,6 +114,31 @@ function DiaryList() {
         diayList();
     }, []);
 
+    const StyledContainer = styled(ToastContainer)`
+        &&&.Toastify__toast-container {
+            bottom: 80px;
+            right: 20px;
+        }
+        .Toastify__toast {
+            font-size: 30px;
+        }
+        .Toastify__toast-body {
+            font-family: "KOTRAHOPE";
+            font-style: normal;
+            font-size: 24px;
+            color: black;
+        }
+        .Toastify__progress-bar {
+        }
+    `;
+
+    const errorNotify = () => {
+        toast.error("그림 추천 중입니다!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1000,
+        });
+    };
+
     // const types = await axios
     // 		.get(`http://3.39.158.98:8080/diaries/book/count`, {
     // 			headers: {
@@ -150,19 +179,62 @@ function DiaryList() {
                 <div className="main">
                     <div className="leftSide">
                         <div className="centercontent">
-                            {datas.map((data, index) => (
-                                <img
-                                    key={index}
-                                    className="diary_img"
-                                    src={data["diaryImgUrl"]}
-                                    height="200"
-                                    width="150"
-                                    onClick={() =>
-                                        navigate("/diary/" + data["diaryId"])
-                                    }
-                                    alt=""
-                                />
-                            ))}
+                            {datas &&
+                                datas.map((data, index) =>
+                                    data.imgStatus === "COMPLETE" ? (
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={data["diaryImgUrl"]}
+                                            height="200"
+                                            width="150"
+                                            onClick={() =>
+                                                navigate(
+                                                    "/diary/" + data["diaryId"],
+                                                    {
+                                                        state: {
+                                                            id: 1,
+                                                            job: "개발자",
+                                                            // 여기에 이제 이미지 url을 끌고 가야함
+                                                        },
+                                                    }
+                                                    // {
+                                                    //     title: "회원가입 페이지에서 왔음",
+                                                    // }
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                    ) : data.imgStatus === "NEED_ACTION" ? (
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={select_img}
+                                            height="200"
+                                            width="150"
+                                            onClick={() =>
+                                                navigate(
+                                                    "/diary/" +
+                                                        data["diaryId"] +
+                                                        "/select"
+                                                    // "diary/:id/select"
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                    ) : (
+                                        // 아래는 data.imgStatus === "PROCESSING"일 경우를 의미한
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={processing_img}
+                                            height="200"
+                                            width="150"
+                                            onClick={errorNotify}
+                                            alt=""
+                                        />
+                                    )
+                                )}
                         </div>
                     </div>
                     {/* <div className="middleSide"></div> */}
@@ -176,6 +248,9 @@ function DiaryList() {
                     </div>
                 </div>
             </MainBlock>
+            <StyledContainer>
+                <ToastContainer />
+            </StyledContainer>
         </>
     );
 }
