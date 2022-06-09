@@ -12,7 +12,6 @@ import axios from "axios";
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 // const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
-const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
 const doran_img = process.env.PUBLIC_URL + `/img/doran_half_1.png`;
 
 const MainBlock = styled.div`
@@ -299,16 +298,6 @@ function DiaryDetail() {
     const { id } = useParams();
     const [cookies] = useCookies(["acessToken"]);
     const [data, setData] = useState([]);
-    // data.keywords.map((num, idx) => {
-    //     console.log(num);
-    // });
-    // console.log(keylist);
-
-    // const numbers = [1, 2, 3, 4, 5];
-    // const keywords = data.keywords;
-    // const result = keywords.map((num) => {
-    //     console.log(num);
-    // });
     const diaryDetail = () => {
         axios
             .get(`http://3.39.158.98:8080/diaries/${id}`, {
@@ -464,9 +453,13 @@ function DiaryDetail() {
                             <div className="comment-box" id="target">
                                 {data.comment}
                             </div>
-                            <Helmet>
-                                <script>TypeHangul.type('#target');</script>
-                            </Helmet>
+                            {data.comment ? (
+                                <Helmet>
+                                    <script>TypeHangul.type('#target');</script>
+                                </Helmet>
+                            ) : (
+                                ""
+                            )}
                         </div>
                         <div className="photo-wrapper">
                             <div className="content">

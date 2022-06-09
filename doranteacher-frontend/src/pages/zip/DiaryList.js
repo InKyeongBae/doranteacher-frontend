@@ -114,30 +114,30 @@ function DiaryList() {
         diayList();
     }, []);
 
-    // const StyledContainer = styled(ToastContainer)`
-    //     &&&.Toastify__toast-container {
-    //         bottom: 80px;
-    //         right: 20px;
-    //     }
-    //     .Toastify__toast {
-    //         font-size: 30px;
-    //     }
-    //     .Toastify__toast-body {
-    //         font-family: "KOTRAHOPE";
-    //         font-style: normal;
-    //         font-size: 24px;
-    //         color: black;
-    //     }
-    //     .Toastify__progress-bar {
-    //     }
-    // `;
+    const StyledContainer = styled(ToastContainer)`
+        &&&.Toastify__toast-container {
+            bottom: 80px;
+            right: 20px;
+        }
+        .Toastify__toast {
+            font-size: 30px;
+        }
+        .Toastify__toast-body {
+            font-family: "KOTRAHOPE";
+            font-style: normal;
+            font-size: 24px;
+            color: black;
+        }
+        .Toastify__progress-bar {
+        }
+    `;
 
-    // const errorNotify = () => {
-    //     toast.error("그림 추천 중입니다!", {
-    //         position: toast.POSITION.BOTTOM_RIGHT,
-    //         autoClose: 1000,
-    //     });
-    // };
+    const errorNotify = () => {
+        toast.error("그림 추천 중입니다!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 1000,
+        });
+    };
 
     // const types = await axios
     // 		.get(`http://3.39.158.98:8080/diaries/book/count`, {
@@ -190,12 +190,22 @@ function DiaryList() {
                                             width="150"
                                             onClick={() =>
                                                 navigate(
-                                                    "/diary/" + data["diaryId"]
+                                                    "/diary/" + data["diaryId"],
+                                                    {
+                                                        state: {
+                                                            id: 1,
+                                                            job: "개발자",
+                                                            // 여기에 이제 이미지 url을 끌고 가야함
+                                                        },
+                                                    }
+                                                    // {
+                                                    //     title: "회원가입 페이지에서 왔음",
+                                                    // }
                                                 )
                                             }
                                             alt=""
                                         />
-                                    ) : data.imgStatus === "SELECT" ? (
+                                    ) : data.imgStatus === "NEED_ACTION" ? (
                                         <img
                                             key={index}
                                             className="diary_img"
@@ -204,7 +214,10 @@ function DiaryList() {
                                             width="150"
                                             onClick={() =>
                                                 navigate(
-                                                    "/diary/" + data["diaryId"]
+                                                    "/diary/" +
+                                                        data["diaryId"] +
+                                                        "/select"
+                                                    // "diary/:id/select"
                                                 )
                                             }
                                             alt=""
@@ -217,13 +230,7 @@ function DiaryList() {
                                             src={processing_img}
                                             height="200"
                                             width="150"
-                                            onClick={
-                                                // 아직 추천중입니다 토스트 알림 주기
-                                                // errorNotify
-                                                navigate(
-                                                    "/diary/" + data["diaryId"]
-                                                )
-                                            }
+                                            onClick={errorNotify}
                                             alt=""
                                         />
                                     )
@@ -241,9 +248,9 @@ function DiaryList() {
                     </div>
                 </div>
             </MainBlock>
-            {/* <StyledContainer>
+            <StyledContainer>
                 <ToastContainer />
-            </StyledContainer> */}
+            </StyledContainer>
         </>
     );
 }

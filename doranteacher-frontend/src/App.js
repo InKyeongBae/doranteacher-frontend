@@ -21,7 +21,6 @@ import { Step1SentenceProvider } from "./pages/step1/SentenceContext";
 import { Step2SentenceProvider } from "./pages/step2/SentenceContext";
 import DiaryContentsViewStep2 from "./pages/diarycontentsview/DiaryContentsViewStep2";
 import { WordProvider } from "./pages/brainstorm/WordContext";
-
 import BookDiaryDetail from "./pages/BookDiaryDetail";
 import SelectImage from "./pages/SelectImage";
 import DiaryDetail from "./pages/DiaryDetail";
@@ -100,6 +99,10 @@ function App() {
                                 <Route
                                     path="diary/:id"
                                     element={<DiaryDetail />}
+                                />
+                                <Route
+                                    path="diary/:id/select"
+                                    element={<SelectImage />}
                                 />
                                 <Route
                                     path="diary/monthly"
