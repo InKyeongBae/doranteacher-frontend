@@ -18,50 +18,54 @@ import NextButton from "../components/NextButton";
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
-const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
 
+// 0 -125 -250 -375
+// -125 하고 0 -125 -250 -375
 // 1034 × 776
+
+// margin: 10px 20px 15px 5px; 상 우 좌 하 (시계 방향 순서)
+
 const imgList = [
     // 내가 알아서 크롭해야함
     {
         id: 1, //이미지 식별하려고 붙여놓은 이름
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_1.png`,
+        x: "0px",
+        y: "0px",
     },
     {
         id: 2,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_2.png`,
+        x: "0px",
+        y: "-125px",
     },
     {
         id: 3,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_3.png`,
+        x: "0px",
+        y: "-250px",
     },
     {
         id: 4,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_4.png`,
+        x: "0px",
+        y: "-375px",
     },
     {
         id: 5,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_5.png`,
+        x: "-125px",
+        y: "0px",
     },
     {
         id: 6,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_6.png`,
+        x: "-125px",
+        y: "-125px",
     },
     {
         id: 7,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`,
+        x: "-125px",
+        y: "-250px",
     },
     {
         id: 8,
-        img_url:
-            process.env.PUBLIC_URL + `/img/image_recommend/hamburger_8.png`,
+        x: "-125px",
+        y: "-375px",
     },
 ];
 
@@ -92,7 +96,7 @@ const MainBlock = styled.div`
         display: flex;
         // flex-direction: column;
         align-items: center;
-        padding-top: 20px;
+        // padding-top: 20px;
 
         width: 600px;
         height: 450px;
@@ -120,37 +124,35 @@ const MainBlock = styled.div`
         margin-bottom: 20px;
     }
 
-    .hamburger_img {
-        cursor: pointer;
-        margin-top: 300 px;
-    }
-
     .cropped {
-        width: 120px;
-        height: 120px;
+        width: 260px;
+        height: 260px;
+        // object-fit: cover;
         overflow: hidden;
     }
-    // 0 -125 -250 -375
-    // -125 하고 0 -125 -250 -375
 
     .cropped img {
-        margin: -125px 0px 0px -375px;
+        margin: 0px 0px 0px 0px;
     }
 `;
-function SelectImage({ route }) {
-    // 이미지 url이랑 diaryid 값 가져와야하고, patch로 붙여야함
-    // const location = useLocation();
+const Img = styled.div``;
 
+function SelectImage({ route }) {
+    // 1. 이미지 url이랑 diaryid 값 가져와야하고
+    // 2. 특정 이미지 누르면 해당 patch로 API 호출해야함
+    // 3. 디테일 페이지 에서두...비두ㅈ
+    // const location = useLocation();
     // const id = location.state.id;
     // const job = location.state.job;
-
     // console.log(id);
     // console.log(job);
-    // const params = useParams();
-    // console.log(params);
+    const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
+
+    imgList.map((it) => console.log(it.id));
     const navigate = useNavigate("");
 
-    const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
+    console.log(process.env.PUBLIC_URL);
+    // const img_url = process.env.PUBLIC_URL + `/img/recommend.jpg`;
 
     return (
         <>
@@ -166,56 +168,22 @@ function SelectImage({ route }) {
                     그림을 선택해봐 !
                 </div>
                 <div className="content-wrapper">
-                    <div className="whitebox">
-                        <div className="input_box_img_list_wrapper">
-                            <img
-                                src={img_url}
-                                className="hamburger_img"
-                                height="250"
-                                width="500"
-                                alt=""
-                                // 1034*518
-                            />
-                            <div class="cropped">
-                                <img
-                                    src={img_url}
-                                    height="250"
-                                    width="500"
-                                    alt=""
-                                />
-                            </div>
-                            {/* {imgList.map(
-                                (it) => (
+                    {/* <div className="whitebox"> */}
+                    <div className="input_box_img_list_wrapper">
+                        {imgList.map((it) => (
+                            <div className="cropped">
+                                <Img {...it}>
                                     <img
-                                        className="hamburger_img"
-                                        src={it.img_url}
-                                        height="120"
-                                        width="120"
+                                        src="/img/recommend.jpg"
                                         alt=""
-                                        onClick={() => {
-                                            navigate("/diary/2");
-                                        }}
-                                    />
-                                )
-                                // <TypeItem
-                                //     key={it.id}
-                                //     {...it}
-                                //     onClick={handleClickDiary}
-                                //     isSelected={it.id === diary}
-                                // />
-                            )} */}
-                        </div>
+                                        x={it.x}
+                                        y={it.y}
+                                    ></img>
+                                </Img>
+                            </div>
+                        ))}
                     </div>
-                    {/* <div className="button-wrapper">
-                        <Button
-                            buttonText="저장"
-                            inputColor="purple"
-                            type="submit"
-                            outputColor="purple"
-                            extraClassName="save_button"
-                            // onClick={saveFunc}
-                        ></Button>
-                    </div> */}
+                    {/* </div> */}
                 </div>
             </MainBlock>
         </>
