@@ -198,16 +198,17 @@ function DiarySave() {
 						console.log(json);
 						setGm(json.corrected);
 						// setCorrectSentence(json.correct);
+						return [json.corrected, json.correct];
 					})
-					.then(() => {
+					.then(([gram, cSentence]) => {
+						console.log(cSentence);
 						fetch('http://52.78.38.31:5000/comment', {
 							method: 'POST',
 							headers: {
 								'Content-type': 'application/json',
 							},
 							body: JSON.stringify({
-								text: localStorage.getItem('text'),
-								// text: correctSentence
+								text: cSentence,
 							}),
 						})
 							.then((res) => {
@@ -216,8 +217,11 @@ function DiarySave() {
 							.then((json) => {
 								console.log(json.result); // 서버에서 주는 json데이터가 출력 됨
 								setCm(json.result);
+								return json.result;
 							})
-							.then(() => {
+							.then((commentvalue) => {
+								console.log(gram);
+								console.log(commentvalue);
 								formData.append(
 									'data',
 									JSON.stringify({
@@ -225,11 +229,13 @@ function DiarySave() {
 										date: localStorage.getItem('date'),
 										weather: localStorage.getItem('weather'),
 										keywords: localStorage.getItem('apiKeywords'),
-										text: localStorage.getItem('text'),
+										originalText: localStorage.getItem('text'),
 										diaryType: localStorage.getItem('diaryType'),
 										isPrivate: !comment,
 										wantToCorrect: correct,
 										wantToImage: painting,
+										comment: commentvalue,
+										correctText: gram,
 									}),
 								);
 								fetch('http://3.39.158.98:8080/diaries', {
@@ -268,8 +274,10 @@ function DiarySave() {
 						console.log(json);
 						setGm(json.corrected);
 						// setCorrectSentence(json.correct);
+						return json.corrected;
 					})
-					.then(() => {
+					.then((gram) => {
+						console.log(gram);
 						formData.append(
 							'data',
 							JSON.stringify({
@@ -277,11 +285,13 @@ function DiarySave() {
 								date: localStorage.getItem('date'),
 								weather: localStorage.getItem('weather'),
 								keywords: localStorage.getItem('apiKeywords'),
-								text: localStorage.getItem('text'),
+								originalText: localStorage.getItem('text'),
 								diaryType: localStorage.getItem('diaryType'),
 								isPrivate: !comment,
 								wantToCorrect: correct,
 								wantToImage: painting,
+								comment: '',
+								correctText: gram,
 							}),
 						);
 						fetch('http://3.39.158.98:8080/diaries', {
