@@ -413,17 +413,18 @@ function DiaryDetail() {
                                     ) : (
                                         <div>
                                             {/* 여기 제대로 불러오는지 확인해야함 */}
-                                            {data.correct_text.map((text) =>
-                                                text[0] === "#" ? (
-                                                    <span className="answer_green">
-                                                        {text.slice(1)}
-                                                    </span>
-                                                ) : (
-                                                    <span className="answer_black">
-                                                        {text}
-                                                    </span>
-                                                )
-                                            )}
+                                            {data.correct_text &&
+                                                data.correct_text.map((text) =>
+                                                    text[0] === "#" ? (
+                                                        <span className="answer_green">
+                                                            {text.slice(1)}
+                                                        </span>
+                                                    ) : (
+                                                        <span className="answer_black">
+                                                            {text}
+                                                        </span>
+                                                    )
+                                                )}
                                         </div>
                                     )}
                                 </div>
