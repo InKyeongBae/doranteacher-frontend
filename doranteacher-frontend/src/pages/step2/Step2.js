@@ -195,18 +195,20 @@ function Step2() {
 	}
 	// const diaryType = localStorage.getItem('diaryType');
 	const diaryType = '요리일기';
+	const url = 'http://3.39.158.98:8080/diary-types/questions/step2?type=' + diaryType;
+
 	const [qs, setQs] = useState('');
 	const changeQs = async () => {
-		await axios
-			.get(`http://3.39.158.98:8080/diary-types/questions/step2?type=${diaryType}`, {
-				headers: {
-					Authorization: `Bearer ${cookies['accessToken']}`,
-					'Content-type': 'application/json',
-				},
-			})
-			.then((res) => {
-				setQs(res.data.results[0]);
-			});
+
+		fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${cookies['accessToken']}`,
+			},
+		})
+			.then((response) => response.json())
+			.then((res) => setQs(res.results[0]));
 	};
 
 	useEffect(() => {
