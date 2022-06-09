@@ -289,6 +289,14 @@ const MainBlock = styled.div`
 		line-height: 60px;
 		border-bottom: 2px solid black;
 	}
+
+	.buttonprev1 {
+		visibility: hidden;
+	}
+
+	.buttonnext_hidden {
+		visibility: hidden;
+	}
 `;
 
 function BookDiaryDetail() {
@@ -296,6 +304,8 @@ function BookDiaryDetail() {
 	// console.log(getStringDate(new Date()));
 	const [correct, setCorrect] = useState(false);
 	const [data, setData] = useState([]);
+	const last = 'buttonnext' + localStorage.getItem('lennum');
+	console.log(last);
 	console.log(correct);
 
 	const location = useLocation();
@@ -317,7 +327,7 @@ function BookDiaryDetail() {
 				'Content-type': 'application/json',
 			},
 		});
-		const dId = getId.data.results[id - 1].diaryId;
+
 		const getDetail = await axios.get(`http://3.39.158.98:8080/diaries/book?year=${year}&month=${month}`, {
 			headers: {
 				Authorization: `Bearer ${cookies['accessToken']}`,
@@ -325,13 +335,20 @@ function BookDiaryDetail() {
 			},
 		});
 
-		setData(getDetail.data.results[0]);
+		setData(getDetail.data.results[id - 1]);
 		return getDetail.data.results.length;
 	};
 
 	useEffect(() => {
-		const monthDiaryNum = getMonthNum();
-	}, []);
+		getMonthNum();
+	}, [location.search]);
+
+	function prevStep() {
+		navigate(`/diary/monthly?yearmonth=${year}-${month}&id=${id - 1}`);
+	}
+	function nextStep() {
+		navigate(`/diary/monthly?yearmonth=${year}-${month}&id=${id + 1}`);
+	}
 
 	return (
 		<>
@@ -350,12 +367,12 @@ function BookDiaryDetail() {
 				>
 					<ImgButton
 						prev
-						onClick={() => navigate(`?yearmonth=${year}-${month}&id=${id - 1}`)}
+						onClick={prevStep}
 						style={{
 							display: 'inline-flex',
 							margin: 'auto 10px',
-							visibility: 'hidden',
 						}}
+						extraClassName={'prev' + id}
 					/>
 					<div className="main-wrapper">
 						<div className="leftside">
@@ -460,7 +477,8 @@ function BookDiaryDetail() {
 					</div>
 					<ImgButton
 						next
-						onClick={() => navigate(`?yearmonth=${year}-${month}&id=${id + 1}`)}
+						extraClassName={id == localStorage.getItem('lennum') ? 'next_hidden' : 'next'}
+						onClick={nextStep}
 						style={{ display: 'inline-flex', margin: 'auto 10px' }}
 					/>
 				</div>
