@@ -199,8 +199,7 @@ function Step1() {
 	};
 
 	const dispatch = useSentenceDispatch();
-	// const diaryType = localStorage.getItem('diaryType');
-	const diaryType = '요리일기';
+	const diaryType = localStorage.getItem('diaryType');
 	const url = 'http://3.39.158.98:8080/diary-types/questions/step1?type=' + diaryType;
 
 	const changeAnswer = async () => {

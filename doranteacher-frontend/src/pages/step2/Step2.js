@@ -193,10 +193,8 @@ function Step2() {
 		localStorage.setItem('text', diaries);
 		navigate('/writing/step2/diary-contents-view');
 	}
-	// const diaryType = localStorage.getItem('diaryType');
-	const diaryType = '요리일기';
+	const diaryType = localStorage.getItem('diaryType');
 	const url = 'http://3.39.158.98:8080/diary-types/questions/step2?type=' + diaryType;
-
 	const [qs, setQs] = useState('');
 	const changeQs = async () => {
 
