@@ -24,7 +24,7 @@ import { WordProvider } from "./pages/brainstorm/WordContext";
 
 import BookDiaryDetail from "./pages/BookDiaryDetail";
 import SelectImage from "./pages/SelectImage";
-import DiaryDetail1 from "./pages/DiaryDetail1";
+import DiaryDetail from "./pages/DiaryDetail";
 
 const palette = {
     red: "#E75244",
@@ -99,7 +99,7 @@ function App() {
                                 <Route path="book-list" element={<Book />} />
                                 <Route
                                     path="diary/:id"
-                                    element={<DiaryDetail1 />}
+                                    element={<DiaryDetail />}
                                 />
                                 <Route
                                     path="diary/monthly"

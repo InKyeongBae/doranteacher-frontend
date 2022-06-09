@@ -294,7 +294,7 @@ const MainBlock = styled.div`
     }
 `;
 
-function DiaryDetail1() {
+function DiaryDetail() {
     const [correct, setCorrect] = useState(false);
     const { id } = useParams();
     const [cookies] = useCookies(["acessToken"]);
@@ -488,4 +488,4 @@ function DiaryDetail1() {
     );
 }
 
-export default DiaryDetail1;
+export default DiaryDetail;
