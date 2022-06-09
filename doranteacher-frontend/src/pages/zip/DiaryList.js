@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import LeftDoran from "../../components/LeftDoran";
 import ProgressBar from "../../components/ProgressBar";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
 const env = process.env;
@@ -113,6 +114,31 @@ function DiaryList() {
         diayList();
     }, []);
 
+    // const StyledContainer = styled(ToastContainer)`
+    //     &&&.Toastify__toast-container {
+    //         bottom: 80px;
+    //         right: 20px;
+    //     }
+    //     .Toastify__toast {
+    //         font-size: 30px;
+    //     }
+    //     .Toastify__toast-body {
+    //         font-family: "KOTRAHOPE";
+    //         font-style: normal;
+    //         font-size: 24px;
+    //         color: black;
+    //     }
+    //     .Toastify__progress-bar {
+    //     }
+    // `;
+
+    // const errorNotify = () => {
+    //     toast.error("그림 추천 중입니다!", {
+    //         position: toast.POSITION.BOTTOM_RIGHT,
+    //         autoClose: 1000,
+    //     });
+    // };
+
     // const types = await axios
     // 		.get(`http://3.39.158.98:8080/diaries/book/count`, {
     // 			headers: {
@@ -191,7 +217,9 @@ function DiaryList() {
                                             src={processing_img}
                                             height="200"
                                             width="150"
-                                            onClick={() =>
+                                            onClick={
+                                                // 아직 추천중입니다 토스트 알림 주기
+                                                // errorNotify
                                                 navigate(
                                                     "/diary/" + data["diaryId"]
                                                 )
@@ -213,6 +241,9 @@ function DiaryList() {
                     </div>
                 </div>
             </MainBlock>
+            {/* <StyledContainer>
+                <ToastContainer />
+            </StyledContainer> */}
         </>
     );
 }
