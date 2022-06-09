@@ -291,6 +291,14 @@ const MainBlock = styled.div`
         line-height: 60px;
         border-bottom: 2px solid black;
     }
+
+    .buttonprev1 {
+        visibility: hidden;
+    }
+
+    .buttonnext_hidden {
+        visibility: hidden;
+    }
 `;
 
 function BookDiaryDetail() {
@@ -298,6 +306,8 @@ function BookDiaryDetail() {
     // console.log(getStringDate(new Date()));
     const [correct, setCorrect] = useState(false);
     const [data, setData] = useState([]);
+    const last = "buttonnext" + localStorage.getItem("lennum");
+    console.log(last);
     console.log(correct);
 
     const location = useLocation();
@@ -309,8 +319,6 @@ function BookDiaryDetail() {
     const year = query.yearmonth.substr(0, 4);
     const month = query.yearmonth.substr(5, 8);
     const id = Number(query.id);
-    console.log(id + 1);
-    console.log(year, month);
 
     const [cookies] = useCookies(["acessToken"]);
 
@@ -324,9 +332,9 @@ function BookDiaryDetail() {
                 },
             }
         );
-        const dId = getId.data.results[id - 1].diaryId;
+
         const getDetail = await axios.get(
-            `http://3.39.158.98:8080/diaries/${dId}`,
+            `http://3.39.158.98:8080/diaries/book?year=${year}&month=${month}`,
             {
                 headers: {
                     Authorization: `Bearer ${cookies["accessToken"]}`,
@@ -334,13 +342,21 @@ function BookDiaryDetail() {
                 },
             }
         );
-        console.log(getDetail.data.results[0]);
-        setData(getDetail.data.results[0]);
+
+        setData(getDetail.data.results[id - 1]);
+        return getDetail.data.results.length;
     };
 
     useEffect(() => {
         getMonthNum();
-    }, []);
+    }, [location.search]);
+
+    function prevStep() {
+        navigate(`/diary/monthly?yearmonth=${year}-${month}&id=${id - 1}`);
+    }
+    function nextStep() {
+        navigate(`/diary/monthly?yearmonth=${year}-${month}&id=${id + 1}`);
+    }
 
     return (
         <>
@@ -359,14 +375,12 @@ function BookDiaryDetail() {
                 >
                     <ImgButton
                         prev
-                        onClick={() =>
-                            navigate(`?yearmonth=${year}-${month}&id=${id - 1}`)
-                        }
+                        onClick={prevStep}
                         style={{
                             display: "inline-flex",
                             margin: "auto 10px",
-                            visibility: "hidden",
                         }}
+                        extraClassName={"prev" + id}
                     />
                     <div className="main-wrapper">
                         <div className="leftside">
@@ -415,7 +429,12 @@ function BookDiaryDetail() {
                                                     data.correct_text.map(
                                                         (text) =>
                                                             text[0] === "#" ? (
-                                                                <span className="answer_green">
+                                                                <span
+                                                                    className="answer_green"
+                                                                    style={{
+                                                                        color: "#33ff33",
+                                                                    }}
+                                                                >
                                                                     {text.slice(
                                                                         1
                                                                     )}
@@ -466,9 +485,15 @@ function BookDiaryDetail() {
                                     {data.comment}
                                 </div>
                                 {/* <div id="target">안녕하세요.</div> */}
-                                <Helmet>
-                                    <script>TypeHangul.type('#target');</script>
-                                </Helmet>
+                                {data.comment ? (
+                                    <Helmet>
+                                        <script>
+                                            TypeHangul.type('#target');
+                                        </script>
+                                    </Helmet>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                             <div className="photo-wrapper">
                                 <div className="content">
@@ -488,9 +513,12 @@ function BookDiaryDetail() {
                     </div>
                     <ImgButton
                         next
-                        onClick={() =>
-                            navigate(`?yearmonth=${year}-${month}&id=${id + 1}`)
+                        extraClassName={
+                            id == localStorage.getItem("lennum")
+                                ? "next_hidden"
+                                : "next"
                         }
+                        onClick={nextStep}
                         style={{ display: "inline-flex", margin: "auto 10px" }}
                     />
                 </div>

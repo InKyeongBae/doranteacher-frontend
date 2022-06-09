@@ -2,6 +2,7 @@ import React from 'react';
 
 function Monthly({ year, month, recent, bookColor, link, num }) {
 	const cName = 'coverDesign ' + bookColor;
+	const check = num;
 
 	return (
 		<li>
@@ -20,7 +21,7 @@ function Monthly({ year, month, recent, bookColor, link, num }) {
 				<ul className="page">
 					<li></li>
 					<li>
-						<a href={link} className="btn">
+						<a href={link} className="btn" onClick={() => localStorage.setItem('lennum', check)}>
 							일기 보기
 						</a>
 					</li>

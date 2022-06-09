@@ -124,7 +124,7 @@ const ImgButtons = styled.div`
 `;
 
 function ImgButton({ extraClassName, setting, undo, next, prev, check, onClick, ...rest }) {
-	const className = extraClassName ? 'button ' + extraClassName : 'button';
+	const className = extraClassName ? 'button' + extraClassName : 'button';
 	return (
 		<ImgButtons {...rest}>
 			<button className={className} id="btn" onClick={onClick}>

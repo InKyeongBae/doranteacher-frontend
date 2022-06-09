@@ -12,6 +12,9 @@ import axios from "axios";
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 // const diary_img = process.env.PUBLIC_URL + `/img/diary_img.jpeg`;
+
+const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
+
 const doran_img = process.env.PUBLIC_URL + `/img/doran_half_1.png`;
 
 const MainBlock = styled.div`
