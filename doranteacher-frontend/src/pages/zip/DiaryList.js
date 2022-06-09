@@ -9,7 +9,10 @@ import ProgressBar from "../../components/ProgressBar";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
-const diary_img = "https://i.ytimg.com/vi/L6JTC0t3n9U/maxresdefault.jpg";
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
+const processing_img = process.env.PUBLIC_URL + `/img/processing.png`;
+const select_img = process.env.PUBLIC_URL + `/img/select.png`;
 const MainBlock = styled.div`
     .buttons {
         margin-top: 30px;
@@ -150,19 +153,53 @@ function DiaryList() {
                 <div className="main">
                     <div className="leftSide">
                         <div className="centercontent">
-                            {datas.map((data, index) => (
-                                <img
-                                    key={index}
-                                    className="diary_img"
-                                    src={data["diaryImgUrl"]}
-                                    height="200"
-                                    width="150"
-                                    onClick={() =>
-                                        navigate("/diary/" + data["diaryId"])
-                                    }
-                                    alt=""
-                                />
-                            ))}
+                            {datas &&
+                                datas.map((data, index) =>
+                                    data.imgStatus === "COMPLETE" ? (
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={data["diaryImgUrl"]}
+                                            height="200"
+                                            width="150"
+                                            onClick={() =>
+                                                navigate(
+                                                    "/diary/" + data["diaryId"]
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                    ) : data.imgStatus === "SELECT" ? (
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={select_img}
+                                            height="200"
+                                            width="150"
+                                            onClick={() =>
+                                                navigate(
+                                                    "/diary/" + data["diaryId"]
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                    ) : (
+                                        // 아래는 data.imgStatus === "PROCESSING"일 경우를 의미한
+                                        <img
+                                            key={index}
+                                            className="diary_img"
+                                            src={processing_img}
+                                            height="200"
+                                            width="150"
+                                            onClick={() =>
+                                                navigate(
+                                                    "/diary/" + data["diaryId"]
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                    )
+                                )}
                         </div>
                     </div>
                     {/* <div className="middleSide"></div> */}
