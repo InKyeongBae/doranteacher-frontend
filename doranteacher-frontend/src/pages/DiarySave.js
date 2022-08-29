@@ -182,7 +182,7 @@ function DiarySave() {
 				formData.append('images', file);
 			}
 			if (comment) {
-				fetch('http://52.78.38.31:5000/correct', {
+				fetch('http://52.78.16.114:8080/correct', {
 					method: 'POST',
 					headers: {
 						'Content-type': 'application/json',
@@ -202,7 +202,7 @@ function DiarySave() {
 					})
 					.then(([gram, cSentence]) => {
 						console.log(cSentence);
-						fetch('http://52.78.38.31:5000/comment', {
+						fetch('http://52.78.16.114:8080/comment', {
 							method: 'POST',
 							headers: {
 								'Content-type': 'application/json',
@@ -258,7 +258,7 @@ function DiarySave() {
 							});
 					});
 			} else {
-				fetch('http://52.78.38.31:5000/correct', {
+				fetch('http://52.78.16.114:8080/correct', {
 					method: 'POST',
 					headers: {
 						'Content-type': 'application/json',
