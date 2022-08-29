@@ -63,7 +63,7 @@ function WordPaint() {
 			console.log(imgData);
 			const removeId = pending();
 
-			fetch('http://3.39.158.98:8080/ocrtext', {
+			fetch('https://api.doranssam.com/ocrtext', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',

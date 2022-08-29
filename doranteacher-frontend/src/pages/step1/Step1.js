@@ -200,7 +200,7 @@ function Step1() {
 
 	const dispatch = useSentenceDispatch();
 	const diaryType = localStorage.getItem('diaryType');
-	const url = 'http://3.39.158.98:8080/diary-types/questions/step1?type=' + diaryType;
+	const url = 'https://api.doranssam.com/diary-types/questions/step1?type=' + diaryType;
 
 	const changeAnswer = async () => {
 		fetch(url, {
@@ -208,7 +208,7 @@ function Step1() {
 			headers: {
 				'Content-type': 'application/json',
 				Authorization: `Bearer ${cookies['accessToken']}`,
-			}
+			},
 		})
 			.then((response) => response.json())
 			.then((res) => setQsList(res.results));

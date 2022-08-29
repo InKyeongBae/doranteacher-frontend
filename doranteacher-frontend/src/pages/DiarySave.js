@@ -238,7 +238,7 @@ function DiarySave() {
 										correctText: gram,
 									}),
 								);
-								fetch('http://3.39.158.98:8080/diaries', {
+								fetch('https://api.doranssam.com/diaries', {
 									method: 'POST',
 									headers: {
 										Authorization: `Bearer ${cookies['accessToken']}`,
@@ -294,7 +294,7 @@ function DiarySave() {
 								correctText: gram,
 							}),
 						);
-						fetch('http://3.39.158.98:8080/diaries', {
+						fetch('https://api.doranssam.com/diaries', {
 							method: 'POST',
 							headers: {
 								Authorization: `Bearer ${cookies['accessToken']}`,

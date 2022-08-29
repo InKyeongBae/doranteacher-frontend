@@ -113,7 +113,7 @@ const Loginpage = (props) => {
 
 			console.log(data);
 			axios
-				.post('http://3.39.158.98:8080/auth/login', data)
+				.post('https://api.doranssam.com/auth/login', data)
 				.then((res) => {
 					console.log(res);
 					console.log(res.data.results[0].accessToken);

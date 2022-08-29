@@ -324,7 +324,7 @@ function BookDiaryDetail() {
 
     const getMonthNum = async () => {
         const getId = await axios.get(
-            `http://3.39.158.98:8080/diaries?year=${year}&month=${month}`,
+            `https://api.doranssam.com/diaries?year=${year}&month=${month}`,
             {
                 headers: {
                     Authorization: `Bearer ${cookies["accessToken"]}`,
@@ -334,7 +334,7 @@ function BookDiaryDetail() {
         );
 
         const getDetail = await axios.get(
-            `http://3.39.158.98:8080/diaries/book?year=${year}&month=${month}`,
+            `https://api.doranssam.com/diaries/book?year=${year}&month=${month}`,
             {
                 headers: {
                     Authorization: `Bearer ${cookies["accessToken"]}`,

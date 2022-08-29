@@ -166,7 +166,7 @@ function Mainpage() {
 	function writeStart() {
 		axios.defaults.headers.common['Authorization'] = `Bearer ${cookies['accessToken']}`;
 		axios
-			.get('http://3.39.158.98:8080/user/me')
+			.get('https://api.doranssam.com/user/me')
 			.then((res) => localStorage.setItem('step', res.data.results[0].writingStep))
 			.then(() => navigate('/writing/start'));
 	}

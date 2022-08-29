@@ -194,10 +194,9 @@ function Step2() {
 		navigate('/writing/step2/diary-contents-view');
 	}
 	const diaryType = localStorage.getItem('diaryType');
-	const url = 'http://3.39.158.98:8080/diary-types/questions/step2?type=' + diaryType;
+	const url = 'https://api.doranssam.com/diary-types/questions/step2?type=' + diaryType;
 	const [qs, setQs] = useState('');
 	const changeQs = async () => {
-
 		fetch(url, {
 			method: 'GET',
 			headers: {

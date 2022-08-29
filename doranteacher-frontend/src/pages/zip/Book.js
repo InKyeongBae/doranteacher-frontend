@@ -764,7 +764,7 @@ function Book() {
 
 	const getMonthNum = async () => {
 		const types = await axios
-			.get(`http://3.39.158.98:8080/diaries/book/count`, {
+			.get(`https://api.doranssam.com/diaries/book/count`, {
 				headers: {
 					Authorization: `Bearer ${cookies['accessToken']}`,
 					'Content-type': 'application/json',

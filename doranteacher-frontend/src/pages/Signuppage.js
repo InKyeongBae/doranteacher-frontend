@@ -156,7 +156,7 @@ function Signuppage(props) {
 		console.log(data);
 
 		axios
-			.post('http://3.39.158.98:8080/auth/signup', data)
+			.post('https://api.doranssam.com/auth/signup', data)
 			.then((res) => {
 				console.log(res);
 				console.log('토스트시작');
