@@ -248,9 +248,10 @@ function DiarySave() {
 									.then((response) => response.json())
 									.then((res) => {
 										if (painting) {
-											console.log(res.data.results[0].diaryId);
+											console.log(res);
+											console.log(res.results[0].diaryId);
 											localStorage.clear();
-											localStorage.setItem('processing', res.data.results[0].diaryId);
+											localStorage.setItem('processing', res.results[0].diaryId);
 										}
 									})
 									.then(() => {
@@ -308,9 +309,10 @@ function DiarySave() {
 							.then((response) => response.json())
 							.then((res) => {
 								if (painting) {
-									console.log(res.data.results[0].diaryId);
+									console.log(res);
+									console.log(res.results[0].diaryId);
 									localStorage.clear();
-									localStorage.setItem('processing', res.data.results[0].diaryId);
+									localStorage.setItem('processing', res.results[0].diaryId);
 								}
 							})
 							.then(() => {
