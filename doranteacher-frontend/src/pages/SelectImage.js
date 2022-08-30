@@ -18,24 +18,26 @@ const FILESTACK_URL_2 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz
 const FILESTACK_URL_3 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,0,256,256]/';
 const FILESTACK_URL_4 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,256,256,256]/';
 
+const testUrl = 'https://api.deepai.org/job-view-file/5eacfdc7-6dd5-4aa1-a69e-5468e14e6f9c/outputs/output.jpg';
+
 const imgList = [
 	// 내가 알아서 크롭해야함
 	{
 		id: 1, //api 결과로 뒤에 변경하기
-		img_url: FILESTACK_URL_1 + `/img/image_recommend/hamburger_1.png`,
+		img_url: FILESTACK_URL_1 + testUrl,
 	},
 	{
 		id: 2,
-		img_url: FILESTACK_URL_2 + `/img/image_recommend/hamburger_2.png`,
+		img_url: FILESTACK_URL_2 + testUrl,
 	},
 	{
 		id: 3,
-		img_url: FILESTACK_URL_3 + `/img/image_recommend/hamburger_3.png`,
+		img_url: FILESTACK_URL_3 + testUrl,
 	},
 	{
 		id: 4,
-		img_url: FILESTACK_URL_4 + `/img/image_recommend/hamburger_4.png`,
-	}
+		img_url: FILESTACK_URL_4 + testUrl,
+	},
 ];
 
 const MainBlock = styled.div`
@@ -51,12 +53,11 @@ const MainBlock = styled.div`
 	}
 
 	.input_box_img_list_wrapper {
-		padding-left: 3%;
-		// width: 50%;
+		padding-left: 20%;
 		place-items: center;
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
 		row-gap: 15px;
 		column-gap: 20px;
 	}
@@ -114,44 +115,19 @@ const MainBlock = styled.div`
 
 function SelectImage() {
 	const [cookies] = useCookies(['acessToken']);
-	const [data, setData] = useState([]);
-	const [imgId, setImgId] = useState(null);
+
 	const { id } = useParams();
-	// console.log(imgId);
-	const selectImage = () => {
-		axios
-			.get(`https://api.doranssam.com/images/recommend?diaryId=${id}`, {
-				headers: {
-					Authorization: `Bearer ${cookies['accessToken']}`,
-					'Content-type': 'application/json',
-				},
-			})
-			.then((res) => {
-				console.log(res.data.results);
-				setData(res.data.results);
-			});
-	};
 
-	useEffect(() => {
-		selectImage();
-	}, []);
-
-	// const handleClickWeather = (weather) => {
-	// 	setWeather(weather);
-	// };
-
-	const saveImage = (imgId) => {
-		console.log(id);
-		console.log(imgId);
-		fetch('https://api.doranssam.com/images/recommend', {
+	const onSave = (url) => {
+		fetch( `https://api.doranssam.com/diaries/${id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-type': 'application/json',
 				Authorization: `Bearer ${cookies['accessToken']}`,
 			},
 			body: JSON.stringify({
-				diaryId: id,
-				selectedImgId: imgId,
+				imgStatus: 'COMPLETE',
+				imgUrl: url,
 			}),
 		})
 			.then((response) => response.json())
@@ -160,7 +136,6 @@ function SelectImage() {
 			});
 	};
 
-	// imgList.map((it) => console.log(it.id));
 	const navigate = useNavigate('');
 
 	return (
@@ -179,19 +154,17 @@ function SelectImage() {
 				<div className="content-wrapper">
 					<div className="whitebox">
 						<div className="input_box_img_list_wrapper">
-							{data.map((it, index) => (
+							{imgList.map((it, index) => (
 								<img
 									key={index}
 									className="img"
-									src={it.imgUrl}
+									src={it.img_url}
 									alt=""
-									width="150px"
-									// onClick={saveImage}
+									width="200px"
+									height="200px"
 									onClick={() => {
-										setImgId(it.imgId);
-										saveImage(it.imgId);
+										onSave(it.img_url);
 									}}
-									// onClick={() => saveImage(it.imgID)}
 								></img>
 							))}
 						</div>
