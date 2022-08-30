@@ -164,6 +164,9 @@ function Mainpage() {
 
 		if(localStorage.getItem('processing')){
 			const pId = localStorage.getItem('processing')
+			if (pId.length>5){
+				return
+			}
 			axios
 			.get('http://api.doranssam.com/diaries/'+pId, {
 				headers: {
@@ -211,7 +214,7 @@ function Mainpage() {
 
 			
 		}
-	});
+	}, []);
 
 	function writeStart() {
 		axios.defaults.headers.common['Authorization'] = `Bearer ${cookies['accessToken']}`;
