@@ -161,6 +161,39 @@ function Mainpage() {
 			console.log('isLogin ?? :: ', isLogin);
 			setIsLogin(false);
 		}
+
+		if(localStorage.getItem('processing')){
+			const pId = localStorage.getItem('processing')
+			axios
+			.get('http://api.doranssam.com/diaries/'+pId, {
+				headers: {
+					Authorization: `Bearer ${cookies['accessToken']}`,
+					'Content-type': 'application/json',
+				},
+			})
+			.then((res) => {
+				console.log(res.data.results[0]['original_text']);
+				// original_text에서 correct_string으로 변경해야 함
+				fetch('http://52.78.16.114:8080/recommend', {
+					method: 'POST',
+					headers: {
+						'Content-type': 'application/json',
+					},
+					body: JSON.stringify({
+						text: res.data.results[0]['original_text']
+					}),
+				})
+					.then((response) => response.json())
+					.then((res)=>{
+						console.log(res);
+						// console.log(res.results&&)
+					})
+				
+			});
+			
+
+			
+		}
 	});
 
 	function writeStart() {
