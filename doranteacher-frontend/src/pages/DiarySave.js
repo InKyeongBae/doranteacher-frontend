@@ -198,7 +198,7 @@ function DiarySave() {
 						console.log(json);
 						setGm(json.corrected);
 						// setCorrectSentence(json.correct);
-						return [json.corrected, json.correct];
+						return [json.corrected, json.correct_string];
 					})
 					.then(([gram, cSentence]) => {
 						console.log(cSentence);
