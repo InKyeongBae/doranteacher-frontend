@@ -67,6 +67,7 @@ function Header({
 	isLogout,
 	isSetting,
 	isUndo,
+	isDiaryUndo,
 	progress,
 	backColor,
 	isUndoTemp,
@@ -133,6 +134,14 @@ function Header({
 
 				{isUndo ? (
 					<ImgButton setting={false} undo={true} outputColor="white" onClick={() => navigate(-1)}></ImgButton>
+				) : null}
+				{isDiaryUndo ? (
+					<ImgButton
+						setting={false}
+						undo={true}
+						outputColor="white"
+						onClick={() => navigate('/diary-list')}
+					></ImgButton>
 				) : null}
 				{isUndoTemp ? (
 					<ImgButton
