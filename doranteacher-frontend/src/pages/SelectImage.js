@@ -54,7 +54,6 @@ const MainBlock = styled.div`
 
 	.input_box_img_list_wrapper {
 		padding-left: 20%;
-		// width: 50%;
 		place-items: center;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -116,44 +115,19 @@ const MainBlock = styled.div`
 
 function SelectImage() {
 	const [cookies] = useCookies(['acessToken']);
-	const [data, setData] = useState([]);
-	const [imgId, setImgId] = useState(null);
+
 	const { id } = useParams();
-	// console.log(imgId);
-	const selectImage = () => {
-		axios
-			.get(`https://api.doranssam.com/images/recommend?diaryId=${id}`, {
-				headers: {
-					Authorization: `Bearer ${cookies['accessToken']}`,
-					'Content-type': 'application/json',
-				},
-			})
-			.then((res) => {
-				console.log(res.data.results);
-				setData(res.data.results);
-			});
-	};
 
-	useEffect(() => {
-		selectImage();
-	}, []);
-
-	// const handleClickWeather = (weather) => {
-	// 	setWeather(weather);
-	// };
-
-	const saveImage = (imgId) => {
-		console.log(id);
-		console.log(imgId);
-		fetch('https://api.doranssam.com/images/recommend', {
+	const onSave = (url) => {
+		fetch( `https://api.doranssam.com/diaries/${id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-type': 'application/json',
 				Authorization: `Bearer ${cookies['accessToken']}`,
 			},
 			body: JSON.stringify({
-				diaryId: id,
-				selectedImgId: imgId,
+				imgStatus: 'COMPLETE',
+				imgUrl: url,
 			}),
 		})
 			.then((response) => response.json())
@@ -162,7 +136,6 @@ function SelectImage() {
 			});
 	};
 
-	// imgList.map((it) => console.log(it.id));
 	const navigate = useNavigate('');
 
 	return (
@@ -189,12 +162,9 @@ function SelectImage() {
 									alt=""
 									width="200px"
 									height="200px"
-									// onClick={saveImage}
 									onClick={() => {
-										setImgId(it.imgId);
-										saveImage(it.imgId);
+										onSave(it.img_url);
 									}}
-									// onClick={() => saveImage(it.imgID)}
 								></img>
 							))}
 						</div>
