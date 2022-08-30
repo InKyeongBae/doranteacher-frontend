@@ -247,7 +247,11 @@ function DiarySave() {
 								})
 									.then((response) => response.json())
 									.then((res) => {
-										console.log(res);
+										if (painting) {
+											console.log(res.data.results[0].diaryId);
+											localStorage.clear();
+											localStorage.setItem('processing', res.data.results[0].diaryId);
+										}
 									})
 									.then(() => {
 										successNotify();
@@ -303,7 +307,11 @@ function DiarySave() {
 						})
 							.then((response) => response.json())
 							.then((res) => {
-								console.log(res);
+								if (painting) {
+									console.log(res.data.results[0].diaryId);
+									localStorage.clear();
+									localStorage.setItem('processing', res.data.results[0].diaryId);
+								}
 							})
 							.then(() => {
 								successNotify();
