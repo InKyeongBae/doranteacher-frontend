@@ -136,7 +136,7 @@ function Setting() {
 	return (
 		<>
 			<GlobalStyle backColor="yellow" />
-			<Header isUndo backColor="yellow" />
+			<Header isSettingUndo backColor="yellow" />
 			<LeftDoran>
 				<div className="leftDoran" />
 			</LeftDoran>

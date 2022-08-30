@@ -198,7 +198,7 @@ function DiarySave() {
 						console.log(json);
 						setGm(json.corrected);
 						// setCorrectSentence(json.correct);
-						return [json.corrected, json.correct];
+						return [json.corrected, json.correct_string];
 					})
 					.then(([gram, cSentence]) => {
 						console.log(cSentence);
@@ -212,12 +212,14 @@ function DiarySave() {
 							}),
 						})
 							.then((res) => {
+								console.log(res)
+								console.log(res.json)
 								return res.json();
 							})
 							.then((json) => {
-								console.log(json.result); // 서버에서 주는 json데이터가 출력 됨
-								setCm(json.result);
-								return json.result;
+								console.log(json); // 서버에서 주는 json데이터가 출력 됨
+								setCm(json);
+								return json;
 							})
 							.then((commentvalue) => {
 								console.log(gram);

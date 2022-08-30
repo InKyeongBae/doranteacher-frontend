@@ -18,28 +18,6 @@ const FILESTACK_URL_2 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz
 const FILESTACK_URL_3 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,0,256,256]/';
 const FILESTACK_URL_4 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,256,256,256]/';
 
-const testUrl = 'https://api.deepai.org/job-view-file/5eacfdc7-6dd5-4aa1-a69e-5468e14e6f9c/outputs/output.jpg';
-
-const imgList = [
-	// 내가 알아서 크롭해야함
-	{
-		id: 1, //api 결과로 뒤에 변경하기
-		img_url: FILESTACK_URL_1 + testUrl,
-	},
-	{
-		id: 2,
-		img_url: FILESTACK_URL_2 + testUrl,
-	},
-	{
-		id: 3,
-		img_url: FILESTACK_URL_3 + testUrl,
-	},
-	{
-		id: 4,
-		img_url: FILESTACK_URL_4 + testUrl,
-	},
-];
-
 const MainBlock = styled.div`
 	.question {
 		margin-top: 20px;
@@ -118,61 +96,87 @@ function SelectImage() {
 
 	const { id } = useParams();
 
-	const onSave = (url) => {
-		fetch( `https://api.doranssam.com/diaries/${id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-type': 'application/json',
-				Authorization: `Bearer ${cookies['accessToken']}`,
-			},
-			body: JSON.stringify({
-				imgStatus: 'COMPLETE',
-				imgUrl: url,
-			}),
-		})
-			.then((response) => response.json())
-			.then(() => {
-				navigate(`/diary/${id}`);
-			});
-	};
-
 	const navigate = useNavigate('');
 
-	return (
-		<>
-			<GlobalStyle backColor="yellow" />
-			<LeftDoran>
-				<div className="leftDoran" />
-			</LeftDoran>
-			<Header isProgress isLogout isImgBtn />
-			<MainBlock>
-				<div className="question">
-					일기 내용과 가장 어울리는
-					<br />
-					그림을 선택해봐 !
-				</div>
-				<div className="content-wrapper">
-					<div className="whitebox">
-						<div className="input_box_img_list_wrapper">
-							{imgList.map((it, index) => (
-								<img
-									key={index}
-									className="img"
-									src={it.img_url}
-									alt=""
-									width="200px"
-									height="200px"
-									onClick={() => {
-										onSave(it.img_url);
-									}}
-								></img>
-							))}
+	if (localStorage.getItem('processing')) {
+		const needAction = localStorage.getItem('processing').split('#');
+		const testUrl = needAction[1];
+		if (id !== needAction[0]) {
+			alert('Error! id value different');
+		}
+		const imgList = [
+			// 내가 알아서 크롭해야함
+			{
+				id: 1, //api 결과로 뒤에 변경하기
+				img_url: FILESTACK_URL_1 + testUrl,
+			},
+			{
+				id: 2,
+				img_url: FILESTACK_URL_2 + testUrl,
+			},
+			{
+				id: 3,
+				img_url: FILESTACK_URL_3 + testUrl,
+			},
+			{
+				id: 4,
+				img_url: FILESTACK_URL_4 + testUrl,
+			},
+		];
+		const onSave = (url) => {
+			fetch(`https://api.doranssam.com/diaries/${id}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-type': 'application/json',
+					Authorization: `Bearer ${cookies['accessToken']}`,
+				},
+				body: JSON.stringify({
+					imgStatus: 'COMPLETE',
+					imgUrl: url,
+				}),
+			})
+				.then((response) => response.json())
+				.then(() => {
+					localStorage.clear();
+					navigate(`/diary/${id}`);
+				});
+		};
+		return (
+			<>
+				<GlobalStyle backColor="yellow" />
+				<LeftDoran>
+					<div className="leftDoran" />
+				</LeftDoran>
+				<Header isProgress isLogout isImgBtn />
+				<MainBlock>
+					<div className="question">
+						일기 내용과 가장 어울리는
+						<br />
+						그림을 선택해봐 !
+					</div>
+					<div className="content-wrapper">
+						<div className="whitebox">
+							<div className="input_box_img_list_wrapper">
+								{imgList.map((it, index) => (
+									<img
+										key={index}
+										className="img"
+										src={it.img_url}
+										alt=""
+										width="200px"
+										height="200px"
+										onClick={() => {
+											onSave(it.img_url);
+										}}
+									></img>
+								))}
+							</div>
 						</div>
 					</div>
-				</div>
-			</MainBlock>
-		</>
-	);
+				</MainBlock>
+			</>
+		);
+	}
 }
 
 export default SelectImage;

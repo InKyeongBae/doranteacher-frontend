@@ -162,57 +162,56 @@ function Mainpage() {
 			setIsLogin(false);
 		}
 
-		if(localStorage.getItem('processing')){
-			const pId = localStorage.getItem('processing')
-			if (pId.length>5){
-				return
+		if (localStorage.getItem('processing')) {
+			const pId = localStorage.getItem('processing');
+			if (pId.length > 5) {
+				return;
 			}
 			axios
-			.get('http://api.doranssam.com/diaries/'+pId, {
-				headers: {
-					Authorization: `Bearer ${cookies['accessToken']}`,
-					'Content-type': 'application/json',
-				},
-			})
-			.then((res) => {
-				console.log(res.data.results[0]['original_text']);
-				// original_text에서 correct_string으로 변경해야 함
-				fetch('http://52.78.16.114:8080/recommend', {
-					method: 'POST',
+				.get('http://api.doranssam.com/diaries/' + pId, {
 					headers: {
+						Authorization: `Bearer ${cookies['accessToken']}`,
 						'Content-type': 'application/json',
 					},
-					body: JSON.stringify({
-						text: res.data.results[0]['original_text']
-					}),
 				})
-					.then((response) => response.json())
-					.then((res)=>{
-						console.log(res['output_url']);
-						localStorage.setItem('processing', localStorage.getItem('processing')+"#"+res['output_url']);
-						// console.log(res.results&&)
+				.then((res) => {
+					console.log(res.data.results[0]['original_text']);
+					// original_text에서 correct_string으로 변경해야 함
+					fetch('http://52.78.16.114:8080/recommend', {
+						method: 'POST',
+						headers: {
+							'Content-type': 'application/json',
+						},
+						body: JSON.stringify({
+							text: res.data.results[0]['original_text'],
+						}),
 					})
-					.then(() => {
-						fetch('http://api.doranssam.com/diaries/'+pId, {
-							method: 'PATCH',
-							headers: {
-								'Content-type': 'application/json',
-								Authorization: `Bearer ${cookies['accessToken']}`,
-							},
-							body: JSON.stringify({
-								imgStatus: "NEED_ACTION",
-							}),
+						.then((response) => response.json())
+						.then((res) => {
+							console.log(res['output_url']);
+							localStorage.setItem(
+								'processing',
+								localStorage.getItem('processing') + '#' + res['output_url'],
+							);
+							// console.log(res.results&&)
 						})
-							.then((response) => {
+						.then(() => {
+							fetch('http://api.doranssam.com/diaries/' + pId, {
+								method: 'PATCH',
+								headers: {
+									'Content-type': 'application/json',
+									Authorization: `Bearer ${cookies['accessToken']}`,
+								},
+								body: JSON.stringify({
+									imgStatus: 'NEED_ACTION',
+								}),
+							}).then((response) => {
 								response.json();
-								console.log("patch api 호출 완료")
-							})
-					});
-				
-			});
-			
-
-			
+								recommendNotify();
+								console.log('patch api 호출 완료');
+							});
+						});
+				});
 		}
 	}, []);
 
@@ -244,6 +243,18 @@ function Mainpage() {
 
 	const notify = () => {
 		toast('🦄 서비스가 준비 중입니다!', {
+			position: 'top-center',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+	};
+
+	const recommendNotify = () => {
+		toast('🦄 그림 추천이 완료되었습니다!', {
 			position: 'top-center',
 			autoClose: 3000,
 			hideProgressBar: false,

@@ -358,7 +358,7 @@ function DiaryDetail() {
 		<>
 			<GlobalStyle backColor="yellow" />
 
-			<Header isUndo />
+			<Header isDiaryUndo />
 
 			<MainBlock>
 				<div className="main-wrapper">
