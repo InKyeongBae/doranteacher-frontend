@@ -13,40 +13,29 @@ import NextButton from '../components/NextButton';
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || '';
+const FILESTACK_URL_1 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[0,0,256,256]/';
+const FILESTACK_URL_2 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[0,256,256,256]/';
+const FILESTACK_URL_3 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,0,256,256]/';
+const FILESTACK_URL_4 = 'https://cdn.filestackcontent.com/A5pMc1jZ2SoSgAq6fJlEPz/crop=dim:[256,256,256,256]/';
+
 const imgList = [
 	// 내가 알아서 크롭해야함
 	{
-		id: 1, //이미지 식별하려고 붙여놓은 이름
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_1.png`,
+		id: 1, //api 결과로 뒤에 변경하기
+		img_url: FILESTACK_URL_1 + `/img/image_recommend/hamburger_1.png`,
 	},
 	{
 		id: 2,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_2.png`,
+		img_url: FILESTACK_URL_2 + `/img/image_recommend/hamburger_2.png`,
 	},
 	{
 		id: 3,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_3.png`,
+		img_url: FILESTACK_URL_3 + `/img/image_recommend/hamburger_3.png`,
 	},
 	{
 		id: 4,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_4.png`,
-	},
-	{
-		id: 5,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_5.png`,
-	},
-	{
-		id: 6,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_6.png`,
-	},
-	{
-		id: 7,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_7.png`,
-	},
-	{
-		id: 8,
-		img_url: process.env.PUBLIC_URL + `/img/image_recommend/hamburger_8.png`,
-	},
+		img_url: FILESTACK_URL_4 + `/img/image_recommend/hamburger_4.png`,
+	}
 ];
 
 const MainBlock = styled.div`
