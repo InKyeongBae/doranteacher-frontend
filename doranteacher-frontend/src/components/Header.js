@@ -66,6 +66,7 @@ function Header({
 	isLogin,
 	isLogout,
 	isSetting,
+	isSettingUndo,
 	isUndo,
 	isDiaryUndo,
 	progress,
@@ -132,8 +133,16 @@ function Header({
 					></ImgButton>
 				) : null}
 
-				{isUndo ? (
+				{isSettingUndo ? (
 					<ImgButton setting={false} undo={true} outputColor="white" onClick={() => navigate(-1)}></ImgButton>
+				) : null}
+				{isUndo ? (
+					<ImgButton
+						setting={false}
+						undo={true}
+						outputColor="white"
+						onClick={() => navigate('/book-list')}
+					></ImgButton>
 				) : null}
 				{isDiaryUndo ? (
 					<ImgButton
