@@ -185,9 +185,26 @@ function Mainpage() {
 				})
 					.then((response) => response.json())
 					.then((res)=>{
-						console.log(res);
+						console.log(res['output_url']);
+						localStorage.setItem('processing', localStorage.getItem('processing')+"#"+res['output_url']);
 						// console.log(res.results&&)
 					})
+					.then(() => {
+						fetch('http://api.doranssam.com/diaries/'+pId, {
+							method: 'PATCH',
+							headers: {
+								'Content-type': 'application/json',
+								Authorization: `Bearer ${cookies['accessToken']}`,
+							},
+							body: JSON.stringify({
+								imgStatus: "NEED_ACTION",
+							}),
+						})
+							.then((response) => {
+								response.json();
+								console.log("patch api 호출 완료")
+							})
+					});
 				
 			});
 			
