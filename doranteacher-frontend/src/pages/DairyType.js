@@ -63,7 +63,8 @@ function DiaryType() {
 	const [typeList, setTypeList] = useState([]);
 
 	const getTypes = async () => {
-		const types = await axios.get(`https://api.doranssam.com/diary-types/recommend?keywords=${words}`, {
+		const encode = encodeURI(words,"UTF-8");
+		const types = await axios.get(`https://api.doranssam.com/diary-types/recommend?keywords=${encode}`, {
 			headers: {
 				Authorization: `Bearer ${cookies['accessToken']}`,
 				'Content-type': 'application/json',
