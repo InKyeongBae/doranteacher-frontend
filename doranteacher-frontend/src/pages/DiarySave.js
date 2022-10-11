@@ -74,7 +74,8 @@ const MainBlock = styled.div`
 
 	.nextButton {
 		align-self: flex-end;
-		margin-top: 20px;
+		margin-top: 100px;
+		margin-bottom: 100px;
 		margin-right: 70px;
 	}
 
@@ -182,7 +183,7 @@ function DiarySave() {
 				formData.append('images', file);
 			}
 			if (comment) {
-				fetch('http://52.78.16.114:8080/correct', {
+				fetch('http://43.201.96.101:8080/correct', {
 					method: 'POST',
 					headers: {
 						'Content-type': 'application/json',
@@ -202,7 +203,7 @@ function DiarySave() {
 					})
 					.then(([gram, cSentence]) => {
 						console.log(cSentence);
-						fetch('http://52.78.16.114:8080/comment', {
+						fetch('http://43.201.96.101:8080/comment', {
 							method: 'POST',
 							headers: {
 								'Content-type': 'application/json',
@@ -212,8 +213,8 @@ function DiarySave() {
 							}),
 						})
 							.then((res) => {
-								console.log(res)
-								console.log(res.json)
+								console.log(res);
+								console.log(res.json);
 								return res.json();
 							})
 							.then((json) => {
@@ -265,7 +266,7 @@ function DiarySave() {
 							});
 					});
 			} else {
-				fetch('http://52.78.16.114:8080/correct', {
+				fetch('http://43.201.96.101:8080/correct', {
 					method: 'POST',
 					headers: {
 						'Content-type': 'application/json',

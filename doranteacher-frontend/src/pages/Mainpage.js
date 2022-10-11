@@ -177,7 +177,7 @@ function Mainpage() {
 				.then((res) => {
 					console.log(res.data.results[0]['original_text']);
 					// original_text에서 correct_string으로 변경해야 함
-					fetch('http://52.78.16.114:8080/recommend', {
+					fetch('http://43.201.96.101:8080/recommend', {
 						method: 'POST',
 						headers: {
 							'Content-type': 'application/json',
